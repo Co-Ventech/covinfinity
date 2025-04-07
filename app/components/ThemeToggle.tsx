@@ -1,5 +1,5 @@
-import React from "react";
-import { useTheme } from "../contexts/ThemeContext";
+import React from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 
 export const ThemeToggle: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
@@ -7,10 +7,10 @@ export const ThemeToggle: React.FC = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+      className="rounded-full bg-gray-200 p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:bg-gray-700"
+      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
     >
-      {theme === "dark" ? (
+      {theme === 'dark' ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5 text-yellow-500"

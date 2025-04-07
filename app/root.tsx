@@ -8,7 +8,7 @@ import {
 } from "react-router";
 
 import type { Route } from "./+types/root";
-import "./app.css";
+import "./styles/app.css";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
 export const links: Route.LinksFunction = () => [
