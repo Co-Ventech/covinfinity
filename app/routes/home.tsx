@@ -5,6 +5,7 @@ import { Card } from "../components/Card";
 import { MainLayout } from "../layouts/MainLayout";
 import type { Route } from "./+types/home";
 import { ROUTES } from "../constants/routes";
+import Navbar from "~/components/Navbar";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -114,6 +115,7 @@ const testimonials = [
 export default function Home() {
   return (
     <MainLayout>
+      <Navbar/>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900">
         <div className="container mx-auto px-4 py-20">
