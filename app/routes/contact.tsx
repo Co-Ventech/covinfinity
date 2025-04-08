@@ -1,6 +1,6 @@
 import React from 'react';
 import { MainLayout } from '../layouts/MainLayout';
-import { Button } from '../components/Button';
+import { Button } from '../ui/Button';
 import type { Route } from './+types/contact';
 
 export function meta({}: Route.MetaArgs) {

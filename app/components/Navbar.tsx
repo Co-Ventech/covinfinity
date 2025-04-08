@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router';
+import { ThemeToggle } from '../ui/ThemeToggle';
+
+type DropdownSections = 'products' | 'services' | 'caseStudies';
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState({
@@ -7,7 +11,7 @@ const Navbar = () => {
     caseStudies: false,
   });
 
-  const toggleDropdown = (section) => {
+  const toggleDropdown = (section: DropdownSections) => {
     setIsDropdownOpen((prevState) => ({
       ...prevState,
       [section]: !prevState[section],
