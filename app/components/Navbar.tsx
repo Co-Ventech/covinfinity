@@ -20,9 +20,9 @@ const Navbar = () => {
 
   return (
     <div className="bg-black-900 border-b border-gray-700">
-      <div className="mx-auto flex max-w-[95%] items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-[98%] items-center justify-between px-4 py-4">
         {/* Left side of the navbar */}
-        <div className="flex space-x-24 rounded-lg bg-gray-900 px-6 py-2 text-white">
+        <div className="flex space-x-24 rounded-xl bg-[#1A1A1A] px-6 py-4 text-white">
           <div className="flex">
             <img src="/logo.png" alt="" className="mt-2 h-8 w-8" />
             <span className="ml-3 text-xl font-bold">Coventech</span>
@@ -60,7 +60,7 @@ const Navbar = () => {
             </div>
 
             {/* Services Dropdown */}
-            <div className="relative flex rounded-lg bg-black pl-2 hover:bg-[#1E1E1E]">
+            <div className="relative flex rounded-lg bg-[#212121] pl-2 hover:bg-[#1E1E1E]">
               <img src="/services.png" alt="" className="mt-4 h-5 w-5" />
               <button
                 onClick={() => toggleDropdown('services')}
@@ -128,12 +128,12 @@ const Navbar = () => {
         </div>
 
         {/* Right side of the navbar */}
-        <div className="rounded-lg bg-gray-500 p-2">
-          <div className="flex space-x-6 rounded-lg bg-gray-900 px-6 py-2">
+        <div className="rounded-xl bg-[#1A1A1A] p-2">
+          <div className="flex space-x-6 rounded-xl bg-[#212121] py-2 pr-2 pl-5">
             <button className="flex items-center space-x-2 text-white hover:text-gray-500">
               <span>Sign in</span>
             </button>
-            <button className="flex items-center space-x-2 rounded-lg bg-gray-700 px-6 py-2 text-white hover:bg-gray-600">
+            <button className="flex items-center space-x-2 rounded-xl bg-[#1A1A1A] px-6 py-2.5 text-white hover:bg-gray-600">
               <span className="bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent">
                 Get Started
               </span>
