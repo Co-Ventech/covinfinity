@@ -1,11 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router';
-import { Button } from '../components/ui/Button';
-import { Card } from '../components/ui/Card';
+import Navbar from '~/components/Navbar';
+import Polygon1 from '~/components/svgs/Polygon1';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
-import { ROUTES } from '../constants/routes';
-import Navbar from '~/components/Navbar';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -113,6 +109,20 @@ export default function Home() {
   return (
     <MainLayout>
       <Navbar />
+      <section className="hero-section min-h-[50rem] text-center">
+        <div className="triangle-wtapper relative mx-auto max-w-max">
+          <Polygon1 className="absolute top-3.5 left-1/2 z-[-1] h-[25rem] !w-[calc(100%+5rem)] -translate-x-1/2" />
+          <h1 className="text-5xl font-semibold">
+            Coventech Products
+            <span className="block bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent">
+              and Services
+            </span>
+          </h1>
+          <p>
+            Some lorem ipsum text goes here <span className="block"> says no one </span>
+          </p>
+        </div>
+      </section>
     </MainLayout>
   );
 }
