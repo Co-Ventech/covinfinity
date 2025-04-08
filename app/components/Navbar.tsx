@@ -16,9 +16,9 @@ const Navbar = () => {
 
   return (
     <div className="bg-black-900 border-b border-gray-700">
-      <div className="max-w-[95%] mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="max-w-[98%] mx-auto px-4 py-4 flex justify-between items-center">
         {/* Left side of the navbar */}
-        <div className="flex space-x-24 bg-gray-900 text-white px-6 py-2 rounded-lg ">
+        <div className="flex space-x-24 bg-[#1A1A1A] text-white px-6 py-4 rounded-xl ">
           <div className="flex">
             <img src="/logo.png" alt="" className="h-8 w-8 mt-2" />
             <span className="text-xl ml-3 font-bold">Coventech</span>
@@ -50,7 +50,7 @@ const Navbar = () => {
             </div>
 
             {/* Services Dropdown */}
-            <div className="relative bg-black pl-2 flex rounded-lg hover:bg-[#1E1E1E]">
+            <div className="relative bg-[#212121] pl-2 flex rounded-lg hover:bg-[#1E1E1E]">
               <img src="/services.png" alt="" className="h-5 w-5 mt-4" />
               <button
                 onClick={() => toggleDropdown('services')}
@@ -104,12 +104,12 @@ const Navbar = () => {
         </div>
 
         {/* Right side of the navbar */}
-        <div className="bg-gray-500 p-2 rounded-lg">
-          <div className="flex space-x-6 rounded-lg bg-gray-900 px-6 py-2">
+        <div className="bg-[#1A1A1A] p-2 rounded-xl">
+          <div className="flex space-x-6 rounded-xl bg-[#212121] pl-5 pr-2 py-2">
             <button className="text-white flex items-center space-x-2 hover:text-gray-500">
               <span>Sign in</span>
             </button>
-            <button className="bg-gray-700 text-white px-6 py-2 rounded-lg flex items-center space-x-2 hover:bg-gray-600">
+            <button className="bg-[#1A1A1A] text-white px-6 py-2.5 rounded-xl flex items-center space-x-2 hover:bg-gray-600">
               <span className='bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent'>Get Started</span>
             </button>
           </div>
