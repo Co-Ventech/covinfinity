@@ -8,65 +8,7 @@ interface MainLayoutProps {
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="bg-white dark:bg-gray-900 shadow-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-4">
-              <Link
-                to="/"
-                className="text-xl font-bold text-blue-600 dark:text-blue-400"
-              >
-                Co-Ventech
-              </Link>
-              <nav className="hidden md:flex space-x-6">
-                <Link
-                  to="/"
-                  className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400"
-                >
-                  Home
-                </Link>
-                <Link
-                  to="/about"
-                  className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400"
-                >
-                  About
-                </Link>
-                <Link
-                  to="/services"
-                  className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400"
-                >
-                  Services
-                </Link>
-                <Link
-                  to="/contact"
-                  className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400"
-                >
-                  Contact
-                </Link>
-              </nav>
-            </div>
-            <div>
-              <button className="md:hidden">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
+     
       <main className="flex-grow">{children}</main>
 
       <footer className="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
