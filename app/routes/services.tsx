@@ -1,14 +1,14 @@
-import React from "react";
-import { MainLayout } from "../layouts/MainLayout";
-import { Card } from "../components/Card";
-import type { Route } from "./+types/services";
+import React from 'react';
+import { MainLayout } from '../layouts/MainLayout';
+import { Card } from '../components/Card';
+import type { Route } from './+types/services';
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Services - Co-Ventech" },
+    { title: 'Services - Co-Ventech' },
     {
-      name: "description",
-      content: "Explore the services offered by Co-Ventech",
+      name: 'description',
+      content: 'Explore the services offered by Co-Ventech',
     },
   ];
 }
@@ -17,9 +17,9 @@ export function meta({}: Route.MetaArgs) {
 const services = [
   {
     id: 1,
-    title: "Web Development",
+    title: 'Web Development',
     description:
-      "Modern, responsive websites and web applications built with the latest technologies.",
+      'Modern, responsive websites and web applications built with the latest technologies.',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -39,9 +39,8 @@ const services = [
   },
   {
     id: 2,
-    title: "Mobile App Development",
-    description:
-      "Cross-platform mobile applications for iOS and Android using React Native.",
+    title: 'Mobile App Development',
+    description: 'Cross-platform mobile applications for iOS and Android using React Native.',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -61,9 +60,9 @@ const services = [
   },
   {
     id: 3,
-    title: "UI/UX Design",
+    title: 'UI/UX Design',
     description:
-      "User-centered design that enhances usability and creates delightful user experiences.",
+      'User-centered design that enhances usability and creates delightful user experiences.',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -83,9 +82,8 @@ const services = [
   },
   {
     id: 4,
-    title: "Cloud Services",
-    description:
-      "Scalable cloud solutions for storage, computing, and application deployment.",
+    title: 'Cloud Services',
+    description: 'Scalable cloud solutions for storage, computing, and application deployment.',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -105,9 +103,9 @@ const services = [
   },
   {
     id: 5,
-    title: "DevOps",
+    title: 'DevOps',
     description:
-      "Streamline your development process with CI/CD pipelines and infrastructure automation.",
+      'Streamline your development process with CI/CD pipelines and infrastructure automation.',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -133,9 +131,8 @@ const services = [
   },
   {
     id: 6,
-    title: "Consulting",
-    description:
-      "Expert advice on technology strategy, architecture, and implementation.",
+    title: 'Consulting',
+    description: 'Expert advice on technology strategy, architecture, and implementation.',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -159,43 +156,39 @@ export default function Services() {
   return (
     <MainLayout>
       <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-            Our Services
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            We offer a comprehensive range of technology services to help your
-            business succeed in the digital world.
+        <div className="mb-16 text-center">
+          <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white">Our Services</h1>
+          <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
+            We offer a comprehensive range of technology services to help your business succeed in
+            the digital world.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <div key={service.id} className="flex">
-              <Card className="flex flex-col items-center text-center p-6">
+              <Card className="flex flex-col items-center p-6 text-center">
                 <div className="mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+                <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  {service.description}
-                </p>
+                <p className="text-gray-600 dark:text-gray-400">{service.description}</p>
               </Card>
             </div>
           ))}
         </div>
 
         <div className="mt-16 text-center">
-          <h2 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
+          <h2 className="mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
             Need a custom solution?
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
-            Contact us to discuss your project requirements. We're here to help
-            you find the perfect solution for your business.
+          <p className="mx-auto mb-8 max-w-2xl text-gray-600 dark:text-gray-400">
+            Contact us to discuss your project requirements. We're here to help you find the perfect
+            solution for your business.
           </p>
           <a
             href="/contact"
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+            className="inline-block rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-700"
           >
             Get in Touch
           </a>

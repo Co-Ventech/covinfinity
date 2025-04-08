@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './base.css';
 
 @theme {
   /* Font configuration */
@@ -20,8 +21,6 @@
   --color-secondary-light: #8b5cf6;
 
   /* Keep simple spacing for easier calculations - 1rem = 10px */
-  /* We're removing the adjusted spacing values to go back to simple 10px = 1rem */
-
   /* Extended spacing values */
   --spacing-xs: 0.125rem;
   --spacing-sm: 0.25rem;
@@ -38,7 +37,7 @@
   --radius-xl: 1rem;
   --radius-full: 9999px;
 
-  /* Font size adjustments for 10px base (to maintain proper text sizes) */
+  /* Font size adjustments for 10px base */
   --text-xs: 1.2rem; /* 12px */
   --text-sm: 1.4rem; /* 14px */
   --text-base: 1.6rem; /* 16px */
@@ -49,7 +48,7 @@
   --text-4xl: 3.6rem; /* 36px */
   --text-5xl: 4.8rem; /* 48px */
 
-  /* Line height adjustments to match the new font size scale */
+  /* Line height adjustments */
   --leading-none: 1;
   --leading-tight: 1.25;
   --leading-snug: 1.375;
@@ -66,7 +65,7 @@
 /* Apply consistent base styles */
 html,
 body {
-  @apply bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100;
+  @apply text-gray-900 dark:text-gray-100;
   @apply antialiased;
   @apply text-base; /* Ensure base text size is applied */
 
@@ -136,7 +135,7 @@ button {
     @apply overflow-hidden rounded-lg bg-white shadow-md dark:bg-gray-800;
   }
 
-  /* Basic paragraph styles for consistent text */
+  /* Basic paragraph styles */
   .paragraph {
     @apply mb-4 text-base leading-relaxed;
   }

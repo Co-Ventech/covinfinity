@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router";
+import React from 'react';
+import { Link } from 'react-router';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -7,25 +7,20 @@ interface MainLayoutProps {
 
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col min-h-screen">
-     
+    <div className="flex min-h-screen flex-col">
       <main className="flex-grow">{children}</main>
 
-      <footer className="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+      <footer className="border-t border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
         <div className="container mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div>
-              <h3 className="text-lg font-semibold mb-4 dark:text-white">
-                About Us
-              </h3>
+              <h3 className="mb-4 text-lg font-semibold dark:text-white">About Us</h3>
               <p className="text-gray-600 dark:text-gray-400">
                 Co-Ventech provides innovative solutions for modern businesses.
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4 dark:text-white">
-                Quick Links
-              </h3>
+              <h3 className="mb-4 text-lg font-semibold dark:text-white">Quick Links</h3>
               <ul className="space-y-2">
                 <li>
                   <Link
@@ -62,10 +57,8 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4 dark:text-white">
-                Contact
-              </h3>
-              <address className="not-italic text-gray-600 dark:text-gray-400">
+              <h3 className="mb-4 text-lg font-semibold dark:text-white">Contact</h3>
+              <address className="text-gray-600 not-italic dark:text-gray-400">
                 <p>123 Business Street</p>
                 <p>City, State 12345</p>
                 <p>Email: info@coventech.com</p>
@@ -73,9 +66,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
               </address>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4 dark:text-white">
-                Follow Us
-              </h3>
+              <h3 className="mb-4 text-lg font-semibold dark:text-white">Follow Us</h3>
               <div className="flex space-x-4">
                 <a
                   href="#"
@@ -130,7 +121,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
               </div>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-gray-500 dark:text-gray-400">
+          <div className="mt-8 border-t border-gray-200 pt-8 text-center text-gray-500 dark:border-gray-800 dark:text-gray-400">
             <p>© {new Date().getFullYear()} Co-Ventech. All rights reserved.</p>
           </div>
         </div>

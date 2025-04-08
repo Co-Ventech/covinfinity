@@ -1,18 +1,18 @@
-import React from "react";
-import { Link } from "react-router";
-import { Button } from "../components/Button";
-import { Card } from "../components/Card";
-import { MainLayout } from "../layouts/MainLayout";
-import type { Route } from "./+types/home";
-import { ROUTES } from "../constants/routes";
-import Navbar from "~/components/Navbar";
+import React from 'react';
+import { Link } from 'react-router';
+import { Button } from '../components/Button';
+import { Card } from '../components/Card';
+import { MainLayout } from '../layouts/MainLayout';
+import type { Route } from './+types/home';
+import { ROUTES } from '../constants/routes';
+import Navbar from '~/components/Navbar';
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Co-Ventech - Innovative Technology Solutions" },
+    { title: 'Co-Ventech - Innovative Technology Solutions' },
     {
-      name: "description",
-      content: "Empowering businesses with cutting-edge technology solutions",
+      name: 'description',
+      content: 'Empowering businesses with cutting-edge technology solutions',
     },
   ];
 }
@@ -21,9 +21,8 @@ export function meta({}: Route.MetaArgs) {
 const features = [
   {
     id: 1,
-    title: "Innovative Solutions",
-    description:
-      "We develop cutting-edge technology solutions tailored to your business needs.",
+    title: 'Innovative Solutions',
+    description: 'We develop cutting-edge technology solutions tailored to your business needs.',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -43,9 +42,8 @@ const features = [
   },
   {
     id: 2,
-    title: "Expert Team",
-    description:
-      "Our team of seasoned professionals brings years of experience to every project.",
+    title: 'Expert Team',
+    description: 'Our team of seasoned professionals brings years of experience to every project.',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -65,9 +63,8 @@ const features = [
   },
   {
     id: 3,
-    title: "Customer-Centric",
-    description:
-      "We put your needs first, ensuring solutions that align with your business goals.",
+    title: 'Customer-Centric',
+    description: 'We put your needs first, ensuring solutions that align with your business goals.',
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -92,34 +89,30 @@ const testimonials = [
   {
     id: 1,
     content:
-      "Co-Ventech transformed our business with their innovative solutions. Their team was professional, responsive, and delivered beyond our expectations.",
-    author: "Jane Smith",
-    role: "CEO, TechCorp",
+      'Co-Ventech transformed our business with their innovative solutions. Their team was professional, responsive, and delivered beyond our expectations.',
+    author: 'Jane Smith',
+    role: 'CEO, TechCorp',
   },
   {
     id: 2,
     content:
-      "Working with Co-Ventech was a game-changer for our company. Their expertise helped us streamline operations and increase efficiency by 40%.",
-    author: "John Doe",
-    role: "CTO, InnovateCo",
+      'Working with Co-Ventech was a game-changer for our company. Their expertise helped us streamline operations and increase efficiency by 40%.',
+    author: 'John Doe',
+    role: 'CTO, InnovateCo',
   },
   {
     id: 3,
     content:
-      "The team at Co-Ventech truly understands business needs. They provided us with custom solutions that perfectly addressed our challenges.",
-    author: "Sarah Johnson",
-    role: "Operations Director, GrowthInc",
+      'The team at Co-Ventech truly understands business needs. They provided us with custom solutions that perfectly addressed our challenges.',
+    author: 'Sarah Johnson',
+    role: 'Operations Director, GrowthInc',
   },
 ];
 
 export default function Home() {
   return (
     <MainLayout>
-      <Navbar/>
-    
- 
-
-      
+      <Navbar />
     </MainLayout>
   );
 }

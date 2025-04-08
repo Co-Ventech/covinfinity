@@ -1,0 +1,38 @@
+@layer base {
+  /* Set base font size to 10px (62.5% of 16px) */
+  :root {
+    font-size: 62.5%;
+  }
+
+  /* Base HTML and Body styles */
+  html {
+    @apply antialiased;
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply min-h-screen text-base;
+    @apply text-gray-900 dark:text-gray-100;
+    @apply bg-gradient-to-b from-[#0F0F11] via-[#1A1A1C] to-[#0F0F11];
+    @apply bg-no-repeat;
+
+    @media (prefers-color-scheme: dark) {
+      color-scheme: dark;
+    }
+  }
+
+  /* Form elements base styles */
+  input,
+  select,
+  textarea,
+  button {
+    font-size: inherit;
+  }
+
+  /* Responsive font size adjustment for smaller screens */
+  @media (max-width: 640px) {
+    :root {
+      font-size: 50%; /* 8px base on smaller screens */
+    }
+  }
+}

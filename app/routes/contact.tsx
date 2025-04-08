@@ -1,14 +1,14 @@
-import React from "react";
-import { MainLayout } from "../layouts/MainLayout";
-import { Button } from "../components/Button";
-import type { Route } from "./+types/contact";
+import React from 'react';
+import { MainLayout } from '../layouts/MainLayout';
+import { Button } from '../components/Button';
+import type { Route } from './+types/contact';
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Contact - Co-Ventech" },
+    { title: 'Contact - Co-Ventech' },
     {
-      name: "description",
-      content: "Get in touch with Co-Ventech for your business needs",
+      name: 'description',
+      content: 'Get in touch with Co-Ventech for your business needs',
     },
   ];
 }
@@ -17,21 +17,21 @@ export default function Contact() {
   return (
     <MainLayout>
       <div className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">
+        <div className="mx-auto max-w-4xl">
+          <h1 className="mb-8 text-center text-4xl font-bold text-gray-900 dark:text-white">
             Contact Us
           </h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
             {/* Contact Information */}
             <div>
-              <h2 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
+              <h2 className="mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                 Get in Touch
               </h2>
 
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 mt-1">
+                  <div className="mt-1 flex-shrink-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6 text-blue-600"
@@ -57,7 +57,7 @@ export default function Contact() {
                     <h3 className="text-lg font-medium text-gray-900 dark:text-white">
                       Our Office
                     </h3>
-                    <address className="mt-2 not-italic text-gray-600 dark:text-gray-400">
+                    <address className="mt-2 text-gray-600 not-italic dark:text-gray-400">
                       123 Business Street
                       <br />
                       City, State 12345
@@ -68,7 +68,7 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 mt-1">
+                  <div className="mt-1 flex-shrink-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6 text-blue-600"
@@ -85,9 +85,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                      Email
-                    </h3>
+                    <h3 className="text-lg font-medium text-gray-900 dark:text-white">Email</h3>
                     <p className="mt-2 text-gray-600 dark:text-gray-400">
                       <a
                         href="mailto:info@coventech.com"
@@ -100,7 +98,7 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 mt-1">
+                  <div className="mt-1 flex-shrink-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6 text-blue-600"
@@ -117,9 +115,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                      Phone
-                    </h3>
+                    <h3 className="text-lg font-medium text-gray-900 dark:text-white">Phone</h3>
                     <p className="mt-2 text-gray-600 dark:text-gray-400">
                       <a
                         href="tel:+11234567890"
@@ -132,7 +128,7 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 mt-1">
+                  <div className="mt-1 flex-shrink-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6 text-blue-600"
@@ -166,7 +162,7 @@ export default function Contact() {
 
             {/* Contact Form */}
             <div>
-              <h2 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
+              <h2 className="mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                 Send us a Message
               </h2>
 
@@ -174,7 +170,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
                   >
                     Your Name
                   </label>
@@ -182,7 +178,7 @@ export default function Contact() {
                     type="text"
                     id="name"
                     name="name"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                    className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
                     required
                   />
                 </div>
@@ -190,7 +186,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
                   >
                     Email Address
                   </label>
@@ -198,7 +194,7 @@ export default function Contact() {
                     type="email"
                     id="email"
                     name="email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                    className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
                     required
                   />
                 </div>
@@ -206,7 +202,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="subject"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
                   >
                     Subject
                   </label>
@@ -214,14 +210,14 @@ export default function Contact() {
                     type="text"
                     id="subject"
                     name="subject"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                    className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                    className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300"
                   >
                     Message
                   </label>
@@ -229,18 +225,13 @@ export default function Contact() {
                     id="message"
                     name="message"
                     rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                    className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
                     required
                   ></textarea>
                 </div>
 
                 <div>
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    size="lg"
-                    className="w-full"
-                  >
+                  <Button type="submit" variant="primary" size="lg" className="w-full">
                     Send Message
                   </Button>
                 </div>
@@ -250,13 +241,11 @@ export default function Contact() {
 
           {/* Map or additional info could go here */}
           <div className="mt-16">
-            <h2 className="text-2xl font-semibold mb-6 text-center text-gray-900 dark:text-white">
+            <h2 className="mb-6 text-center text-2xl font-semibold text-gray-900 dark:text-white">
               Find Us
             </h2>
-            <div className="bg-gray-200 dark:bg-gray-700 h-80 w-full rounded-lg flex items-center justify-center">
-              <p className="text-gray-600 dark:text-gray-400">
-                Map placeholder
-              </p>
+            <div className="flex h-80 w-full items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+              <p className="text-gray-600 dark:text-gray-400">Map placeholder</p>
             </div>
           </div>
         </div>
