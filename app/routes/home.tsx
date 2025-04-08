@@ -1,5 +1,7 @@
 import Navbar from '~/components/Navbar';
 import Polygon1 from '~/components/svgs/Polygon1';
+import GradientBorderButton from '../components/ui/GradientBorderButton';
+import GradientText from '../components/ui/GradientText';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
 
@@ -114,13 +116,18 @@ export default function Home() {
           <Polygon1 className="absolute top-3.5 left-1/2 z-[-1] h-[25rem] !w-[calc(100%+5rem)] -translate-x-1/2" />
           <h1 className="text-5xl font-semibold">
             Coventech Products
-            <span className="block bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent">
-              and Services
+            <span className="block">
+              <GradientText>and Services</GradientText>
             </span>
           </h1>
           <p>
             Some lorem ipsum text goes here <span className="block"> says no one </span>
           </p>
+          <GradientBorderButton>
+            <span className="block bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent">
+              Launch Covinfinity
+            </span>
+          </GradientBorderButton>
         </div>
       </section>
     </MainLayout>
