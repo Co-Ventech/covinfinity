@@ -6,6 +6,8 @@ import { MainLayout } from "../layouts/MainLayout";
 import type { Route } from "./+types/home";
 import { ROUTES } from "../constants/routes";
 import Navbar from "~/components/Navbar";
+import CompanySliderRight from "~/components/CompanySliderRight";
+import CompanySliderLeft from "~/components/CompanySliderLeft";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -116,7 +118,8 @@ export default function Home() {
   return (
     <MainLayout>
       <Navbar/>
-    
+    <CompanySliderRight/>
+    <CompanySliderLeft/>
  
 
       
