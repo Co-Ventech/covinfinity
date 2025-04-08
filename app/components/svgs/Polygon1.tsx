@@ -2,9 +2,10 @@ import React from 'react';
 
 interface Polygon1Props {
   className?: string;
+  radialColor?: string;
 }
 
-const Polygon1: React.FC<Polygon1Props> = ({ className }) => {
+const Polygon1: React.FC<Polygon1Props> = ({ className, radialColor = '#171719' }) => {
   return (
     <svg
       width="770"
@@ -42,8 +43,8 @@ const Polygon1: React.FC<Polygon1Props> = ({ className }) => {
           y2="442"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#171719" />
-          <stop offset="1" stopColor="#171719" />
+          <stop stopColor={radialColor} />
+          <stop offset="1" stopColor={radialColor} />
         </linearGradient>
       </defs>
     </svg>
