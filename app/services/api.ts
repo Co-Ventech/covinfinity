@@ -2,15 +2,12 @@
  * API service for handling HTTP requests
  */
 
-const API_BASE_URL = "/api";
+const API_BASE_URL = '/api';
 
 /**
  * Generic fetch function with error handling
  */
-async function fetchWithErrorHandling<T>(
-  url: string,
-  options?: RequestInit
-): Promise<T> {
+async function fetchWithErrorHandling<T>(url: string, options?: RequestInit): Promise<T> {
   try {
     const response = await fetch(url, options);
 
@@ -20,7 +17,7 @@ async function fetchWithErrorHandling<T>(
 
     return await response.json();
   } catch (error) {
-    console.error("API request failed:", error);
+    console.error('API request failed:', error);
     throw error;
   }
 }
@@ -41,9 +38,9 @@ export const apiService = {
    */
   post: <T, D = any>(endpoint: string, data: D): Promise<T> => {
     return fetchWithErrorHandling<T>(`${API_BASE_URL}${endpoint}`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     });
@@ -54,9 +51,9 @@ export const apiService = {
    */
   put: <T, D = any>(endpoint: string, data: D): Promise<T> => {
     return fetchWithErrorHandling<T>(`${API_BASE_URL}${endpoint}`, {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     });
@@ -67,7 +64,7 @@ export const apiService = {
    */
   delete: <T>(endpoint: string): Promise<T> => {
     return fetchWithErrorHandling<T>(`${API_BASE_URL}${endpoint}`, {
-      method: "DELETE",
+      method: 'DELETE',
     });
   },
 };

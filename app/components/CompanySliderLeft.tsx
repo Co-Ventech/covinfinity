@@ -14,23 +14,29 @@ const companies = [
 
 const CompanySliderLeft = () => {
   return (
-    <div className="relative overflow-hidden w-full mt-5">
-      <div className="flex space-x-12 animate-slider-left">
+    <div className="relative overflow-hidden w-full mt-3">
+      <div className="flex space-x-5 animate-slider-left">
         {/* First set of companies */}
         {companies.map((company, index) => (
-          <div key={index} className="flex items-center px-12 py-6 w-auto bg-black border border-[#FF698152] rounded-4xl"> 
+          <div key={index} className="flex items-center px-12 py-4  bg-black border border-[#FF698152] rounded-3xl  "> 
           
-            {company.icon && <img src="framer.png" alt="icon" className="mr-1" />}
-            <span className="text-white">{company.name}</span>
+          
+          <div className="text-white flex whitespace-nowrap ">
+            {company.icon && <img src="framer.png" alt="icon" className="mr-1.5" />}
+            {company.name}</div>
           </div>
         ))}
         {/* Duplicate the companies for seamless effect */}
         {companies.map((company, index) => (
-          <div key={index + 100} className="flex items-center w-auto px-12 py-6 bg-black border border-[#FF698152] rounded-4xl">
-            {company.icon && <img src="framer.png" alt="icon" className="mr-1" />}
-            <span className="text-white">{company.name}</span>
+          <div key={index + 100} className="flex items-center w-auto px-12 py-4 bg-black border border-[#FF698152] rounded-3xl">
+            <div className="text-white flex whitespace-nowrap ">
+            {company.icon && <img src="framer.png" alt="icon" className="mr-1.5" />}
+            {company.name}</div>
           </div>
         ))}
+      </div>
+      <div className='flex justify-center mt-20 mb-12'>
+      <img src="43k-talents.png" alt="persons" className="item-center h-6 " />
       </div>
     </div>
   );
