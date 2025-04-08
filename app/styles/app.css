@@ -113,6 +113,38 @@ button {
     animation-iteration-count: 1;
   }
 }
+@layer utilities {
+  /* Your existing custom utilities */
+  
+  .animate-slider-left {
+    animation: sliderLeft 30s linear infinite;
+  }
+
+
+  @keyframes sliderLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+   /* Right slider animation */
+   .animate-slider-right {
+    animation: sliderRight 30s linear infinite;
+  }
+  
+  @keyframes sliderRight {
+    0% {
+      transform: translateX(-90%); /* Start at original position */
+    }
+    100% {
+      transform: translateX(10%); /* Move left by 50% (creates right-sliding effect) */
+    }
+  }
+  
+}
 
 /* Add custom components */
 @layer components {
