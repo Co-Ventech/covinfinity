@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router';
-import { ThemeToggle } from '../ui/ThemeToggle';
+import { ThemeToggle } from './ui/ThemeToggle';
 
 type DropdownSections = 'products' | 'services' | 'caseStudies';
 

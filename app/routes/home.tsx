@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Button } from '../ui/Button';
-import { Card } from '../ui/Card';
+import { Button } from '../components/ui/Button';
+import { Card } from '../components/ui/Card';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
 import { ROUTES } from '../constants/routes';

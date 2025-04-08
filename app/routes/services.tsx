@@ -1,6 +1,6 @@
 import React from 'react';
 import { MainLayout } from '../layouts/MainLayout';
-import { Card } from '../ui/Card';
+import { Card } from '../components/ui/Card';
 import type { Route } from './+types/services';
 
 export function meta({}: Route.MetaArgs) {
