@@ -12,6 +12,20 @@ const CollaborationCard: React.FC<CollaborationCardProps> = ({
   description,
   className = '',
 }) => {
+  // Format the description text with line breaks
+  const formatDescription = (text: string) => {
+    // Break after "with your"
+    return text
+      .replace('with your', 'with your<br>')
+      .split('<br>')
+      .map((part, index) => (
+        <React.Fragment key={index}>
+          {index > 0 && <br />}
+          {part}
+        </React.Fragment>
+      ));
+  };
+
   return (
     <div className={`relative pl-5 ${className}`}>
       {/* Vertical line */}
@@ -25,7 +39,7 @@ const CollaborationCard: React.FC<CollaborationCardProps> = ({
           <h3 className="text-base font-semibold text-white">{title}</h3>
         </div>
 
-        <p className="text-sm text-[#665F5F]">{description}</p>
+        <p className="text-sm leading-relaxed text-[#665F5F]">{formatDescription(description)}</p>
       </div>
     </div>
   );

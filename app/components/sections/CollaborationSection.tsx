@@ -36,10 +36,15 @@ const CollaborationSection: React.FC = () => {
         {/* Horizontal divider line */}
         <div className="mb-16 h-px w-full bg-gray-800"></div>
 
-        {/* Cards grid - simple 3x2 grid */}
-        <div className="relative z-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {/* Cards grid with responsive spacing */}
+        <div className="relative z-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
           {collabItems.map((item, index) => (
-            <CollaborationCard key={index} title={item.title} description={item.description} />
+            <CollaborationCard
+              key={index}
+              title={item.title}
+              description={item.description}
+              className="h-full"
+            />
           ))}
         </div>
       </div>
