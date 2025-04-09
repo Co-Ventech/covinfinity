@@ -28,7 +28,7 @@ const CollaborationCard: React.FC<CollaborationCardProps> = ({
 
   return (
     <div className={`relative pl-5 ${className}`}>
-      {/* Vertical line */}
+      {/* Single vertical line shown in reference */}
       <div className="absolute top-0 left-0 h-6 w-[1px] bg-[#2E2928] opacity-40"></div>
 
       {/* Content */}
