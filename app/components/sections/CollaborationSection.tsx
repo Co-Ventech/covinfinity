@@ -1,7 +1,6 @@
 import React from 'react';
-import CollaborationCard from '../ui/CollaborationCard';
 import CrownIcon from '../svgs/CrownIcon';
-import GhostIcon from '../svgs/GhostIcon';
+import CollaborationCard from '../ui/CollaborationCard';
 
 // Collaboration items data
 const collabItems = Array(6).fill({
