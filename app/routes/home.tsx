@@ -8,7 +8,7 @@ import CompanySliderRight from "~/components/CompanySliderRight";
 import CompanySliderLeft from "~/components/CompanySliderLeft";
 
 import Hero from '../components/sections/Hero';
-import CollaborationSection from "~/components/CollaborationSection";
+import CollaborationChatBot from "~/components/CollaborationChatBot";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -29,7 +29,7 @@ export default function Home() {
       <Hero />
       <CompanySliderRight/>
       <CompanySliderLeft/>
-      <CollaborationSection/>
+      <CollaborationChatBot/>
     </MainLayout>
   );
 }
