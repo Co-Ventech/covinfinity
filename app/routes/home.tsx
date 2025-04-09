@@ -1,14 +1,14 @@
-import React from "react";
-import { Link } from "react-router";
-import { MainLayout } from "../layouts/MainLayout";
-import type { Route } from "./+types/home";
-import { ROUTES } from "../constants/routes";
-import Navbar from "~/components/Navbar";
-import CompanySliderRight from "~/components/CompanySliderRight";
-import CompanySliderLeft from "~/components/CompanySliderLeft";
+import React from 'react';
+import { Link } from 'react-router';
+import { MainLayout } from '../layouts/MainLayout';
+import type { Route } from './+types/home';
+import { ROUTES } from '../constants/routes';
+import Navbar from '~/components/Navbar';
+import CompanySliderRight from '~/components/CompanySliderRight';
+import CompanySliderLeft from '~/components/CompanySliderLeft';
 
 import Hero from '../components/sections/Hero';
-import CollaborationSection from "~/components/CollaborationSection";
+import CollaborationSection from '~/components/sections/CollaborationSection';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -20,16 +20,14 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-
-
 export default function Home() {
   return (
     <MainLayout>
-      <Navbar/>
+      <Navbar />
       <Hero />
-      <CompanySliderRight/>
-      <CompanySliderLeft/>
-      <CollaborationSection/>
+      <CompanySliderRight />
+      <CompanySliderLeft />
+      <CollaborationSection />
     </MainLayout>
   );
 }
