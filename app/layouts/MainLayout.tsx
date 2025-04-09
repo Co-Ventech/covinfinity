@@ -8,10 +8,12 @@ interface MainLayoutProps {
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
     <div className="flex min-h-screen flex-col">
-      <main className="flex-grow">{children}</main>
+      <div className="container-wide">
+        <main className="flex-grow">{children}</main>
+      </div>
 
       <footer className="border-t border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
-        <div className="container mx-auto px-4 py-8">
+        <div className="container-wide py-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div>
               <h3 className="mb-4 text-lg font-semibold dark:text-white">About Us</h3>

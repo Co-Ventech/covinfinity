@@ -33,7 +33,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body id="main-body">
+      <body>
         <ThemeProvider>{children}</ThemeProvider>
         <ScrollRestoration />
         <Scripts />
@@ -61,7 +61,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="container mx-auto p-4 pt-16">
+    <main className="container-wide pt-16">
       <h1>{message}</h1>
       <p>{details}</p>
       {stack && (

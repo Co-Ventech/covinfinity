@@ -10,7 +10,7 @@ const collabItems = Array(6).fill({
 
 const CollaborationSection: React.FC = () => {
   return (
-    <section className="relative mx-auto max-w-[100rem] overflow-hidden py-20">
+    <section className="relative w-full py-20">
       {/* Background dots/particles effect */}
       <div className="pointer-events-none absolute inset-0 z-0 opacity-10">
         <div className="absolute top-10 left-10 h-1 w-1 rounded-full bg-white"></div>
@@ -21,7 +21,7 @@ const CollaborationSection: React.FC = () => {
         <div className="absolute right-40 bottom-60 h-1 w-1 rounded-full bg-white"></div>
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container-narrow">
         {/* Section header */}
         <div className="relative z-10 mb-16 text-center">
           <div className="mb-3 flex justify-center">
@@ -33,8 +33,11 @@ const CollaborationSection: React.FC = () => {
           </p>
         </div>
 
+        {/* Horizontal divider line */}
+        <div className="mb-16 h-px w-full bg-gray-800"></div>
+
         {/* Cards grid - simple 3x2 grid */}
-        <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="relative z-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {collabItems.map((item, index) => (
             <CollaborationCard key={index} title={item.title} description={item.description} />
           ))}

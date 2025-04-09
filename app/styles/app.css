@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import './base.css';
 
 @theme {
   /* Font configuration */
@@ -19,29 +18,56 @@
   --color-secondary-light: #8b5cf6;
 }
 
-/* Apply consistent base styles */
-html,
-body {
-  @apply text-gray-900 dark:text-gray-100;
-  @apply antialiased;
-  @apply text-base;
-  font-family: var(--font-sans);
+/* Base styles */
+@layer base {
+  html {
+    @apply scroll-smooth antialiased;
+    font-family: var(--font-sans);
+  }
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+  body {
+    @apply min-h-screen text-base;
+    @apply text-gray-900 dark:text-gray-100;
+    @apply bg-gradient-to-b from-[#0F0F11] via-[#1A1A1C] to-[#0F0F11] bg-no-repeat;
+    font-family: var(--font-sans);
+
+    @media (prefers-color-scheme: dark) {
+      color-scheme: dark;
+    }
+  }
+
+  p {
+    @apply text-[#665F5F];
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-sans);
+  }
+
+  /* Form elements base styles */
+  input,
+  select,
+  textarea,
+  button {
+    font-size: inherit;
+    font-family: var(--font-sans);
+  }
+
+  /* Responsive font size adjustment for smaller screens */
+  @media (max-width: 640px) {
+    :root {
+      font-size: 50%; /* 8px base on smaller screens */
+    }
   }
 }
 
-/* Form elements often need specific adjustments */
-input,
-select,
-textarea,
-button {
-  font-size: inherit;
-  font-family: var(--font-sans);
-}
-
-/* Add custom utility classes */
+/* Custom utility classes */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -63,14 +89,10 @@ button {
   .animate-once {
     animation-iteration-count: 1;
   }
-}
-@layer utilities {
-  /* Your existing custom utilities */
-  
+
   .animate-slider-left {
     animation: sliderLeft 30s linear infinite;
   }
-
 
   @keyframes sliderLeft {
     0% {
@@ -80,25 +102,34 @@ button {
       transform: translateX(-100%);
     }
   }
-  
-   /* Right slider animation */
-   .animate-slider-right {
+
+  .animate-slider-right {
     animation: sliderRight 30s linear infinite;
   }
-  
+
   @keyframes sliderRight {
     0% {
-      transform: translateX(-90%); /* Start at original position */
+      transform: translateX(-90%);
     }
     100% {
-      transform: translateX(10%); /* Move left by 50% (creates right-sliding effect) */
+      transform: translateX(10%);
     }
   }
-  
 }
 
-/* Add custom components */
+/* Custom components */
 @layer components {
+  /* Main container with max-width of 1920px (120rem) */
+  .container-wide {
+    @apply mx-auto w-full max-w-[120rem];
+  }
+
+  /* Narrower container with max-width of 1600px (100rem) */
+  .container-narrow {
+    @apply mx-auto w-full max-w-[100rem];
+  }
+
+  /* Common components */
   .btn {
     @apply rounded-lg px-4 py-2 font-medium transition-colors;
     font-family: var(--font-sans);
@@ -120,19 +151,16 @@ button {
     @apply overflow-hidden rounded-lg bg-white shadow-md dark:bg-gray-800;
   }
 
-  /* Basic paragraph styles */
   .paragraph {
     @apply mb-4 text-base leading-relaxed;
     font-family: var(--font-sans);
   }
 
-  /* Form input styling */
   .form-input {
     @apply w-full rounded-md border border-gray-300 px-4 py-2 text-base focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/50 dark:border-gray-600 dark:bg-gray-800 dark:text-white;
     font-family: var(--font-sans);
   }
 
-  /* Form label styling */
   .form-label {
     @apply mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300;
     font-family: var(--font-sans);
