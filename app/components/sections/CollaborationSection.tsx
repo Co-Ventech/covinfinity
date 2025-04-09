@@ -1,6 +1,7 @@
 import React from 'react';
 import CrownIcon from '../svgs/CrownIcon';
 import CollaborationCard from '../ui/CollaborationCard';
+import ParticleCluster from '../ui/ParticleCluster';
 
 // Collaboration items data
 const collabItems = Array(6).fill({
@@ -10,15 +11,17 @@ const collabItems = Array(6).fill({
 
 const CollaborationSection: React.FC = () => {
   return (
-    <section className="relative w-full py-20">
-      {/* Background dots/particles effect */}
-      <div className="pointer-events-none absolute inset-0 z-0 opacity-10">
-        <div className="absolute top-10 left-10 h-1 w-1 rounded-full bg-white"></div>
-        <div className="absolute top-20 right-20 h-1 w-1 rounded-full bg-white"></div>
-        <div className="absolute bottom-40 left-40 h-1 w-1 rounded-full bg-white"></div>
-        <div className="absolute right-80 bottom-20 h-1 w-1 rounded-full bg-white"></div>
-        <div className="absolute top-60 left-80 h-1 w-1 rounded-full bg-white"></div>
-        <div className="absolute right-40 bottom-60 h-1 w-1 rounded-full bg-white"></div>
+    <section className="relative w-full overflow-hidden py-20">
+      {/* Horizontal gradient line at top */}
+      <div className="absolute top-[10%] right-0 left-0 z-0 h-[1px] w-full bg-gradient-to-r from-transparent via-purple-500/40 to-transparent"></div>
+
+      {/* Particle clusters positioned outside the grid layout */}
+      <div className="absolute bottom-[10%] left-[10%] z-0">
+        <ParticleCluster />
+      </div>
+
+      <div className="absolute right-[15%] bottom-[5%] z-0">
+        <ParticleCluster />
       </div>
 
       <div className="container-narrow">
@@ -33,8 +36,8 @@ const CollaborationSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Horizontal divider line */}
-        <div className="mb-16 h-px w-full bg-gray-800"></div>
+        {/* Horizontal gradient line */}
+        <div className="mb-16 h-px w-full bg-gradient-to-r from-transparent via-purple-500/40 to-transparent"></div>
 
         {/* Cards grid with responsive spacing */}
         <div className="relative z-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
