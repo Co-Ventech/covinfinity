@@ -2,33 +2,45 @@ import React from 'react';
 import OutlineBox from './ui/OutlineBox';
 
 const ChatMessage = ({ time, sender, message, avatar }: { time: string; sender: string; message: string; avatar: string }) => (
-  <div className="flex items-start space-x-2">
-    <img src={avatar} alt={sender} className="w-6 h-6 rounded-full" />
+  <div className="flex items-start space-x-2 mb-1">
+    <img src={avatar} alt={sender} className="w-5 h-5 rounded-full" />
     <div className="flex-1">
       <div className="flex items-center space-x-2">
-        <span className="text-sm text-white">{sender}</span>
+        <span className="text-xs text-white">{sender}</span>
         <span className="text-xs text-[#665F5F]">{time}</span>
       </div>
-      <p className="text-[13px] text-gray-300 mt-0.5">{message}</p>
+      <p className="text-[13px] text-xs text-[#A3A3A3] mt-0.5">{message}</p>
     </div>
   </div>
 );
 
 const LinearCard = () => (
-  <div className="bg-[#1A1A1A] rounded-lg p-3 my-3 border border-[#1F1F1F]">
-    <div className="flex items-center space-x-2">
-      <img src="/plus-icon.png" alt="Linear" className="w-4 h-4" />
-      <span className="text-sm text-white">Linear</span>
+  
+  <div className="bg-[rgba(26,23,23,0.48)]  border-[0.1125rem] border-[#1F1F1F] rounded-lg ml-4.5 py-2 my-4">
+    <div className="flex items-center border-b border-[#1F1F1F] space-x-2 mb-2">
+      <div className="flex items-center px-2 mb-2 space-x-2">
+        <img src="/plus-icon.png" alt="Linear" className="w-4 h-4" />
+        <span className="text-sm text-white">Linear</span>
+      </div>
+      <img src="/ai-arrow.png" alt="Close" className="w-4 h-4 ml-auto mr-2 mb-2" />
     </div>
-    <p className="text-[13px] text-gray-400 mt-1.5">
-      Asana for project management, and I can set up a shared workspace for us
-    </p>
-    <div className="flex items-center space-x-2 mt-2 text-xs text-[#665F5F]">
-      <span>iOS-21</span>
-      <span>•</span>
-      <span>Mobile</span>
-      <span>•</span>
-      <div className="flex items-center space-x-1">
+    <div className="space-y-1.5 mt-1.5 ml-2">
+      <p className="text-[13px] text-[#A3A3A3] font-medium">
+        Asana for project management, and I can set up a shared workspace for us
+      </p>
+      <p className="text-[13px] text-[#665F5F]">
+        everything set up by the end of the day and send you an update
+      </p>
+    </div>
+    <div className="flex items-center border-t border-[#1F1F1F] mt-3 text-[11px] text-[#665F5F]">
+      <div className="flex  ml-2 mt-1 items-center">
+        <span>iOS-21</span>
+        <span className="mx-1.5">•</span>
+        <img src="/framer-black.png" alt="iOS" className="w-3 h-3 mr-[0.1rem]" />
+        <span>Mobile</span>
+        <span className="mx-1.5">•</span>
+      </div>
+      <div className="flex items-center mt-0.5 space-x-1">
         <img src="/sarah.png" alt="Sarah" className="w-3 h-3 rounded-full" />
         <span>Sarah</span>
       </div>
@@ -61,11 +73,11 @@ const OrbitalAnimation = () => (
 
 const CollaborationChatBot = () => {
   return (
-    <div className=" text-white min-h-screen p-8">
+    <div className="text-white min-h-screen p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold text-white mb-4">
+          <h1 className="text-4xl font-semibold text-white mb-4">
             Collaboration and shipping{' '}
             <span className="bg-gradient-to-r from-[#FF6981] to-purple-400 bg-clip-text text-transparent">
               software faster
@@ -79,20 +91,21 @@ const CollaborationChatBot = () => {
           {/* Chat Section - Takes up 2 columns */}
           <OutlineBox className="lg:col-span-2">
             {/* Chat Header */}
-            <div className="p-4 border-b border-[#1F1F1F]">
-              <div className="w-[22rem]">
-                <img src="/chart.png" alt="" className="mt-3 h-8 w-8" />
-                <div className="mt-2">
-                  <h2 className="text-base font-medium">Collaboration between AE & Client</h2>
+            <div className="p-5 ml-10 ">
+              <div className=" space-y-3 mt-3 w-[21rem]">
+                  <img src="/chart.png" alt="Add" className="w-8.5 h-8.5 mr-2" />
+                <div>
+                  <h2 className="text-lg font-semibold">Collaboration between AE & Client</h2>
                   <p className="text-[13px] text-[#665F5F] mt-1">From deployments to tasks, work with your team every step of the way.</p>
                 </div>
               </div>
             </div>
 
             {/* Chat Messages and Input Container */}
-            <OutlineBox className="m-4 bg-[#141414]">
+            <OutlineBox className="mb-4 mt-2 bg-[rgba(26,23,23,0.48)]">
               {/* Messages */}
-              <div className="space-y-4 mb-4">
+              
+              <div className="px-4 pt-2 space-y-0 max-w-[35rem] ">
                 <ChatMessage
                   time="2:14 PM"
                   sender="John"
@@ -112,8 +125,8 @@ const CollaborationChatBot = () => {
                   message="I'll coordinate with them to make sure they're available for your next brainstorming session. Is there anything else on your mind"
                   avatar="/john.png"
                 />
-                <div className="flex items-start space-x-2">
-                  <img src="/john.png" alt="John" className="w-6 h-6 rounded-full" />
+                <div className="flex items-start space-x-3 ">
+                  <img src="/john.png" alt="John" className="w-5 h-5 rounded-full" />
                   <div className="flex-1">
                     <div className="flex items-center space-x-2">
                       <span className="text-sm text-white">John</span>
@@ -124,9 +137,9 @@ const CollaborationChatBot = () => {
               </div>
 
               {/* Chat Input */}
-              <div className="mt-4 pt-4 border-t border-[#1F1F1F]">
-                <div className="flex items-center space-x-2 px-1">
-                  <div className="flex-1 flex items-center bg-[#1A1A1A] rounded-xl px-3 py-2">
+              <div className="flex items-center -mx-4  px-4 py-0.5">
+                <div className="flex-1 flex items-center justify-between bg-[#1A1A1A] rounded-lg px-3 py-1">
+                  <div className="flex items-center flex-1">
                     <img src="/chat-plus.png" alt="Add" className="w-5 h-5 mr-2" />
                     <input
                       type="text"
@@ -134,14 +147,10 @@ const CollaborationChatBot = () => {
                       className="flex-1 bg-transparent text-[13px] text-white focus:outline-none placeholder-[#665F5F]"
                     />
                   </div>
-                  <div className="flex items-center space-x-1">
-                    <button className="text-sm border-[0.1125rem] border-[#1F1F1F] bg-[#665F5F]
-                     px-3 py-2 rounded-xl  bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent">
-                      GIF
-                    </button>
-                    <button className="text-sm bg-[#1A1A1A] px-3 py-2 rounded-xl text-[#665F5F] hover:bg-[#222]">
-                      👆
-                    </button>
+                  <div className="flex items-center space-x-3">
+                    <div className=" border-[0.1125rem] border-[#1F1F1F] rounded-lg px-1.5 py-[0.05rem]">
+                    <span className="text-xs bg-gradient-to-r from-[#FF6981] to-white bg-clip-text   text-transparent">GIF</span> </div>
+                    <img src="/thumb.png" alt="Add" className="w-5 h-5 mr-2" />
                   </div>
                 </div>
               </div>
@@ -150,13 +159,14 @@ const CollaborationChatBot = () => {
 
           {/* Services Section */}
           <OutlineBox>
-            <div className="mb-6">
-              <h2 className="text-base font-medium">Services Orbiting Covinfinity</h2>
+            <div className="m-8">
+              <img src="/story.png" alt="Add" className="w-8 h-8 mr-2" />
+              <h2 className="text-lg mt-3.5  font-semibold">Services Orbiting Covinfinity</h2>
               <p className="text-[13px] text-[#665F5F] mt-1">
                 From deployments to tasks, work with your team every step of the way.
               </p>
             </div>
-            <OrbitalAnimation />
+            <img src="/orbit.png" alt="Add" className="w-96 h-[26.6rem] " />
           </OutlineBox>
         </div>
       </div>
