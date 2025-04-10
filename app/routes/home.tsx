@@ -6,9 +6,10 @@ import { ROUTES } from "../constants/routes";
 import Navbar from "~/components/Navbar";
 import CompanySliderRight from "~/components/CompanySliderRight";
 import CompanySliderLeft from "~/components/CompanySliderLeft";
-
+import TalentAccessComponent from "~/components/TalentAccessComponent";
 import Hero from '../components/sections/Hero';
 import CollaborationChatBot from "~/components/CollaborationChatBot";
+import TestimonialComponent from "~/components/TestimonialComponent";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -30,6 +31,8 @@ export default function Home() {
       <CompanySliderRight/>
       <CompanySliderLeft/>
       <CollaborationChatBot/>
+      <TalentAccessComponent/>
+      <TestimonialComponent/>
     </MainLayout>
   );
 }

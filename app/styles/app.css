@@ -88,10 +88,10 @@ button {
   
   @keyframes sliderRight {
     0% {
-      transform: translateX(-90%); /* Start at original position */
+      transform: translateX(-100%); /* Start at original position */
     }
     100% {
-      transform: translateX(10%); /* Move left by 50% (creates right-sliding effect) */
+      transform: translateX(0%); /* Move left by 50% (creates right-sliding effect) */
     }
   }
   
