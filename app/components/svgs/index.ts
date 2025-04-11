@@ -1,0 +1,9 @@
+export { default as ProductIcon } from './ProductIcon';
+export { default as BuyCryptoIcon } from './BuyCryptoIcon';
+export { default as CaseStudyIcon } from './CaseStudyIcon';
+export { default as MirrorIcon } from './MirrorIcon';
+export { default as GhostIcon } from './GhostIcon';
+export { default as CrownIcon } from './CrownIcon';
+export { default as NetworkCircleIcon } from './NetworkCircleIcon';
+export { default as Polygon1 } from './Polygon1';
+export { default as Polygon2 } from './Polygon2';
