@@ -3,7 +3,7 @@ import { TopHeroSection, BottomHeroSection } from './HeroSections';
 
 const Hero: React.FC = () => {
   return (
-    <section className="hero-section mt-22 min-h-[50rem] text-center">
+    <section className="hero-section mt-22 text-center">
       {/* Top Section */}
       <div className="hero-top">
         <TopHeroSection />

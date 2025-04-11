@@ -1,11 +1,10 @@
-import CompanySliderLeft from '~/components/CompanySliderLeft';
-import CompanySliderRight from '~/components/CompanySliderRight';
 import Navbar from '~/components/Navbar';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
 
 import CollaborationChatBot from '~/components/CollaborationChatBot';
 import CollaborationSection from '~/components/sections/CollaborationSection';
+import CompanySliderSection from '~/components/sections/CompanySliderSection';
 import Hero from '../components/sections/Hero';
 import TestimonialComponent from '~/components/TestimonialComponent';
 import TalentAccessComponent from '~/components/TalentAccessComponent';
@@ -25,8 +24,7 @@ export default function Home() {
     <MainLayout>
       <Navbar />
       <Hero />
-      <CompanySliderRight />
-      <CompanySliderLeft />
+      <CompanySliderSection />
       <CollaborationChatBot />
       <CollaborationSection />
       <TalentAccessComponent />
