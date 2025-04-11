@@ -7,6 +7,8 @@ import type { Route } from './+types/home';
 import CollaborationChatBot from '~/components/CollaborationChatBot';
 import CollaborationSection from '~/components/sections/CollaborationSection';
 import Hero from '../components/sections/Hero';
+import TestimonialComponent from '~/components/TestimonialComponent';
+import TalentAccessComponent from '~/components/TalentAccessComponent';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -27,6 +29,8 @@ export default function Home() {
       <CompanySliderLeft />
       <CollaborationChatBot />
       <CollaborationSection />
+      <TalentAccessComponent />
+      <TestimonialComponent />
     </MainLayout>
   );
 }

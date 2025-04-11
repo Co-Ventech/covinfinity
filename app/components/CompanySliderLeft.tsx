@@ -18,21 +18,17 @@ const CompanySliderLeft = () => {
       <div className="flex space-x-5 animate-slider-left">
         {/* First set of companies */}
         {companies.map((company, index) => (
-          <div key={index} className="flex items-center px-12 py-4  bg-black border border-[#FF698152] rounded-3xl  "> 
-          
-          
-          <div className="text-white flex whitespace-nowrap ">
-            {company.icon && <img src="framer.png" alt="icon" className="mr-1.5" />}
-            {company.name}</div>
-          </div>
+          <div key={index} className="flex items-center justify-center px-12 py-4 bg-black border border-[#FF698152] rounded-3xl">
+          {company.icon && <img src="framer.png" alt="icon" className="w-5 h-5 mr-2" />}
+          <span className="text-white whitespace-nowrap">{company.name}</span>
+        </div>
         ))}
         {/* Duplicate the companies for seamless effect */}
         {companies.map((company, index) => (
-          <div key={index + 100} className="flex items-center w-auto px-12 py-4 bg-black border border-[#FF698152] rounded-3xl">
-            <div className="text-white flex whitespace-nowrap ">
-            {company.icon && <img src="framer.png" alt="icon" className="mr-1.5" />}
-            {company.name}</div>
-          </div>
+          <div key={index} className="flex items-center justify-center px-12 py-4 bg-black border border-[#FF698152] rounded-3xl">
+          {company.icon && <img src="framer.png" alt="icon" className="w-5 h-5 mr-2" />}
+          <span className="text-white whitespace-nowrap ">{company.name}</span>
+        </div>
         ))}
       </div>
       <div className='flex justify-center mt-20 mb-12'>

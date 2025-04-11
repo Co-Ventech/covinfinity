@@ -109,10 +109,10 @@
 
   @keyframes sliderRight {
     0% {
-      transform: translateX(-90%);
+      transform: translateX(-100%); /* Start at original position */
     }
     100% {
-      transform: translateX(10%);
+      transform: translateX(0%); /* Move left by 50% (creates right-sliding effect) */
     }
   }
 }
@@ -144,7 +144,7 @@
   }
 
   .btn-outline {
-    @apply border border-[--color-primary] text-[--color-primary] hover:bg-[--color-primary]/10;
+    @apply hover:bg-[--color-primary]/10 border border-[--color-primary] text-[--color-primary];
   }
 
   .card {
@@ -157,7 +157,7 @@
   }
 
   .form-input {
-    @apply w-full rounded-md border border-gray-300 px-4 py-2 text-base focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/50 dark:border-gray-600 dark:bg-gray-800 dark:text-white;
+    @apply focus:ring-[--color-primary]/50 w-full rounded-md border border-gray-300 px-4 py-2 text-base focus:border-[--color-primary] focus:ring-2 dark:border-gray-600 dark:bg-gray-800 dark:text-white;
     font-family: var(--font-sans);
   }
 
