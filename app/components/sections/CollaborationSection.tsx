@@ -23,67 +23,23 @@ const CollaborationSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Parent flex container for all cards */}
-        <div className="relative z-10 flex flex-wrap gap-y-10 px-10">
-          {/* First row with flex layout for cards */}
-          <div className="mb-10 flex w-full justify-between">
-            {/* Left aligned */}
-            <div className="flex-0-0-30 flex justify-start" style={{ flex: '0 0 30%' }}>
+        {/* Cards Grid */}
+        <div className="relative z-10 flex flex-wrap justify-between gap-y-10 px-10">
+          {collabItems.map((item, index) => (
+            <div
+              key={index}
+              className={`flex-0-0-30 flex ${index % 3 === 0 ? 'justify-start' : index % 3 === 1 ? 'justify-center' : 'justify-end'}`}
+              style={{ flex: '0 0 30%' }}
+            >
               <CollaborationCard
-                title={collabItems[0].title}
-                description={collabItems[0].description}
+                title={item.title}
+                description={item.description}
                 className="h-full"
               />
             </div>
-
-            {/* Center aligned */}
-            <div className="flex-0-0-30 flex justify-center" style={{ flex: '0 0 30%' }}>
-              <CollaborationCard
-                title={collabItems[1].title}
-                description={collabItems[1].description}
-                className="h-full"
-              />
-            </div>
-
-            {/* Right aligned */}
-            <div className="flex-0-0-30 flex justify-end" style={{ flex: '0 0 30%' }}>
-              <CollaborationCard
-                title={collabItems[2].title}
-                description={collabItems[2].description}
-                className="h-full"
-              />
-            </div>
-          </div>
-
-          {/* Second row with flex layout for cards */}
-          <div className="flex w-full justify-between">
-            {/* Left aligned */}
-            <div className="flex-0-0-30 flex justify-start" style={{ flex: '0 0 30%' }}>
-              <CollaborationCard
-                title={collabItems[3].title}
-                description={collabItems[3].description}
-                className="h-full"
-              />
-            </div>
-
-            {/* Center aligned */}
-            <div className="flex-0-0-30 flex justify-center" style={{ flex: '0 0 30%' }}>
-              <CollaborationCard
-                title={collabItems[4].title}
-                description={collabItems[4].description}
-                className="h-full"
-              />
-            </div>
-
-            {/* Right aligned */}
-            <div className="flex-0-0-30 flex justify-end" style={{ flex: '0 0 30%' }}>
-              <CollaborationCard
-                title={collabItems[5].title}
-                description={collabItems[5].description}
-                className="h-full"
-              />
-            </div>
-          </div>
+          ))}
+          {/* Lines */}
+          <div className="line pointer-events-none absolute -top-2/5 left-0 h-24 w-full rounded-2xl border border-b-0 border-[#2E2928] bg-transparent" />
         </div>
       </div>
     </section>
