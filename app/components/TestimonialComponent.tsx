@@ -8,6 +8,7 @@ interface Testimonial {
   position: string;
   company: string;
   avatar: string;
+  companyAvatar: string;
   socialIcons: string[];
 }
 
@@ -27,13 +28,13 @@ const SocialIcon = ({ icon }: { icon: string }) => (
 
 // Client profile card component
 const ClientProfile = ({ client }: { client: Testimonial }) => (
-  <div className="flex items-start space-x-4 py-6 border-b border-[#1F1F1F] last:border-b-0">
-    <img src={client.avatar} alt={client.name} className="w-10 h-10 rounded-full" />
+  <div className="flex items-start space-x-4 py-6 px-4  rounded-lg bg-[#1F1F1F]">
+    <img src={client.avatar} alt={client.name} className="w-10 h-10 rounded-ful " />
     <div className="flex-1">
       <div className="flex justify-between items-start">
         <div>
           <h3 className="text-white font-medium">{client.name}</h3>
-          <p className="text-xs text-[#665F5F]">{client.position} • {client.company} {client.company === 'Google' && <span className="text-xs">G</span>}</p>
+          <p className="text-xs text-[#665F5F]">{client.position} • {client.company} {client.company === 'Google' && <img src={client.companyAvatar} alt={client.company} className="inline-block w-4 h-4"/>}</p>
         </div>
         <div className="flex space-x-2">
           {client.socialIcons.map((icon, index) => (
@@ -47,12 +48,12 @@ const ClientProfile = ({ client }: { client: Testimonial }) => (
 
 // Feature box component
 const FeatureBox = ({ feature }: { feature: FeatureInfo }) => (
-  <div className="mb-4 last:mb-0">
+  <div className="mb-4 ">
     <div className="flex items-center space-x-2 mb-1">
       <img src={feature.icon} alt={feature.title} className="w-4 h-4" />
       <span className="text-white text-sm">{feature.title}</span>
     </div>
-    <p className="text-xs text-[#665F5F] ml-6">
+    <p className="text-xs text-[#665F5F] ml-6 w-[15rem]">
       {feature.description}
     </p>
   </div>
@@ -67,6 +68,7 @@ const TestimonialComponent = () => {
       position: 'Chief Executive Officer',
       company: 'Google',
       avatar: '/man.png',
+      companyAvatar: '/google.png',
       socialIcons: ['/facebook.png', '/youtube.png', '/zoom.png']
     },
     {
@@ -75,6 +77,7 @@ const TestimonialComponent = () => {
       position: 'Chief Executive Officer',
       company: 'Google',
       avatar: '/man.png',
+      companyAvatar: '/google.png',
       socialIcons: ['/facebook.png', '/youtube.png', '/zoom.png']
     }
   ];
@@ -103,17 +106,16 @@ const TestimonialComponent = () => {
       {/* Left Section - Client Testimonials */}
       <OutlineBox className="lg:col-span-1">
         {/* Client Profiles */}
-        <div className="p-6">
+        <div className="space-y-1 mb-8">
           {clients.map(client => (
             <ClientProfile key={client.id} client={client} />
           ))}
         </div>
         
-        {/* Divider */}
-        <div className="border-t border-[#1F1F1F]"></div>
+       
         
         {/* Features for left box */}
-        <div className="p-6">
+        <div className="p-6 mt-8">
           {featuresLeft.map((feature, index) => (
             <FeatureBox key={index} feature={feature} />
           ))}
@@ -123,13 +125,13 @@ const TestimonialComponent = () => {
       {/* Right Section - Cost Savings */}
       <OutlineBox className="relative overflow-hidden">
         {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1F1F1F] to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1F1F1F] to-[#211B1B]"></div>
         
         {/* Content */}
         <div className="relative p-6">
-          <div className="flex items-center mb-5">
-            <img src="/framer.png" alt="Cost" className="w-5 h-5 mr-2" />
-            <h2 className="text-white text-lg">Cost Client Saved</h2>
+          <div className="flex mt-10 justify-center mb-5">
+            <img src="/framer-black.png" alt="Cost" className="w-5 h-5 mr-2" />
+            <h2 className="text-[#665F5F] text-lg">Cost Client Saved</h2>
           </div>
           
           <div className="text-3xl font-bold text-white text-center mt-2 mb-6">
@@ -137,7 +139,7 @@ const TestimonialComponent = () => {
           </div>
           
           {/* Features for right box */}
-          <div className="mt-24  border-[#1F1F1F] pt-6">
+          <div className="mt-16  border-[#1F1F1F] pt-6">
             {featuresRight.map((feature, index) => (
               <FeatureBox key={index} feature={feature} />
             ))}
