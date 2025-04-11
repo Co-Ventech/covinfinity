@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ProductIcon } from './svgs';
+import { ProductIcon, CaseStudyIcon, BuyCryptoIcon, MirrorIcon } from './svgs';
+import { motion, AnimatePresence } from 'framer-motion';
 
 type DropdownSections = 'products' | 'services' | 'caseStudies';
 
@@ -12,17 +13,98 @@ const Navbar = () => {
 
   const toggleDropdown = (section: DropdownSections) => {
     setIsDropdownOpen((prevState) => ({
-      ...prevState,
-      [section]: !prevState[section],
+      ...Object.keys(prevState).reduce(
+        (acc, key) => {
+          acc[key as DropdownSections] =
+            key === section ? !prevState[key as DropdownSections] : false;
+          return acc;
+        },
+        {} as Record<DropdownSections, boolean>
+      ),
     }));
+  };
+
+  // Animation variants
+  const dropdownVariants = {
+    hidden: {
+      opacity: 0,
+      y: -5,
+      scale: 0.95,
+      transition: { duration: 0.2 },
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.3,
+        type: 'spring',
+        stiffness: 500,
+        damping: 30,
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: -5,
+      scale: 0.95,
+      transition: { duration: 0.2 },
+    },
+  };
+
+  const iconVariants = {
+    hover: { scale: 1.15, transition: { duration: 0.2 } },
+    initial: { scale: 1, transition: { duration: 0.2 } },
+  };
+
+  const navItemVariants = {
+    hover: {
+      backgroundColor: '#212121',
+      transition: { duration: 0.3 },
+    },
+    initial: {
+      backgroundColor: 'transparent',
+      transition: { duration: 0.3 },
+    },
+  };
+
+  const arrowVariants = {
+    open: { rotate: 180, transition: { duration: 0.3 } },
+    closed: { rotate: 0, transition: { duration: 0.3 } },
+  };
+
+  // Exciting new menu item animation variants
+  const menuItemVariants = {
+    hidden: { opacity: 0, scale: 0.8, y: -10 },
+    visible: (i: number) => ({
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        type: 'spring',
+        stiffness: 300,
+        damping: 20,
+      },
+    }),
+    hover: {
+      backgroundColor: '#212121',
+      scale: 1.05,
+      filter: 'brightness(1.2)',
+      borderRadius: '0.375rem',
+      transition: { duration: 0.2 },
+    },
   };
 
   return (
     <div className="flex items-center justify-between p-8">
       <div className="flex space-x-19 rounded-[0.625rem] bg-[#1A1A1A] p-3.5 text-white">
-        <div className="logo-navbar">
+        <motion.div
+          className="logo-navbar"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+        >
           <img src="/logo-navbar.png" alt="" className="w- h-9 w-[11.625rem]" />
-        </div>
+        </motion.div>
         {/* <div className="flex">
           <img src="/logo.png" alt="" className="mt-2.5 h-4 w-4" />
           <span className="mt-1 ml-2 text-lg font-semibold">Coventech</span>
@@ -31,113 +113,233 @@ const Navbar = () => {
         {/* Navbar Links with rounded boxes */}
         <div className="flex px-1 py-0.5">
           {/* Products Dropdown */}
-
-          <div className="relative flex rounded-lg hover:bg-[#1E1E1E]">
-            <img src="/Product-Icon.png" alt="" className="mt-3 h-3.5 w-3.5" />
-            <button
-              onClick={() => toggleDropdown('products')}
-              className="flex items-center py-2 pr-3 pl-1.5"
-            >
+          <motion.div
+            className="relative flex items-center justify-center gap-2 rounded-[0.625rem] px-3 py-2 text-base font-medium text-white"
+            initial="initial"
+            whileHover="hover"
+            variants={navItemVariants}
+          >
+            <motion.div variants={iconVariants}>
+              <ProductIcon className="size-[1.375rem]" />
+            </motion.div>
+            <button onClick={() => toggleDropdown('products')} className="flex items-center">
               Products
-              <img
-                src={isDropdownOpen.products ? '/up-arrow.png' : '/down-arrow.png'}
-                alt="dropdown arrow"
-                className="mt-1 ml-2 h-1.5 w-2"
-              />
+              <motion.svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="ml-2 h-1.5 w-2"
+                animate={isDropdownOpen.products ? 'open' : 'closed'}
+                variants={arrowVariants}
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </motion.svg>
             </button>
-            {isDropdownOpen.products && (
-              <div className="absolute top-full left-0 mt-2 w-40 rounded-lg bg-black text-white shadow-lg">
-                <a href="#" className="block px-4 py-2">
-                  Product 1
-                </a>
-                <a href="#" className="block px-4 py-2">
-                  Product 2
-                </a>
-                <a href="#" className="block px-4 py-2">
-                  Product 3
-                </a>
-              </div>
-            )}
-          </div>
+            <AnimatePresence>
+              {isDropdownOpen.products && (
+                <motion.div
+                  className="absolute top-full left-0 z-50 mt-2 w-40 overflow-hidden rounded-lg bg-[#1A1A1A] text-white shadow-lg backdrop-blur-lg"
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  variants={dropdownVariants}
+                >
+                  {['Product 1', 'Product 2', 'Product 3'].map((product, index) => (
+                    <motion.a
+                      key={product}
+                      href="#"
+                      className="block px-4 py-2"
+                      custom={index}
+                      variants={menuItemVariants}
+                      initial="hidden"
+                      animate="visible"
+                      whileHover="hover"
+                    >
+                      {product}
+                    </motion.a>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
 
           {/* Services Dropdown */}
-          <div className="relative flex rounded-lg bg-[#212121] pl-2 hover:bg-[#1E1E1E]">
-            <img src="/services.png" alt="" className="mt-3.5 h-3.5 w-3.5" />
-            <button
-              onClick={() => toggleDropdown('services')}
-              className="flex items-center py-2 pr-3 pl-1"
-            >
+          <motion.div
+            className="relative flex items-center justify-center gap-2 rounded-[0.625rem] px-3 py-2 text-base font-medium text-white"
+            initial="initial"
+            whileHover="hover"
+            variants={navItemVariants}
+          >
+            <motion.div variants={iconVariants}>
+              <BuyCryptoIcon className="size-[1.375rem]" />
+            </motion.div>
+            <button onClick={() => toggleDropdown('services')} className="flex items-center">
               Services
-              <img
-                src={isDropdownOpen.services ? '/up-arrow.png' : '/down-arrow.png'}
-                alt="dropdown arrow"
-                className="mt-1 ml-2 h-1.5 w-2"
-              />
+              <motion.svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="ml-2 h-1.5 w-2"
+                animate={isDropdownOpen.services ? 'open' : 'closed'}
+                variants={arrowVariants}
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </motion.svg>
             </button>
-            {isDropdownOpen.services && (
-              <div className="absolute top-full left-0 mt-2 w-40 rounded-lg bg-black text-white shadow-lg">
-                <a href="#" className="block px-4 py-2">
-                  Service 1
-                </a>
-                <a href="#" className="block px-4 py-2">
-                  Service 2
-                </a>
-                <a href="#" className="block px-4 py-2">
-                  Service 3
-                </a>
-              </div>
-            )}
-          </div>
+            <AnimatePresence>
+              {isDropdownOpen.services && (
+                <motion.div
+                  className="absolute top-full left-0 z-50 mt-2 w-40 overflow-hidden rounded-lg bg-[#1A1A1A] text-white shadow-lg backdrop-blur-lg"
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  variants={dropdownVariants}
+                >
+                  {['Service 1', 'Service 2', 'Service 3'].map((service, index) => (
+                    <motion.a
+                      key={service}
+                      href="#"
+                      className="block px-4 py-2"
+                      custom={index}
+                      variants={menuItemVariants}
+                      initial="hidden"
+                      animate="visible"
+                      whileHover="hover"
+                    >
+                      {service}
+                    </motion.a>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
 
           {/* Case Studies Dropdown */}
-          <div className="relative flex rounded-lg hover:bg-[#1E1E1E]">
-            <img src="/CaseStudy-Icon.png" alt="" className="mt-3 h-3.5 w-3.5" />
-            <button
-              onClick={() => toggleDropdown('caseStudies')}
-              className="flex items-center px-4 py-2 pr-3 pl-1"
-            >
+          <motion.div
+            className="relative flex items-center justify-center gap-2 rounded-[0.625rem] px-3 py-2 text-base font-medium text-white"
+            initial="initial"
+            whileHover="hover"
+            variants={navItemVariants}
+          >
+            <motion.div variants={iconVariants}>
+              <CaseStudyIcon className="size-[1.375rem]" />
+            </motion.div>
+            <button onClick={() => toggleDropdown('caseStudies')} className="flex items-center">
               Case Studies
-              <img
-                src={isDropdownOpen.caseStudies ? '/up-arrow.png' : '/down-arrow.png'}
-                alt="dropdown arrow"
-                className="mt-1 ml-2 h-1.5 w-2"
-              />
+              <motion.svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="ml-2 h-1.5 w-2"
+                animate={isDropdownOpen.caseStudies ? 'open' : 'closed'}
+                variants={arrowVariants}
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </motion.svg>
             </button>
-            {isDropdownOpen.caseStudies && (
-              <div className="absolute top-full left-0 mt-2 w-52 rounded-lg bg-black text-white shadow-lg">
-                <a href="#" className="block px-4 py-2">
-                  Case Study 1
-                </a>
-                <a href="#" className="block px-4 py-2">
-                  Case Study 2
-                </a>
-                <a href="#" className="block px-4 py-2">
-                  Case Study 3
-                </a>
-              </div>
-            )}
-          </div>
+            <AnimatePresence>
+              {isDropdownOpen.caseStudies && (
+                <motion.div
+                  className="absolute top-full left-0 z-50 mt-2 w-52 overflow-hidden rounded-lg bg-[#1A1A1A] text-white shadow-lg backdrop-blur-lg"
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  variants={dropdownVariants}
+                >
+                  {['Case Study 1', 'Case Study 2', 'Case Study 3'].map((study, index) => (
+                    <motion.a
+                      key={study}
+                      href="#"
+                      className="block px-4 py-2"
+                      custom={index}
+                      variants={menuItemVariants}
+                      initial="hidden"
+                      animate="visible"
+                      whileHover="hover"
+                    >
+                      {study}
+                    </motion.a>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
 
           {/* About Us Link */}
-          <div className="flex items-center justify-center gap-2 rounded-[0.625rem] px-3 py-2 text-base font-medium text-white hover:bg-[#212121]">
-            <ProductIcon className="size-[1.375rem]" />
-            <a href="#" className="transition">
+          <motion.div
+            className="flex items-center justify-center gap-2 rounded-[0.625rem] px-3 py-2 text-base font-medium text-white"
+            initial="initial"
+            whileHover="hover"
+            variants={navItemVariants}
+          >
+            <motion.div variants={iconVariants}>
+              <ProductIcon className="size-[1.375rem]" />
+            </motion.div>
+            <motion.a href="#" whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
               About us
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
         </div>
       </div>
       {/* Right side of the navbar */}
-      <div className="rounded-xl bg-[#1A1A1A] p-1">
-        <div className="flex space-x-3 rounded-xl bg-[#212121] py-1 pr-2 pl-5">
-          <button className="flex items-center text-white hover:text-gray-500">
-            <span>Sign in</span>
-          </button>
-          <button className="flex items-center rounded-lg bg-[#1A1A1A] px-2 py-1 text-white hover:bg-gray-600">
-            <span className="bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent">
+      <div className="rounded-[0.625rem] bg-[#1A1A1A] p-3.5">
+        <div className="flex space-x-3 rounded-[0.625rem] bg-[#212121] px-1 py-0.5">
+          <motion.div
+            className="flex items-center justify-center gap-2 rounded-[0.625rem] px-3 py-2 text-base font-medium text-white"
+            initial="initial"
+            whileHover="hover"
+            variants={navItemVariants}
+          >
+            <motion.div variants={iconVariants}>
+              <MirrorIcon className="size-[1.375rem]" />
+            </motion.div>
+            <motion.span whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+              Sign in
+            </motion.span>
+          </motion.div>
+
+          <motion.div
+            className="flex items-center justify-center gap-2 rounded-[0.625rem] px-3 py-2 text-base font-medium"
+            initial="initial"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: '0px 0px 8px rgba(255, 105, 129, 0.3)',
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.span
+              className="bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent"
+              whileHover={{
+                backgroundImage: 'linear-gradient(to right, #FF6981, #7E7EF7)',
+              }}
+            >
               Get Started
-            </span>
-          </button>
+            </motion.span>
+          </motion.div>
         </div>
       </div>
     </div>

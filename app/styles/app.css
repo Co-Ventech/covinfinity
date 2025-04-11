@@ -16,6 +16,54 @@
   --color-secondary: #6d28d9;
   --color-secondary-dark: #5b21b6;
   --color-secondary-light: #8b5cf6;
+
+  /* Animation configuration */
+  --animation-spin-slow: spin 15s linear infinite;
+  --animation-spin-slower: spin 20s linear infinite;
+  --animation-spin: spin 10s linear infinite;
+  --animation-fadeIn: fadeIn 0.3s ease-in-out;
+  --animation-slideDown: slideDown 0.3s ease-in-out;
+  --animation-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  /* Keyframes */
+  --keyframes-spin: {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  };
+
+  --keyframes-fadeIn: {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  };
+
+  --keyframes-slideDown: {
+    0% {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  };
+
+  --keyframes-pulse: {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  };
 }
 
 /* Base styles */
@@ -115,6 +163,31 @@
       transform: translateX(0%); /* Move left by 50% (creates right-sliding effect) */
     }
   }
+
+  /* Animation utility classes */
+  .animate-spin-slow {
+    animation: var(--animation-spin-slow);
+  }
+
+  .animate-spin-slower {
+    animation: var(--animation-spin-slower);
+  }
+
+  .animate-spin {
+    animation: var(--animation-spin);
+  }
+
+  .animate-fadeIn {
+    animation: var(--animation-fadeIn);
+  }
+
+  .animate-slideDown {
+    animation: var(--animation-slideDown);
+  }
+
+  .animate-pulse-slow {
+    animation: var(--animation-pulse-slow);
+  }
 }
 
 /* Custom components */
@@ -144,7 +217,7 @@
   }
 
   .btn-outline {
-    @apply hover:bg-[--color-primary]/10 border border-[--color-primary] text-[--color-primary];
+    @apply border border-[--color-primary] text-[--color-primary] hover:bg-[--color-primary]/10;
   }
 
   .card {
@@ -157,7 +230,7 @@
   }
 
   .form-input {
-    @apply focus:ring-[--color-primary]/50 w-full rounded-md border border-gray-300 px-4 py-2 text-base focus:border-[--color-primary] focus:ring-2 dark:border-gray-600 dark:bg-gray-800 dark:text-white;
+    @apply w-full rounded-md border border-gray-300 px-4 py-2 text-base focus:border-[--color-primary] focus:ring-2 focus:ring-[--color-primary]/50 dark:border-gray-600 dark:bg-gray-800 dark:text-white;
     font-family: var(--font-sans);
   }
 
