@@ -82,13 +82,15 @@ const NavItem = ({
   isOpen = false,
   onClick,
   dropdownItems = [],
+  hideIcon = false,
 }: {
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   label: string;
   hasDropdown?: boolean;
   isOpen?: boolean;
   onClick?: () => void;
   dropdownItems?: string[];
+  hideIcon?: boolean;
 }) => {
   return (
     <motion.div
@@ -97,7 +99,7 @@ const NavItem = ({
       whileHover="hover"
       variants={navItemVariants}
     >
-      <motion.div variants={iconVariants}>{icon}</motion.div>
+      {icon && !hideIcon && <motion.div variants={iconVariants}>{icon}</motion.div>}
 
       {hasDropdown ? (
         <button onClick={onClick} className="flex items-center">
@@ -229,7 +231,11 @@ const Navbar = () => {
       {/* Right side of the navbar */}
       <div className="rounded-[0.875em] bg-[#1A1A1A] p-2">
         <div className="flex space-x-3 rounded-[0.625rem] bg-[#212121] p-1">
-          <NavItem icon={<MirrorIcon className="size-[1.375rem]" />} label="Sign in" />
+          <NavItem
+            icon={<MirrorIcon className="size-[1.375rem]" />}
+            label="Sign in"
+            hideIcon={true}
+          />
 
           <motion.div
             className="flex items-center justify-center gap-2 rounded-[0.625rem] px-3 py-2 text-base font-medium"
