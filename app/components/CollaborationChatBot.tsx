@@ -89,9 +89,9 @@ const CollaborationChatBot = () => {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Chat Section - Takes up 2 columns */}
-          <OutlineBox className="lg:col-span-2">
+          <OutlineBox className="lg:col-span-2 " animated>
             {/* Chat Header */}
-            <div className="p-5 ml-10 ">
+            <div className="p-5 ml-10 animated ">
               <div className=" space-y-3 mt-3 w-[21rem]">
                   <img src="/chart.png" alt="Add" className="w-8.5 h-8.5 mr-2" />
                 <div>
@@ -158,7 +158,7 @@ const CollaborationChatBot = () => {
           </OutlineBox>
 
           {/* Services Section */}
-          <OutlineBox>
+          <OutlineBox animated>
             <div className="m-8">
               <img src="/story.png" alt="Add" className="w-8 h-8 mr-2" />
               <h2 className="text-lg mt-3.5  font-semibold">Services Orbiting Covinfinity</h2>

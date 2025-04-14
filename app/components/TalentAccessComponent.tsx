@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import OutlineBox from './ui/OutlineBox';
+import { Button } from './ui/Button';
 
 // Developer type representing a developer profile
 interface Developer {
@@ -27,9 +28,9 @@ const DeveloperProfile = ({ developer, detailed = false }: { developer: Develope
         <span className="text-sm text-white">{developer.name}</span>
         {detailed && (
           <div className="p-[1px] rounded-md bg-gradient-to-r from-[#FF7C91] via-[#BB97F2] to-[#332B2B]">
-            <button className="text-xs bg-[#1A1717] px-3 py-1 rounded-[3px]">
-              <span className='bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent'>  Set Interview</span>
-            </button>
+            <Button className="text-xs bg-[#1A1717] px-3 py-1 rounded-[3px]">
+                Set Interview
+            </Button>
           </div>
         )}
       </div>
@@ -84,20 +85,23 @@ const TalentAccessComponent = () => {
     <div className="text-white min-h-screen p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="mb-12">
+        <div className="mb-12 text-center">
           <h1 className="text-4xl font-semibold text-white mb-4">
-            Access to{' '}
+            Craft the{' '}
             <span className="bg-gradient-to-r from-[#FF6981] to-purple-400 bg-clip-text text-transparent">
-              top talent
-            </span>
+              most productive
+            </span>{' '}
+            team
+            <br />
+            from all around the world
           </h1>
-          <p className="text-[#665F5F]">Find and hire specialized engineers for your project needs</p>
+          <p className="text-[#665F5F]">The most complete experience for businesses & individual clients</p>
         </div>
 
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left Section - Talent Search */}
-          <OutlineBox className="lg:col-span-2">
+          <OutlineBox className="lg:col-span-2" animated>
             {/* Header - Center aligned */}
             <div className="p-5 flex flex-col items-center text-center">
               <img src="/cup.png" alt="Talent" className="w-10 h-10 mb-3" />
@@ -180,7 +184,7 @@ const TalentAccessComponent = () => {
           </OutlineBox>
 
           {/* Right Section - Globe Visualization */}
-          <OutlineBox>
+          <OutlineBox  animated>
             <div className="p-5 mb-5 flex flex-col items-center text-center">
               <img src="/cup.png" alt="Talent" className="w-10 h-10 mb-3" />
               <h2 className="text-lg font-semibold">Top talent access</h2>

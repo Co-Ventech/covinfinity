@@ -102,9 +102,9 @@ const TestimonialComponent = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 my-10">
+    <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 my-10">
       {/* Left Section - Client Testimonials */}
-      <OutlineBox className="lg:col-span-1">
+      <OutlineBox className="lg:col-span-1" >
         {/* Client Profiles */}
         <div className="space-y-1 mb-8">
           {clients.map(client => (
@@ -123,7 +123,7 @@ const TestimonialComponent = () => {
       </OutlineBox>
 
       {/* Right Section - Cost Savings */}
-      <OutlineBox className="relative overflow-hidden">
+      <OutlineBox className="relative overflow-hidden" >
         {/* Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#1F1F1F] to-[#211B1B]"></div>
         
