@@ -1,4 +1,5 @@
 import React from 'react';
+import { FramerIcon } from './svgs';
 
 const companies = [
   { name: 'Nexora', icon: false },
@@ -16,20 +17,27 @@ const companies = [
 
 const CompanySliderRight = () => {
   return (
-    <div className="relative overflow-hidden w-full mt-4">
-      <div className="flex space-x-5 animate-slider-right ">
+    <div className="relative mt-4 w-full overflow-hidden">
+      <div className="animate-slider-right flex space-x-5">
         {/* First set of companies */}
         {companies.map((company, index) => (
-          <div key={index} className="flex items-center justify-center px-12 py-4 bg-black border border-[#FF698152] rounded-3xl">
-            {company.icon && <img src="framer.png" alt="icon" className="w-5 h-5 mr-2" />}
-            <span className="text-white">{company.name}</span>
+          <div
+            key={index}
+            className="flex items-center justify-center rounded-[1.25rem] border border-[#FF698152] bg-[rgba(255,105,129,0.01)] px-8 py-[1.375rem]"
+          >
+            {/* {company.icon && <img src="framer.png" alt="icon" className="mr-2 h-5 w-5" />} */}
+            {company.icon && <FramerIcon className="mr-2 h-5 w-5" />}
+            <span className="whitespace-nowrap text-[#FFEBEE]">{company.name}</span>
           </div>
         ))}
         {/* Duplicate the companies for seamless effect */}
         {companies.map((company, index) => (
-          <div key={index + 100} className="flex items-center justify-center px-12 py-4 bg-black border border-[#FF698152] rounded-3xl">
-            {company.icon && <img src="framer.png" alt="icon" className="w-5 h-5 mr-2" />}
-            <span className="text-white">{company.name}</span>
+          <div
+            key={index}
+            className="flex items-center justify-center rounded-[1.25rem] border border-[#FF698152] bg-[rgba(255,105,129,0.01)] px-8 py-[1.375rem]"
+          >
+            {company.icon && <img src="framer.png" alt="icon" className="mr-2 h-5 w-5" />}
+            <span className="text-[#FFEBEE]">{company.name}</span>
           </div>
         ))}
       </div>
