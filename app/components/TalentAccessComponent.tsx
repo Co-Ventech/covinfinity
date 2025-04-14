@@ -107,7 +107,7 @@ const TalentAccessComponent = () => {
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Left Section - Talent Search */}
-        <OutlineBox className="lg:col-span-2">
+        <OutlineBox animated className="lg:col-span-2">
           {/* Header - Center aligned */}
           <div className="flex flex-col items-center p-5 text-center">
             <img src="/cup.png" alt="Talent" className="mb-3 h-10 w-10" />
@@ -188,7 +188,7 @@ const TalentAccessComponent = () => {
         </OutlineBox>
 
         {/* Right Section - Globe Visualization */}
-        <OutlineBox>
+        <OutlineBox animated>
           <div className="mb-5 flex flex-col items-center p-5 text-center">
             <img src="/cup.png" alt="Talent" className="mb-3 h-10 w-10" />
             <h2 className="text-lg font-semibold">Top talent access</h2>
