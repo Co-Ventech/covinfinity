@@ -1,13 +1,10 @@
 'use client';
 
-import { useRef, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { OrbitControls } from '@react-three/drei';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Bloom, EffectComposer } from '@react-three/postprocessing';
+import { useMemo, useRef } from 'react';
 import * as THREE from 'three';
-import { useThree } from '@react-three/fiber';
-import Navbar from './Navbar';
-import Hero from './sections/Hero';
 
 function Stars({ count = 5000 }) {
   const { viewport } = useThree();
@@ -103,7 +100,7 @@ function Scene() {
 
 export default function SpaceHero() {
   return (
-    <div className="absolute inset-0 h-full w-full">
+    <div className="absolute inset-0 h-[calc(100%-5rem)] w-full">
       <Canvas className="!bg-none">
         <Scene />
       </Canvas>
