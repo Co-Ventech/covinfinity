@@ -10,10 +10,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Middle Section - Solar System Animation */}
-      <div className="hero-middle">{/* Solar System Animation will go here */}</div>
-
-      {/* Space between sections */}
-      <div className="my-52"></div>
+      <div className="hero-middle h-[20rem]">{/* Solar System Animation will go here */}</div>
 
       {/* Bottom Section */}
       <div className="hero-bottom">

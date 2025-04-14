@@ -1,13 +1,16 @@
-import Navbar from '~/components/Navbar';
+import React from 'react';
+import { Link } from 'react-router';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
-
-import CollaborationChatBot from '~/components/CollaborationChatBot';
-import CollaborationSection from '~/components/sections/CollaborationSection';
-import CompanySliderSection from '~/components/sections/CompanySliderSection';
-import Hero from '../components/sections/Hero';
-import TestimonialComponent from '~/components/TestimonialComponent';
+import { ROUTES } from '../constants/routes';
+import Navbar from '~/components/Navbar';
+import CompanySliderRight from '~/components/CompanySliderRight';
+import CompanySliderLeft from '~/components/CompanySliderLeft';
 import TalentAccessComponent from '~/components/TalentAccessComponent';
+import Hero from '../components/sections/Hero';
+import CollaborationChatBot from '~/components/CollaborationChatBot';
+import TestimonialComponent from '~/components/TestimonialComponent';
+import SpaceHero from '~/components/SpaceHero';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -22,11 +25,14 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <MainLayout>
-      <Navbar />
-      <Hero />
-      <CompanySliderSection />
+      <div className="showcase relative h-max w-full">
+        <SpaceHero />
+        <Navbar />
+        <Hero />
+      </div>
+      <CompanySliderRight />
+      <CompanySliderLeft />
       <CollaborationChatBot />
-      <CollaborationSection />
       <TalentAccessComponent />
       <TestimonialComponent />
     </MainLayout>
