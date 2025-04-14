@@ -183,7 +183,7 @@ const Navbar = () => {
     <div className="flex items-center justify-between p-8">
       <div className="flex space-x-19 rounded-[0.625rem] bg-[#1A1A1A] p-3.5 text-white">
         <motion.div
-          className="logo-navbar"
+          className="logo-navbar flex items-center justify-center"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
         >
@@ -227,8 +227,8 @@ const Navbar = () => {
         </div>
       </div>
       {/* Right side of the navbar */}
-      <div className="rounded-[0.625rem] bg-[#1A1A1A] p-3.5">
-        <div className="flex space-x-3 rounded-[0.625rem] bg-[#212121] px-1 py-0.5">
+      <div className="rounded-[0.875em] bg-[#1A1A1A] p-2">
+        <div className="flex space-x-3 rounded-[0.625rem] bg-[#212121] p-1">
           <NavItem icon={<MirrorIcon className="size-[1.375rem]" />} label="Sign in" />
 
           <motion.div
@@ -240,14 +240,16 @@ const Navbar = () => {
             }}
             transition={{ duration: 0.3 }}
           >
-            <motion.span
-              className="bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent"
-              whileHover={{
-                backgroundImage: 'linear-gradient(to right, #FF6981, #7E7EF7)',
-              }}
-            >
-              Get Started
-            </motion.span>
+            <div className="wrapper">
+              <motion.span
+                className="bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent"
+                whileHover={{
+                  backgroundImage: 'linear-gradient(to right, #FF6981, #7E7EF7)',
+                }}
+              >
+                Get Started
+              </motion.span>
+            </div>
           </motion.div>
         </div>
       </div>
