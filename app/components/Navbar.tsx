@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ProductIcon, CaseStudyIcon, BuyCryptoIcon, MirrorIcon } from './svgs';
 import { motion, AnimatePresence } from 'framer-motion';
+import GradientText from './ui/GradientText';
 
 type DropdownSections = 'products' | 'services' | 'caseStudies';
 
@@ -230,33 +231,16 @@ const Navbar = () => {
       </div>
       {/* Right side of the navbar */}
       <div className="rounded-[0.875em] bg-[#1A1A1A] p-2">
-        <div className="flex space-x-3 rounded-[0.625rem] bg-[#212121] p-1">
+        <div className="flex space-x-0.5 rounded-[0.625rem] bg-[#212121] p-1">
           <NavItem
             icon={<MirrorIcon className="size-[1.375rem]" />}
             label="Sign in"
             hideIcon={true}
           />
 
-          <motion.div
-            className="flex items-center justify-center gap-2 rounded-[0.625rem] px-3 py-2 text-base font-medium"
-            initial="initial"
-            whileHover={{
-              scale: 1.05,
-              boxShadow: '0px 0px 8px rgba(255, 105, 129, 0.3)',
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="wrapper">
-              <motion.span
-                className="bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent"
-                whileHover={{
-                  backgroundImage: 'linear-gradient(to right, #FF6981, #7E7EF7)',
-                }}
-              >
-                Get Started
-              </motion.span>
-            </div>
-          </motion.div>
+          <div className="get-started rounded-lg bg-[#1a1a1a] px-3 py-2.5">
+            <GradientText className="font-medium">Get Started</GradientText>
+          </div>
         </div>
       </div>
     </div>
