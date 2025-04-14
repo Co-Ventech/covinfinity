@@ -98,7 +98,7 @@ function Scene() {
   );
 }
 
-export default function SpaceHero() {
+export default function SpaceStars() {
   return (
     <div className="absolute inset-0 h-[calc(100%-5rem)] w-full">
       <Canvas className="!bg-none">
