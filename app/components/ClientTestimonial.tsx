@@ -50,9 +50,9 @@ export default function TestimonialSection() {
 
       {/* Date with parallel lines */}
       <div className="flex items-center gap-4 mb-8">
-        <div className="w-16 h-px bg-gray-700"></div>
-        <p className="text-sm text-gray-500 whitespace-nowrap">{testimonials[activeIndex].date}</p>
-        <div className="w-16 h-px bg-gray-700"></div>
+        <div className="w-16 h-px bg-[#262224]"></div>
+        <p className="text-sm text-[#262224] whitespace-nowrap">{testimonials[activeIndex].date}</p>
+        <div className="w-16 h-px bg-[#262224]"></div>
       </div>
 
       {/* Stacked Cards Container */}
@@ -71,7 +71,7 @@ export default function TestimonialSection() {
                 animate={{
                   zIndex: isActive ? 30 : 20 + position,
                   y: position === 0 ? 0 : position === 1 ? -15 : position === 2 ? -30 : 0,
-                  x: position === 0 ? 0 : position === 1 ? 2 : position === 2 ? 5 : 0,
+                  x: position === 0 ? 0 : position === 1 ? 2 : position === 2 ? 2 : 0,
                   scale: 1 - position * 0.05,
                   opacity: position > 2 ? 0 : 1 - position * 0.2,
                 }}
@@ -89,13 +89,13 @@ export default function TestimonialSection() {
                 {/* Background blur layer - only for non-active cards */}
                 {!isActive && (
                   <div className={`absolute inset-0 rounded-xl backdrop-blur-md ${
-                    position === 1 ? 'bg-[#111111]/90' : 'bg-[#111111]/80'
+                    position === 1 ? 'bg-[#111111]/90' : 'bg-[#111111]/80  backdrop-blur-md'
                   }`} />
                 )}
 
                 {/* Main Card */}
                 <div className={`relative z-10 border border-gray-800 rounded-xl p-6 ${
-                  isActive ? 'bg-[#111111]/80 backdrop-blur-sm' : 'bg-transparent'
+                  isActive ? 'bg-[#111111]/80 backdrop-blur-3xl' : 'bg-transparent backdrop-blur-3xl'
                 }`}>
                   <div className="flex gap-4 items-start">
                     {/* Profile Image */}
