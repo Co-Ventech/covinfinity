@@ -32,19 +32,19 @@ export const TopHeroSection: React.FC = () => (
     polygonComponent={Polygon1}
     polygonClassName="top-3.5 left-1/2 h-[25rem] !w-[calc(100%+5rem)] -translate-x-1/2"
   >
-    <h1 className="mb-3.5 text-5xl font-semibold">
+    <h1 className="mb-3.5 bg-gradient-to-br from-[#F0EBFF] to-[#ADA9B8] bg-clip-text font-serif text-5xl font-semibold text-transparent">
       Coventech Products
-      <span className="block">
-        <GradientText>and Services</GradientText>
-      </span>
+      <span className="block">and Services</span>
     </h1>
+
     <p className="mb-6">
       Some lorem ipsum text goes here <span className="block"> says no one </span>
     </p>
     <GradientBorderButton>
-      <span className="block bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent">
+      Launch Covinfinity
+      {/* <span className="block bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent">
         Launch Covinfinity
-      </span>
+      </span> */}
     </GradientBorderButton>
   </PolygonSection>
 );

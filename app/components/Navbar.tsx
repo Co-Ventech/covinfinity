@@ -238,8 +238,9 @@ const Navbar = () => {
             hideIcon={true}
           />
 
-          <div className="get-started rounded-lg bg-[#1a1a1a] px-3 py-2.5">
-            <GradientText className="font-medium">Get Started</GradientText>
+          <div className="get-started rounded-lg bg-[#1A1A1A] px-3 py-2.5">
+            Get Started
+            {/* <GradientText className="font-medium">Get Started</GradientText> */}
           </div>
         </div>
       </div>

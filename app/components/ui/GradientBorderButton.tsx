@@ -1,4 +1,6 @@
+import { button } from 'framer-motion/client';
 import React from 'react';
+import GradientText from './GradientText';
 
 type GradientBorderButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: React.ReactNode;
@@ -11,10 +13,12 @@ const GradientBorderButton: React.FC<GradientBorderButtonProps> = ({
 }) => {
   return (
     <button
-      className={`relative inline-block rounded-lg bg-gradient-to-r from-[rgba(255,105,129,0.24)] from-53% to-[rgba(255,255,255,0.24)] p-[1px] ${className}`}
+      className={`relative rounded-[0.625rem] bg-gradient-to-tr from-[rgba(105,125,255,0.24)] to-[rgba(255,255,255,0.24)] p-[1.5px] font-serif text-base font-medium ${className}`}
       {...rest}
     >
-      <span className="block rounded-md bg-[#1A1A1A] px-6 py-2 text-white">{children}</span>
+      <span className="block rounded-[0.5rem] bg-[#1A1A1A] px-[1.125rem] py-2.5">
+        <GradientText>{children}</GradientText>
+      </span>
     </button>
   );
 };
