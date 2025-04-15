@@ -1,3 +1,4 @@
+import AvatarGroup from '../AvatarGroup';
 import CompanySlider from '../CompanySlider';
 
 const CompanySliderSection = () => {
@@ -10,6 +11,9 @@ const CompanySliderSection = () => {
         </h2>
       </div>
       <CompanySlider />
+      <div className="mt-14">
+        <AvatarGroup />
+      </div>
 
       {/* <CompanySliderRight />
       <CompanySliderLeft /> */}
