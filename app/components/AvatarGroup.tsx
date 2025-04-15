@@ -63,7 +63,7 @@ const AvatarGroup: React.FC = () => {
             whileHover={{ scale: 1.1, zIndex: 30 }}
             style={{
               marginLeft: index === 0 ? 0 : '-0.75rem',
-              zIndex: 22 - index, // Higher z-index for earlier avatars
+              zIndex: index, // Lower index values appear behind higher ones
             }}
           >
             <div
@@ -84,19 +84,24 @@ const AvatarGroup: React.FC = () => {
             </div>
           </motion.div>
         ))}
-      </div>
 
-      {/* Total count text */}
-      <motion.div
-        className="rounded-[2.8125rem] bg-[#202023] px-4 py-2.5 text-[0.9375rem] font-semibold text-[#F0F2FF]"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.4, duration: 0.5 }}
-      >
-        <span className="whitespace-nowrap">
-          <Counter from={0} to={43} /> talents & business coventech
-        </span>
-      </motion.div>
+        {/* Total count text */}
+        <motion.div
+          className="rounded-[2.8125rem] bg-[#202023] px-4 py-2.5 text-[0.9375rem] font-semibold text-[#F0F2FF]"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1.4, duration: 0.5 }}
+          style={{
+            marginLeft: '-0.75rem',
+            zIndex: 22, // Same z-index as last avatar
+          }}
+          whileHover={{ scale: 1.05, zIndex: 30 }}
+        >
+          <span className="whitespace-nowrap">
+            <Counter from={0} to={43} /> talents & business coventech
+          </span>
+        </motion.div>
+      </div>
     </div>
   );
 };
