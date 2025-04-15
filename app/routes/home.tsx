@@ -7,6 +7,7 @@ import TestimonialComponent from '~/components/TestimonialComponent';
 import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
+import ClientTestimonial from '~/components/ClientTestimonial';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -22,7 +23,7 @@ export default function Home() {
   return (
     <MainLayout>
       <div className="showcase relative h-max w-full">
-        <SpaceStars />
+        {/* <SpaceStars /> */}
         <Navbar />
         <Hero />
       </div>
@@ -30,6 +31,7 @@ export default function Home() {
       <CollaborationChatBot />
       <TalentAccessComponent />
       <TestimonialComponent />
+      <ClientTestimonial />
     </MainLayout>
   );
 }
