@@ -1,7 +1,4 @@
-import React from 'react';
-import CompanySliderLeft from '../CompanySliderLeft';
-import CompanySliderRight from '../CompanySliderRight';
-import Section from '../ui/Section';
+import CompanySlider from '../CompanySlider';
 
 const CompanySliderSection = () => {
   return (
@@ -12,8 +9,10 @@ const CompanySliderSection = () => {
           things with AI best experience ever
         </h2>
       </div>
-      <CompanySliderRight />
-      <CompanySliderLeft />
+      <CompanySlider />
+
+      {/* <CompanySliderRight />
+      <CompanySliderLeft /> */}
     </section>
   );
 };
