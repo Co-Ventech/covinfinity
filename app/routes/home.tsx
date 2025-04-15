@@ -7,6 +7,7 @@ import TestimonialComponent from '~/components/TestimonialComponent';
 import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
+import CollaborationSection from '~/components/sections/CollaborationSection';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -30,6 +31,7 @@ export default function Home() {
       <Hero />
       <CompanySliderSection />
       <CollaborationChatBot />
+      <CollaborationSection />
       <TalentAccessComponent />
       <TestimonialComponent />
       <EcosystemSection />
