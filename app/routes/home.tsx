@@ -1,7 +1,7 @@
 import CollaborationChatBot from '~/components/CollaborationChatBot';
 import Navbar from '~/components/Navbar';
 import CompanySliderSection from '~/components/sections/CompanySliderSection';
-import SpaceStars from '~/components/SpaceStars';
+import EcosystemSection from '~/components/sections/EcosystemSection';
 import TalentAccessComponent from '~/components/TalentAccessComponent';
 import TestimonialComponent from '~/components/TestimonialComponent';
 import Hero from '../components/sections/Hero';
@@ -32,6 +32,7 @@ export default function Home() {
       <CollaborationChatBot />
       <TalentAccessComponent />
       <TestimonialComponent />
+      <EcosystemSection />
     </MainLayout>
   );
 }

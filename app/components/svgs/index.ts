@@ -1,4 +1,5 @@
 export { default as FramerIcon } from './FramerIcon';
+export { default as LogoIcon } from './LogoIcon';
 export { default as ProductIcon } from './ProductIcon';
 export { default as BuyCryptoIcon } from './BuyCryptoIcon';
 export { default as CaseStudyIcon } from './CaseStudyIcon';
