@@ -1,5 +1,6 @@
 import React from 'react';
 import { FramerIcon } from './svgs';
+import AvatarGroup from './AvatarGroup';
 
 const companies = [
   { name: 'ZenithPoint', icon: false },
@@ -40,8 +41,8 @@ const CompanySliderLeft = () => {
         ))}
       </div>
 
-      <div className="mt-20 mb-12 flex justify-center">
-        <img src="43k-talents.png" alt="persons" className="item-center h-6" />
+      <div className="mt-14">
+        <AvatarGroup />
       </div>
     </div>
   );

@@ -21,11 +21,13 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <MainLayout>
-      <div className="showcase relative h-max w-full">
+      {/* <div className="showcase relative h-max w-full">
         <SpaceStars />
         <Navbar />
         <Hero />
-      </div>
+      </div> */}
+      <Navbar />
+      <Hero />
       <CompanySliderSection />
       <CollaborationChatBot />
       <TalentAccessComponent />
