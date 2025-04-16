@@ -1,10 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 
 export default function TestimonialSection() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
   const testimonials = [
     {
@@ -33,6 +35,29 @@ export default function TestimonialSection() {
     },
   ]
 
+  // Set up automatic card rotation
+  useEffect(() => {
+    if (!isPaused) {
+      intervalRef.current = setInterval(() => {
+        setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length)
+      }, 3000) // Change card every 3 seconds
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  }, [isPaused, testimonials.length])
+
+  const handleMouseEnter = () => {
+    setIsPaused(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsPaused(false)
+  }
+
   return (
     <div className="relative w-full min-h-[600px] flex flex-col items-center justify-center text-center text-white px-4 py-16 bg-black">
       {/* Logo */}
@@ -45,18 +70,23 @@ export default function TestimonialSection() {
 
       {/* Subheading */}
       <p className="text-gray-400 max-w-xl mx-auto mb-10 text-sm leading-relaxed">
-      how much time & money they saved with us such as “our hiring process so on and on and we landed 4 really talented individuals just in 24 hours 
+        how much time & money they saved with us such as "our hiring process so on and on and we landed 4 really
+        talented individuals just in 24 hours
       </p>
 
       {/* Date with parallel lines */}
       <div className="flex items-center gap-4 mb-8">
-        <div className="w-16 h-px bg-gray-700"></div>
-        <p className="text-sm text-gray-500 whitespace-nowrap">{testimonials[activeIndex].date}</p>
-        <div className="w-16 h-px bg-gray-700"></div>
+        <div className="w-16 h-px bg-[#262224]"></div>
+        <p className="text-sm text-[#262224] whitespace-nowrap">{testimonials[activeIndex].date}</p>
+        <div className="w-16 h-px bg-[#262224]"></div>
       </div>
 
       {/* Stacked Cards Container */}
-      <div className="relative h-[220px] w-full max-w-xl mx-auto perspective-1000">
+      <div
+        className="relative h-[220px] mt-20 w-full max-w-xl mx-auto perspective-1000"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className="relative w-full h-full">
           {testimonials.map((testimonial, index) => {
             // Calculate position based on active index
@@ -69,9 +99,9 @@ export default function TestimonialSection() {
                 className="absolute w-full"
                 initial={false}
                 animate={{
-                  zIndex: isActive ? 30 : 10 - position,
-                  y: position === 0 ? 0 : position === 1 ? 20 : position === 2 ? 40 : 0,
-                  x: position === 0 ? 0 : position === 1 ? 10 : position === 2 ? 20 : 0,
+                  zIndex: isActive ? 30 : 20 - position, // Ensure proper z-index stacking
+                  y: position === 0 ? 0 : position === 1 ? -15 : position === 2 ? -30 : 0,
+                  x: position === 0 ? 0 : position === 1 ? 2 : position === 2 ? 2 : 0,
                   scale: 1 - position * 0.05,
                   opacity: position > 2 ? 0 : 1 - position * 0.2,
                 }}
@@ -80,18 +110,31 @@ export default function TestimonialSection() {
                   stiffness: 300,
                   damping: 30,
                 }}
-                onClick={() => setActiveIndex(index)}
                 style={{
                   transformOrigin: "center top",
-                  cursor: isActive ? "default" : "pointer",
                 }}
               >
-                {/* Background stacked layers */}
-                <div className="absolute -top-6 right-3 w-full h-32 rounded-lg border border-gray-700 bg-black opacity-20 z-0" />
-                <div className="absolute bg-[#111111]/80 -top-3 right-2 w-full h-36 rounded-lg border border-gray-700 opacity-20 z-0" />
+                {/* Background blur layer - only for non-active cards */}
+                {!isActive && (
+                  <div
+                    className={`absolute inset-0 rounded-xl backdrop-blur-md ${
+                      position === 1 ? "bg-[#111111]/90" : "bg-[#111111]/80 backdrop-blur-md"
+                    }`}
+                  />
+                )}
 
                 {/* Main Card */}
-                <div className="relative z-10 bg-[#111111]/80 border border-gray-800 rounded-xl p-6 backdrop-blur-sm">
+                <div
+                  className={`relative z-10 rounded-xl p-6 ${
+                    isActive
+                      ? "bg-[#111111]/80 backdrop-blur-3xl border border-gray-800"
+                      : "bg-transparent backdrop-blur-3xl"
+                  }`}
+                  style={{
+                    // Only apply border to active card
+                    boxShadow: isActive ? "0 0 0 1px rgba(75, 75, 75, 0.2)" : "none",
+                  }}
+                >
                   <div className="flex gap-4 items-start">
                     {/* Profile Image */}
                     <div className="w-9 h-9 rounded-full overflow-hidden bg-gray-600 flex-shrink-0">
@@ -113,19 +156,9 @@ export default function TestimonialSection() {
                   </div>
 
                   {/* CTA */}
-                  <div className="flex justify-between mt-4">
-                    {!isActive && <span className="text-xs text-gray-600">Click to bring to front</span>}
-                    {isActive && (
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          setActiveIndex((activeIndex + 1) % testimonials.length)
-                        }}
-                        className="text-xs text-gray-600 hover:text-gray-400"
-                      >
-                        Next card →
-                      </button>
-                    )}
+                  <div className="flex justify-end mt-4">
+                    {/* {!isActive && <span className="text-xs text-gray-600">Auto-rotating</span>}
+                    {isActive && <span className="text-xs text-gray-600">{isPaused ? "Paused" : "Auto-rotating"}</span>} */}
                     <button className="px-4 py-2 rounded-lg text-xs text-white bg-[#222222] hover:bg-[#333333] transition-colors">
                       {testimonial.action}
                     </button>
@@ -135,20 +168,6 @@ export default function TestimonialSection() {
             )
           })}
         </div>
-      </div>
-
-      {/* Navigation dots */}
-      <div className="flex gap-2 mt-12">
-        {testimonials.map((_, index) => (
-          <button
-            key={index}
-            className={`w-2 h-2 rounded-full transition-colors ${
-              index === activeIndex ? "bg-white" : "bg-gray-700 hover:bg-gray-500"
-            }`}
-            onClick={() => setActiveIndex(index)}
-            aria-label={`View testimonial ${index + 1}`}
-          />
-        ))}
       </div>
     </div>
   )
