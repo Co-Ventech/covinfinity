@@ -97,7 +97,8 @@ const CollaborationChatBot = () => {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <div className="grid relative grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="absolute -top-16 -right-12 w-[55rem] h-28 border-y border-r border-gray-700 rounded-xl opacity-20 z-0" />
         {/* Chat Section - Takes up 2 columns */}
         <OutlineBox animated className="lg:col-span-2">
           {/* Chat Header */}
@@ -181,7 +182,7 @@ const CollaborationChatBot = () => {
               From deployments to tasks, work with your team every step of the way.
             </p>
           </div>
-          <img src="/orbit.png" alt="Add" className="h-[26.6rem] w-96" />
+          <img src="/orbit.png" alt="Add" className="h-[26.6rem] w-[30rem]" />
         </OutlineBox>
       </div>
     </Section>

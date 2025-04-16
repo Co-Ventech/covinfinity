@@ -1,5 +1,7 @@
+import ClientTestimonial from '~/components/ClientTestimonial';
 import CollaborationChatBot from '~/components/CollaborationChatBot';
 import Navbar from '~/components/Navbar';
+import CollaborationSection from '~/components/sections/CollaborationSection';
 import CompanySliderSection from '~/components/sections/CompanySliderSection';
 import EcosystemSection from '~/components/sections/EcosystemSection';
 import TalentAccessComponent from '~/components/TalentAccessComponent';
@@ -7,7 +9,6 @@ import TestimonialComponent from '~/components/TestimonialComponent';
 import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
-import CollaborationSection from '~/components/sections/CollaborationSection';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -22,19 +23,18 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <MainLayout>
-      {/* <div className="showcase relative h-max w-full">
-        <SpaceStars />
+      <div className="showcase relative h-max w-full">
+        {/* <SpaceStars /> */}
         <Navbar />
         <Hero />
-      </div> */}
-      <Navbar />
-      <Hero />
+      </div>
       <CompanySliderSection />
       <CollaborationChatBot />
       <CollaborationSection />
       <TalentAccessComponent />
       <TestimonialComponent />
       <EcosystemSection />
+      <ClientTestimonial />
     </MainLayout>
   );
 }

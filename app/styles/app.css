@@ -203,9 +203,9 @@
 .animated-border-gradient {
   content: "";
   position: absolute;
-  inset: -25%; /* Reduced from -25% for smaller gradient area */
-  width: 150%; /* Reduced from 150% */
-  height: 150%; /* Reduced from 150% */
+  inset: -50%; /* Reduced from -25% for smaller gradient area */
+  width: 200%; /* Reduced from 150% */
+  height: 200%; /* Reduced from 150% */
   background-image: conic-gradient(
     from 0deg,
     transparent,
@@ -294,5 +294,31 @@
   .form-label {
     @apply mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300;
     font-family: var(--font-sans);
+  }
+}
+
+/* Add flipping card animation CSS */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateY(0);
+  }
+  100% {
+    transform: rotateY(180deg);
   }
 }
