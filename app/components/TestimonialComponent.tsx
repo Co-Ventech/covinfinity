@@ -192,7 +192,7 @@ const TestimonialComponent = () => {
           </div>
 
           {/* Features for left box */}
-          <div className="mt-8 p-6">
+          <div className="mt-10.5 p-6">
             {featuresLeft.map((feature, index) => (
               <FeatureBox key={index} feature={feature} />
             ))}
