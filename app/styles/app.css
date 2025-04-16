@@ -201,7 +201,7 @@
 }
 
 .animated-border-gradient {
-  content: "";
+  content: '';
   position: absolute;
   inset: -50%; /* Reduced from -25% for smaller gradient area */
   width: 200%; /* Reduced from 150% */
@@ -209,10 +209,10 @@
   background-image: conic-gradient(
     from 0deg,
     transparent,
-    #332B2B,
-    #BB97F2,
-    #FF6981,
-    transparent 30deg 
+    #332b2b,
+    #bb97f2,
+    #ff6981,
+    transparent 30deg
   );
   animation: rotate 10s linear infinite;
   z-index: 0;
@@ -322,4 +322,3 @@
     transform: rotateY(180deg);
   }
 }
-

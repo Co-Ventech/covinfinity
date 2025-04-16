@@ -3,7 +3,7 @@ import CompanySlider from '../CompanySlider';
 
 const CompanySliderSection = () => {
   return (
-    <section className="mt-14 mb-60">
+    <section>
       <div className="mb-14 text-center">
         <h2 className="mx-auto max-w-[33rem] text-center text-base font-medium text-[#C3C3C3]">
           Trusted by the world's most innovative companies and talents to build and join powerful

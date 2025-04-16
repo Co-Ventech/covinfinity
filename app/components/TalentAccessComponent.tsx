@@ -94,16 +94,13 @@ const TalentAccessComponent = () => {
   return (
     <Section className="text-white">
       {/* Header Section */}
-      <div className="mb-12 text-center">
-        <h1 className="mb-4 text-4xl font-semibold text-white">
-          Craft the{' '}
-          <span className="bg-gradient-to-r from-[#FF6981] to-purple-400 bg-clip-text text-transparent">
-            most productive
-          </span>{' '}
-          team
-          <br />
-          from all around the world
+      {/* <div className="mb-12 text-center"> */}
+      <div className="mb-36 text-center">
+        <h1 className="mb-4 bg-gradient-to-br from-[#F0EBFF] to-[#ADA9B8] bg-clip-text pb-1 font-serif text-5xl font-semibold text-transparent">
+          Craft the most productive team
+          <span className="block">from all around the world</span>
         </h1>
+
         <p className="text-[#665F5F]">
           The most complete experience for businesses & individual clients
         </p>

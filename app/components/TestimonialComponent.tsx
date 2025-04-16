@@ -29,17 +29,25 @@ const SocialIcon = ({ icon }: { icon: string }) => (
 );
 
 // Client profile card component
-const ClientProfile = ({ client, isActive, onClick }: { client: Testimonial; isActive: boolean; onClick: () => void }) => (
-  <div 
-    className={`flex items-start space-x-4 rounded-lg ${isActive ? 'bg-[#2A2A2A]' : 'bg-[#1F1F1F]'} px-4 py-6 cursor-pointer transition-colors duration-300`}
+const ClientProfile = ({
+  client,
+  isActive,
+  onClick,
+}: {
+  client: Testimonial;
+  isActive: boolean;
+  onClick: () => void;
+}) => (
+  <div
+    className={`flex items-start space-x-4 rounded-lg ${isActive ? 'bg-[#2A2A2A]' : 'bg-[#1F1F1F]'} cursor-pointer px-4 py-6 transition-colors duration-300`}
     onClick={onClick}
   >
-    <img src={client.avatar} alt={client.name} className="rounded-full h-12 w-12" />
+    <img src={client.avatar} alt={client.name} className="h-12 w-12 rounded-full" />
     <div className="flex-1">
       <div className="flex items-start justify-between">
         <div>
-          <h3 className="font-medium text-white ">{client.name}</h3>
-          <p className="text-xs text-[#665F5F] space-x-1">
+          <h3 className="font-medium text-white">{client.name}</h3>
+          <p className="space-x-1 text-xs text-[#665F5F]">
             {client.position} • {client.company}{' '}
             {client.company === 'Google' && (
               <img
@@ -74,43 +82,41 @@ const FeatureBox = ({ feature }: { feature: FeatureInfo }) => (
 // Animated counter component
 const AnimatedCounter = ({ value }: { value: number }) => {
   const [displayValue, setDisplayValue] = useState(value);
-  
+
   useEffect(() => {
     // Animate the counter from current to target value
     let startValue = displayValue;
     const endValue = value;
     const duration = 1000; // 1 second animation
     const startTime = performance.now();
-    
+
     const animateValue = (timestamp: number) => {
       const runtime = timestamp - startTime;
       const progress = Math.min(runtime / duration, 1);
-      
+
       // Easing function for smooth animation
       const easeOutQuad = (t: number) => t * (2 - t);
       const easedProgress = easeOutQuad(progress);
-      
+
       const currentValue = Math.floor(startValue + (endValue - startValue) * easedProgress);
       setDisplayValue(currentValue);
-      
+
       if (runtime < duration) {
         requestAnimationFrame(animateValue);
       }
     };
-    
+
     requestAnimationFrame(animateValue);
   }, [value]);
-  
+
   return (
-    <div className="transition-all duration-500 cost-glow">
-      ${displayValue.toLocaleString()}
-    </div>
+    <div className="cost-glow transition-all duration-500">${displayValue.toLocaleString()}</div>
   );
 };
 
 const TestimonialComponent = () => {
   const [activeClientId, setActiveClientId] = useState(1);
-  
+
   // Sample client data
   const clients: Testimonial[] = [
     {
@@ -133,28 +139,27 @@ const TestimonialComponent = () => {
       socialIcons: ['/facebook.png', '/youtube.png', '/zoom.png'],
       costSaved: 326000,
     },
-   
   ];
 
   // Auto-cycle through clients
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveClientId(prevId => {
+      setActiveClientId((prevId) => {
         // Find the index of current active client
-        const currentIndex = clients.findIndex(client => client.id === prevId);
+        const currentIndex = clients.findIndex((client) => client.id === prevId);
         // Calculate next index (loop back to 0 if at the end)
         const nextIndex = (currentIndex + 1) % clients.length;
         // Return the id of the next client
         return clients[nextIndex].id;
       });
     }, 5000); // Change active client every 5 seconds
-    
+
     // Clean up interval on component unmount
     return () => clearInterval(interval);
   }, [clients.length]);
 
   // Get current active client
-  const activeClient = clients.find(client => client.id === activeClientId) || clients[0];
+  const activeClient = clients.find((client) => client.id === activeClientId) || clients[0];
 
   // Feature data for left box
   const featuresLeft = [
@@ -178,13 +183,14 @@ const TestimonialComponent = () => {
     <Section>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Left Section - Client Testimonials */}
-        <OutlineBox className="lg:col-span-1">
+        <OutlineBox className="relative border-[#332B2B] lg:col-span-1">
+          <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-[calc(100%-8rem)] w-full bg-linear-to-b from-[#1A1A1A]/0 via-[1A1A1A]/24 to-[#211B1B]"></div>
           {/* Client Profiles */}
-          <div className="mb-8  space-y-1">
+          <div className="mb-8 space-y-1">
             {clients.map((client) => (
-              <ClientProfile 
-                key={client.id} 
-                client={client} 
+              <ClientProfile
+                key={client.id}
+                client={client}
                 isActive={client.id === activeClientId}
                 onClick={() => setActiveClientId(client.id)}
               />
@@ -206,25 +212,21 @@ const TestimonialComponent = () => {
 
           {/* Content */}
           <div className="relative p-6">
-            <div className="mt-10 mb-5 flex justify-center items-center">
+            <div className="mt-10 mb-5 flex items-center justify-center">
               <img src="/framer-black.png" alt="Cost" className="mr-2 h-5 w-5" />
               <h2 className="text-lg text-[#665F5F]">Cost Client Saved</h2>
-              <div className="ml-2 h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
+              <div className="ml-2 h-2 w-2 animate-pulse rounded-full bg-green-500"></div>
             </div>
 
-           
-              {/* Counter text */}
-              <div className="relative text-center py-10  text-4xl font-bold">
-                <AnimatedCounter value={activeClient.costSaved} />
+            {/* Counter text */}
+            <div className="relative py-10 text-center text-4xl font-bold">
+              <AnimatedCounter value={activeClient.costSaved} />
+            </div>
+            <div className="relative h-full">
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 -translate-y-1/2 transform text-xl font-bold text-gray-200 blur-2xl">
+                420000
               </div>
-              <div className="relative h-full">
-  <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 blur-2xl text-xl font-bold text-gray-200">
-    420000
-  </div>
-</div>
-
-           
-          
+            </div>
 
             {/* Features for right box */}
             <div className="mt-1 border-t border-[#1F1F1F] pt-6">

@@ -62,23 +62,23 @@ export default function TestimonialSection() {
   };
 
   return (
-    <div className="relative flex min-h-[600px] w-full flex-col items-center justify-center bg-black px-4 py-16 text-center text-white">
+    <div className="relative flex w-full flex-col items-center justify-start px-4 text-center text-white">
       {/* Logo */}
-      <div className="mb-6">
+      <div className="mb-3">
         <img src="/crown.png" alt="Crown" className="h-12 w-auto" />
       </div>
 
       {/* Heading */}
-      <h2 className="mb-3 text-2xl font-medium">Client review saying something</h2>
+      <h2 className="mb-2 text-2xl font-medium">Client review saying something</h2>
 
       {/* Subheading */}
-      <p className="mx-auto mb-10 max-w-xl text-sm leading-relaxed text-gray-400">
+      <p className="mx-auto mb-16 max-w-xl text-sm leading-relaxed text-gray-400">
         how much time & money they saved with us such as "our hiring process so on and on and we
         landed 4 really talented individuals just in 24 hours
       </p>
 
       {/* Date with parallel lines */}
-      <div className="mb-8 flex items-center gap-4">
+      <div className="mb-14 flex items-center gap-4">
         <div className="h-px w-16 bg-[#262224]"></div>
         <p className="text-sm whitespace-nowrap text-[#262224]">{testimonials[activeIndex].date}</p>
         <div className="h-px w-16 bg-[#262224]"></div>
@@ -86,7 +86,7 @@ export default function TestimonialSection() {
 
       {/* Stacked Cards Container */}
       <div
-        className="perspective-1000 relative mx-auto mt-20 h-[220px] w-full max-w-xl"
+        className="perspective-1000 relative mx-auto h-[220px] w-full max-w-xl"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -117,25 +117,37 @@ export default function TestimonialSection() {
                   transformOrigin: 'center top',
                 }}
               >
-                {/* Background blur layer - only for non-active cards */}
-                {!isActive && (
-                  <div
-                    className={`absolute inset-0 rounded-xl backdrop-blur-md ${
-                      position === 1 ? 'bg-[#111111]/90' : 'bg-[#111111]/80 backdrop-blur-md'
-                    }`}
-                  />
-                )}
+                {/* Blur layer - using motion.div for smooth transitions */}
+                <motion.div
+                  className="absolute inset-0 rounded-xl border-[#21232D] backdrop-blur-md"
+                  initial={false}
+                  animate={{
+                    backgroundColor: isActive
+                      ? 'rgba(26, 23, 23, 0)'
+                      : position === 1
+                        ? 'rgba(20, 20, 20, 1)'
+                        : 'rgba(18, 18, 18, 0.8)',
+                    opacity: isActive ? 0 : 1,
+                    backdropFilter: `blur(${isActive ? '0px' : '8px'})`,
+                  }}
+                  transition={{
+                    duration: 0.3, // Match with the spring animation
+                  }}
+                />
 
                 {/* Main Card */}
-                <div
-                  className={`relative z-10 rounded-xl p-6 ${
-                    isActive
-                      ? 'border border-gray-800 bg-[#111111]/80 backdrop-blur-3xl'
-                      : 'bg-transparent backdrop-blur-3xl'
-                  }`}
-                  style={{
-                    // Only apply border to active card
+                <motion.div
+                  className="relative z-10 rounded-xl p-6"
+                  initial={false}
+                  animate={{
+                    backgroundColor: isActive ? 'rgba(26, 23, 23, 0.24)' : 'rgba(0, 0, 0, 0)',
+                    backdropFilter: isActive ? 'blur(16px)' : 'blur(0px)',
+                    borderColor: isActive ? 'rgba(33, 35, 45, 1)' : 'rgba(33, 35, 45, 0)',
+                    borderWidth: isActive ? '1px' : '0px',
                     boxShadow: isActive ? '0 0 0 1px rgba(75, 75, 75, 0.2)' : 'none',
+                  }}
+                  transition={{
+                    duration: 0.3,
                   }}
                 >
                   <div className="flex items-start gap-4">
@@ -170,7 +182,7 @@ export default function TestimonialSection() {
                       {testimonial.action}
                     </button>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             );
           })}

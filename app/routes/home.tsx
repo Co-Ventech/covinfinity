@@ -28,13 +28,22 @@ export default function Home() {
         <Navbar />
         <Hero />
       </div>
-      <CompanySliderSection />
-      <CollaborationChatBot />
-      <CollaborationSection />
+      <div className="mt-14 mb-60">
+        <CompanySliderSection />
+      </div>
+      <div className="mb-20">
+        <CollaborationChatBot />
+      </div>
+      <div className="mb-30">
+        <CollaborationSection />
+      </div>
       <TalentAccessComponent />
+      <div className="my-3"></div>
       <TestimonialComponent />
+      <div className="mt-20">
+        <ClientTestimonial />
+      </div>
       <EcosystemSection />
-      <ClientTestimonial />
     </MainLayout>
   );
 }
