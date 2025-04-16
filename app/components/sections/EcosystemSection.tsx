@@ -11,13 +11,13 @@ type Step = {
 };
 
 const steps: Step[] = [
-  { id: 1, title: 'Schedule an Interview' },
-  { id: 2, title: 'Meet Account Executive' },
-  { id: 3, title: 'Another flow' },
-  { id: 4, title: 'Frontend Dev' },
-  { id: 5, title: 'Frontend Dev' },
-  { id: 6, title: 'Frontend Dev' },
-  { id: 7, title: 'Frontend Dev' },
+  { id: 1, title: 'Recruitinn' },
+  { id: 2, title: 'Skillbuilder' },
+  { id: 3, title: 'Coventel' },
+  // { id: 4, title: 'Frontend Dev' },
+  // { id: 5, title: 'Frontend Dev' },
+  // { id: 6, title: 'Frontend Dev' },
+  // { id: 7, title: 'Frontend Dev' },
 ];
 
 // Animation variants for the image stack
