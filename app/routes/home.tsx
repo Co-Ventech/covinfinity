@@ -9,6 +9,7 @@ import TestimonialComponent from '~/components/TestimonialComponent';
 import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
+import CaseStudiesGrid from '~/components/CaseStudiesGrid';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -44,6 +45,7 @@ export default function Home() {
         <ClientTestimonial />
       </div>
       <EcosystemSection />
+      <CaseStudiesGrid />
     </MainLayout>
   );
 }
