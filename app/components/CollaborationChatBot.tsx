@@ -83,13 +83,9 @@ const OrbitalAnimation = () => (
 const CollaborationChatBot = () => {
   return (
     <Section>
-      <div className="">
-        {/* <h1 className="mb-4 text-4xl font-semibold text-white"> */}
+      <div className="mb-16">
         <h1 className="bg-gradient-to-br from-[#F0EBFF] to-[#ADA9B8] bg-clip-text pb-1 font-serif text-5xl font-semibold text-transparent">
           Collaboration and shipping software faster
-          {/* <span className="bg-gradient-to-r from-[#FF6981] to-purple-400 bg-clip-text text-transparent">
-            software faster
-          </span> */}
         </h1>
         <p className="mt-4 font-medium text-[#665F5F]">
           The most complete experience for businesses & individual clients
