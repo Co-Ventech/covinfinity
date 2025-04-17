@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
+import Heading from './ui/Heading';
 
 // Developer type representing a developer profile
 interface Developer {
@@ -96,10 +97,9 @@ const TalentAccessComponent = () => {
       {/* Header Section */}
       {/* <div className="mb-12 text-center"> */}
       <div className="mb-36 text-center">
-        <h1 className="mb-4 bg-gradient-to-br from-[#F0EBFF] to-[#ADA9B8] bg-clip-text pb-1 font-serif text-5xl font-semibold text-transparent">
+        <Heading className="mb-4 pb-1" blockText="from all around the world">
           Craft the most productive team
-          <span className="block">from all around the world</span>
-        </h1>
+        </Heading>
 
         <p className="text-[#665F5F]">
           The most complete experience for businesses & individual clients

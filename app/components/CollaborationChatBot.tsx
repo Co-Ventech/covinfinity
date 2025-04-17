@@ -1,5 +1,6 @@
 import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
+import Heading from './ui/Heading';
 
 const ChatMessage = ({
   time,
@@ -84,9 +85,7 @@ const CollaborationChatBot = () => {
   return (
     <Section>
       <div className="mb-16">
-        <h1 className="bg-gradient-to-br from-[#F0EBFF] to-[#ADA9B8] bg-clip-text pb-1 font-serif text-5xl font-semibold text-transparent">
-          Collaboration and shipping software faster
-        </h1>
+        <Heading className="pb-1">Collaboration and shipping software faster</Heading>
         <p className="mt-4 font-medium text-[#665F5F]">
           The most complete experience for businesses & individual clients
         </p>

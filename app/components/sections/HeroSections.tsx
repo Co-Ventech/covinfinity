@@ -5,6 +5,7 @@ import Polygon2 from '../svgs/Polygon2';
 import GradientBorderButton from '../ui/GradientBorderButton';
 import GradientText from '../ui/GradientText';
 import OutlineBox from '../ui/OutlineBox';
+import Heading from '../ui/Heading';
 
 // Reusable component for polygon-backed sections
 interface PolygonSectionProps {
@@ -32,10 +33,9 @@ export const TopHeroSection: React.FC = () => (
     polygonComponent={Polygon1}
     polygonClassName="top-3.5 left-1/2 h-[25rem] !w-[calc(100%+5rem)] -translate-x-1/2"
   >
-    <h1 className="mb-3.5 bg-gradient-to-br from-[#F0EBFF] to-[#ADA9B8] bg-clip-text font-serif text-5xl font-semibold text-transparent">
+    <Heading className="mb-3.5" blockText="and Services">
       Coventech Products
-      <span className="block">and Services</span>
-    </h1>
+    </Heading>
 
     <p className="mb-6">
       Some lorem ipsum text goes here <span className="block"> says no one </span>
