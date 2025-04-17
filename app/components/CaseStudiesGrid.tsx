@@ -91,7 +91,10 @@ const CaseStudiesGrid: React.FC = () => {
         <CaseStudyItem image={images.slotCanyon} className="col-span-1 row-span-2" />
 
         {/* Second column */}
-        <CaseStudyItem image={images.landscape} className="col-span-1 row-span-2" />
+        <CaseStudyItem
+          image={images.landscape}
+          className="col-span-1 row-span-2 h-[calc(100%-2rem)]"
+        />
         <CaseStudyItem image={images.grayscale} className="col-span-1 row-span-2" />
 
         {/* Center column */}
@@ -102,7 +105,10 @@ const CaseStudiesGrid: React.FC = () => {
         <CaseStudyItem image={images.greenTreeDuringDaytime} className="col-span-1 row-span-4" />
 
         {/* Fourth column */}
-        <CaseStudyItem image={images.landscape} className="col-span-1 row-span-2" />
+        <CaseStudyItem
+          image={images.landscape}
+          className="relative col-span-1 row-span-2 -mt-8 h-[calc(100%+2rem)]"
+        />
         <CaseStudyItem
           image={images.theLightIsShiningOnTheRockFormations}
           className="col-span-1 row-span-2"
@@ -134,7 +140,8 @@ const CaseStudiesGrid: React.FC = () => {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-0 z-[0] size-full bg-gradient-to-b from-[#171416] via-[#151315]/32 to-[#131113]/70"></div>
+      {/* overlay */}
+      <div className="pointer-events-none absolute inset-0 z-[0] size-full bg-gradient-to-b from-[#171416] via-[#151315]/32 to-[#131113]"></div>
     </div>
   );
 };
