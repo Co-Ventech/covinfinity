@@ -39,7 +39,7 @@ const ClientProfile = ({
   onClick: () => void;
 }) => (
   <div
-    className={`flex items-start space-x-4 rounded-lg ${isActive ? 'bg-[#2A2A2A]' : 'bg-[#1F1F1F]'} cursor-pointer px-4 py-6 transition-colors duration-300`}
+    className={`flex cursor-pointer items-start space-x-4 rounded-2xl px-4 py-6 transition-colors duration-300 ${isActive ? 'bg-[#1F1C1D]' : 'bg-[#1C1919]'}`}
     onClick={onClick}
   >
     <img src={client.avatar} alt={client.name} className="h-12 w-12 rounded-full" />
@@ -47,8 +47,8 @@ const ClientProfile = ({
       <div className="flex items-start justify-between">
         <div>
           <h3 className="font-medium text-white">{client.name}</h3>
-          <p className="space-x-1 text-xs text-[#665F5F]">
-            {client.position} • {client.company}{' '}
+          <p className="space-x-1 text-xs text-[#584A4A]">
+            {client.position} • <span className="text-[#CFB5B5]">{client.company}</span>{' '}
             {client.company === 'Google' && (
               <img
                 src={client.companyAvatar}
@@ -183,7 +183,7 @@ const TestimonialComponent = () => {
     <Section>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Left Section - Client Testimonials */}
-        <OutlineBox className="relative border-[#332B2B] lg:col-span-1">
+        <OutlineBox className="relative border-[#332B2B] !p-2 lg:col-span-1">
           <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-[calc(100%-8rem)] w-full bg-linear-to-b from-[#1A1A1A]/0 via-[1A1A1A]/24 to-[#211B1B]"></div>
           {/* Client Profiles */}
           <div className="mb-8 space-y-1">
@@ -206,9 +206,11 @@ const TestimonialComponent = () => {
         </OutlineBox>
 
         {/* Right Section - Cost Savings */}
-        <OutlineBox className="relative overflow-hidden">
+        <OutlineBox className="relative overflow-hidden border-[#332B2B] !p-2">
           {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1F1F1F] to-[#211B1B]"></div>
+          <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-[calc(100%-8rem)] w-full bg-linear-to-b from-[#1A1A1A]/0 via-[1A1A1A]/24 to-[#211B1B]"></div>
+          <div className="pointer-events-none absolute top-0 left-0 -z-10 h-[calc(100%-8rem)] w-full bg-[#1A1A1A]/32"></div>
+          {/* <div className="absolute inset-0 bg-gradient-to-b from-[#1F1F1F] to-[#211B1B]"></div> */}
 
           {/* Content */}
           <div className="relative p-6">
@@ -229,7 +231,7 @@ const TestimonialComponent = () => {
             </div>
 
             {/* Features for right box */}
-            <div className="mt-1 border-t border-[#1F1F1F] pt-6">
+            <div className="mt-1 pt-6">
               {featuresRight.map((feature, index) => (
                 <FeatureBox key={index} feature={feature} />
               ))}

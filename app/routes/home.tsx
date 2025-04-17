@@ -40,7 +40,7 @@ export default function Home() {
       <TalentAccessComponent />
       <div className="my-3"></div>
       <TestimonialComponent />
-      <div className="mt-20">
+      <div className="mt-20 mb-72">
         <ClientTestimonial />
       </div>
       <EcosystemSection />
