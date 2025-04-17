@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Footer from '~/components/Footer';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -12,7 +13,9 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         <main className="flex-grow">{children}</main>
       </div>
 
-      <footer className="border-t border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
+      <Footer />
+
+      {/* <footer className="border-t border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
         <div className="container-wide py-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div>
@@ -127,7 +130,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             <p>© {new Date().getFullYear()} Co-Ventech. All rights reserved.</p>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 };

@@ -45,9 +45,7 @@ export default function Home() {
         <ClientTestimonial />
       </div>
       <EcosystemSection />
-      <div className="mb-12">
-        <CaseStudiesGrid />
-      </div>
+      <CaseStudiesGrid />
     </MainLayout>
   );
 }
