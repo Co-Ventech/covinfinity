@@ -77,7 +77,8 @@ const StepsSection: React.FC = () => {
         ))}
       </div>
 
-      <div className="relative h-[88rem]">
+      {/* <div className="relative h-[88rem]"> */}
+      <div className="relative mb-20 h-[88rem]">
         {/* Card 1 */}
         <motion.div
           className="absolute top-0 right-0 left-0 w-full"
