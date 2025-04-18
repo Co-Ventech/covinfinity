@@ -168,17 +168,19 @@ export default function ServicesSection() {
 
             {/* Service Cards */}
             <div
-              className="w-full rounded-3xl border-[0.1125rem] border-[#272525] bg-[#1A1717]/48 bg-center p-6 lg:bg-cover"
+              className="w-full rounded-3xl border border-[#272525] bg-[#1A1717]/48 bg-center p-6 lg:bg-cover"
               style={{
                 backgroundImage: "url('/service-back.png')",
               }}
             >
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-3">
                 {serviceCards.map((card, index) => (
                   <div
                     key={card.id}
-                    className={`group relative h-[420px] cursor-pointer overflow-hidden rounded-xl transition-all duration-300 ${
-                      activeCard === index ? 'bg-[#1A1A1A]' : 'bg-[#0F0F0F]'
+                    className={`group relative h-[420px] cursor-pointer overflow-hidden rounded-2xl border transition-all duration-300 ${
+                      activeCard === index
+                        ? 'border-[#2E2928] bg-[#2E2929]/48'
+                        : 'border-[#212121] bg-[#0F0F0F]'
                     }`}
                     onClick={() => setActiveCard(index)}
                   >
@@ -195,18 +197,25 @@ export default function ServicesSection() {
                     </div>
 
                     {/* Dark Overlay Gradient */}
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#000000] via-[#000000]/80 to-transparent"></div>
+                    <div
+                      className={`pointer-events-none absolute inset-0 bg-gradient-to-tr from-25% ${activeCard === index ? 'from-[#1C1818] to-[#1C1818]/0' : 'from-[#1A1919] to-[#19191A]/0'}`}
+                    ></div>
 
                     {/* Text Content Section - Bottom */}
                     <div className="absolute right-0 bottom-0 left-0 z-10 flex items-end justify-between p-6">
                       <div>
-                        <p className="mb-2 text-sm text-[#665F5F]">{card.subtitle}</p>
+                        <p className="mb-2 font-medium text-[#665F5F]">{card.subtitle}</p>
                         <h3
-                          className={`mb-1 text-xl font-semibold transition-colors duration-300 ${activeCard === index ? 'text-white' : 'text-[#A3A3A3]'}`}
+                          className={`text-xl font-semibold transition-colors duration-300 ${activeCard === index ? 'text-white' : 'text-[#A3A3A3]'}`}
                         >
                           {card.title}
                         </h3>
-                        <p className="text-sm text-[#665F5F]">{card.description}</p>
+                        {/* <p className="text-sm text-[#665F5F]"> */}
+                        <p
+                          className={`text-xl font-semibold transition-colors duration-300 ${activeCard === index ? 'text-white' : 'text-[#A3A3A3]'}`}
+                        >
+                          {card.description}
+                        </p>
                       </div>
 
                       {/* Plus Button */}
@@ -230,22 +239,21 @@ export default function ServicesSection() {
               </div>
               {/* Developer Section */}
 
-              <div className="mx-auto mt-12 max-w-full rounded-3xl border-[0.1125rem] border-[#1F1F1F] bg-black p-6">
-                <h3 className="mb-2 text-lg font-bold">Hey! Tell us all the things 👋</h3>
-                <p className="mb-4 w-[40rem] text-sm text-gray-400">
+              <div className="bg-[#1A1717]/ 48 mx-auto max-w-full rounded-lg border border-[#2E2928] p-6 backdrop-blur-[3.125rem]">
+                <h3 className="mb-2 text-lg font-semibold">Hey! Tell us all the things 👋</h3>
+                <p className="mb-6 w-[40rem] text-sm text-[#665F5F]">
                   John is a front-end developer skilled in HTML, CSS, JavaScript, React, and Vue.js.
                   He creates clean, highly-maintainable, tested UI layouts, and loves open source.
                 </p>
-                <div className="mb-6 flex gap-3">
-                  <button className="rounded-full border-[0.1125rem] border-[#252122] bg-none px-4 py-1 text-sm">
-                    Frontend Dev
-                  </button>
-                  <button className="rounded-full border-[0.1125rem] border-[#252122] bg-none px-4 py-1 text-sm">
-                    Frontend Dev
-                  </button>
-                  <button className="rounded-full border-[0.1125rem] border-[#252122] bg-none px-4 py-1 text-sm">
-                    Frontend Dev
-                  </button>
+                <div className="mb-10 flex gap-3">
+                  {['Frontend Dev', 'Backend Dev', 'UI/UX Design'].map((label, index) => (
+                    <button
+                      key={index}
+                      className="rounded-full border-[0.1125rem] border-[#252122] bg-none px-6 py-2.5 text-[#A4A4A4]"
+                    >
+                      {label}
+                    </button>
+                  ))}
                 </div>
                 <div className="relative">
                   {/* Display submitted data as a chat message without wrapper div */}
@@ -268,9 +276,9 @@ export default function ServicesSection() {
                     </div>
                   ) : (
                     <form onSubmit={handleFormSubmit}>
-                      <div className="flex items-center rounded-lg bg-[#1A1A1A]/80 px-3 py-2 backdrop-blur-sm">
-                        <div className="flex flex-1 items-center">
-                          <img src="/input-icon.png" alt="Add" className="mr-2 h-5 w-5" />
+                      <div className="flex items-center rounded-lg border border-[#2E2928] bg-[#1A1818] p-1.5">
+                        <div className="flex flex-1 items-center text-sm font-medium text-[#3A3131]">
+                          <img src="/input-icon.png" alt="Add" className="mr-2 h-7 w-8" />
                           <input
                             type={formStages[formStage].field === 'email' ? 'email' : 'text'}
                             value={inputValue}
@@ -294,24 +302,23 @@ export default function ServicesSection() {
           </div>
 
           {/* Clutch Reviews Section */}
-          <OutlineBox>
-            <div className="mx-auto grid h-56 grid-cols-1 gap-6 md:grid-cols-2">
-              <div className="">
-                <img
-                  src="/blue-hunt.png"
-                  alt="blue hunt"
-                  className="h-full w-full rounded-2xl object-cover"
-                />
-              </div>
-              <div className="">
-                <img
-                  src="/red-hunt.png"
-                  alt="red hunt"
-                  className="h-full w-full rounded-2xl object-cover"
-                />
-              </div>
+
+          <div className="flex w-full items-center justify-between gap-4">
+            <div className="h-[16.25rem] rounded-2xl border border-[#2E2928]">
+              <img
+                src="/blue-hunt.png"
+                alt="blue hunt"
+                className="h-full w-full rounded-2xl object-cover"
+              />
             </div>
-          </OutlineBox>
+            <div className="h-[16.25rem] rounded-2xl border border-[#2E2928]">
+              <img
+                src="/red-hunt.png"
+                alt="red hunt"
+                className="h-full w-full rounded-2xl object-cover"
+              />
+            </div>
+          </div>
         </OutlineBox>
       </div>
     </Section>
