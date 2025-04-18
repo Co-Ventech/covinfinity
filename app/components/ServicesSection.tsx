@@ -143,7 +143,6 @@ const ContactForm: FC<{
               onChange={handleInputChange}
               placeholder={formStages[formStage].placeholder}
               className="flex-1 bg-transparent text-[13px] text-white placeholder-[#665F5F] focus:outline-none"
-              autoFocus
             />
           </div>
           <div className="flex items-center space-x-3">
