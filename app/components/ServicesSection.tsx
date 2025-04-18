@@ -5,6 +5,215 @@ import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
 import Heading from './ui/Heading';
 import { ChatMessage } from './CollaborationChatBot';
+import type { FC, ReactNode } from 'react';
+
+// Type definitions
+interface ServiceCard {
+  id: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  image: string;
+}
+
+interface FormStage {
+  field: 'name' | 'email' | 'message';
+  placeholder: string;
+  label: string;
+}
+
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+// Card component
+const ServiceCard: FC<{
+  card: ServiceCard;
+  isActive: boolean;
+  onClick: () => void;
+}> = ({ card, isActive, onClick }) => (
+  <div
+    className={`group relative h-[420px] cursor-pointer overflow-hidden rounded-2xl border transition-all duration-300 ${
+      isActive ? 'border-[#2E2928] bg-[#2E2929]/48' : 'border-[#212121] bg-[#0F0F0F]'
+    }`}
+    onClick={onClick}
+  >
+    {/* Phone Image - Full Height */}
+    <div className="absolute inset-0 left-1/3 h-full w-[60%]">
+      <img
+        src={card.image}
+        alt="phone mockup"
+        className={`h-full w-full object-contain transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-40'}`}
+        style={{
+          objectPosition: 'center 15%',
+        }}
+      />
+    </div>
+
+    {/* Dark Overlay Gradient */}
+    <div
+      className={`pointer-events-none absolute inset-0 bg-gradient-to-tr from-25% ${isActive ? 'from-[#1C1818] to-[#1C1818]/0' : 'from-[#1A1919] to-[#19191A]/0'}`}
+    ></div>
+
+    {/* Text Content Section - Bottom */}
+    <div className="absolute right-0 bottom-0 left-0 z-10 flex items-end justify-between p-6">
+      <div>
+        <p className="mb-2 font-medium text-[#665F5F]">{card.subtitle}</p>
+        <h3
+          className={`text-xl font-semibold transition-colors duration-300 ${isActive ? 'text-white' : 'text-[#A3A3A3]'}`}
+        >
+          {card.title}
+        </h3>
+        <p
+          className={`text-xl font-semibold transition-colors duration-300 ${isActive ? 'text-white' : 'text-[#A3A3A3]'}`}
+        >
+          {card.description}
+        </p>
+      </div>
+
+      {/* Plus Button */}
+      <button
+        className={`flex h-8 w-8 items-center justify-center self-end rounded-full transition-all duration-300 ${
+          isActive ? 'bg-white/20' : 'bg-white/5'
+        }`}
+      >
+        <span className="text-xl text-white">+</span>
+      </button>
+    </div>
+
+    {/* Active Card Highlight Effect */}
+    {isActive && (
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FF6981]/5 to-transparent opacity-50" />
+      </div>
+    )}
+  </div>
+);
+
+// ContactForm component
+const ContactForm: FC<{
+  formStage: number;
+  formStages: FormStage[];
+  formData: FormData;
+  isFormCompleted: boolean;
+  inputValue: string;
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleFormSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  generateMessageTemplate: () => string;
+  getCurrentTime: () => string;
+}> = ({
+  formStage,
+  formStages,
+  formData,
+  isFormCompleted,
+  inputValue,
+  handleInputChange,
+  handleFormSubmit,
+  generateMessageTemplate,
+  getCurrentTime,
+}) => (
+  <div className="relative">
+    {/* Display submitted data as a chat message without wrapper div */}
+    {formData.name && (
+      <ChatMessage
+        sender={formData.name}
+        message={generateMessageTemplate()}
+        time={getCurrentTime()}
+        avatar="/john.png"
+      />
+    )}
+
+    {/* Success message after form completion */}
+    {isFormCompleted ? (
+      <div className="mt-4 rounded-lg bg-[#1A1A1A]/60 p-3 text-left">
+        <p className="text-sm text-[#A3A3A3]">
+          Thanks for reaching out! We've received your information and will be in touch soon.
+        </p>
+      </div>
+    ) : (
+      <form onSubmit={handleFormSubmit}>
+        <div className="flex items-center rounded-lg border border-[#2E2928] bg-[#1A1818] p-1.5">
+          <div className="flex flex-1 items-center text-sm font-medium text-[#3A3131]">
+            <img src="/input-icon.png" alt="Add" className="mr-2 h-7 w-8" />
+            <input
+              type={formStages[formStage].field === 'email' ? 'email' : 'text'}
+              value={inputValue}
+              onChange={handleInputChange}
+              placeholder={formStages[formStage].placeholder}
+              className="flex-1 bg-transparent text-[13px] text-white placeholder-[#665F5F] focus:outline-none"
+              autoFocus
+            />
+          </div>
+          <div className="flex items-center space-x-3">
+            <button type="submit">
+              <img src="/pen-icon.png" alt="Submit" className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+      </form>
+    )}
+  </div>
+);
+
+// SkillButton component
+const SkillButton: FC<{ label: string }> = ({ label }) => (
+  <button className="rounded-full border-[0.1125rem] border-[#252122] bg-none px-6 py-2.5 text-[#A4A4A4]">
+    {label}
+  </button>
+);
+
+// ImageBox component
+const ImageBox: FC<{ src: string; alt: string }> = ({ src, alt }) => (
+  <div className="h-[16.25rem] rounded-2xl border border-[#2E2928]">
+    <img src={src} alt={alt} className="h-full w-full rounded-2xl object-cover" />
+  </div>
+);
+
+// Constants
+const SKILLS = ['Frontend Dev', 'Backend Dev', 'UI/UX Design'];
+const SERVICE_CARDS: ServiceCard[] = [
+  {
+    id: 0,
+    title: 'Quality Assurance',
+    subtitle: 'Something qa line goes here',
+    description: 'Title goes here',
+    image: '/phone-mockup.png',
+  },
+  {
+    id: 1,
+    title: 'Quality Assurance',
+    subtitle: 'Something qa line goes here',
+    description: 'Title goes here',
+    image: '/phone-mockup.png',
+  },
+  {
+    id: 2,
+    title: 'Quality Assurance',
+    subtitle: 'Something qa line goes here',
+    description: 'Title goes here',
+    image: '/phone-mockup.png',
+  },
+];
+
+const FORM_STAGES: FormStage[] = [
+  {
+    field: 'name',
+    placeholder: "Hey! What's your name?",
+    label: 'Name',
+  },
+  {
+    field: 'message',
+    placeholder: 'Nice to meet you! What can we help you with today?',
+    label: 'Message',
+  },
+  {
+    field: 'email',
+    placeholder: "Great! What's your email address so we can reach out?",
+    label: 'Email',
+  },
+];
 
 export default function ServicesSection() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -13,7 +222,7 @@ export default function ServicesSection() {
   // Contact form state
   const [formStage, setFormStage] = useState(0);
   const [inputValue, setInputValue] = useState('');
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     message: '',
@@ -21,25 +230,6 @@ export default function ServicesSection() {
 
   // Track if form is completed
   const [isFormCompleted, setIsFormCompleted] = useState(false);
-
-  // Form stages configuration
-  const formStages = [
-    {
-      field: 'name',
-      placeholder: "Hey! What's your name?",
-      label: 'Name',
-    },
-    {
-      field: 'message',
-      placeholder: 'Nice to meet you! What can we help you with today?',
-      label: 'Message',
-    },
-    {
-      field: 'email',
-      placeholder: "Great! What's your email address so we can reach out?",
-      label: 'Email',
-    },
-  ];
 
   // Generate a professional message template from the form data
   const generateMessageTemplate = () => {
@@ -68,14 +258,14 @@ export default function ServicesSection() {
     e.preventDefault();
 
     // Update form data with current input
-    const currentField = formStages[formStage].field;
+    const currentField = FORM_STAGES[formStage].field;
     setFormData({
       ...formData,
       [currentField]: inputValue,
     });
 
     // Move to next stage or complete form if done
-    if (formStage < formStages.length - 1) {
+    if (formStage < FORM_STAGES.length - 1) {
       setFormStage(formStage + 1);
     } else {
       // Mark form as completed
@@ -93,30 +283,6 @@ export default function ServicesSection() {
     const now = new Date();
     return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
-
-  const serviceCards = [
-    {
-      id: 0,
-      title: 'Quality Assurance',
-      subtitle: 'Something qa line goes here',
-      description: 'Title goes here',
-      image: '/phone-mockup.png',
-    },
-    {
-      id: 1,
-      title: 'Quality Assurance',
-      subtitle: 'Something qa line goes here',
-      description: 'Title goes here',
-      image: '/phone-mockup.png',
-    },
-    {
-      id: 2,
-      title: 'Quality Assurance',
-      subtitle: 'Something qa line goes here',
-      description: 'Title goes here',
-      image: '/phone-mockup.png',
-    },
-  ];
 
   return (
     <Section>
@@ -174,67 +340,13 @@ export default function ServicesSection() {
               }}
             >
               <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-3">
-                {serviceCards.map((card, index) => (
-                  <div
+                {SERVICE_CARDS.map((card, index) => (
+                  <ServiceCard
                     key={card.id}
-                    className={`group relative h-[420px] cursor-pointer overflow-hidden rounded-2xl border transition-all duration-300 ${
-                      activeCard === index
-                        ? 'border-[#2E2928] bg-[#2E2929]/48'
-                        : 'border-[#212121] bg-[#0F0F0F]'
-                    }`}
+                    card={card}
+                    isActive={activeCard === index}
                     onClick={() => setActiveCard(index)}
-                  >
-                    {/* Phone Image - Full Height */}
-                    <div className="absolute inset-0 left-1/3 h-full w-[60%]">
-                      <img
-                        src={card.image}
-                        alt="phone mockup"
-                        className={`h-full w-full object-contain transition-opacity duration-300 ${activeCard === index ? 'opacity-100' : 'opacity-40'}`}
-                        style={{
-                          objectPosition: 'center 15%',
-                        }}
-                      />
-                    </div>
-
-                    {/* Dark Overlay Gradient */}
-                    <div
-                      className={`pointer-events-none absolute inset-0 bg-gradient-to-tr from-25% ${activeCard === index ? 'from-[#1C1818] to-[#1C1818]/0' : 'from-[#1A1919] to-[#19191A]/0'}`}
-                    ></div>
-
-                    {/* Text Content Section - Bottom */}
-                    <div className="absolute right-0 bottom-0 left-0 z-10 flex items-end justify-between p-6">
-                      <div>
-                        <p className="mb-2 font-medium text-[#665F5F]">{card.subtitle}</p>
-                        <h3
-                          className={`text-xl font-semibold transition-colors duration-300 ${activeCard === index ? 'text-white' : 'text-[#A3A3A3]'}`}
-                        >
-                          {card.title}
-                        </h3>
-                        {/* <p className="text-sm text-[#665F5F]"> */}
-                        <p
-                          className={`text-xl font-semibold transition-colors duration-300 ${activeCard === index ? 'text-white' : 'text-[#A3A3A3]'}`}
-                        >
-                          {card.description}
-                        </p>
-                      </div>
-
-                      {/* Plus Button */}
-                      <button
-                        className={`flex h-8 w-8 items-center justify-center self-end rounded-full transition-all duration-300 ${
-                          activeCard === index ? 'bg-white/20' : 'bg-white/5'
-                        }`}
-                      >
-                        <span className="text-xl text-white">+</span>
-                      </button>
-                    </div>
-
-                    {/* Active Card Highlight Effect */}
-                    {activeCard === index && (
-                      <div className="pointer-events-none absolute inset-0">
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#FF6981]/5 to-transparent opacity-50" />
-                      </div>
-                    )}
-                  </div>
+                  />
                 ))}
               </div>
               {/* Developer Section */}
@@ -246,78 +358,29 @@ export default function ServicesSection() {
                   He creates clean, highly-maintainable, tested UI layouts, and loves open source.
                 </p>
                 <div className="mb-10 flex gap-3">
-                  {['Frontend Dev', 'Backend Dev', 'UI/UX Design'].map((label, index) => (
-                    <button
-                      key={index}
-                      className="rounded-full border-[0.1125rem] border-[#252122] bg-none px-6 py-2.5 text-[#A4A4A4]"
-                    >
-                      {label}
-                    </button>
+                  {SKILLS.map((label, index) => (
+                    <SkillButton key={index} label={label} />
                   ))}
                 </div>
-                <div className="relative">
-                  {/* Display submitted data as a chat message without wrapper div */}
-                  {formData.name && (
-                    <ChatMessage
-                      sender={formData.name}
-                      message={generateMessageTemplate()}
-                      time={getCurrentTime()}
-                      avatar="/john.png"
-                    />
-                  )}
-
-                  {/* Success message after form completion */}
-                  {isFormCompleted ? (
-                    <div className="mt-4 rounded-lg bg-[#1A1A1A]/60 p-3 text-left">
-                      <p className="text-sm text-[#A3A3A3]">
-                        Thanks for reaching out! We've received your information and will be in
-                        touch soon.
-                      </p>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleFormSubmit}>
-                      <div className="flex items-center rounded-lg border border-[#2E2928] bg-[#1A1818] p-1.5">
-                        <div className="flex flex-1 items-center text-sm font-medium text-[#3A3131]">
-                          <img src="/input-icon.png" alt="Add" className="mr-2 h-7 w-8" />
-                          <input
-                            type={formStages[formStage].field === 'email' ? 'email' : 'text'}
-                            value={inputValue}
-                            onChange={handleInputChange}
-                            placeholder={formStages[formStage].placeholder}
-                            className="flex-1 bg-transparent text-[13px] text-white placeholder-[#665F5F] focus:outline-none"
-                            autoFocus
-                          />
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <button type="submit">
-                            <img src="/pen-icon.png" alt="Submit" className="h-5 w-5" />
-                          </button>
-                        </div>
-                      </div>
-                    </form>
-                  )}
-                </div>
+                <ContactForm
+                  formStage={formStage}
+                  formStages={FORM_STAGES}
+                  formData={formData}
+                  isFormCompleted={isFormCompleted}
+                  inputValue={inputValue}
+                  handleInputChange={handleInputChange}
+                  handleFormSubmit={handleFormSubmit}
+                  generateMessageTemplate={generateMessageTemplate}
+                  getCurrentTime={getCurrentTime}
+                />
               </div>
             </div>
           </div>
 
           {/* Clutch Reviews Section */}
-
           <div className="flex w-full items-center justify-between gap-4">
-            <div className="h-[16.25rem] rounded-2xl border border-[#2E2928]">
-              <img
-                src="/blue-hunt.png"
-                alt="blue hunt"
-                className="h-full w-full rounded-2xl object-cover"
-              />
-            </div>
-            <div className="h-[16.25rem] rounded-2xl border border-[#2E2928]">
-              <img
-                src="/red-hunt.png"
-                alt="red hunt"
-                className="h-full w-full rounded-2xl object-cover"
-              />
-            </div>
+            <ImageBox src="/blue-hunt.png" alt="blue hunt" />
+            <ImageBox src="/red-hunt.png" alt="red hunt" />
           </div>
         </OutlineBox>
       </div>
