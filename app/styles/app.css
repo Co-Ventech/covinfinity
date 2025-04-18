@@ -196,7 +196,6 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  box-shadow: 16px 14px 20px rgba(0, 0, 0, 0.3);
   padding: 1px; /* Reduced further for an even thinner border */
 }
 
@@ -322,3 +321,5 @@
     transform: rotateY(180deg);
   }
 }
+
+
