@@ -293,7 +293,7 @@ export default function ServicesSection() {
           </p>
           <Heading
             blockText="something goes here"
-            className="!mb-16 !pb-1 !font-sans !font-semibold"
+            className="!mb-16 !pb-2 !font-sans !font-semibold"
           >
             Services digital solution
           </Heading>
