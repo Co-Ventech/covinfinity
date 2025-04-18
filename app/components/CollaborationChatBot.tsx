@@ -2,7 +2,7 @@ import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
 import Heading from './ui/Heading';
 
-const ChatMessage = ({
+export const ChatMessage = ({
   time,
   sender,
   message,

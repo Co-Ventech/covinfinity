@@ -4,9 +4,95 @@ import { useState } from 'react';
 import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
 import Heading from './ui/Heading';
+import { ChatMessage } from './CollaborationChatBot';
+
 export default function ServicesSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [activeCard, setActiveCard] = useState(0);
+
+  // Contact form state
+  const [formStage, setFormStage] = useState(0);
+  const [inputValue, setInputValue] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  // Track if form is completed
+  const [isFormCompleted, setIsFormCompleted] = useState(false);
+
+  // Form stages configuration
+  const formStages = [
+    {
+      field: 'name',
+      placeholder: "Hey! What's your name?",
+      label: 'Name',
+    },
+    {
+      field: 'message',
+      placeholder: 'Nice to meet you! What can we help you with today?',
+      label: 'Message',
+    },
+    {
+      field: 'email',
+      placeholder: "Great! What's your email address so we can reach out?",
+      label: 'Email',
+    },
+  ];
+
+  // Generate a professional message template from the form data
+  const generateMessageTemplate = () => {
+    if (!formData.name) return '';
+
+    let template = `Hi there! I'm ${formData.name}.`;
+
+    if (formData.message) {
+      template += ` I'm interested in discussing ${formData.message}.`;
+    }
+
+    if (formData.email) {
+      template += ` You can reach me at ${formData.email}.`;
+    }
+
+    return template;
+  };
+
+  // Handle input change
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
+  // Handle form submission for current stage
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // Update form data with current input
+    const currentField = formStages[formStage].field;
+    setFormData({
+      ...formData,
+      [currentField]: inputValue,
+    });
+
+    // Move to next stage or complete form if done
+    if (formStage < formStages.length - 1) {
+      setFormStage(formStage + 1);
+    } else {
+      // Mark form as completed
+      setIsFormCompleted(true);
+      // Form complete logic would go here (e.g., API submission)
+      console.log('Form submitted:', { ...formData, [currentField]: inputValue });
+    }
+
+    // Clear input for next field
+    setInputValue('');
+  };
+
+  // Get current time
+  const getCurrentTime = () => {
+    const now = new Date();
+    return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
 
   const serviceCards = [
     {
@@ -46,12 +132,6 @@ export default function ServicesSection() {
           >
             Services digital solution
           </Heading>
-          {/* <h1 className="mb-4 text-5xl leading-[1.1] font-semibold tracking-tight">
-            Services digital solution
-          </h1>
-          <h1 className="mb-4 text-5xl leading-[1.1] font-semibold tracking-tight">
-            something goes here
-          </h1> */}
         </div>
 
         {/* Main Content Wrapped in OutlineBox */}
@@ -168,19 +248,46 @@ export default function ServicesSection() {
                   </button>
                 </div>
                 <div className="relative">
-                  <div className="flex items-center rounded-lg bg-[#1A1A1A]/80 px-3 py-2 backdrop-blur-sm">
-                    <div className="flex flex-1 items-center">
-                      <img src="/input-icon.png" alt="Add" className="mr-2 h-5 w-5" />
-                      <input
-                        type="text"
-                        placeholder="I am interested in"
-                        className="flex-1 bg-transparent text-[13px] text-white placeholder-[#665F5F] focus:outline-none"
-                      />
+                  {/* Display submitted data as a chat message without wrapper div */}
+                  {formData.name && (
+                    <ChatMessage
+                      sender={formData.name}
+                      message={generateMessageTemplate()}
+                      time={getCurrentTime()}
+                      avatar="/john.png"
+                    />
+                  )}
+
+                  {/* Success message after form completion */}
+                  {isFormCompleted ? (
+                    <div className="mt-4 rounded-lg bg-[#1A1A1A]/60 p-3 text-left">
+                      <p className="text-sm text-[#A3A3A3]">
+                        Thanks for reaching out! We've received your information and will be in
+                        touch soon.
+                      </p>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <img src="/pen-icon.png" alt="Thumb" className="h-5 w-5" />
-                    </div>
-                  </div>
+                  ) : (
+                    <form onSubmit={handleFormSubmit}>
+                      <div className="flex items-center rounded-lg bg-[#1A1A1A]/80 px-3 py-2 backdrop-blur-sm">
+                        <div className="flex flex-1 items-center">
+                          <img src="/input-icon.png" alt="Add" className="mr-2 h-5 w-5" />
+                          <input
+                            type={formStages[formStage].field === 'email' ? 'email' : 'text'}
+                            value={inputValue}
+                            onChange={handleInputChange}
+                            placeholder={formStages[formStage].placeholder}
+                            className="flex-1 bg-transparent text-[13px] text-white placeholder-[#665F5F] focus:outline-none"
+                            autoFocus
+                          />
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <button type="submit">
+                            <img src="/pen-icon.png" alt="Submit" className="h-5 w-5" />
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  )}
                 </div>
               </div>
             </div>
