@@ -94,6 +94,7 @@ const CollaborationChatBot = () => {
       {/* Main Content Grid */}
       <div className="relative grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div className="absolute -top-16 -right-12 z-0 h-28 w-[55rem] rounded-xl border-y border-r border-gray-700 opacity-20" />
+        
         {/* Chat Section - Takes up 2 columns */}
         <OutlineBox animated className="lg:col-span-2">
           {/* Chat Header */}
@@ -112,7 +113,6 @@ const CollaborationChatBot = () => {
           {/* Chat Messages and Input Container */}
           <OutlineBox className="mt-2 mb-4 bg-[rgba(26,23,23,0.48)]">
             {/* Messages */}
-
             <div className="max-w-[35rem] space-y-0 px-4 pt-2">
               <ChatMessage
                 time="2:14 PM"
