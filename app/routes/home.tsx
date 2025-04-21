@@ -12,9 +12,10 @@ import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
 
+
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: 'Co-Ventech - Innovative Technology Solutions' },
+    { title: 'Covinfinity | Custom Software Development Company in USA' },
     {
       name: 'description',
       content: 'Empowering businesses with cutting-edge technology solutions',
@@ -33,7 +34,7 @@ export default function Home() {
       <div className="mt-14">
         <CompanySliderSection />
       </div>
-      <div className="mb-20">
+      <div className="mb-20 ">
         <CollaborationChatBot />
       </div>
       <div className="mb-30">

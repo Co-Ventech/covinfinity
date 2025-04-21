@@ -2,6 +2,7 @@ import { useState } from 'react';
 import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
 import Heading from './ui/Heading';
+import GradientBorderButton from './ui/GradientBorderButton';
 
 // Developer type representing a developer profile
 interface Developer {
@@ -28,21 +29,11 @@ const DeveloperProfile = ({
   developer: Developer;
   detailed?: boolean;
 }) => (
-  <div className="flex items-start space-x-3 border-b border-[#1F1F1F] py-3 last:border-b-0">
+  <div className="flex items-start space-x-3 border-b border-[#1F1F1F] pt-3 last:border-b-0">
     <img src={developer.avatar} alt={developer.name} className="h-5 w-5 rounded-full" />
     <div className="flex-1">
       <div className="flex items-center justify-between">
         <span className="text-sm text-white">{developer.name}</span>
-        {detailed && (
-          <div className="rounded-md bg-gradient-to-r from-[#FF7C91] via-[#BB97F2] to-[#332B2B] p-[1px]">
-            <button className="rounded-[3px] bg-[#1A1717] px-3 py-1 text-xs">
-              <span className="bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent">
-                {' '}
-                Set Interview
-              </span>
-            </button>
-          </div>
-        )}
       </div>
       {detailed && developer.description && (
         <p className="mt-1 text-xs text-[#A3A3A3]">{developer.description}</p>
@@ -52,6 +43,15 @@ const DeveloperProfile = ({
           <TechBadge key={index} label={skill} />
         ))}
       </div>
+      {detailed && (
+        <div className=" flex justify-end">
+          <GradientBorderButton>
+            <button>
+              <span>Set Interview</span>
+            </button>
+          </GradientBorderButton>
+        </div>
+      )}
     </div>
   </div>
 );
