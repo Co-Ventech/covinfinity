@@ -1,6 +1,7 @@
 import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
 import Heading from './ui/Heading';
+import SectionBgLines from './SectionBGLines';
 
 export const ChatMessage = ({
   time,
@@ -84,9 +85,6 @@ const OrbitalAnimation = () => (
 const CollaborationChatBot = () => {
   return (
     <Section divClass="relative pt-60">
-      {/* Lines */}
-      <div className="!pointer-events-none absolute top-10 left-1/2 mx-auto -ml-1.5 size-full w-[calc(100%+8rem)] -translate-x-1/2 bg-[url('/chatbot.png')] bg-contain bg-top-left bg-no-repeat"></div>
-
       <div className="mb-16">
         <Heading className="pb-1">Collaboration and shipping software faster</Heading>
         <p className="mt-4 font-medium text-[#665F5F]">
@@ -182,6 +180,9 @@ const CollaborationChatBot = () => {
           <img src="/orbit.png" alt="Add" className="h-[26.6rem] w-[30rem]" />
         </OutlineBox>
       </div>
+
+      {/* Lines */}
+      <SectionBgLines imageUrl="/section-lines/chatbot.png" className="-ml-1.5" />
     </Section>
   );
 };
