@@ -13,9 +13,10 @@ import ServicesSection from '~/components/ServicesSection';
 import CaseStudiesGrid from '~/components/CaseStudiesGrid';
 import CollaborationSection from '~/components/sections/CollaborationSection';
 
+
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: 'Co-Ventech - Innovative Technology Solutions' },
+    { title: 'Covinfinity | Custom Software Development Company in USA' },
     {
       name: 'description',
       content: 'Empowering businesses with cutting-edge technology solutions',
@@ -34,7 +35,7 @@ export default function Home() {
       <div className="mt-14 mb-60">
         <CompanySliderSection />
       </div>
-      <div className="mb-20">
+      <div className="mb-20 ">
         <CollaborationChatBot />
       </div>
       <div className="mb-30">
