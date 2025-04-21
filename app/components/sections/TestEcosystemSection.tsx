@@ -30,6 +30,7 @@ const imageVariants = {
     zIndex: 30,
     opacity: 1,
     filter: 'blur(0px)',
+    backdropFilter: 'blur(30px)',
     transition: {
       type: 'spring',
       stiffness: 300,
@@ -44,6 +45,7 @@ const imageVariants = {
     zIndex: 20,
     opacity: 0.9,
     filter: 'blur(0px)',
+    backdropFilter: 'blur(30px)',
     transition: {
       type: 'spring',
       stiffness: 250,
@@ -58,6 +60,7 @@ const imageVariants = {
     zIndex: 10,
     opacity: 0.8,
     filter: 'blur(0px)',
+    backdropFilter: 'blur(30px)',
     transition: {
       type: 'spring',
       stiffness: 200,
@@ -123,14 +126,15 @@ const StepsSection: React.FC = () => {
 
   // Improved card styling with consistent blur effect
   const getCardStyle = (cardPosition: 'front' | 'middle' | 'back') => {
-    const baseStyle = 'relative mx-auto rounded-t-2xl rounded-b-4xl p-14';
+    const baseStyle =
+      'relative mx-auto rounded-t-2xl rounded-b-4xl p-14 rounded-t-2xl rounded-b-[4rem] border border-[#332B2B] !overflow-hidden';
 
     if (cardPosition === 'front') {
-      return `${baseStyle} bg-[rgba(26,23,23,0.85)]`;
+      return `${baseStyle} bg-[#1A1717]/48`;
     } else if (cardPosition === 'middle') {
-      return `${baseStyle} bg-[rgba(15,14,14,0.9)]`;
+      return `${baseStyle} bg-[#141414]`;
     } else {
-      return `${baseStyle} bg-[rgba(10,9,9,0.95)]`;
+      return `${baseStyle} bg-[#121212]`;
     }
   };
 
@@ -156,7 +160,7 @@ const StepsSection: React.FC = () => {
       <div className="relative mb-48 h-[75rem]">
         {/* Backdrop blur effect that follows the active card */}
         <motion.div
-          className="absolute inset-0 backdrop-blur-md"
+          className="absolute inset-0 rounded-t-2xl rounded-b-[4rem] backdrop-blur-md"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -165,7 +169,7 @@ const StepsSection: React.FC = () => {
 
         {/* Card 1 */}
         <motion.div
-          className="absolute top-0 right-0 left-0 w-full"
+          className="absolute top-0 right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem]"
           variants={imageVariants}
           initial="back"
           animate={getCardPosition(1)}
@@ -192,7 +196,7 @@ const StepsSection: React.FC = () => {
 
         {/* Card 2 */}
         <motion.div
-          className="absolute top-0 right-0 left-0 w-full"
+          className="absolute top-0 right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem]"
           variants={imageVariants}
           initial="middle"
           animate={getCardPosition(2)}
@@ -217,7 +221,7 @@ const StepsSection: React.FC = () => {
 
         {/* Card 3 */}
         <motion.div
-          className="absolute top-0 right-0 left-0 w-full"
+          className="absolute top-0 right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem]"
           variants={imageVariants}
           initial="front"
           animate={getCardPosition(3)}
