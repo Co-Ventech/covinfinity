@@ -51,6 +51,7 @@ export default function Home() {
         <ServicesSection />
       </div>
       <CaseStudiesGrid />
+      <div className="absolute bottom-0 left-1/2 -z-[99] size-[200rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-[#252528] via-[#F2B397]/40 to-[#46455E] opacity-5 blur-[400px]"></div>
     </MainLayout>
   );
 }
