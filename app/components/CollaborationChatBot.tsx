@@ -83,18 +83,20 @@ const OrbitalAnimation = () => (
 
 const CollaborationChatBot = () => {
   return (
-    <Section>
+    <Section divClass="relative pt-60">
+      {/* Lines */}
+      <div className="!pointer-events-none absolute top-10 left-1/2 mx-auto -ml-1.5 size-full w-[calc(100%+8rem)] -translate-x-1/2 bg-[url('/chatbot.png')] bg-contain bg-top-left bg-no-repeat"></div>
+
       <div className="mb-16">
         <Heading className="pb-1">Collaboration and shipping software faster</Heading>
         <p className="mt-4 font-medium text-[#665F5F]">
           The most complete experience for businesses & individual clients
         </p>
       </div>
-
       {/* Main Content Grid */}
       <div className="relative grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <div className="absolute -top-16 -right-12 z-0 h-28 w-[55rem] rounded-xl border-y border-r border-gray-700 opacity-20" />
-        
+        {/* <div className="absolute -top-16 -right-12 z-0 h-28 w-[55rem] rounded-xl border-y border-r border-gray-700 opacity-20" /> */}
+
         {/* Chat Section - Takes up 2 columns */}
         <OutlineBox animated className="lg:col-span-2">
           {/* Chat Header */}

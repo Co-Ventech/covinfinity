@@ -30,7 +30,7 @@ export default function Home() {
         <Navbar />
         <Hero />
       </div>
-      <div className="mt-14 mb-60">
+      <div className="mt-14">
         <CompanySliderSection />
       </div>
       <div className="mb-20">
