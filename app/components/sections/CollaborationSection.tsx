@@ -2,7 +2,7 @@ import React from 'react';
 import CrownIcon from '../svgs/CrownIcon';
 import CollaborationCard from '../ui/CollaborationCard';
 import Section from '../ui/Section';
-import SectionBgLines from '../SectionBGLines';
+import SectionBgLines from '../SectionBgLines';
 
 // Collaboration items data
 const collabItems = Array(6).fill({
