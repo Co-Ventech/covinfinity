@@ -1,8 +1,8 @@
 import React from 'react';
+import SectionBgLines from '../SectionBgLines';
 import CrownIcon from '../svgs/CrownIcon';
 import CollaborationCard from '../ui/CollaborationCard';
 import Section from '../ui/Section';
-import SectionBgLines from '../SectionBgLines';
 
 // Collaboration items data
 const collabItems = Array(6).fill({
@@ -29,9 +29,9 @@ const CollaborationSection: React.FC = () => {
         {/* Lines */}
         <SectionBgLines
           imageUrl="/section-lines/collaborate-lines.png"
-          className="!-top-20 !w-[calc(100%+3.5rem)] bg-contain bg-no-repeat"
-          // lg:-top-20 lg:bg-[length:100%_100%]
+          className="!-top-20 !w-[calc(100%+3.5rem)] bg-[length:100%_100%] bg-no-repeat"
         />
+
         <div className="relative z-10 flex flex-wrap justify-between gap-y-10 px-10">
           {collabItems.map((item, index) => (
             <div

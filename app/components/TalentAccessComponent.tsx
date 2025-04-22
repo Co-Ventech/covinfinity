@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import GradientBorderButton from './ui/GradientBorderButton';
+import Heading from './ui/Heading';
 import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
-import Heading from './ui/Heading';
-import GradientBorderButton from './ui/GradientBorderButton';
 
 // Developer type representing a developer profile
 interface Developer {
@@ -44,7 +44,7 @@ const DeveloperProfile = ({
         ))}
       </div>
       {detailed && (
-        <div className=" flex justify-end">
+        <div className="flex justify-end">
           <GradientBorderButton>
             <button>
               <span>Set Interview</span>

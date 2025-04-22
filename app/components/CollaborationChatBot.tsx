@@ -1,7 +1,7 @@
+import SectionBgLines from './SectionBgLines';
+import Heading from './ui/Heading';
 import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
-import Heading from './ui/Heading';
-import SectionBgLines from './SectionBgLines';
 
 export const ChatMessage = ({
   time,

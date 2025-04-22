@@ -36,23 +36,23 @@ export default function Home() {
       <div className="mb-20">
         <CollaborationChatBot />
       </div>
-      <div className="mb-30">
+      <div className="">
         <CollaborationSection />
       </div>
       <TalentAccessComponent />
       {/* comment testimoniasl */}
-      {/* <div className="my-3"></div>
-      <TestimonialComponent /> */}
-      <div className="mt-20 mb-72">
+      <div className="my-3"></div>
+      <TestimonialComponent />
+      {/* <div className="mt-20 mb-72">
         <ClientTestimonial />
-      </div>
+      </div> */}
       {/* <EcosystemSection /> */}
       <TestEcosystemSection />
       <div className="mb-32">
         <ServicesSection />
       </div>
       <CaseStudiesGrid />
-      <div className="absolute bottom-0 left-1/2 -z-[99] size-[200rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-[#252528] via-[#F2B397]/40 to-[#46455E] opacity-5 blur-[400px]"></div>
+      <div className="absolute bottom-0 left-1/2 -z-[99] size-[200rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-[#252528] via-[#F2B397]/40 to-[#46455E] opacity-10 blur-[400px]"></div>
     </MainLayout>
   );
 }
