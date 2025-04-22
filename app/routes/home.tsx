@@ -12,7 +12,6 @@ import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
 
-
 export function meta({}: Route.MetaArgs) {
   return [
     { title: 'Covinfinity | Custom Software Development Company in USA' },
@@ -34,15 +33,16 @@ export default function Home() {
       <div className="mt-14">
         <CompanySliderSection />
       </div>
-      <div className="mb-20 ">
+      <div className="mb-20">
         <CollaborationChatBot />
       </div>
       <div className="mb-30">
         <CollaborationSection />
       </div>
       <TalentAccessComponent />
-      <div className="my-3"></div>
-      <TestimonialComponent />
+      {/* comment testimoniasl */}
+      {/* <div className="my-3"></div>
+      <TestimonialComponent /> */}
       <div className="mt-20 mb-72">
         <ClientTestimonial />
       </div>

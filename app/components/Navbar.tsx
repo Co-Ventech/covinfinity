@@ -95,7 +95,7 @@ const NavItem = ({
 }) => {
   return (
     <motion.div
-      className="relative flex items-center justify-center gap-2 rounded-[0.625rem] px-3 py-2 text-base font-medium text-white"
+      className="relative flex items-center justify-center gap-2 rounded-[0.625rem] px-3 py-2 font-serif text-base font-medium text-white"
       initial="initial"
       whileHover="hover"
       variants={navItemVariants}
@@ -103,7 +103,7 @@ const NavItem = ({
       {icon && !hideIcon && <motion.div variants={iconVariants}>{icon}</motion.div>}
 
       {hasDropdown ? (
-        <button onClick={onClick} className="flex items-center">
+        <button onClick={onClick} className="flex items-center font-serif">
           {label}
           <motion.svg
             width="10"
@@ -134,7 +134,7 @@ const NavItem = ({
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="absolute top-full left-0 z-50 mt-2 w-40 overflow-hidden rounded-lg bg-[#1A1A1A] text-white shadow-lg backdrop-blur-lg"
+              className="absolute top-full left-0 z-50 mt-2 w-40 overflow-hidden rounded-lg bg-[#1A1A1A]/50 text-white shadow-lg backdrop-blur-lg"
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -184,7 +184,7 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-between p-8">
-      <div className="flex space-x-19 rounded-[0.625rem] bg-[#1A1A1A] p-3.5 text-white">
+      <div className="flex space-x-19 rounded-[0.625rem] bg-[#1A1A1A] px-3.5 py-2 text-white">
         <motion.div
           className="logo-navbar flex items-center justify-center"
           whileHover={{ scale: 1.05 }}
