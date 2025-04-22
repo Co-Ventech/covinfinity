@@ -177,7 +177,7 @@ const CollaborationChatBot = () => {
               From deployments to tasks, work with your team every step of the way.
             </p>
           </div>
-          <img src="/orbit.png" alt="Add" className="h-[26.6rem] w-[30rem]" />
+          <img src="/orbit.png" alt="Add" className="h-[26.6rem] w-full" />
         </OutlineBox>
       </div>
     </Section>

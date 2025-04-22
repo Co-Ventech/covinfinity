@@ -203,7 +203,7 @@ const TalentAccessComponent = () => {
               <img
                 src="/world.png"
                 alt="Global Talent"
-                className="h-[29.8rem] w-full object-contain"
+                className="h-[29.8rem] w-full object-cover"
               />
             </div>
           </OutlineBox>
