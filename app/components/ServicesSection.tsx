@@ -6,6 +6,7 @@ import Section from './ui/Section';
 import Heading from './ui/Heading';
 import { ChatMessage } from './CollaborationChatBot';
 import type { FC, ReactNode } from 'react';
+import BgImage from './BgImage';
 
 // Type definitions
 interface ServiceCard {
@@ -284,7 +285,11 @@ export default function ServicesSection() {
   };
 
   return (
-    <Section>
+    <Section divClass="relative pt-[10rem]" className="-mt-4">
+      <BgImage
+        src="section-lines/services-section-lines.png"
+        className="inset-0 left-1/2 !size-full !w-[calc(100%+10rem)] -translate-x-1/2 !bg-contain"
+      />
       <div className="text-white">
         {/* Header Section */}
         <div className="mx-auto mb-16 max-w-4xl text-center">

@@ -157,7 +157,7 @@ const StepsSection: React.FC = () => {
         ))}
       </div>
 
-      <div className="relative mb-48 h-[75rem]">
+      <div className="relative h-[75rem]">
         {/* Backdrop blur effect that follows the active card */}
         <motion.div
           className="absolute inset-0 rounded-t-2xl rounded-b-[4rem] backdrop-blur-md"

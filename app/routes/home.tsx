@@ -11,6 +11,7 @@ import TestimonialComponent from '~/components/TestimonialComponent';
 import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
+import BgImage from '~/components/BgImage';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -47,6 +48,7 @@ export default function Home() {
         <ClientTestimonial />
       </div> */}
       {/* <EcosystemSection /> */}
+      <div className="mt-25"></div>
       <TestEcosystemSection />
       <div className="mb-32">
         <ServicesSection />
