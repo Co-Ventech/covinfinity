@@ -12,6 +12,7 @@ import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
 import BgImage from '~/components/BgImage';
+import BgGlow from '~/components/BgGlow';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -54,7 +55,20 @@ export default function Home() {
         <ServicesSection />
       </div>
       <CaseStudiesGrid />
-      <div className="absolute bottom-0 left-1/2 -z-[99] size-[200rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-[#252528] via-[#F2B397]/40 to-[#46455E] opacity-10 blur-[400px]"></div>
+
+      {/* BG GLOW */}
+      {Array.from({ length: 3 }).map((_, i) => (
+        <BgGlow
+          key={i}
+          className={
+            i === 0
+              ? '!top-40 !left-[unset] !translate-x-[unset]'
+              : i === 1
+                ? '!top-1/2 -translate-y-1/2'
+                : '!bottom-0'
+          }
+        />
+      ))}
     </MainLayout>
   );
 }
