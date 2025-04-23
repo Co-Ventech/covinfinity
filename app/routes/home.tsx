@@ -1,18 +1,16 @@
+import BgGlow from '~/components/BgGlow';
 import CaseStudiesGrid from '~/components/CaseStudiesGrid';
-import ClientTestimonial from '~/components/ClientTestimonial';
 import CollaborationChatBot from '~/components/CollaborationChatBot';
 import Navbar from '~/components/Navbar';
 import CollaborationSection from '~/components/sections/CollaborationSection';
 import CompanySliderSection from '~/components/sections/CompanySliderSection';
-import TestEcosystemSection from '~/components/sections/TestEcosystemSection';
+import EcosystemSection from '~/components/sections/EcosystemSection';
 import ServicesSection from '~/components/ServicesSection';
 import TalentAccessComponent from '~/components/TalentAccessComponent';
 import TestimonialComponent from '~/components/TestimonialComponent';
 import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
-import BgImage from '~/components/BgImage';
-import BgGlow from '~/components/BgGlow';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -45,7 +43,7 @@ export default function Home() {
       <div className="my-3"></div>
       <TestimonialComponent />
       <div className="mt-25"></div>
-      <TestEcosystemSection />
+      <EcosystemSection />
       <div className="mb-32">
         <ServicesSection />
       </div>
