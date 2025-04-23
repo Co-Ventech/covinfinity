@@ -176,6 +176,12 @@
     animation: sliderLeft 30s linear infinite;
   }
 
+  .bg-image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
   @keyframes sliderLeft {
     0% {
       transform: translateX(0);
@@ -355,5 +361,3 @@
     transform: rotateY(180deg);
   }
 }
-
-

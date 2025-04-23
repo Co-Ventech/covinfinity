@@ -1,6 +1,11 @@
+<<<<<<< Updated upstream
+import BgImage from './BgImage';
+=======
+>>>>>>> Stashed changes
+import SectionBgLines from './SectionBgLines';
+import Heading from './ui/Heading';
 import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
-import Heading from './ui/Heading';
 
 export const ChatMessage = ({
   time,
@@ -83,18 +88,17 @@ const OrbitalAnimation = () => (
 
 const CollaborationChatBot = () => {
   return (
-    <Section>
+    <Section divClass="relative pt-60">
       <div className="mb-16">
         <Heading className="pb-1">Collaboration and shipping software faster</Heading>
         <p className="mt-4 font-medium text-[#665F5F]">
           The most complete experience for businesses & individual clients
         </p>
       </div>
-
       {/* Main Content Grid */}
       <div className="relative grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <div className="absolute -top-16 -right-12 z-0 h-28 w-[55rem] rounded-xl border-y border-r border-gray-700 opacity-20" />
-        
+        {/* <div className="absolute -top-16 -right-12 z-0 h-28 w-[55rem] rounded-xl border-y border-r border-gray-700 opacity-20" /> */}
+
         {/* Chat Section - Takes up 2 columns */}
         <OutlineBox animated className="lg:col-span-2">
           {/* Chat Header */}
@@ -180,6 +184,16 @@ const CollaborationChatBot = () => {
           <img src="/orbit.png" alt="Add" className="h-[26.6rem] w-full" />
         </OutlineBox>
       </div>
+
+      {/* Lines */}
+<<<<<<< Updated upstream
+      <BgImage
+        src="section-lines/chatbot.png"
+        className="top-10 !left-1/2 mx-auto -ml-1.5 size-full w-[calc(100%+8rem)] !-translate-x-1/2 !bg-contain"
+      />
+=======
+      <SectionBgLines imageUrl="/section-lines/chatbot.png" className="-ml-1.5" />
+>>>>>>> Stashed changes
     </Section>
   );
 };

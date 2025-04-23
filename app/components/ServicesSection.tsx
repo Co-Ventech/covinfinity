@@ -6,6 +6,7 @@ import Section from './ui/Section';
 import Heading from './ui/Heading';
 import { ChatMessage } from './CollaborationChatBot';
 import type { FC, ReactNode } from 'react';
+import BgImage from './BgImage';
 
 // Type definitions
 interface ServiceCard {
@@ -143,7 +144,6 @@ const ContactForm: FC<{
               onChange={handleInputChange}
               placeholder={formStages[formStage].placeholder}
               className="flex-1 bg-transparent text-[13px] text-white placeholder-[#665F5F] focus:outline-none"
-              autoFocus
             />
           </div>
           <div className="flex items-center space-x-3">
@@ -285,7 +285,11 @@ export default function ServicesSection() {
   };
 
   return (
-    <Section>
+    <Section divClass="relative pt-[10rem]" className="-mt-4">
+      <BgImage
+        src="section-lines/services-section-lines.png"
+        className="inset-0 left-1/2 !size-full !w-[calc(100%+10rem)] -translate-x-1/2 !bg-contain"
+      />
       <div className="text-white">
         {/* Header Section */}
         <div className="mx-auto mb-16 max-w-4xl text-center">
@@ -294,7 +298,7 @@ export default function ServicesSection() {
           </p>
           <Heading
             blockText="something goes here"
-            className="!mb-16 !pb-1 !font-sans !font-semibold"
+            className="!mb-16 !pb-2 !font-sans !font-semibold"
           >
             Services digital solution
           </Heading>

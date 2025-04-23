@@ -1,7 +1,9 @@
 import React from 'react';
+import SectionBgLines from '../SectionBgLines';
 import CrownIcon from '../svgs/CrownIcon';
 import CollaborationCard from '../ui/CollaborationCard';
 import Section from '../ui/Section';
+import BgImage from '../BgImage';
 
 // Collaboration items data
 const collabItems = Array(6).fill({
@@ -11,7 +13,7 @@ const collabItems = Array(6).fill({
 
 const CollaborationSection: React.FC = () => {
   return (
-    <Section>
+    <Section divClass="relative">
       {/* Section header */}
       <div className="relative z-10 mb-10 text-center sm:mb-20 md:mb-40">
         <div className="mb-3 flex justify-center">
@@ -23,21 +25,37 @@ const CollaborationSection: React.FC = () => {
         </p>
       </div>
 
-      {/* Cards Grid - 2 columns on sm and below, 3 columns on md and above */}
-      <div className="relative z-10">
-        <div className="grid grid-cols-2 gap-4 px-4 sm:gap-6 sm:px-6 md:grid-cols-3 md:gap-8 md:px-10 lg:gap-10">
-          {collabItems.map((item, index) => (
-            <CollaborationCard
-              key={index}
-              title={item.title}
-              description={item.description}
-              className="h-full w-full"
-            />
-          ))}
-        </div>
-        
+      {/* Cards Grid */}
+      <div className="containe-cards relative pb-45">
         {/* Lines */}
-        <div className="line pointer-events-none absolute -top-1/4 left-0 h-12 w-full rounded-2xl border border-b-0 border-[#2E2928] bg-transparent sm:-top-1/3 sm:h-16 md:-top-2/5 md:h-24" />
+        <BgImage
+          src="section-lines/collaborate-lines.png"
+          className="!-top-20 !left-1/2 mx-auto -ml-1.5 size-full !w-[calc(100%+3.5rem)] !-translate-x-1/2 !bg-contain"
+        />
+
+        <div className="relative z-10 flex flex-wrap justify-between gap-y-10 px-10">
+          {collabItems.map((item, index) => (
+            <div
+              key={index}
+              className={`flex-0-0-30 flex ${
+                index % 3 === 0
+                  ? 'justify-start'
+                  : index % 3 === 1
+                    ? 'justify-center'
+                    : 'justify-end'
+              }`}
+              style={{ flex: '0 0 30%' }}
+            >
+              <CollaborationCard
+                title={item.title}
+                description={item.description}
+                className="h-full"
+              />
+            </div>
+          ))}
+          {/* Lines */}
+          {/* <div className="line pointer-events-none absolute -top-2/5 left-0 h-24 w-full rounded-2xl border border-b-0 border-[#2E2928] bg-transparent" /> */}
+        </div>
       </div>
     </Section>
   );

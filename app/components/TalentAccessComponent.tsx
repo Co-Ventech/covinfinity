@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import GradientBorderButton from './ui/GradientBorderButton';
+import Heading from './ui/Heading';
 import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
-import Heading from './ui/Heading';
-import GradientBorderButton from './ui/GradientBorderButton';
+import BgImage from './BgImage';
+import SectionBgLines from './SectionBgLines';
 
 // Developer type representing a developer profile
 interface Developer {
@@ -44,7 +46,7 @@ const DeveloperProfile = ({
         ))}
       </div>
       {detailed && (
-        <div className=" flex justify-end">
+        <div className="flex justify-end">
           <GradientBorderButton>
             <button>
               <span>Set Interview</span>
@@ -93,7 +95,11 @@ const TalentAccessComponent = () => {
   ];
 
   return (
-    <Section className="text-white">
+    <Section className="pt-[14rem] text-white" divClass="relative ">
+      <BgImage
+        src="section-lines/talent-section-lines.png"
+        className="-top-96 left-1/2 h-[58rem] w-[calc(100%+10rem)] -translate-x-1/2 bg-top"
+      />
       {/* Header Section */}
       {/* <div className="mb-12 text-center"> */}
       <div className="mb-36 text-center">
