@@ -3,6 +3,7 @@ import SectionBgLines from '../SectionBgLines';
 import CrownIcon from '../svgs/CrownIcon';
 import CollaborationCard from '../ui/CollaborationCard';
 import Section from '../ui/Section';
+import BgImage from '../BgImage';
 
 // Collaboration items data
 const collabItems = Array(6).fill({
@@ -27,9 +28,9 @@ const CollaborationSection: React.FC = () => {
       {/* Cards Grid */}
       <div className="containe-cards relative pb-45">
         {/* Lines */}
-        <SectionBgLines
-          imageUrl="/section-lines/collaborate-lines.png"
-          className="!-top-20 !w-[calc(100%+3.5rem)] bg-[length:100%_100%] bg-no-repeat"
+        <BgImage
+          src="section-lines/collaborate-lines.png"
+          className="!-top-20 !left-1/2 mx-auto -ml-1.5 size-full !w-[calc(100%+3.5rem)] !-translate-x-1/2 !bg-contain"
         />
 
         <div className="relative z-10 flex flex-wrap justify-between gap-y-10 px-10">

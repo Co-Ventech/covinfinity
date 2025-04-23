@@ -1,3 +1,4 @@
+import BgImage from './BgImage';
 import SectionBgLines from './SectionBgLines';
 import Heading from './ui/Heading';
 import OutlineBox from './ui/OutlineBox';
@@ -182,7 +183,10 @@ const CollaborationChatBot = () => {
       </div>
 
       {/* Lines */}
-      <SectionBgLines imageUrl="/section-lines/chatbot.png" className="-ml-1.5" />
+      <BgImage
+        src="section-lines/chatbot.png"
+        className="top-10 !left-1/2 mx-auto -ml-1.5 size-full w-[calc(100%+8rem)] !-translate-x-1/2 !bg-contain"
+      />
     </Section>
   );
 };
