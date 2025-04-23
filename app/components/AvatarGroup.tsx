@@ -62,7 +62,8 @@ const AvatarGroup: React.FC = () => {
             }}
             whileHover={{ scale: 1.1, zIndex: 30 }}
             style={{
-              marginLeft: index === 0 ? 0 : '-0.75rem',
+              // marginLeft: index === 0 ? 0 : '-0.75rem',
+              marginLeft: index === 0 ? 0 : '-1.2rem',
               zIndex: index, // Lower index values appear behind higher ones
             }}
           >

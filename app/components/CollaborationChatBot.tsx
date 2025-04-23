@@ -1,5 +1,6 @@
 import BgImage from './BgImage';
 import SectionBgLines from './SectionBgLines';
+import AnimatedLine from './ui/AnimatedLine';
 import Heading from './ui/Heading';
 import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
@@ -182,7 +183,11 @@ const CollaborationChatBot = () => {
         </OutlineBox>
       </div>
 
-      {/* Lines */}
+      {/* Animated Lines */}
+      <AnimatedLine height={184} width={299} className="!absolute -top-4 -left-54" />
+      <AnimatedLine height={120} width={219} className="!absolute -top-4 left-44" />
+
+      {/* BG Lines, Effects */}
       <BgImage
         src="section-lines/chatbot.png"
         className="top-10 !left-1/2 mx-auto -ml-1.5 size-full w-[calc(100%+8rem)] !-translate-x-1/2 !bg-contain"
