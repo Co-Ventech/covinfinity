@@ -13,6 +13,7 @@ import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
 import BgImage from '~/components/BgImage';
+import { Starfield } from '~/components/StarField';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -29,6 +30,7 @@ export default function Home() {
     <MainLayout>
       <div className="showcase relative h-max w-full">
         {/* <SpaceStars /> */}
+        <Starfield count={100} />
         <Navbar />
         <Hero />
       </div>
