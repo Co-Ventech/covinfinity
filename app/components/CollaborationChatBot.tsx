@@ -183,12 +183,8 @@ const CollaborationChatBot = () => {
       </div>
 
       {/* Animated Lines */}
-      <AnimatedLine
-        heightRem="11.5rem"
-        widthRem="18.6875rem"
-        className="!absolute -top-4 -left-54"
-      />
-      <AnimatedLine heightRem="7.5rem" widthRem="13.6875rem" className="!absolute -top-4 left-44" />
+      <AnimatedLine heightRem="11.35rem" widthRem="19.8rem" className="!absolute -top-4 -left-54" />
+      <AnimatedLine heightRem="7.5rem" widthRem="15.7rem" className="!absolute -top-4 left-44" />
 
       {/* BG Lines, Effects */}
       <BgImage
