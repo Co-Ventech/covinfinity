@@ -7,11 +7,7 @@ interface BgImageProps extends React.HTMLAttributes<HTMLDivElement> {
 const BgImage: React.FC<BgImageProps> = ({ src, className = '', style, ...props }) => {
   return (
     <div
-<<<<<<< Updated upstream
       className={`pointer-events-none absolute inset-0 bg-cover bg-no-repeat ${className}`}
-=======
-      className={`pointer-events-none absolute bg-cover bg-no-repeat ${className}`}
->>>>>>> Stashed changes
       style={{
         backgroundImage: `url('/${src}')`,
         ...style,

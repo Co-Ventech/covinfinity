@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 import BgImage from './BgImage';
-=======
->>>>>>> Stashed changes
-import SectionBgLines from './SectionBgLines';
 import Heading from './ui/Heading';
 import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
@@ -103,7 +99,7 @@ const CollaborationChatBot = () => {
         <OutlineBox animated className="lg:col-span-2">
           {/* Chat Header */}
           <div className="ml-10 p-5">
-            <div className="mt-3 w-[21rem] space-y-3">
+            <div className="mt-3 max-sm:w-[calc(100%-3rem)] w-[21rem] space-y-3">
               <img src="/chart.png" alt="Add" className="mr-2 h-8.5 w-8.5" />
               <div>
                 <h2 className="text-lg font-semibold">Collaboration between AE & Client</h2>
@@ -117,7 +113,7 @@ const CollaborationChatBot = () => {
           {/* Chat Messages and Input Container */}
           <OutlineBox className="mt-2 mb-4 bg-[rgba(26,23,23,0.48)]">
             {/* Messages */}
-            <div className="max-w-[35rem] space-y-0 px-4 pt-2">
+            <div className="max-sm:max-w-[calc(100%-2rem)] max-w-[35rem] space-y-0 px-4 pt-2">
               <ChatMessage
                 time="2:14 PM"
                 sender="John"
@@ -186,14 +182,10 @@ const CollaborationChatBot = () => {
       </div>
 
       {/* Lines */}
-<<<<<<< Updated upstream
       <BgImage
         src="section-lines/chatbot.png"
         className="top-10 !left-1/2 mx-auto -ml-1.5 size-full w-[calc(100%+8rem)] !-translate-x-1/2 !bg-contain"
       />
-=======
-      <SectionBgLines imageUrl="/section-lines/chatbot.png" className="-ml-1.5" />
->>>>>>> Stashed changes
     </Section>
   );
 };
