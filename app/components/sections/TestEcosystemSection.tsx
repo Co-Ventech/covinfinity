@@ -4,11 +4,7 @@ import { motion } from 'framer-motion';
 import type React from 'react';
 import { useState } from 'react';
 import Logo from '../ui/Logo';
-
-// Simple Section component to replace the missing import
-const Section: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <section className="container mx-auto px-4 py-16">{children}</section>;
-};
+import Section from '../ui/Section';
 
 type Step = {
   id: number;
@@ -26,7 +22,7 @@ const steps: Step[] = [
 const imageVariants = {
   front: {
     scale: 1,
-    y: 0,
+    y: '0vw',
     zIndex: 30,
     opacity: 1,
     filter: 'blur(0px)',
@@ -41,7 +37,7 @@ const imageVariants = {
   },
   middle: {
     scale: 0.97,
-    y: -40,
+    y: '-2.5vw',
     zIndex: 20,
     opacity: 0.9,
     filter: 'blur(0px)',
@@ -56,7 +52,7 @@ const imageVariants = {
   },
   back: {
     scale: 0.94,
-    y: -80,
+    y: '-5vw',
     zIndex: 10,
     opacity: 0.8,
     filter: 'blur(0px)',
@@ -127,7 +123,7 @@ const StepsSection: React.FC = () => {
   // Improved card styling with consistent blur effect
   const getCardStyle = (cardPosition: 'front' | 'middle' | 'back') => {
     const baseStyle =
-      'relative mx-auto rounded-t-2xl rounded-b-4xl p-14 rounded-t-2xl rounded-b-[4rem] border border-[#332B2B] !overflow-hidden';
+      'relative mx-auto rounded-t-2xl !rounded-b-2xl md:rounded-b-3xl lg:rounded-b-4xl p-4 pt-6 lg:pt-none lg:p-14 rounded-t-2xl rounded-b-[4rem] border border-[#332B2B] !overflow-hidden';
 
     if (cardPosition === 'front') {
       return `${baseStyle} bg-[#1A1717]/48`;
@@ -140,7 +136,7 @@ const StepsSection: React.FC = () => {
 
   return (
     <div className="relative">
-      <div className=" mb-42 md:mb-36  lg:mb-20 flex flex-wrap justify-center gap-3 md:gap-5">
+      <div className="mb-13 flex flex-wrap justify-center gap-3 sm:mb-20 md:gap-5 lg:mb-30">
         {steps.map((step) => (
           <button
             key={step.id}
@@ -158,7 +154,6 @@ const StepsSection: React.FC = () => {
       </div>
 
       <div className="relative h-[45rem] sm:h-[75rem]">
-        {/* Backdrop blur effect that follows the active card */}
         <motion.div
           className="absolute inset-0 rounded-t-2xl rounded-b-[4rem] backdrop-blur-sm"
           initial={{ opacity: 0 }}

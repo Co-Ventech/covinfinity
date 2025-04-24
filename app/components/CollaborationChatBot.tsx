@@ -193,7 +193,7 @@ const CollaborationChatBot = () => {
       {/* BG Lines, Effects */}
       <BgImage
         src="section-lines/chatbot.png"
-        className="top-10 !left-1/2 mx-auto -ml-1.5 size-full w-[calc(100%+8rem)] !-translate-x-1/2 !bg-contain"
+        className="top-10 !left-1/2 mx-auto -ml-1.5 size-full w-[calc(100%+4.8rem)] !-translate-x-1/2 !bg-contain"
       />
     </Section>
   );
