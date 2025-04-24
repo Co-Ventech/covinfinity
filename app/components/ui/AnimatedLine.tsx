@@ -4,16 +4,16 @@ import React from 'react';
 
 interface AnimatedLineProps {
   className?: string;
-  width?: number;
-  height?: number;
+  widthRem?: string;
+  heightRem?: string;
   position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
   color?: string;
 }
 
 export default function AnimatedLine({
   className = '',
-  width = 100,
-  height = 100,
+  widthRem = '6.25rem',
+  heightRem = '6.25rem',
   position = 'top-right',
   color = 'rgba(187, 151, 242, 0.47)',
 }: AnimatedLineProps) {
@@ -29,8 +29,8 @@ export default function AnimatedLine({
     <div
       className={`relative ${className}`}
       style={{
-        width: `${width}px`,
-        height: `${height}px`,
+        width: `${widthRem}`,
+        height: `${heightRem}`,
       }}
     >
       <div className="absolute z-10" style={positionStyles[position]}>
@@ -40,8 +40,8 @@ export default function AnimatedLine({
             borderRight: '1px solid rgba(226,232,255,.12)',
             borderBottom: '1px solid rgba(226,232,255,.12)',
             borderBottomRightRadius: '12px',
-            width: `${width}px`,
-            height: `${height}px`,
+            width: `${widthRem}`,
+            height: `${heightRem}`,
           }}
         >
           <div

@@ -84,6 +84,40 @@
       color-scheme: dark;
     }
   }
+  html {
+    font-size: 100%; /* 16px at 1920px */
+  }
+
+  @media (max-width: 1600px) {
+    html {
+      font-size: 87.5%; /* 14px */
+    }
+  }
+
+  @media (max-width: 1400px) {
+    html {
+      font-size: 81.25%; /* 13px */
+    }
+  }
+
+  @media (max-width: 1200px) {
+    html {
+      font-size: 75%; /* 12px */
+    }
+  }
+
+  @media (max-width: 1020px) {
+    html {
+      font-size: 75%; /* 12px */
+    }
+  }
+
+  @media (max-width: 640px) {
+    html {
+      font-size: 50%; /* 8px for small mobile screens */
+    }
+  }
+
 
   p {
     @apply text-[#665F5F];

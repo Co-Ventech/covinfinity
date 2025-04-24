@@ -1,5 +1,4 @@
 import BgImage from './BgImage';
-import SectionBgLines from './SectionBgLines';
 import AnimatedLine from './ui/AnimatedLine';
 import Heading from './ui/Heading';
 import OutlineBox from './ui/OutlineBox';
@@ -101,7 +100,7 @@ const CollaborationChatBot = () => {
         <OutlineBox animated className="lg:col-span-2">
           {/* Chat Header */}
           <div className="ml-10 p-5">
-            <div className="mt-3 w-[21rem] space-y-3">
+            <div className="mt-3 w-[21rem] space-y-3 max-sm:w-[calc(100%-3rem)]">
               <img src="/chart.png" alt="Add" className="mr-2 h-8.5 w-8.5" />
               <div>
                 <h2 className="text-lg font-semibold">Collaboration between AE & Client</h2>
@@ -115,7 +114,7 @@ const CollaborationChatBot = () => {
           {/* Chat Messages and Input Container */}
           <OutlineBox className="mt-2 mb-4 bg-[rgba(26,23,23,0.48)]">
             {/* Messages */}
-            <div className="max-w-[35rem] space-y-0 px-4 pt-2">
+            <div className="max-w-[35rem] space-y-0 px-4 pt-2 max-sm:max-w-[calc(100%-2rem)]">
               <ChatMessage
                 time="2:14 PM"
                 sender="John"
@@ -179,13 +178,17 @@ const CollaborationChatBot = () => {
               From deployments to tasks, work with your team every step of the way.
             </p>
           </div>
-          <img src="/orbit.png" alt="Add" className="h-[26.6rem] w-[30rem]" />
+          <img src="/orbit.png" alt="Add" className="h-[26.6rem] w-full" />
         </OutlineBox>
       </div>
 
       {/* Animated Lines */}
-      <AnimatedLine height={184} width={299} className="!absolute -top-4 -left-54" />
-      <AnimatedLine height={120} width={219} className="!absolute -top-4 left-44" />
+      <AnimatedLine
+        heightRem="11.5rem"
+        widthRem="18.6875rem"
+        className="!absolute -top-4 -left-54"
+      />
+      <AnimatedLine heightRem="7.5rem" widthRem="13.6875rem" className="!absolute -top-4 left-44" />
 
       {/* BG Lines, Effects */}
       <BgImage

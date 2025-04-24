@@ -1,16 +1,18 @@
 import BgGlow from '~/components/BgGlow';
 import CaseStudiesGrid from '~/components/CaseStudiesGrid';
+import ClientTestimonial from '~/components/ClientTestimonial';
 import CollaborationChatBot from '~/components/CollaborationChatBot';
 import Navbar from '~/components/Navbar';
 import CollaborationSection from '~/components/sections/CollaborationSection';
 import CompanySliderSection from '~/components/sections/CompanySliderSection';
-import EcosystemSection from '~/components/sections/EcosystemSection';
+import TestEcosystemSection from '~/components/sections/TestEcosystemSection';
 import ServicesSection from '~/components/ServicesSection';
 import TalentAccessComponent from '~/components/TalentAccessComponent';
 import TestimonialComponent from '~/components/TestimonialComponent';
 import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
+import BgImage from '~/components/BgImage';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -40,10 +42,15 @@ export default function Home() {
         <CollaborationSection />
       </div>
       <TalentAccessComponent />
+      {/* comment testimoniasl */}
       <div className="my-3"></div>
       <TestimonialComponent />
+      {/* <div className="mt-20 mb-72">
+        <ClientTestimonial />
+      </div> */}
+      {/* <EcosystemSection /> */}
       <div className="mt-25"></div>
-      <EcosystemSection />
+      <TestEcosystemSection />
       <div className="mb-32">
         <ServicesSection />
       </div>

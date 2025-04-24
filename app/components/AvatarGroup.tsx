@@ -37,16 +37,39 @@ const Counter = ({ from, to }: { from: number; to: number }) => {
 
 const AvatarGroup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
     setIsVisible(true);
+    
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    // Set initial width
+    handleResize();
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Determine how many avatars to show based on screen width
+  const getVisibleAvatars = () => {
+    if (windowWidth < 640) { // sm breakpoint
+      return 8;
+    } else if (windowWidth < 768) { // md breakpoint
+      return 12;
+    }
+    return avatars.length; // Show all on larger screens
+  };
+
+  const visibleAvatars = avatars.slice(0, getVisibleAvatars());
 
   return (
     <div className="flex items-center justify-center">
       <div className="relative flex flex-wrap items-center">
         {/* Avatar stack */}
-        {avatars.slice(0, 22).map((avatar, index) => (
+        {visibleAvatars.map((avatar, index) => (
           <motion.div
             key={avatar.id}
             className="relative"
@@ -94,7 +117,7 @@ const AvatarGroup: React.FC = () => {
           transition={{ delay: 1.4, duration: 0.5 }}
           style={{
             marginLeft: '-0.75rem',
-            zIndex: 22, // Same z-index as last avatar
+            zIndex: visibleAvatars.length, // Same z-index as last avatar
           }}
           whileHover={{ scale: 1.05, zIndex: 30 }}
         >

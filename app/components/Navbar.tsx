@@ -162,12 +162,25 @@ const NavItem = ({
   );
 };
 
+const mobileMenuVariants = {
+  hidden: {
+    x: '100%',
+    transition: { duration: 0.3, ease: 'easeInOut' }
+  },
+  visible: {
+    x: 0,
+    transition: { duration: 0.3, ease: 'easeInOut' }
+  }
+};
+
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState({
     products: false,
     services: false,
     caseStudies: false,
   });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
 
   const toggleDropdown = (section: DropdownSections) => {
     setIsDropdownOpen((prevState) => ({
@@ -182,6 +195,17 @@ const Navbar = () => {
     }));
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    if (!isMobileMenuOpen) {
+      setMobileDropdownOpen(null);
+    }
+  };
+
+  const toggleMobileDropdown = (section: string) => {
+    setMobileDropdownOpen(mobileDropdownOpen === section ? null : section);
+  };
+
   return (
     <div className="flex items-center justify-between p-8">
       <div className="flex space-x-19 rounded-[0.625rem] bg-[#1A1A1A] px-3.5 py-2 text-white">
@@ -190,12 +214,11 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
         >
-          <img src="/logo-navbar.png" alt="" className="w- h-9 w-[11.625rem]" />
+          <img src="/logo-navbar.png" alt="" className="h-9 w-[11.625rem]" />
         </motion.div>
 
-        {/* Navbar Links with rounded boxes */}
-        <div className="flex px-1 py-0.5">
-          {/* Products Dropdown */}
+        {/* Desktop Navigation - hidden on mobile */}
+        <div className="hidden lg:flex px-1 py-0.5">
           <NavItem
             icon={<ProductIcon className="size-[1.375rem]" />}
             label="Products"
@@ -205,7 +228,6 @@ const Navbar = () => {
             dropdownItems={['Product 1', 'Product 2', 'Product 3']}
           />
 
-          {/* Services Dropdown */}
           <NavItem
             icon={<BuyCryptoIcon className="size-[1.375rem]" />}
             label="Services"
@@ -215,7 +237,6 @@ const Navbar = () => {
             dropdownItems={['Service 1', 'Service 2', 'Service 3']}
           />
 
-          {/* Case Studies Dropdown */}
           <NavItem
             icon={<CaseStudyIcon className="size-[1.375rem]" />}
             label="Case Studies"
@@ -225,25 +246,227 @@ const Navbar = () => {
             dropdownItems={['Case Study 1', 'Case Study 2', 'Case Study 3']}
           />
 
-          {/* About Us Link */}
           <NavItem icon={<MirrorIcon className="size-[1.375rem]" />} label="About us" />
         </div>
       </div>
-      {/* Right side of the navbar */}
-      <div className="rounded-[0.875em] bg-[#1A1A1A] p-2">
+
+      {/* Desktop Right Side - hidden on mobile */}
+      <div className="hidden lg:block rounded-[0.875em] bg-[#1A1A1A] p-2">
         <div className="flex space-x-0.5 rounded-[0.625rem] bg-[#212121] p-1">
           <NavItem
             icon={<MirrorIcon className="size-[1.375rem]" />}
             label="Sign in"
             hideIcon={true}
           />
-
           <div className="get-started rounded-lg bg-[#1A1A1A] px-3 py-2.5">
             Get Started
-            {/* <GradientText className="font-medium">Get Started</GradientText> */}
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Button - visible only on mobile */}
+      <button
+        onClick={toggleMobileMenu}
+        className="lg:hidden rounded-lg bg-[#1A1A1A] p-2 text-white"
+      >
+        <svg
+          className="h-10 w-10"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          {isMobileMenuOpen ? (
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          ) : (
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          )}
+        </svg>
+      </button>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop with blur */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 backdrop-blur-sm z-40 lg:hidden"
+              onClick={toggleMobileMenu}
+            />
+            
+            {/* Menu Panel */}
+            <motion.div
+              variants={mobileMenuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              className="fixed right-0 top-0 h-full w-72 bg-[#1A1A1A]/90 backdrop-blur-md p-6 z-50 lg:hidden"
+            >
+              <div className="flex flex-col space-y-4 text-white">
+                {/* Products Section */}
+                <div className="flex flex-col space-y-2">
+                  <button
+                    onClick={() => toggleMobileDropdown('products')}
+                    className="flex items-center justify-between py-2 hover:bg-[#212121] rounded-lg px-2"
+                  >
+                    <span className="text-lg font-semibold">Products</span>
+                    <svg
+                      className={`w-5 h-5 transform transition-transform ${
+                        mobileDropdownOpen === 'products' ? 'rotate-180' : ''
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                  <AnimatePresence>
+                    {mobileDropdownOpen === 'products' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        {['Product 1', 'Product 2', 'Product 3'].map((item) => (
+                          <a
+                            key={item}
+                            href="#"
+                            className="block pl-6 py-2 hover:bg-[#212121] rounded-lg"
+                          >
+                            {item}
+                          </a>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Services Section */}
+                <div className="flex flex-col space-y-2">
+                  <button
+                    onClick={() => toggleMobileDropdown('services')}
+                    className="flex items-center justify-between py-2 hover:bg-[#212121] rounded-lg px-2"
+                  >
+                    <span className="text-lg font-semibold">Services</span>
+                    <svg
+                      className={`w-5 h-5 transform transition-transform ${
+                        mobileDropdownOpen === 'services' ? 'rotate-180' : ''
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                  <AnimatePresence>
+                    {mobileDropdownOpen === 'services' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        {['Service 1', 'Service 2', 'Service 3'].map((item) => (
+                          <a
+                            key={item}
+                            href="#"
+                            className="block pl-6 py-2 hover:bg-[#212121] rounded-lg"
+                          >
+                            {item}
+                          </a>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Case Studies Section */}
+                <div className="flex flex-col space-y-2">
+                  <button
+                    onClick={() => toggleMobileDropdown('caseStudies')}
+                    className="flex items-center justify-between py-2 hover:bg-[#212121] rounded-lg px-2"
+                  >
+                    <span className="text-lg font-semibold">Case Studies</span>
+                    <svg
+                      className={`w-5 h-5 transform transition-transform ${
+                        mobileDropdownOpen === 'caseStudies' ? 'rotate-180' : ''
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+                  <AnimatePresence>
+                    {mobileDropdownOpen === 'caseStudies' && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        {['Case Study 1', 'Case Study 2', 'Case Study 3'].map((item) => (
+                          <a
+                            key={item}
+                            href="#"
+                            className="block pl-6 py-2 hover:bg-[#212121] rounded-lg"
+                          >
+                            {item}
+                          </a>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                <a href="#" className="py-2 hover:bg-[#212121] rounded-lg px-2">
+                  About us
+                </a>
+
+                <div className="pt-4 border-t border-gray-700">
+                  <a href="#" className="block py-2 hover:bg-[#212121] rounded-lg px-2">
+                    Sign in
+                  </a>
+                  <a href="#" className="block py-2 hover:bg-[#212121] rounded-lg px-2">
+                    Get Started
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
