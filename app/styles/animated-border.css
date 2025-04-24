@@ -1,0 +1,13 @@
+@keyframes borderFlow {
+  0% {
+    stroke-dashoffset: var(--perimeter);
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-border-flow {
+  stroke-dashoffset: var(--perimeter);
+  animation: borderFlow var(--duration) linear infinite;
+}
