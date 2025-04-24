@@ -49,7 +49,7 @@ function LogoSlider({ children, direction, className = '' }: LogoSliderProps) {
           x: direction === 'left' ? ['0%', '-50%'] : ['-50%', '0%'],
         }}
         transition={{
-          duration: 90,
+          duration: 30,
           repeat: Infinity,
           ease: 'linear',
           repeatType: 'loop',
