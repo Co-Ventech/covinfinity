@@ -34,7 +34,7 @@ const CollaborationCard: React.FC<CollaborationCardProps> = ({
       {/* Content */}
       <div className="flex flex-col">
         {/* Icon and Title in a row */}
-        <div className="mb-4 flex items-center">
+        <div className="mb-2 flex items-center">
           <GhostIcon className="mr-3 h-6 w-6" />
           <h3 className="text-base font-semibold text-white">{title}</h3>
         </div>

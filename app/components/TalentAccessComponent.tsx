@@ -1,10 +1,9 @@
 import { useState } from 'react';
+import BgImage from './BgImage';
 import GradientBorderButton from './ui/GradientBorderButton';
 import Heading from './ui/Heading';
 import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
-import BgImage from './BgImage';
-import SectionBgLines from './SectionBgLines';
 
 // Developer type representing a developer profile
 interface Developer {
@@ -95,10 +94,11 @@ const TalentAccessComponent = () => {
   ];
 
   return (
-    <Section className="pt-[14rem] text-white" divClass="relative ">
+    <Section className="text-white" divClass="relative pt-[17rem]">
       <BgImage
         src="section-lines/talent-section-lines.png"
-        className="-top-96 left-1/2 h-[58rem] w-[calc(100%+10rem)] -translate-x-1/2 bg-top"
+        // className="-top-96 left-1/2 h-[58rem] w-[calc(100%+10rem)] -translate-x-1/2 bg-top"
+        className="-top-0 left-1/2 h-[58rem] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
       />
       {/* Header Section */}
       {/* <div className="mb-12 text-center"> */}
@@ -148,7 +148,7 @@ const TalentAccessComponent = () => {
           <div className="px-4 pb-4">
             <div className="rounded-lg border border-[#1F1F1F] bg-[rgba(26,23,23,0.48)] p-3">
               {/* Search section */}
-              <div className="mb-4 flex items-center">
+              <div className="mb-2 flex items-center">
                 <div className="mr-2 flex space-x-1 rounded-lg border border-[#1F1F1F] p-2">
                   <img src="/search.png" alt="Search" className="mt-0.5 h-3 w-3" />
                   <div className="text-xs text-[#665F5F]">Search</div>

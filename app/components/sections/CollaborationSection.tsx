@@ -3,6 +3,7 @@ import SectionBgLines from '../SectionBgLines';
 import CrownIcon from '../svgs/CrownIcon';
 import CollaborationCard from '../ui/CollaborationCard';
 import Section from '../ui/Section';
+import BgImage from '../BgImage';
 
 // Collaboration items data
 const collabItems = Array(6).fill({
@@ -12,9 +13,10 @@ const collabItems = Array(6).fill({
 
 const CollaborationSection: React.FC = () => {
   return (
-    <Section divClass="relative">
+    <Section divClass="relative" className="mb-10">
       {/* Section header */}
-      <div className="relative z-10 mb-10 text-center sm:mb-20 md:mb-40">
+      {/* <div className="relative z-10 mb-10 text-center sm:mb-20 md:mb-40"> */}
+      <div className="relative z-10 mb-12 text-center">
         <div className="mb-3 flex justify-center">
           <CrownIcon className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10" />
         </div>
@@ -25,13 +27,8 @@ const CollaborationSection: React.FC = () => {
       </div>
 
       {/* Cards Grid */}
-      <div className="containe-cards relative pb-45">
-        <SectionBgLines
-          imageUrl="/section-lines/collaborate-lines.png"
-          className="!-top-20 !w-[calc(100%+3.5rem)] bg-[length:100%_100%] bg-no-repeat"
-        />
-
-        <div className="relative z-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-y-10 px-10 justify-items-center">
+      <div className="containe-cards relative pt-19">
+        <div className="relative z-10 grid grid-cols-2 justify-items-center gap-y-5 px-10 sm:grid-cols-2 md:grid-cols-3">
           {collabItems.map((item, index) => (
             <CollaborationCard
               key={index}
@@ -41,10 +38,16 @@ const CollaborationSection: React.FC = () => {
             />
           ))}
         </div>
+
+        {/* Lines */}
+        <BgImage
+          // src="/section-lines/collaborate-lines.png"
+          src="section-lines/collaborate-lines.png"
+          className="!top-0 !left-1/2 w-[calc(100%+4.8rem)] !-translate-x-1/2"
+        />
       </div>
     </Section>
   );
 };
 
 export default CollaborationSection;
-
