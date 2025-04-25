@@ -69,13 +69,17 @@ interface LogoItemProps {
 
 function LogoItem({ children, icon = false }: LogoItemProps) {
   return (
-    <div className="mx-4 inline-flex items-center rounded-[1.25rem] border-1 border-[rgba(105,125,255,0.32)] bg-[rgba(105,125,255,0.01)] px-8 py-4 text-[1.2rem] font-semibold text-[#F0F2FF]">
-      {icon && (
-        <div className="mr-2 flex h-5 w-5 items-center justify-center rounded-sm bg-white">
-          <div className="h-3 w-3 bg-black"></div>
-        </div>
-      )}
-      <span className="">{children}</span>
+    <div className="relative mx-4 inline-block p-[1px] rounded-[1.25rem]" style={{
+      background: 'linear-gradient(180deg, rgba(105,125,255,0.32) 0%, rgba(255,255,255,0.08) 100%)'
+    }}>
+      <div className="relative flex items-center rounded-[1.2rem] bg-[#1c191c]  px-8 py-4 text-[1.2rem] font-semibold text-[#F0F2FF]">
+        {icon && (
+          <div className="mr-2 flex h-5 w-5 items-center justify-center rounded-sm bg-white">
+            <div className="h-3 w-3 bg-black"></div>
+          </div>
+        )}
+        <span>{children}</span>
+      </div>
     </div>
   );
 }
