@@ -94,7 +94,7 @@ const TalentAccessComponent = () => {
   ];
 
   return (
-    <Section className="text-white" divClass="relative pt-[17rem]">
+    <Section className="text-white" divClass="relative pt-[17rem] xl:pt-[21.5rem]">
       <BgImage
         src="section-lines/talent-section-lines.png"
         // className="-top-96 left-1/2 h-[58rem] w-[calc(100%+10rem)] -translate-x-1/2 bg-top"
@@ -148,7 +148,7 @@ const TalentAccessComponent = () => {
           <div className="px-4 pb-4">
             <div className="rounded-lg border border-[#1F1F1F] bg-[rgba(26,23,23,0.48)] p-3">
               {/* Search section */}
-              <div className="mb-2 flex items-center">
+              <div className="mb-4 flex items-center">
                 <div className="mr-2 flex space-x-1 rounded-lg border border-[#1F1F1F] p-2">
                   <img src="/search.png" alt="Search" className="mt-0.5 h-3 w-3" />
                   <div className="text-xs text-[#665F5F]">Search</div>

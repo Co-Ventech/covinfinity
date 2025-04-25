@@ -288,7 +288,7 @@ export default function ServicesSection() {
     <Section divClass="relative pt-[10rem]" className="-mt-4">
       <BgImage
         src="section-lines/services-section-lines.png"
-        className="inset-0 left-1/2 !size-full !w-[calc(100%+10rem)] -translate-x-1/2 !bg-contain"
+        className="!xl:w-[calc(100%+10rem)] inset-0 left-1/2 !size-full !w-[calc(100%+7rem)] -translate-x-1/2 !bg-contain"
       />
       <div className="text-white">
         {/* Header Section */}
