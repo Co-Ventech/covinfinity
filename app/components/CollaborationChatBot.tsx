@@ -85,7 +85,7 @@ const OrbitalAnimation = () => (
 
 const CollaborationChatBot = () => {
   return (
-    <Section divClass="relative pt-60">
+    <Section divClass="relative pt-20 sm:pt-24 md:pt-60">
       <div className="mb-16">
         <Heading className="pb-1">Collaboration and shipping software faster</Heading>
         <p className="mt-4 font-medium text-[#665F5F]">
@@ -183,13 +183,13 @@ const CollaborationChatBot = () => {
       </div>
 
       {/* Animated Lines */}
-      <AnimatedLine heightRem="11.35rem" widthRem="19.8rem" className="!absolute -top-4 -left-54" />
-      <AnimatedLine heightRem="7.5rem" widthRem="15.7rem" className="!absolute -top-4 left-44" />
+      <AnimatedLine heightRem="11.35rem" widthRem="19.8rem" className="hidden md:block !absolute -top-4 -left-54" />
+      <AnimatedLine heightRem="7.5rem" widthRem="15.7rem" className="hidden md:block !absolute -top-4 left-44" />
 
       {/* BG Lines, Effects */}
       <BgImage
         src="section-lines/chatbot.png"
-        className="top-10 !left-1/2 mx-auto -ml-1.5 size-full w-[calc(100%+4.8rem)] !-translate-x-1/2 !bg-contain"
+        className=" hidden md:block top-10 !left-1/2 mx-auto -ml-1.5 size-full w-[calc(100%+4.8rem)] !-translate-x-1/2 !bg-contain"
       />
     </Section>
   );

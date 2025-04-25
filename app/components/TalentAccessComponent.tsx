@@ -95,14 +95,14 @@ const TalentAccessComponent = () => {
   ];
 
   return (
-    <Section className="pt-[14rem] text-white" divClass="relative ">
+    <Section className=" pt-[14rem] text-white" divClass="relative ">
       <BgImage
         src="section-lines/talent-section-lines.png"
         className="-top-96 left-1/2 h-[58rem] w-[calc(100%+10rem)] -translate-x-1/2 bg-top"
       />
       {/* Header Section */}
       {/* <div className="mb-12 text-center"> */}
-      <div className="mb-36 text-center">
+      <div className=" mb-16 sm:mb-36 text-center">
         <Heading className="mb-4 pb-1" blockText="from all around the world">
           Craft the most productive team
         </Heading>

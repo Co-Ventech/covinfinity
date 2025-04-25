@@ -43,7 +43,7 @@ export default function Home() {
       </div>
       <TalentAccessComponent />
       {/* comment testimoniasl */}
-      <div className="my-3"></div>
+      <div className="sm:my-3"></div>
       <TestimonialComponent />
       {/* <div className="mt-20 mb-72">
         <ClientTestimonial />
