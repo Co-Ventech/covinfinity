@@ -30,7 +30,7 @@ export default function Home() {
     <MainLayout>
       <div className="showcase relative h-max w-full">
         {/* <SpaceStars /> */}
-        <Starfield count={100} />
+        <Starfield count={200} />
         <Navbar />
         <Hero />
       </div>
@@ -44,13 +44,8 @@ export default function Home() {
         <CollaborationSection />
       </div>
       <TalentAccessComponent />
-      {/* comment testimoniasl */}
       <div className="my-3"></div>
       <TestimonialComponent />
-      {/* <div className="mt-20 mb-72">
-        <ClientTestimonial />
-      </div> */}
-      {/* <EcosystemSection /> */}
       <div className="mt-25"></div>
       <TestEcosystemSection />
       <div className="mb-32">
