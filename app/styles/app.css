@@ -118,7 +118,6 @@
     }
   }
 
-
   p {
     @apply text-[#665F5F];
     font-family: var(--font-sans);
@@ -230,6 +229,8 @@
     animation: var(--animation-pulse-slow);
   }
 }
+
+/* Talent Component Animations - Removed as we now use Framer Motion */
 
 .animated-border-wrapper {
   position: relative;
