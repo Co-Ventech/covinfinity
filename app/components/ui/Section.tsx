@@ -9,7 +9,9 @@ interface SectionProps {
 const Section: React.FC<SectionProps> = ({ children, className = '', divClass = '' }) => {
   return (
     <section className={`relative w-full overflow-hidden ${className}`}>
-      <div className={`mx-auto w-full max-w-[100rem] px-4 ${divClass}`}>{children}</div>
+      <div className={`relative mx-auto w-full max-w-[83rem] px-4 xl:max-w-[100rem] ${divClass}`}>
+        {children}
+      </div>
     </section>
   );
 };
