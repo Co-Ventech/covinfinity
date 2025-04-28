@@ -34,3 +34,12 @@ export const truncateText = (text: string, maxLength: number): string => {
   if (text.length <= maxLength) return text;
   return text.slice(0, maxLength) + '...';
 };
+
+/**
+ * Format time to hours:minutes AM/PM format
+ */
+export const formatTime = (date: Date = new Date()): string => {
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  return `${hours > 12 ? hours - 12 : hours === 0 ? 12 : hours}:${minutes < 10 ? '0' + minutes : minutes} ${hours >= 12 ? 'PM' : 'AM'}`;
+};
