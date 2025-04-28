@@ -14,8 +14,8 @@ import { TechnologyFilter } from './ui/TechnologyFilter';
 const TalentAccessComponent = () => {
   const [activeJobType, setActiveJobType] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  // Get top 3 talents (highest rated) from each category
   const topTalents = useMemo(() => {
     const sortedDevs = [...allDevelopers].sort((a, b) => (b.rating || 0) - (a.rating || 0));
     if (!activeJobType && !searchQuery) {
@@ -24,7 +24,6 @@ const TalentAccessComponent = () => {
     return [];
   }, [activeJobType, searchQuery]);
 
-  // Filtered developers based on search query and active job type
   const filteredDevelopers = useMemo(() => {
     if (topTalents.length > 0) {
       return topTalents;
@@ -59,7 +58,7 @@ const TalentAccessComponent = () => {
     <Section className="text-white" divClass="relative pt-[17rem] xl:pt-[21.5rem]">
       <BgImage
         src="section-lines/talent-section-lines.png"
-        className="-top-0 left-1/2 h-[58rem] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
+        className="-top-0 left-1/2 h-[calc(100%+6rem)] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
       />
 
       {/* Header Section */}
@@ -99,7 +98,7 @@ const TalentAccessComponent = () => {
               {/* No results state */}
               {!hasResults && <NoResults />}
 
-              {/* Results by category */}
+              {/* Results */}
               {hasResults && (
                 <>
                   <div className="mb-2 text-xs text-[#665F5F]">
@@ -113,20 +112,32 @@ const TalentAccessComponent = () => {
                     variants={scrollbarAnimation}
                   >
                     <motion.div className="space-y-4">
-                      {filteredDevelopers.map((dev, index) => (
-                        <motion.div
-                          key={dev.id}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{
-                            duration: 0.4,
-                            ease: 'easeOut',
-                            delay: index * 0.1,
-                          }}
-                        >
-                          <DeveloperProfile developer={dev} isFirst={index === 0} />
-                        </motion.div>
-                      ))}
+                      {filteredDevelopers.map((dev, index) => {
+                        const isHovered = hoveredIndex === index;
+                        const isOtherHovered = hoveredIndex !== null && hoveredIndex !== index;
+
+                        return (
+                          <motion.div
+                            key={dev.id}
+                            onHoverStart={() => setHoveredIndex(index)}
+                            onHoverEnd={() => setHoveredIndex(null)}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{
+                              opacity: isOtherHovered ? 0.5 : 1,
+                              y: 0,
+                            }}
+                            transition={{
+                              type: 'spring',
+                              stiffness: 300,
+                              damping: 25,
+                            }}
+                            className={`rounded-lg overflow-hidden ${isHovered ? 'shadow-lg shadow-pink-500/20' : ''}`}
+                          >
+                            {/* DeveloperProfile is modified below */}
+                            <DeveloperProfile developer={dev} expanded={isHovered} />
+                          </motion.div>
+                        );
+                      })}
                     </motion.div>
                   </motion.div>
                 </>
@@ -135,7 +146,7 @@ const TalentAccessComponent = () => {
           </div>
         </OutlineBox>
 
-        {/* Right Section - Globe Visualization (unchanged as requested) */}
+        {/* Right Section - Globe Visualization */}
         <OutlineBox animated>
           <div className="mb-5 flex flex-col items-center p-5 text-center">
             <img src="/cup.png" alt="Talent" className="mb-3 h-10 w-10 animate-pulse" />
@@ -178,3 +189,4 @@ const TalentAccessComponent = () => {
 };
 
 export default TalentAccessComponent;
+
