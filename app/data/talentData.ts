@@ -1,10 +1,10 @@
 // Technology categories with available icons
 export const technologies = [
   { id: 1, name: 'AI Engineer', icon: '/framer.png' },
-  { id: 2, name: 'Frontend Dev', icon: '/framer-black.png' },
-  { id: 3, name: 'Backend Dev', icon: '/framer-black.png' },
-  { id: 4, name: 'Android Dev', icon: '/framer-black.png' },
-  { id: 5, name: 'iOS Engineer', icon: '/framer-black.png' },
+  { id: 2, name: 'Frontend Dev', icon: '/framer.png' },
+  { id: 3, name: 'Backend Dev', icon: '/framer.png' },
+  { id: 4, name: 'Android Dev', icon: '/framer.png' },
+  { id: 5, name: 'iOS Engineer', icon: '/framer.png' },
 ];
 
 // Developer interface

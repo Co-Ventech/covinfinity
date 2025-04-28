@@ -1,20 +1,29 @@
-import React from 'react';
-import { TopHeroSection, BottomHeroSection } from './HeroSections';
+import type React from "react";
+import { TopHeroSection, BottomHeroSection } from "./HeroSections";
 
 const Hero: React.FC = () => {
   return (
-    <section className="hero-section mt-22 text-center">
-      {/* Top Section */}
-      <div className="hero-top">
-        <TopHeroSection />
-      </div>
+    <section className="hero-section flex flex-col items-center text-center">
+      {/* Solar System with Overlaid Text */}
+      <div className="hero-content relative w-full flex justify-center items-center
+        h-[80rem] lg:h-[80rem] md:h-[60rem] sm:h-[50rem] h-[40rem]">
+        
+        {/* Top Text Section - Absolutely positioned */}
+        <div className="absolute top-[10rem] lg:top-[10rem] md:top-[8rem] sm:top-[6rem] top-[4rem] left-0 right-0 z-10 px-4">
+          <TopHeroSection />
+        </div>
 
-      {/* Middle Section - Solar System Animation */}
-      <div className="hero-middle h-[20rem]">{/* Solar System Animation will go here */}</div>
+        {/* Solar System Image */}
+        <img 
+          src="/products.png" 
+          className="h-full w-auto object-contain" 
+          alt="Solar System Animation" 
+        />
 
-      {/* Bottom Section */}
-      <div className="hero-bottom">
-        <BottomHeroSection />
+        {/* Bottom Text Section - Absolutely positioned */}
+        <div className="absolute bottom-5 left-0 right-0 z-10 px-4">
+          <BottomHeroSection />
+        </div>
       </div>
     </section>
   );
