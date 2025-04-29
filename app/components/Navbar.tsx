@@ -1,7 +1,7 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
-import { ProductIcon, CaseStudyIcon, BuyCryptoIcon, MirrorIcon } from './svgs';
-import { motion, AnimatePresence } from 'framer-motion';
-import GradientText from './ui/GradientText';
+import { Link } from 'react-router';
+import { BuyCryptoIcon, CaseStudyIcon, MirrorIcon, ProductIcon } from './svgs';
 
 type DropdownSections = 'products' | 'services' | 'caseStudies';
 
@@ -165,12 +165,12 @@ const NavItem = ({
 const mobileMenuVariants = {
   hidden: {
     x: '100%',
-    transition: { duration: 0.3, ease: 'easeInOut' }
+    transition: { duration: 0.3, ease: 'easeInOut' },
   },
   visible: {
     x: 0,
-    transition: { duration: 0.3, ease: 'easeInOut' }
-  }
+    transition: { duration: 0.3, ease: 'easeInOut' },
+  },
 };
 
 const Navbar = () => {
@@ -208,17 +208,26 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-between p-8">
-      <div className="flex space-x-19 rounded-[0.625rem] bg-[#1A1A1A] px-3.5 py-2 text-white">
-        <motion.div
+      <div className="flex space-x-19 rounded-[0.625rem] bg-[#1A1A1A] px-3.5 py-2 text-white backdrop-blur-md">
+        {/* <motion.div
           className="logo-navbar flex items-center justify-center"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
         >
           <img src="/logo-navbar.png" alt="" className="h-9 w-[11.625rem]" />
-        </motion.div>
+          </motion.div> */}
+        <Link to="/" className="flex items-center justify-center">
+          {/* <motion.div
+            className="logo-navbar flex items-center justify-center"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+          </motion.div> */}
+          <img src="/logo-navbar.png" alt="" className="h-9 w-[11.625rem]" />
+        </Link>
 
         {/* Desktop Navigation - hidden on mobile */}
-        <div className="hidden lg:flex px-1 py-0.5">
+        <div className="hidden px-1 py-0.5 lg:flex">
           <NavItem
             icon={<ProductIcon className="size-[1.375rem]" />}
             label="Products"
@@ -251,30 +260,23 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Right Side - hidden on mobile */}
-      <div className="hidden lg:block rounded-[0.875em] bg-[#1A1A1A] p-2">
+      <div className="hidden rounded-[0.875em] bg-[#1A1A1A] p-2 backdrop-blur-md lg:block">
         <div className="flex space-x-0.5 rounded-[0.625rem] bg-[#212121] p-1">
           <NavItem
             icon={<MirrorIcon className="size-[1.375rem]" />}
             label="Sign in"
             hideIcon={true}
           />
-          <div className="get-started rounded-lg bg-[#1A1A1A] px-3 py-2.5">
-            Get Started
-          </div>
+          <div className="get-started rounded-lg bg-[#1A1A1A] px-3 py-2.5">Get Started</div>
         </div>
       </div>
 
       {/* Mobile Menu Button - visible only on mobile */}
       <button
         onClick={toggleMobileMenu}
-        className="lg:hidden rounded-lg bg-[#1A1A1A] p-2 text-white"
+        className="rounded-lg bg-[#1A1A1A] p-2 text-white lg:hidden"
       >
-        <svg
-          className="h-10 w-10"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+        <svg className="h-10 w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           {isMobileMenuOpen ? (
             <path
               strokeLinecap="round"
@@ -302,28 +304,28 @@ const Navbar = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 backdrop-blur-sm z-40 lg:hidden"
+              className="fixed inset-0 z-40 backdrop-blur-sm lg:hidden"
               onClick={toggleMobileMenu}
             />
-            
+
             {/* Menu Panel */}
             <motion.div
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
               exit="hidden"
-              className="fixed right-0 top-0 h-full w-72 bg-[#1A1A1A]/90 backdrop-blur-md p-6 z-50 lg:hidden"
+              className="fixed top-0 right-0 z-50 h-full w-72 bg-[#1A1A1A]/90 p-6 backdrop-blur-md lg:hidden"
             >
               <div className="flex flex-col space-y-4 text-white">
                 {/* Products Section */}
                 <div className="flex flex-col space-y-2">
                   <button
                     onClick={() => toggleMobileDropdown('products')}
-                    className="flex items-center justify-between py-2 hover:bg-[#212121] rounded-lg px-2"
+                    className="flex items-center justify-between rounded-lg px-2 py-2 hover:bg-[#212121]"
                   >
                     <span className="text-lg font-semibold">Products</span>
                     <svg
-                      className={`w-5 h-5 transform transition-transform ${
+                      className={`h-5 w-5 transform transition-transform ${
                         mobileDropdownOpen === 'products' ? 'rotate-180' : ''
                       }`}
                       fill="none"
@@ -350,7 +352,7 @@ const Navbar = () => {
                           <a
                             key={item}
                             href="#"
-                            className="block pl-6 py-2 hover:bg-[#212121] rounded-lg"
+                            className="block rounded-lg py-2 pl-6 hover:bg-[#212121]"
                           >
                             {item}
                           </a>
@@ -364,11 +366,11 @@ const Navbar = () => {
                 <div className="flex flex-col space-y-2">
                   <button
                     onClick={() => toggleMobileDropdown('services')}
-                    className="flex items-center justify-between py-2 hover:bg-[#212121] rounded-lg px-2"
+                    className="flex items-center justify-between rounded-lg px-2 py-2 hover:bg-[#212121]"
                   >
                     <span className="text-lg font-semibold">Services</span>
                     <svg
-                      className={`w-5 h-5 transform transition-transform ${
+                      className={`h-5 w-5 transform transition-transform ${
                         mobileDropdownOpen === 'services' ? 'rotate-180' : ''
                       }`}
                       fill="none"
@@ -395,7 +397,7 @@ const Navbar = () => {
                           <a
                             key={item}
                             href="#"
-                            className="block pl-6 py-2 hover:bg-[#212121] rounded-lg"
+                            className="block rounded-lg py-2 pl-6 hover:bg-[#212121]"
                           >
                             {item}
                           </a>
@@ -409,11 +411,11 @@ const Navbar = () => {
                 <div className="flex flex-col space-y-2">
                   <button
                     onClick={() => toggleMobileDropdown('caseStudies')}
-                    className="flex items-center justify-between py-2 hover:bg-[#212121] rounded-lg px-2"
+                    className="flex items-center justify-between rounded-lg px-2 py-2 hover:bg-[#212121]"
                   >
                     <span className="text-lg font-semibold">Case Studies</span>
                     <svg
-                      className={`w-5 h-5 transform transition-transform ${
+                      className={`h-5 w-5 transform transition-transform ${
                         mobileDropdownOpen === 'caseStudies' ? 'rotate-180' : ''
                       }`}
                       fill="none"
@@ -440,7 +442,7 @@ const Navbar = () => {
                           <a
                             key={item}
                             href="#"
-                            className="block pl-6 py-2 hover:bg-[#212121] rounded-lg"
+                            className="block rounded-lg py-2 pl-6 hover:bg-[#212121]"
                           >
                             {item}
                           </a>
@@ -450,15 +452,15 @@ const Navbar = () => {
                   </AnimatePresence>
                 </div>
 
-                <a href="#" className="py-2 hover:bg-[#212121] rounded-lg px-2">
+                <a href="#" className="rounded-lg px-2 py-2 hover:bg-[#212121]">
                   About us
                 </a>
 
-                <div className="pt-4 border-t border-gray-700">
-                  <a href="#" className="block py-2 hover:bg-[#212121] rounded-lg px-2">
+                <div className="border-t border-gray-700 pt-4">
+                  <a href="#" className="block rounded-lg px-2 py-2 hover:bg-[#212121]">
                     Sign in
                   </a>
-                  <a href="#" className="block py-2 hover:bg-[#212121] rounded-lg px-2">
+                  <a href="#" className="block rounded-lg px-2 py-2 hover:bg-[#212121]">
                     Get Started
                   </a>
                 </div>

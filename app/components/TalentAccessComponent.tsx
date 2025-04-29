@@ -58,7 +58,8 @@ const TalentAccessComponent = () => {
     <Section className="text-white" divClass="relative pt-[17rem] xl:pt-[21.5rem]">
       <BgImage
         src="section-lines/talent-section-lines.png"
-        className="-top-0 left-1/2 h-[calc(100%+6rem)] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
+        // className="-top-22 left-1/2 h-[calc(100%+6rem)] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
+        className="-top-0 left-1/2 h-[58rem] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
       />
 
       {/* Header Section */}
@@ -131,7 +132,7 @@ const TalentAccessComponent = () => {
                               stiffness: 300,
                               damping: 25,
                             }}
-                            className={`rounded-lg overflow-hidden ${isHovered ? 'shadow-lg shadow-pink-500/20' : ''}`}
+                            className={`overflow-hidden rounded-lg ${isHovered ? 'shadow-lg shadow-pink-500/20' : ''}`}
                           >
                             {/* DeveloperProfile is modified below */}
                             <DeveloperProfile developer={dev} />
@@ -189,4 +190,3 @@ const TalentAccessComponent = () => {
 };
 
 export default TalentAccessComponent;
-
