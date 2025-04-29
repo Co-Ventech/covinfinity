@@ -6,10 +6,10 @@ const Hero: React.FC = () => {
     <section className="hero-section flex flex-col items-center text-center">
       {/* Solar System with Overlaid Text */}
       <div className="hero-content relative w-full flex justify-center items-center
-        h-[80rem] lg:h-[80rem] md:h-[60rem] sm:h-[50rem] h-[40rem]">
+         lg:h-[80rem] md:h-[60rem] sm:h-[50rem] h-[40rem]">
         
         {/* Top Text Section - Absolutely positioned */}
-        <div className="absolute top-[10rem] lg:top-[10rem] md:top-[8rem] sm:top-[6rem] top-[4rem] left-0 right-0 z-10 px-4">
+        <div className="absolute  lg:top-[10rem] md:top-[8rem] sm:top-[6rem] top-[4rem] left-0 right-0 z-10 px-4">
           <TopHeroSection />
         </div>
 
