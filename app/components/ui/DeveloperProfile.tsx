@@ -33,7 +33,8 @@ export const DeveloperProfile = ({ developer, isFirst = false }: DeveloperProfil
   const navigate = useNavigate();
 
   const handleSetInterview = () => {
-    navigate('/connect');
+    // Open the connect page in a new tab
+    window.open('/connect', '_blank');
   };
 
   return (
