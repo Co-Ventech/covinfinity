@@ -29,6 +29,7 @@ interface UseChatReturn {
   isSending: boolean;
   chatContainerRef: MutableRefObject<HTMLDivElement | null>;
   inputRef: MutableRefObject<HTMLInputElement | null>;
+  hasUserSentFirstMessage: boolean;
 }
 
 const useChat = (options: UseChatOptions = {}): UseChatReturn => {
@@ -47,10 +48,10 @@ const useChat = (options: UseChatOptions = {}): UseChatReturn => {
   const [isConnected, setIsConnected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSending, setIsSending] = useState(false);
+  const [hasUserSentFirstMessage, setHasUserSentFirstMessage] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Scroll to bottom when chats update
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
@@ -61,10 +62,14 @@ const useChat = (options: UseChatOptions = {}): UseChatReturn => {
     if (!userMessage.trim() || !socket) return;
 
     try {
-      // Set sending animation state
       setIsSending(true);
 
-      // Create the new message
+      // Clear initial chats if this is the first user message
+      if (!hasUserSentFirstMessage) {
+        setChats([]);
+        setHasUserSentFirstMessage(true);
+      }
+
       const newMessage: ChatMessage = {
         role: 'user',
         sender: userName,
@@ -73,24 +78,17 @@ const useChat = (options: UseChatOptions = {}): UseChatReturn => {
         time: formatTime(),
       };
 
-      // Clear input immediately for better UX
       const message = userMessage;
       setUserMessage('');
 
-      // Animate message sending with small delay
       await new Promise((resolve) => setTimeout(resolve, 150));
 
-      // Display user message
       setChats((prev) => [...prev, newMessage]);
       setIsSending(false);
-
-      // Show loading indicator
       setIsLoading(true);
 
-      // Send message to server
       socket.send(message);
 
-      // Focus input for better UX
       if (inputRef.current) {
         inputRef.current.focus();
       }
@@ -102,11 +100,10 @@ const useChat = (options: UseChatOptions = {}): UseChatReturn => {
       setIsLoading(false);
       console.error('Send message error:', err);
     }
-  }, [userMessage, socket, userName, userAvatar]);
+  }, [userMessage, socket, userName, userAvatar, hasUserSentFirstMessage]);
 
   useEffect(() => {
     const ws = new WebSocket('wss://rag-chatbot-backend-production-b8f6.up.railway.app/');
-    // const ws = new WebSocket('ws://localhost:4000');
     setSocket(ws);
 
     const handleOpen = () => {
@@ -165,6 +162,7 @@ const useChat = (options: UseChatOptions = {}): UseChatReturn => {
     isSending,
     chatContainerRef,
     inputRef,
+    hasUserSentFirstMessage,
   };
 };
 

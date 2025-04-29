@@ -131,6 +131,7 @@ const CollaborationChatBot = () => {
     isSending,
     chatContainerRef,
     inputRef,
+    hasUserSentFirstMessage,
   } = useChat({
     initialChats: aeChatData,
     userAvatar: '/john.png',
@@ -173,14 +174,15 @@ const CollaborationChatBot = () => {
           </div>
 
           {/* Chat Messages and Input Container */}
-          <OutlineBox className="mt-2 mb-4 !w-full overflow-hidden bg-[rgba(26,23,23,0.48)]">
+          <OutlineBox className="mt-2 mb-4 min-h-[27rem] max-h-[27rem] !w-full overflow-hidden bg-[rgba(26,23,23,0.48)] relative flex flex-col">
             {/* Messages */}
             <div
               ref={chatContainerRef}
-              className="scrollbar-hide max-h-[30rem] !w-full space-y-0 overflow-y-auto px-4 pt-2"
+              className="scrollbar-hide flex-1 !w-full space-y-0 overflow-y-auto px-4 pt-2 scroll-smooth"
               style={{
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none',
+                maxHeight: 'calc(32rem - 4rem)', // Subtract input height and padding
               }}
             >
               <style
@@ -188,6 +190,9 @@ const CollaborationChatBot = () => {
                   __html: `
                   .scrollbar-hide::-webkit-scrollbar {
                     display: none;
+                  }
+                  .scroll-smooth {
+                    scroll-behavior: smooth;
                   }
                 `,
                 }}
@@ -205,8 +210,8 @@ const CollaborationChatBot = () => {
                   />
                 ))}
 
-                {/* Show LinearCard between chats */}
-                {chats.length >= 2 && <LinearCard />}
+                {/* Show LinearCard only during static chat */}
+                {!hasUserSentFirstMessage && chats.length >= 2 && <LinearCard />}
 
                 {/* Loading indicator */}
                 {isLoading && (
@@ -229,8 +234,8 @@ const CollaborationChatBot = () => {
               </AnimatePresence>
             </div>
 
-            {/* Chat Input */}
-            <div className="-mx-4 flex items-center px-4 py-0.5">
+            {/* Chat Input - Fixed at bottom */}
+            <div className="sticky bottom-0 -mx-4  px-4 py-3 border-t border-[#1F1F1F]">
               <motion.div
                 className={`flex flex-1 items-center justify-between rounded-lg bg-[#1A1A1A] px-3 py-1 ${isLoading ? 'opacity-90' : ''}`}
                 animate={{

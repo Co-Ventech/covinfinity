@@ -135,7 +135,7 @@ const TalentAccessComponent = () => {
                             className={`overflow-hidden rounded-lg ${isHovered ? 'shadow-lg shadow-pink-500/20' : ''}`}
                           >
                             {/* DeveloperProfile is modified below */}
-                            <DeveloperProfile developer={dev} expanded={isHovered} />
+                            <DeveloperProfile developer={dev} />
                           </motion.div>
                         );
                       })}
