@@ -6,11 +6,11 @@ import type { Route } from './+types/connect';
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: 'Schedule an Interview - Covinfinity' },
+    { title: 'Schedule a Meeting - Covinfinity' },
     {
       name: 'description',
       content:
-        'Schedule an interview with our account executive to discuss how our services can meet your specific needs.',
+        'Schedule a personalized meeting with our team to discuss your project needs and explore custom software solutions for your business.',
     },
   ];
 }
