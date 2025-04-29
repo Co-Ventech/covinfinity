@@ -173,7 +173,7 @@ const CollaborationChatBot = () => {
           </div>
 
           {/* Chat Messages and Input Container */}
-          <OutlineBox className="mt-2 mb-4 !w-full overflow-hidden bg-[rgba(26,23,23,0.48)]">
+          <OutlineBox className="mt-2 mb-4 min-h-[25rem] !w-full overflow-hidden bg-[rgba(26,23,23,0.48)]">
             {/* Messages */}
             <div
               ref={chatContainerRef}
@@ -230,7 +230,7 @@ const CollaborationChatBot = () => {
             </div>
 
             {/* Chat Input */}
-            <div className="-mx-4 flex items-center px-4 py-0.5">
+            <div className="-mx-4  flex items-center px-4 py-0.5">
               <motion.div
                 className={`flex flex-1 items-center justify-between rounded-lg bg-[#1A1A1A] px-3 py-1 ${isLoading ? 'opacity-90' : ''}`}
                 animate={{
