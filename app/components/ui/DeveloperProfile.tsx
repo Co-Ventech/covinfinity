@@ -1,6 +1,7 @@
 // components/talent/DeveloperProfile.tsx
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import type { Developer } from '../../data/talentData';
 import GradientBorderButton from './GradientBorderButton';
 import { RecommendedBadge } from './RecommendedBadge';
@@ -29,6 +30,11 @@ const highlightVariants = {
 export const DeveloperProfile = ({ developer, isFirst = false }: DeveloperProfileProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const shouldHighlight = isFirst || isHovered;
+  const navigate = useNavigate();
+
+  const handleSetInterview = () => {
+    navigate('/connect');
+  };
 
   return (
     <motion.div
@@ -70,7 +76,9 @@ export const DeveloperProfile = ({ developer, isFirst = false }: DeveloperProfil
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
                   >
-                    <GradientBorderButton>Set Interview</GradientBorderButton>
+                    <GradientBorderButton onClick={handleSetInterview}>
+                      Set Interview
+                    </GradientBorderButton>
                   </motion.div>
                 </div>
               </div>

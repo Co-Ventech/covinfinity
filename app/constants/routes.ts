@@ -7,6 +7,7 @@ export const ROUTES = {
   ABOUT: '/about',
   SERVICES: '/services',
   CONTACT: '/contact',
+  CONNECT: '/connect',
   BLOG: '/blog',
   BLOG_POST: (id: string) => `/blog/${id}`,
   DASHBOARD: '/dashboard',
