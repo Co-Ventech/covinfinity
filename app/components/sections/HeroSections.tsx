@@ -33,8 +33,8 @@ export const TopHeroSection: React.FC = () => (
     polygonComponent={Polygon1}
     polygonClassName="top-3.5 left-1/2 h-[25rem] !w-[calc(100%+5rem)] -translate-x-1/2"
   >
-    <Heading className="mb-3.5" blockText="and Services">
-      Coventech Products
+    <Heading className="mb-3.5" blockText="AI & human collaboration">
+      Ready‑made features for
     </Heading>
 
     <p className="mb-6">
