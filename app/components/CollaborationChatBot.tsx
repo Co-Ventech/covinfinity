@@ -36,14 +36,15 @@ export const ChatMessage = ({
   animate?: boolean;
 }) => {
   const messageContent = (
-    <div className="mb-1 flex items-start space-x-2">
-      <img src={avatar} alt={sender} className="h-5 w-5 rounded-full" />
+    // <div className="mb-2 flex items-start space-x-2">
+      <div className="mb-4 flex items-start gap-3">
+      <img src={avatar} alt={sender} className="h-10 w-10 rounded-full" />
       <div className="flex-1">
         <div className="flex items-center space-x-2">
           <span className="text-xs text-white">{sender}</span>
           <span className="text-xs text-[#665F5F]">{time}</span>
         </div>
-        <p className="mt-0.5 text-xs text-[13px] text-[#A3A3A3]">{message}</p>
+        <p className="mt-1 text-xs text-[13px] text-[#A3A3A3]">{message}</p>
       </div>
     </div>
   );
@@ -174,11 +175,11 @@ const CollaborationChatBot = () => {
           </div>
 
           {/* Chat Messages and Input Container */}
-          <OutlineBox className="mt-2 mb-4 min-h-[27rem] max-h-[27rem] !w-full overflow-hidden bg-[rgba(26,23,23,0.48)] relative flex flex-col">
+          <div className="mt-2 p-3.5 rounded-3xl mb-4 min-h-[27rem] max-h-[27rem] !w-full overflow-hidden bg-[#0B0C0D] relative flex flex-col">
             {/* Messages */}
             <div
               ref={chatContainerRef}
-              className="scrollbar-hide flex-1 !w-full space-y-0 overflow-y-auto px-4 pt-2 scroll-smooth"
+              className="scrollbar-hide flex-1 !w-[80%] space-y-0 overflow-y-auto px-4 pt-2 scroll-smooth"
               style={{
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none',
@@ -210,8 +211,8 @@ const CollaborationChatBot = () => {
                   />
                 ))}
 
-                {/* Show LinearCard only during static chat */}
-                {!hasUserSentFirstMessage && chats.length >= 2 && <LinearCard />}
+                Show LinearCard only during static chat
+                {/* {!hasUserSentFirstMessage && chats.length >= 2 && <LinearCard />} */}
 
                 {/* Loading indicator */}
                 {isLoading && (
@@ -235,9 +236,9 @@ const CollaborationChatBot = () => {
             </div>
 
             {/* Chat Input - Fixed at bottom */}
-            <div className="sticky bottom-0 -mx-4  px-4 py-3 border-t border-[#1F1F1F]">
+            <div className="sticky bottom-0 -mx-4  px-4 py-3 ">
               <motion.div
-                className={`flex flex-1 items-center justify-between rounded-lg bg-[#1A1A1A] px-3 py-1 ${isLoading ? 'opacity-90' : ''}`}
+                className={`flex flex-1 items-center justify-between rounded-lg bg-[#101112] px-3 py-1 ${isLoading ? 'opacity-90' : ''}`}
                 animate={{
                   scale: isSending ? 0.98 : 1,
                   opacity: isSending ? 0.9 : isLoading ? 0.9 : 1,
@@ -253,13 +254,13 @@ const CollaborationChatBot = () => {
                   duration: 0.2,
                 }}
               >
-                <div className="flex flex-1 items-center">
-                  <img src="/chat-plus.png" alt="Add" className="mr-2 h-5 w-5" />
+                <div className="flex flex-1 items-center py-2.5 bg-[#101112]">
+                  <img src="/smile.png" alt="Add" className="mr-2 h-5 w-5" />
                   <input
                     ref={inputRef}
                     type="text"
                     placeholder={isLoading ? 'Sarah is thinking...' : 'Message to Sarah'}
-                    className={`flex-1 bg-transparent text-[13px] text-white placeholder-[#665F5F] transition-opacity duration-200 focus:outline-none ${isLoading ? 'opacity-60' : ''}`}
+                    className={`flex-1 bg-transparent text-[13px] text-white placeholder-[#EBF5FF]/30 transition-opacity duration-200 focus:outline-none ${isLoading ? 'opacity-60' : ''}`}
                     value={userMessage}
                     onChange={(e) => setUserMessage(e.target.value)}
                     onKeyPress={handleKeyPress}
@@ -267,13 +268,13 @@ const CollaborationChatBot = () => {
                   />
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="rounded-lg border-[0.1125rem] border-[#1F1F1F] px-1.5 py-[0.05rem]">
+                  {/* <div className="rounded-lg border-[0.1125rem] border-[#1F1F1F] px-1.5 py-[0.05rem]">
                     <span className="bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-xs text-transparent">
                       GIF
                     </span>{' '}
-                  </div>
+                  </div> */}
                   <motion.img
-                    src="/thumb.png"
+                    src="/send.png"
                     alt="Send"
                     className={`mr-2 h-5 w-5 cursor-pointer ${isLoading ? 'opacity-50' : ''}`}
                     onClick={isLoading ? undefined : () => sendMessage()}
@@ -283,7 +284,7 @@ const CollaborationChatBot = () => {
                 </div>
               </motion.div>
             </div>
-          </OutlineBox>
+          </div>
         </OutlineBox>
 
         {/* Services Section */}
