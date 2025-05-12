@@ -10,6 +10,7 @@ import Section from './ui/Section';
 import { TalentSearchHeader } from './ui/TalentSearchHeader';
 import { TalentSearchInput } from './ui/TalentSearchInput';
 import { TechnologyFilter } from './ui/TechnologyFilter';
+import Box from './ui/Box';
 
 const TalentAccessComponent = () => {
   const [activeJobType, setActiveJobType] = useState<number | null>(null);
@@ -59,7 +60,7 @@ const TalentAccessComponent = () => {
       <BgImage
         src="section-lines/talent-section-lines.png"
         // className="-top-22 left-1/2 h-[calc(100%+6rem)] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
-        className="-top-0 left-1/2 h-[58rem] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
+        className="-top-0 left-1/2 -z-10 h-[58rem] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
       />
 
       {/* Header Section */}
@@ -75,7 +76,7 @@ const TalentAccessComponent = () => {
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Left Section - Talent Search */}
-        <OutlineBox animated className="lg:col-span-2">
+        <Box className="lg:col-span-2">
           <TalentSearchHeader
             title="Top talent access"
             description="Here client can see list of top talents he can quickly contact/hire based on his needs"
@@ -84,8 +85,9 @@ const TalentAccessComponent = () => {
           <TechnologyFilter activeJobType={activeJobType} onFilterChange={setActiveJobType} />
 
           {/* Inner box containing search and profiles */}
-          <div className="px-4 pb-4">
-            <div className="rounded-lg border border-[#1F1F1F] bg-[rgba(26,23,23,0.48)] p-3">
+          <div className="pb-4">
+            {/* <div className="rounded-lg border border-[#1F1F1F] bg-[rgba(26,23,23,0.48)] p-3"> */}
+            <Box.Inner>
               {/* Search section */}
               <div className="mb-4 flex items-center">
                 <div className="mr-2 flex space-x-1 rounded-lg border border-[#1F1F1F] p-2">
@@ -143,12 +145,12 @@ const TalentAccessComponent = () => {
                   </motion.div>
                 </>
               )}
-            </div>
+            </Box.Inner>
           </div>
-        </OutlineBox>
+        </Box>
 
         {/* Right Section - Globe Visualization */}
-        <OutlineBox animated>
+        <Box>
           <div className="mb-5 flex flex-col items-center p-5 text-center">
             <img src="/cup.png" alt="Talent" className="mb-3 h-10 w-10 animate-pulse" />
             <h2 className="text-lg font-semibold">Top talent access</h2>
@@ -165,7 +167,7 @@ const TalentAccessComponent = () => {
               />
             </div>
           </OutlineBox>
-        </OutlineBox>
+        </Box>
       </div>
 
       {/* Custom scrollbar styles */}

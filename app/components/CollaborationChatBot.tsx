@@ -175,7 +175,8 @@ const CollaborationChatBot = () => {
           </div>
 
           {/* Chat Messages and Input Container */}
-          <div className="relative mt-2 mb-4 flex max-h-[27rem] min-h-[27rem] !w-full flex-col overflow-hidden rounded-[0.625rem] bg-[#0B0C0D] p-3">
+          {/* <div className="relative mt-2 mb-4 flex max-h-[27rem] min-h-[27rem] !w-full flex-col overflow-hidden rounded-[0.625rem] bg-[#0B0C0D] p-3"> */}
+          <Box.Inner className="relative mt-2 mb-4 flex max-h-[27rem] min-h-[27rem] !w-full flex-col overflow-hidden">
             {/* Messages */}
             <div
               ref={chatContainerRef}
@@ -284,7 +285,7 @@ const CollaborationChatBot = () => {
                 </div>
               </motion.div>
             </div>
-          </div>
+          </Box.Inner>
         </Box>
 
         {/* Services Section */}
