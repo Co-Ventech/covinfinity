@@ -4,6 +4,7 @@ import useChat from '~/hooks/useChat';
 import { formatTime } from '~/utils/formatters';
 import BgImage from './BgImage';
 import AnimatedLine from './ui/AnimatedLine';
+import Box from './ui/Box';
 import Heading from './ui/Heading';
 import LinearCard from './ui/LinearCard';
 import OutlineBox from './ui/OutlineBox';
@@ -159,7 +160,7 @@ const CollaborationChatBot = () => {
       {/* Main Content Grid */}
       <div className="relative grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Chat Section - Takes up 2 columns */}
-        <OutlineBox animated className="lg:col-span-2">
+        <Box className="lg:col-span-2">
           {/* Chat Header */}
           <div className="ml-10 p-5">
             <div className="mt-3 w-[21rem] space-y-3 max-sm:w-[calc(100%-3rem)]">
@@ -174,11 +175,11 @@ const CollaborationChatBot = () => {
           </div>
 
           {/* Chat Messages and Input Container */}
-          <OutlineBox className="mt-2 mb-4 min-h-[27rem] max-h-[27rem] !w-full overflow-hidden bg-[rgba(26,23,23,0.48)] relative flex flex-col">
+          <div className="relative mt-2 mb-4 flex max-h-[27rem] min-h-[27rem] !w-full flex-col overflow-hidden rounded-[0.625rem] bg-[#0B0C0D] p-3">
             {/* Messages */}
             <div
               ref={chatContainerRef}
-              className="scrollbar-hide flex-1 !w-full space-y-0 overflow-y-auto px-4 pt-2 scroll-smooth"
+              className="scrollbar-hide !w-full flex-1 space-y-0 overflow-y-auto scroll-smooth px-4 pt-2"
               style={{
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none',
@@ -235,7 +236,7 @@ const CollaborationChatBot = () => {
             </div>
 
             {/* Chat Input - Fixed at bottom */}
-            <div className="sticky bottom-0 -mx-4  px-4 py-3 border-t border-[#1F1F1F]">
+            <div className="sticky bottom-0 -mx-4 border-t border-[#1F1F1F] px-4 py-3">
               <motion.div
                 className={`flex flex-1 items-center justify-between rounded-lg bg-[#1A1A1A] px-3 py-1 ${isLoading ? 'opacity-90' : ''}`}
                 animate={{
@@ -283,11 +284,11 @@ const CollaborationChatBot = () => {
                 </div>
               </motion.div>
             </div>
-          </OutlineBox>
-        </OutlineBox>
+          </div>
+        </Box>
 
         {/* Services Section */}
-        <OutlineBox animated>
+        <Box>
           <div className="m-8">
             <img src="/story.png" alt="Add" className="mr-2 h-8 w-8" />
             <h2 className="mt-3.5 text-lg font-semibold">Services Orbiting Covinfinity</h2>
@@ -296,7 +297,7 @@ const CollaborationChatBot = () => {
             </p>
           </div>
           <img src="/orbit.png" alt="Add" className="h-[26.6rem] w-full" />
-        </OutlineBox>
+        </Box>
       </div>
 
       {/* Animated Lines */}

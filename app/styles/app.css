@@ -3,7 +3,8 @@
 
 @theme {
   /* Colors */
-  --color-background-body: '#0f1011';
+  --color-background-body: #0f1011;
+  --color-border-box: #0b0c0d;
 
   /* Font configuration */
   --font-sans: 'Poppins', sans-serif;
