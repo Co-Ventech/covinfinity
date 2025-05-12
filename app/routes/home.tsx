@@ -1,4 +1,3 @@
-import BgGlow from '~/components/BgGlow';
 import CaseStudiesGrid from '~/components/CaseStudiesGrid';
 import CollaborationChatBot from '~/components/CollaborationChatBot';
 import Navbar from '~/components/Navbar';
@@ -53,7 +52,7 @@ export default function Home() {
       <CaseStudiesGrid />
 
       {/* BG GLOW */}
-      {Array.from({ length: 3 }).map((_, i) => (
+      {/* {Array.from({ length: 3 }).map((_, i) => (
         <BgGlow
           key={i}
           className={
@@ -64,7 +63,7 @@ export default function Home() {
                 : '!bottom-0'
           }
         />
-      ))}
+      ))} */}
     </MainLayout>
   );
 }

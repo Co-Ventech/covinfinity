@@ -208,7 +208,7 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-between p-8">
-      <div className="flex space-x-19 rounded-[0.625rem] bg-[#1A1A1A] px-3.5 py-2 text-white backdrop-blur-md">
+      <div className="flex space-x-19 rounded-[0.625rem] bg-[#151617] px-3.5 py-2 text-white backdrop-blur-md">
         {/* <motion.div
           className="logo-navbar flex items-center justify-center"
           whileHover={{ scale: 1.05 }}
@@ -260,14 +260,14 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Right Side - hidden on mobile */}
-      <div className="hidden rounded-[0.875em] bg-[#1A1A1A] p-2 backdrop-blur-md lg:block">
+      <div className="hidden rounded-[0.875em] bg-[#151617] p-2 backdrop-blur-md lg:block">
         <div className="flex space-x-0.5 rounded-[0.625rem] bg-[#212121] p-1">
           <NavItem
             icon={<MirrorIcon className="size-[1.375rem]" />}
             label="Sign in"
             hideIcon={true}
           />
-          <div className="get-started rounded-lg bg-[#1A1A1A] px-3 py-2.5">Get Started</div>
+          <div className="get-started rounded-lg bg-[#0F1011] px-3 py-2.5">Get Started</div>
         </div>
       </div>
 

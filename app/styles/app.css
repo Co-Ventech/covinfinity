@@ -2,6 +2,9 @@
 @import './animated-border.css';
 
 @theme {
+  /* Colors */
+  --color-background-body: '#0f1011';
+
   /* Font configuration */
   --font-sans: 'Poppins', sans-serif;
   --font-serif: 'Outfit', sans-serif;
@@ -77,7 +80,6 @@
   body {
     @apply min-h-screen text-base;
     @apply text-gray-900 dark:text-gray-100;
-    @apply bg-gradient-to-b from-[#0F0F11] via-[#1A1A1C] to-[#0F0F11] bg-no-repeat;
     font-family: var(--font-sans);
 
     @media (prefers-color-scheme: dark) {
