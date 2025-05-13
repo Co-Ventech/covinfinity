@@ -4,8 +4,8 @@ import Polygon1 from '../svgs/Polygon1';
 import Polygon2 from '../svgs/Polygon2';
 import GradientBorderButton from '../ui/GradientBorderButton';
 import GradientText from '../ui/GradientText';
-import OutlineBox from '../ui/OutlineBox';
 import Heading from '../ui/Heading';
+import OutlineBox from '../ui/OutlineBox';
 
 // Reusable component for polygon-backed sections
 interface PolygonSectionProps {
@@ -33,12 +33,15 @@ export const TopHeroSection: React.FC = () => (
     polygonComponent={Polygon1}
     polygonClassName="top-3.5 left-1/2 h-[25rem] !w-[calc(100%+5rem)] -translate-x-1/2"
   >
-    <Heading className="mb-3.5" blockText="AI & human collaboration">
+    <Heading className="mb-3.5 lg:!text-6xl" blockText="AI & human collaboration">
       Ready‑made features for
     </Heading>
 
-    <p className="mb-6">
-      Some lorem ipsum text goes here <span className="block"> says no one </span>
+    <p className="!mx-auto mb-6 !max-w-[43rem] font-serif text-xl font-medium">
+      <GradientText className="!from-[#EBF5FF]/56 !to-[#EBF5FF]/48 to-20%">
+        The best apps in the AI era aren’t solo experiences—they’re collaborative. Coventech
+        provides customizable pre‑built features
+      </GradientText>
     </p>
     
       
