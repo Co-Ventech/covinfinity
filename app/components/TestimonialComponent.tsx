@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
+import Box from './ui/Box';
 
 // Client testimonial type
 interface Testimonial {
@@ -39,7 +40,7 @@ const ClientProfile = ({
   onClick: () => void;
 }) => (
   <div
-    className={`flex cursor-pointer items-start space-x-4 rounded-2xl px-4 py-6 transition-colors duration-300 ${isActive ? 'bg-[#1F1C1D]' : 'bg-[#1C1919]'}`}
+    className={`flex cursor-pointer items-start space-x-4 rounded-2xl px-4 py-6 transition-colors duration-300 ${isActive ? 'bg-[#252729]' : 'bg-[#0F1011]'}`}
     onClick={onClick}
   >
     <img src={client.avatar} alt={client.name} className="h-12 w-12 rounded-full" />
@@ -124,7 +125,7 @@ const TestimonialComponent = () => {
       name: 'Mark Witty',
       position: 'Chief Executive Officer',
       company: 'Google',
-      avatar: '/man.png',
+      avatar: '/green-icon.png',
       companyAvatar: '/google.png',
       socialIcons: ['/facebook.png', '/youtube.png', '/zoom.png'],
       costSaved: 482000,
@@ -134,7 +135,7 @@ const TestimonialComponent = () => {
       name: 'Sarah Johnson',
       position: 'Product Manager',
       company: 'Google',
-      avatar: '/sarah.png',
+      avatar: '/green-icon.png',
       companyAvatar: '/google.png',
       socialIcons: ['/facebook.png', '/youtube.png', '/zoom.png'],
       costSaved: 326000,
@@ -183,10 +184,10 @@ const TestimonialComponent = () => {
     <Section>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Left Section - Client Testimonials */}
-        <OutlineBox className="relative border-[#332B2B] !p-2 lg:col-span-1">
-          <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-[calc(100%-8rem)] w-full bg-linear-to-b from-[#1A1A1A]/0 via-[1A1A1A]/24 to-[#211B1B]"></div>
+        <div className="relative rounded-3xl border-[0.75rem] border-border-box  lg:col-span-1">
+          <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-[calc(100%-8rem)] w-full bg-linear-to-b from-[#0B0C0D] via-[#141617] to-[#252729]"></div>
           {/* Client Profiles */}
-          <div className="mb-8 space-y-1">
+          <div className="mb-8 space-y-[0.75rem]">
             {clients.map((client) => (
               <ClientProfile
                 key={client.id}
@@ -203,12 +204,12 @@ const TestimonialComponent = () => {
               <FeatureBox key={index} feature={feature} />
             ))}
           </div>
-        </OutlineBox>
+        </div>
 
         {/* Right Section - Cost Savings */}
-        <OutlineBox className="relative overflow-hidden border-[#332B2B] !p-2">
+        <Box className="relative overflow-hidden border-[#332B2B] !p-2">
           {/* Gradient Background */}
-          <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-[calc(100%-8rem)] w-full bg-linear-to-b from-[#1A1A1A]/0 via-[1A1A1A]/24 to-[#211B1B]"></div>
+          <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-[calc(100%-8rem)] w-full bg-linear-to-b from-[#0B0C0D]/0 via-[1A1A1A]/24 to-[#252729]"></div>
           <div className="pointer-events-none absolute top-0 left-0 -z-10 h-[calc(100%-8rem)] w-full bg-[#1A1A1A]/32"></div>
           {/* <div className="absolute inset-0 bg-gradient-to-b from-[#1F1F1F] to-[#211B1B]"></div> */}
 
@@ -237,7 +238,7 @@ const TestimonialComponent = () => {
               ))}
             </div>
           </div>
-        </OutlineBox>
+        </Box>
       </div>
     </Section>
   );

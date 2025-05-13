@@ -181,7 +181,7 @@ const CollaborationChatBot = () => {
             {/* Messages */}
             <div
               ref={chatContainerRef}
-              className="scrollbar-hide !w-[80%] flex-1 space-y-0 overflow-y-auto scroll-smooth px-4 pt-2"
+              className="scrollbar-hide !w-full flex-1 space-y-0 overflow-y-auto scroll-smooth px-4 pt-2"
               style={{
                 scrollbarWidth: 'none',
                 msOverflowStyle: 'none',
@@ -236,7 +236,7 @@ const CollaborationChatBot = () => {
             </div>
 
             {/* Chat Input - Fixed at bottom */}
-            <div className="sticky bottom-0 -mx-4 px-4 py-3">
+            <div className="sticky bottom-0 -mx-4 border-t border-[#1F1F1F] px-4 py-3">
               <motion.div
                 className={`flex flex-1 items-center justify-between rounded-lg bg-[#101112] px-3 py-1 ${isLoading ? 'opacity-90' : ''}`}
                 animate={{

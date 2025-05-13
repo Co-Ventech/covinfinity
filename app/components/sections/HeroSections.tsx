@@ -40,12 +40,21 @@ export const TopHeroSection: React.FC = () => (
     <p className="mb-6">
       Some lorem ipsum text goes here <span className="block"> says no one </span>
     </p>
-    <GradientBorderButton>
-      Launch Covinfinity
-      {/* <span className="block bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-transparent">
-        Launch Covinfinity
-      </span> */}
-    </GradientBorderButton>
+    
+      
+    <div className="flex justify-center gap-4">
+  <button className="px-5 py-2.5 text-[#151517] font-medium bg-gradient-to-r from-[#C2C2C2] to-[#FFFFFF] hover:opacity-90 transition rounded-lg">
+    Book a demo
+  </button>
+
+  <button className="px-5 py-2.5 font-medium hover:opacity-90 transition rounded flex">
+    <span className="bg-gradient-to-r from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent">
+      Start today for free
+    </span>
+    <img src="/right-icon.png" alt="arrow-icon"  className='h-2 w-2 ml-2 mt-2' />
+  </button>
+</div>
+   
   </PolygonSection>
 );
 
