@@ -3,7 +3,7 @@ import CollaborationChatBot from '~/components/CollaborationChatBot';
 import Navbar from '~/components/Navbar';
 import CollaborationSection from '~/components/sections/CollaborationSection';
 import CompanySliderSection from '~/components/sections/CompanySliderSection';
-import TestEcosystemSection from '~/components/sections/TestEcosystemSection';
+import TestEcosystemSection from '~/components/sections/EcosystemSection';
 import ServicesSection from '~/components/ServicesSection';
 import { Starfield } from '~/components/StarField';
 import TalentAccessComponent from '~/components/TalentAccessComponent';
