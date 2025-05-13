@@ -39,7 +39,7 @@ const ClientProfile = ({
   onClick: () => void;
 }) => (
   <div
-    className={`flex cursor-pointer items-start space-x-4 rounded-2xl px-4 py-6 transition-colors duration-300 ${isActive ? 'bg-[#1F1C1D]' : 'bg-[#1C1919]'}`}
+    className={`flex cursor-pointer items-start space-x-4 rounded-2xl px-4 py-6 transition-colors duration-300 ${isActive ? 'bg-[#1F1C1D]' : 'bg-[#0F1011]'}`}
     onClick={onClick}
   >
     <img src={client.avatar} alt={client.name} className="h-12 w-12 rounded-full" />
@@ -124,7 +124,7 @@ const TestimonialComponent = () => {
       name: 'Mark Witty',
       position: 'Chief Executive Officer',
       company: 'Google',
-      avatar: '/man.png',
+      avatar: '/green-icon.png',
       companyAvatar: '/google.png',
       socialIcons: ['/facebook.png', '/youtube.png', '/zoom.png'],
       costSaved: 482000,
@@ -134,7 +134,7 @@ const TestimonialComponent = () => {
       name: 'Sarah Johnson',
       position: 'Product Manager',
       company: 'Google',
-      avatar: '/sarah.png',
+      avatar: '/green-icon.png',
       companyAvatar: '/google.png',
       socialIcons: ['/facebook.png', '/youtube.png', '/zoom.png'],
       costSaved: 326000,
