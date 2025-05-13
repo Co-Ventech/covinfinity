@@ -41,23 +41,25 @@ const AvatarGroup: React.FC = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    
+
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-    
+
     // Set initial width
     handleResize();
-    
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Determine how many avatars to show based on screen width
   const getVisibleAvatars = () => {
-    if (windowWidth < 640) { // sm breakpoint
+    if (windowWidth < 640) {
+      // sm breakpoint
       return 8;
-    } else if (windowWidth < 768) { // md breakpoint
+    } else if (windowWidth < 768) {
+      // md breakpoint
       return 12;
     }
     return avatars.length; // Show all on larger screens

@@ -28,59 +28,64 @@ export default function CaseStudies() {
     <MainLayout>
       <div className="showcase relative h-max w-full space-y-[10rem]">
         {/* Background images behind navbar */}
-        <div className="absolute inset-0 z-0 flex justify-between  " >
-          <div className="relative w-1/4 h-[20rem]">
+        <div className="absolute inset-0 z-0 flex justify-between">
+          <div className="relative h-[20rem] w-1/4">
             {/* Left background image */}
-            <div className="absolute inset-0 bg-black/20 rounded-lg"></div>
+            <div className="absolute inset-0 rounded-lg bg-black/20"></div>
             <img src="/case-studies1.png" alt="Cost" className="" />
-            
           </div>
-          <div className="relative ml-6 w-1/2 h-[20rem]">
+          <div className="relative ml-6 h-[20rem] w-1/2">
             {/* Center background image */}
-             <div className="absolute inset-0 bg-black/20 rounded-lg"></div>
+            <div className="absolute inset-0 rounded-lg bg-black/20"></div>
             <img src="/case-studies2.png" alt="Cost" className="" />
           </div>
-          <div className="relative ml-6 w-1/4 h-[20rem]">
+          <div className="relative ml-6 h-[20rem] w-1/4">
             {/* Right background image */}
-            <div className="absolute inset-0 bg-black/20 rounded-lg"></div>
+            <div className="absolute inset-0 rounded-lg bg-black/20"></div>
             <img src="/case-studies3.png" alt="Cost" className="" />
           </div>
         </div>
 
         <Navbar />
-        
+
         {/* Hero Section */}
-        <div className="relative z-10 pt-32 pb-20 ">
+        <div className="relative z-10 pt-32 pb-20">
           <div className="w-full">
             <div className="relative">
               {/* Text content with overlay images */}
-              <div className="relative z-10 text-center w-[80%] mx-auto">
-                <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              <div className="relative z-10 mx-auto w-[80%] text-center">
+                <h1 className="mb-6 text-4xl font-bold text-white md:text-6xl">
                   Red Stories. Bold Shifts. Welcome to the new era of storytelling
                 </h1>
-                <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-                  The best apps in the AI era aren't solo experiences—they're built for collaboration.
-                  Coventech delivers customizable, pre-built features to power them.
+                <p className="mx-auto mb-8 max-w-3xl text-xl text-gray-300">
+                  The best apps in the AI era aren't solo experiences—they're built for
+                  collaboration. Coventech delivers customizable, pre-built features to power them.
                 </p>
-               
               </div>
-              
+
               {/* Images overlaying the text */}
-              <div className="absolute -top-20 left-0 w-1/2 h-[22rem] rounded-lg overflow-hidden">
+              <div className="absolute -top-20 left-0 h-[22rem] w-1/2 overflow-hidden rounded-lg">
                 <div className="absolute inset-0 bg-black/30"></div>
-                <img src="/case-studies-hero1.png" alt="Cost" className="w-full h-full object-cover" />
+                <img
+                  src="/case-studies-hero1.png"
+                  alt="Cost"
+                  className="h-full w-full object-cover"
+                />
               </div>
-              <div className="absolute -top-20 right-0 w-1/2 h-[22rem] rounded-lg overflow-hidden">
+              <div className="absolute -top-20 right-0 h-[22rem] w-1/2 overflow-hidden rounded-lg">
                 <div className="absolute inset-0 bg-black/30"></div>
-                 <img src="/case-studies-hero2.png" alt="Cost" className="w-full h-full object-cover" />
+                <img
+                  src="/case-studies-hero2.png"
+                  alt="Cost"
+                  className="h-full w-full object-cover"
+                />
               </div>
             </div>
-          
           </div>
         </div>
       </div>
       <div className="mt-14">
-        <CardGridSection/>
+        <CardGridSection />
       </div>
       <div className="mb-20">
         <CollaborationChatBot />

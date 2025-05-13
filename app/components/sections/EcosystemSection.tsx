@@ -140,7 +140,7 @@ const StepsSection: React.FC = () => {
 
   return (
     <div>
-      <div className="mb-56 sm:mb-28  md:mb-20 flex flex-wrap justify-center gap-3 md:gap-5">
+      <div className="mb-56 flex flex-wrap justify-center gap-3 sm:mb-28 md:mb-20 md:gap-5">
         {steps.map((step) => (
           <button
             key={step.id}
@@ -169,7 +169,7 @@ const StepsSection: React.FC = () => {
 
         {/* Card 1 */}
         <motion.div
-          className="absolute top-0  right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem]"
+          className="absolute top-0 right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem]"
           variants={imageVariants}
           initial="back"
           animate={getCardPosition(1)}
@@ -196,7 +196,7 @@ const StepsSection: React.FC = () => {
 
         {/* Card 2 */}
         <motion.div
-          className="absolute max-sm:top-16 sm:top-0 right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem]"
+          className="absolute right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem] max-sm:top-16 sm:top-0"
           variants={imageVariants}
           initial="middle"
           animate={getCardPosition(2)}
@@ -221,7 +221,7 @@ const StepsSection: React.FC = () => {
 
         {/* Card 3 */}
         <motion.div
-          className="absolute max-sm:top-56 sm:top-0 right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem]"
+          className="absolute right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem] max-sm:top-56 sm:top-0"
           variants={imageVariants}
           initial="front"
           animate={getCardPosition(3)}

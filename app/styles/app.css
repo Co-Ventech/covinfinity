@@ -6,6 +6,10 @@
   --color-background-body: #0f1011;
   --color-border-box: #0b0c0d;
 
+  /* Buttons */
+  --color-button-text: #151517;
+  --color-button-gradient-from: #c2c2c2;
+
   /* Font configuration */
   --font-sans: 'Poppins', sans-serif;
   --font-serif: 'Outfit', sans-serif;

@@ -184,7 +184,7 @@ const TestimonialComponent = () => {
     <Section>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Left Section - Client Testimonials */}
-        <div className="relative rounded-3xl border-[0.75rem] border-border-box  lg:col-span-1">
+        <div className="relative rounded-3xl border-[0.75rem] border-border-box lg:col-span-1">
           <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-[calc(100%-8rem)] w-full bg-linear-to-b from-[#0B0C0D] via-[#141617] to-[#252729]"></div>
           {/* Client Profiles */}
           <div className="mb-8 space-y-[0.75rem]">

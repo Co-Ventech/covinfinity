@@ -22,19 +22,18 @@ const GridCard2 = () => {
 
   return (
     <section className="py-10">
-      <div className="max-w-[85%] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="mx-auto max-w-[85%] px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {portfolioItems.map((item, index) => (
             <div key={index}>
               {index % 2 === 0 ? (
-                 <PortfolioCard2
+                <PortfolioCard2
                   title={item.title}
                   description={item.description}
                   backgroundImage={item.backgroundImage}
                 />
-                
               ) : (
-               <PortfolioCard2
+                <PortfolioCard2
                   title={item.title}
                   description={item.description}
                   backgroundImage={item.backgroundImage}
@@ -42,8 +41,6 @@ const GridCard2 = () => {
               )}
             </div>
           ))}
-
-        
         </div>
       </div>
     </section>

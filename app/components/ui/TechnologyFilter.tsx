@@ -9,9 +9,10 @@ export const TechnologyFilter = ({ activeJobType, onFilterChange }: TechnologyFi
   <div className="mb-4 flex flex-wrap justify-center gap-2 px-4">
     {technologies.map((tech) => {
       // Determine which icon to show based on active state
-      const iconSrc = activeJobType === tech.id 
-        ? tech.icon.replace('-black', '') // Use colored version when active
-        : '/framer-black.png'; // Use black version when inactive
+      const iconSrc =
+        activeJobType === tech.id
+          ? tech.icon.replace('-black', '') // Use colored version when active
+          : '/framer-black.png'; // Use black version when inactive
 
       return (
         <button
