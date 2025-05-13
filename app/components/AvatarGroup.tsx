@@ -113,7 +113,8 @@ const AvatarGroup: React.FC = () => {
 
         {/* Total count text */}
         <motion.div
-          className="rounded-[2.8125rem] bg-[#202023] px-4 py-2.5 text-[0.9375rem] font-semibold text-[#F0F2FF]"
+          // className="rounded-[2.8125rem] bg-[#202023] px-4 py-2.5 text-[0.9375rem] font-semibold text-[#F0F2FF]"
+          className="rounded-[2.8125rem] border border-[#697DFF]/4 bg-gradient-to-b from-[#16181A] to-[#0F1011] px-4 py-2.5 text-[0.9375rem] font-semibold text-[#F0F2FF]"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1.4, duration: 0.5 }}
