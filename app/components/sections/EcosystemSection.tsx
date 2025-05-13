@@ -3,19 +3,20 @@
 import { motion } from 'framer-motion';
 import type React from 'react';
 import { useState } from 'react';
-import Logo from '../ui/Logo';
+import Box from '../ui/Box';
 import Section from '../ui/Section';
 
 type Step = {
   id: number;
   title: string;
+  src: string;
   description?: string;
 };
 
 const steps: Step[] = [
-  { id: 1, title: 'Recruitinn' },
-  { id: 2, title: 'Skillbuilder' },
-  { id: 3, title: 'Coventel' },
+  { id: 1, title: 'Coventech', src: '/logo-coventech.png' },
+  { id: 2, title: 'Recruitinn', src: '/logo-recruitinn.png' },
+  { id: 3, title: 'SkillBuilder', src: '/logo-skillbuilder.png' },
 ];
 
 // Enhanced animation variants with smoother transitions
@@ -85,17 +86,11 @@ const blurVariants = {
 
 const HeaderSection: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center text-center">
-      <p className="mb-0.5 text-[0.9375rem] font-medium text-[#484952]">
-        Making top talent & top client possible driven by AI
-      </p>
-      <div className="flex items-center justify-center gap-3.5 px-3 py-2">
-        <Logo className="h-[3.75rem] w-[3.6875rem]" />
-        <h2 className="text-5xl font-semibold">Coventech Ecosystem</h2>
-      </div>
-      <p className="max-w-[29rem] text-base text-[#797B8A]">
-        something goes here some kind of text about ecosystem that'll get correct or I have to
-        design you one space
+    <div className="mt-16 flex flex-col items-center justify-center text-center">
+      <h2 className="font-serif text-[3.12rem] font-semibold">Coventech Ecosystem</h2>
+      <p className="max-w-[43rem] bg-gradient-to-br from-[#EBF5FF] to-[#EBF5FF] bg-clip-text font-medium">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius soluta suscipit velit autem
+        vero ratione doloremque quo aperiam.
       </p>
     </div>
   );
@@ -142,14 +137,23 @@ const StepsSection: React.FC = () => {
             key={step.id}
             onClick={() => handleStepChange(step.id)}
             disabled={isAnimating}
-            className={`cursor-pointer rounded-[50px] bg-none px-5 py-2.5 text-lg font-semibold transition-all duration-300 ${
-              activeStep === step.id
-                ? 'bg-[#252122] text-white'
-                : 'bg-none text-white hover:bg-[#252122]'
+            className={`flex cursor-pointer items-center gap-2.5 rounded-[2.375rem] border border-[#16181A] bg-none px-5 py-2.5 font-serif text-lg font-medium transition-all duration-300 hover:bg-[#16181A] ${
+              activeStep === step.id ? 'bg-[#16181A] text-white' : 'bg-none text-white'
             } ${isAnimating ? 'cursor-not-allowed opacity-70' : ''}`}
           >
+            <img src={step.src} alt="Product logo" className="h-5 w-5 object-contain" />
             {step.title}
           </button>
+          // <button
+          //   key={step.id}
+          //   onClick={() => handleStepChange(step.id)}
+          //   disabled={isAnimating}
+          //   className={`cursor-pointer rounded-[2.375rem] border border-[#16181A] bg-none px-5 py-2.5 font-serif text-lg font-medium transition-all duration-300 hover:bg-[#16181A] ${
+          //     activeStep === step.id ? 'bg-[#16181A] text-white' : 'bg-none text-white'
+          //   } ${isAnimating ? 'cursor-not-allowed opacity-70' : ''}`}
+          // >
+          //   {step.title}
+          // </button>
         ))}
       </div>
 
@@ -247,10 +251,12 @@ const StepsSection: React.FC = () => {
 const EcosystemSection: React.FC = () => {
   return (
     <Section>
-      <div className="sm:mb-14">
-        <HeaderSection />
-      </div>
-      <StepsSection />
+      <Box>
+        <div className="sm:mb-8">
+          <HeaderSection />
+        </div>
+        <StepsSection />
+      </Box>
     </Section>
   );
 };

@@ -45,7 +45,7 @@ export default function Home() {
       {/* comment testimoniasl */}
       <div className="sm:my-3"></div>
       <TestimonialComponent />
-      <div className="mt-25"></div>
+      <div className="mt-6"></div>
       <EcosystemSection />
       <div className="mb-32">
         <ServicesSection />
