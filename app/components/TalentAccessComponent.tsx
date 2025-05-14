@@ -116,7 +116,7 @@ const TalentAccessComponent = () => {
                   >
                     <div className="space-y-4">
                       {filteredDevelopers.map((dev, index) => {
-                        return <DeveloperProfile developer={dev} />;
+                        return <DeveloperProfile key={index} developer={dev} />;
                       })}
                     </div>
                   </motion.div>
