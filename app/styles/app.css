@@ -126,7 +126,15 @@
   }
 
   p {
-    @apply text-[#665F5F];
+    background: linear-gradient(
+      to bottom right,
+      rgba(235, 245, 255, 0.56),
+      rgba(235, 245, 255, 0.48) 20%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
     font-family: var(--font-sans);
   }
 

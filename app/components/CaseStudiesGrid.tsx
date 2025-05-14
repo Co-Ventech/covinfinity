@@ -141,7 +141,7 @@ const CaseStudiesGrid: React.FC = () => {
       </div>
 
       {/* overlay */}
-      <div className="pointer-events-none absolute inset-0 z-[0] size-full bg-gradient-to-b from-[#171416] via-[#151315]/32 to-[#131113]"></div>
+      <div className="pointer-events-none absolute inset-0 z-[0] size-full bg-gradient-to-b from-background-body via-background-body/32 to-background-body"></div>
     </div>
   );
 };
