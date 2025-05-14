@@ -2,10 +2,10 @@ import React from 'react';
 import NetworkCircleIcon from '../svgs/NetworkCircleIcon';
 import Polygon1 from '../svgs/Polygon1';
 import Polygon2 from '../svgs/Polygon2';
-import GradientBorderButton from '../ui/GradientBorderButton';
 import GradientText from '../ui/GradientText';
-import OutlineBox from '../ui/OutlineBox';
 import Heading from '../ui/Heading';
+import OutlineBox from '../ui/OutlineBox';
+import Button from '../ui/Button';
 
 // Reusable component for polygon-backed sections
 interface PolygonSectionProps {
@@ -33,28 +33,30 @@ export const TopHeroSection: React.FC = () => (
     polygonComponent={Polygon1}
     polygonClassName="top-3.5 left-1/2 h-[25rem] !w-[calc(100%+5rem)] -translate-x-1/2"
   >
-    <Heading className="mb-3.5" blockText="AI & human collaboration">
+    <Heading className="mb-3.5 lg:!text-6xl" blockText="AI & human collaboration">
       Ready‑made features for
     </Heading>
 
-    <p className="mb-6">
-      Some lorem ipsum text goes here <span className="block"> says no one </span>
+    <p className="!mx-auto mb-6 !max-w-[43rem] font-serif text-xl font-medium">
+      <GradientText className="!from-[#EBF5FF]/56 !to-[#EBF5FF]/48 to-20%">
+        The best apps in the AI era aren’t solo experiences—they’re collaborative. Coventech
+        provides customizable pre‑built features
+      </GradientText>
     </p>
-    
-      
-    <div className="flex justify-center gap-4">
-  <button className="px-5 py-2.5 text-[#151517] font-medium bg-gradient-to-r from-[#C2C2C2] to-[#FFFFFF] hover:opacity-90 transition rounded-lg">
-    Book a demo
-  </button>
 
-  <button className="px-5 py-2.5 font-medium hover:opacity-90 transition rounded flex">
-    <span className="bg-gradient-to-r from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent">
-      Start today for free
-    </span>
-    <img src="/right-icon.png" alt="arrow-icon"  className='h-2 w-2 ml-2 mt-2' />
-  </button>
-</div>
-   
+    <div className="flex justify-center gap-4">
+      {/* <button className="cursor-pointer rounded-lg bg-gradient-to-tr from-[#C2C2C2] to-[#FFFFFF] px-5 py-2.5 font-serif text-base font-medium text-button-text transition hover:opacity-90">
+        Book a demo
+      </button> */}
+      <Button>Book a demo</Button>
+
+      <button className="flex rounded px-5 py-2.5 font-medium transition hover:opacity-90">
+        <span className="bg-gradient-to-r from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent">
+          Start today for free
+        </span>
+        <img src="/right-icon.png" alt="arrow-icon" className="mt-2 ml-2 h-2 w-2" />
+      </button>
+    </div>
   </PolygonSection>
 );
 

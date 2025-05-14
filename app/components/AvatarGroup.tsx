@@ -41,23 +41,25 @@ const AvatarGroup: React.FC = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    
+
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-    
+
     // Set initial width
     handleResize();
-    
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Determine how many avatars to show based on screen width
   const getVisibleAvatars = () => {
-    if (windowWidth < 640) { // sm breakpoint
+    if (windowWidth < 640) {
+      // sm breakpoint
       return 8;
-    } else if (windowWidth < 768) { // md breakpoint
+    } else if (windowWidth < 768) {
+      // md breakpoint
       return 12;
     }
     return avatars.length; // Show all on larger screens
@@ -111,7 +113,8 @@ const AvatarGroup: React.FC = () => {
 
         {/* Total count text */}
         <motion.div
-          className="rounded-[2.8125rem] bg-[#202023] px-4 py-2.5 text-[0.9375rem] font-semibold text-[#F0F2FF]"
+          // className="rounded-[2.8125rem] bg-[#202023] px-4 py-2.5 text-[0.9375rem] font-semibold text-[#F0F2FF]"
+          className="rounded-[2.8125rem] border border-[#697DFF]/4 bg-gradient-to-b from-[#16181A] to-[#0F1011] px-4 py-2.5 text-[0.9375rem] font-semibold text-[#F0F2FF]"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1.4, duration: 0.5 }}

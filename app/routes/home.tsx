@@ -3,7 +3,7 @@ import CollaborationChatBot from '~/components/CollaborationChatBot';
 import Navbar from '~/components/Navbar';
 import CollaborationSection from '~/components/sections/CollaborationSection';
 import CompanySliderSection from '~/components/sections/CompanySliderSection';
-import TestEcosystemSection from '~/components/sections/TestEcosystemSection';
+import TestEcosystemSection from '~/components/sections/EcosystemSection';
 import ServicesSection from '~/components/ServicesSection';
 import { Starfield } from '~/components/StarField';
 import TalentAccessComponent from '~/components/TalentAccessComponent';
@@ -11,6 +11,7 @@ import TestimonialComponent from '~/components/TestimonialComponent';
 import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
+import EcosystemSection from '~/components/sections/EcosystemSection';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -44,8 +45,8 @@ export default function Home() {
       {/* comment testimoniasl */}
       <div className="sm:my-3"></div>
       <TestimonialComponent />
-      <div className="mt-25"></div>
-      <TestEcosystemSection />
+      <div className="mt-6"></div>
+      <EcosystemSection />
       <div className="mb-32">
         <ServicesSection />
       </div>

@@ -1,7 +1,7 @@
 export const aeChatData = [
   {
     role: 'user' as const,
-    sender: 'John',
+    sender: 'Winston',
     message:
       'Thanks, Sarah. I appreciate your responsiveness and support. Looking forward to seeing these changes in action!',
     avatar: '/john.png',
@@ -17,7 +17,7 @@ export const aeChatData = [
   },
   {
     role: 'user' as const,
-    sender: 'John',
+    sender: 'Winston',
     message:
       "I'll coordinate with them to make sure they're available for your next brainstorming session. Is there anything else on your mind",
     avatar: '/john.png',

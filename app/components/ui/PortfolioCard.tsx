@@ -16,17 +16,17 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
 }) => {
   return (
     <Box className="">
-      <div className="flex items-center gap-4 mb-4">
-          <div className="h-10 w-10 ">
-            <img src="/cross-icon.png" alt="Icon" className="" />
-          </div>
-       
+      <div className="mb-4 flex items-center gap-4">
+        <div className="h-10 w-10">
+          <img src="/cross-icon.png" alt="Icon" className="" />
+        </div>
+
         <h2 className="text-lg font-semibold">{title}</h2>
       </div>
-      <p className="text-gray-400 text-sm mb-6">{description}</p>
+      <p className="mb-6 text-sm text-gray-400">{description}</p>
 
       {/* Single image display */}
-      <div className="rounded-lg overflow-hidden">
+      <div className="overflow-hidden rounded-lg">
         <img
           src={backgroundImage}
           alt={`Project screenshot`}

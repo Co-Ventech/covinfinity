@@ -1,21 +1,15 @@
 'use client';
 
+import type { FC } from 'react';
 import { useState } from 'react';
-import OutlineBox from './ui/OutlineBox';
-import Section from './ui/Section';
-import Heading from './ui/Heading';
-import { ChatMessage } from './CollaborationChatBot';
-import type { FC, ReactNode } from 'react';
 import BgImage from './BgImage';
+import { ChatMessage } from './CollaborationChatBot';
+import Box from './ui/Box';
+import Heading from './ui/Heading';
+import Section from './ui/Section';
+import { ServiceCards } from './ui/ServiceCards';
 
 // Type definitions
-interface ServiceCard {
-  id: number;
-  title: string;
-  subtitle: string;
-  description: string;
-  image: string;
-}
 
 interface FormStage {
   field: 'name' | 'email' | 'message';
@@ -28,70 +22,6 @@ interface FormData {
   email: string;
   message: string;
 }
-
-// Card component
-const ServiceCard: FC<{
-  card: ServiceCard;
-  isActive: boolean;
-  onClick: () => void;
-}> = ({ card, isActive, onClick }) => (
-  <div
-    className={`group relative h-[420px] cursor-pointer overflow-hidden rounded-2xl border transition-all duration-300 ${
-      isActive ? 'border-[#2E2928] bg-[#2E2929]/48' : 'border-[#212121] bg-[#0F0F0F]'
-    }`}
-    onClick={onClick}
-  >
-    {/* Phone Image - Full Height */}
-    <div className="absolute inset-0 left-1/3 h-full w-[60%]">
-      <img
-        src={card.image}
-        alt="phone mockup"
-        className={`h-full w-full object-contain transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-40'}`}
-        style={{
-          objectPosition: 'center 15%',
-        }}
-      />
-    </div>
-
-    {/* Dark Overlay Gradient */}
-    <div
-      className={`pointer-events-none absolute inset-0 bg-gradient-to-tr from-25% ${isActive ? 'from-[#1C1818] to-[#1C1818]/0' : 'from-[#1A1919] to-[#19191A]/0'}`}
-    ></div>
-
-    {/* Text Content Section - Bottom */}
-    <div className="absolute right-0 bottom-0 left-0 z-10 flex items-end justify-between p-6">
-      <div>
-        <p className="mb-2 font-medium text-[#665F5F]">{card.subtitle}</p>
-        <h3
-          className={`text-xl font-semibold transition-colors duration-300 ${isActive ? 'text-white' : 'text-[#A3A3A3]'}`}
-        >
-          {card.title}
-        </h3>
-        <p
-          className={`text-xl font-semibold transition-colors duration-300 ${isActive ? 'text-white' : 'text-[#A3A3A3]'}`}
-        >
-          {card.description}
-        </p>
-      </div>
-
-      {/* Plus Button */}
-      <button
-        className={`flex h-8 w-8 items-center justify-center self-end rounded-full transition-all duration-300 ${
-          isActive ? 'bg-white/20' : 'bg-white/5'
-        }`}
-      >
-        <span className="text-xl text-white">+</span>
-      </button>
-    </div>
-
-    {/* Active Card Highlight Effect */}
-    {isActive && (
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FF6981]/5 to-transparent opacity-50" />
-      </div>
-    )}
-  </div>
-);
 
 // ContactForm component
 const ContactForm: FC<{
@@ -135,20 +65,20 @@ const ContactForm: FC<{
       </div>
     ) : (
       <form onSubmit={handleFormSubmit}>
-        <div className="flex items-center rounded-lg border border-[#2E2928] bg-[#1A1818] p-1.5">
-          <div className="flex flex-1 items-center text-sm font-medium text-[#3A3131]">
-            <img src="/input-icon.png" alt="Add" className="mr-2 h-7 w-8" />
+        <div className="flex items-center rounded-lg bg-[#101112] p-4">
+          <div className="flex flex-1 items-center text-sm font-medium text-[#EBF5FF]">
+            <img src="/smile-2.png" alt="Add" className="mr-2 size-6 object-contain" />
             <input
               type={formStages[formStage].field === 'email' ? 'email' : 'text'}
               value={inputValue}
               onChange={handleInputChange}
               placeholder={formStages[formStage].placeholder}
-              className="flex-1 bg-transparent text-[13px] text-white placeholder-[#665F5F] focus:outline-none"
+              className="flex-1 bg-transparent text-sm text-white placeholder-[#EBF5FF] focus:outline-none"
             />
           </div>
           <div className="flex items-center space-x-3">
             <button type="submit">
-              <img src="/pen-icon.png" alt="Submit" className="h-5 w-5" />
+              <img src="/send-2.png" alt="Submit" className="size-6 object-contain" />
             </button>
           </div>
         </div>
@@ -159,43 +89,18 @@ const ContactForm: FC<{
 
 // SkillButton component
 const SkillButton: FC<{ label: string }> = ({ label }) => (
-  <button className="rounded-full border-[0.1125rem] border-[#252122] bg-none px-6 py-2.5 text-[#A4A4A4]">
-    {label}
-  </button>
+  <button className="rounded-full bg-[#0F1012] px-6 py-2.5">{label}</button>
 );
 
 // ImageBox component
 const ImageBox: FC<{ src: string; alt: string }> = ({ src, alt }) => (
-  <div className="h-[16.25rem] rounded-2xl border border-[#2E2928]">
+  <Box className="!h-[16.25rem] !p-0">
     <img src={src} alt={alt} className="h-full w-full rounded-2xl object-cover" />
-  </div>
+  </Box>
 );
 
 // Constants
 const SKILLS = ['Frontend Dev', 'Backend Dev', 'UI/UX Design'];
-const SERVICE_CARDS: ServiceCard[] = [
-  {
-    id: 0,
-    title: 'Quality Assurance',
-    subtitle: 'Something qa line goes here',
-    description: 'Title goes here',
-    image: '/phone-mockup.png',
-  },
-  {
-    id: 1,
-    title: 'Quality Assurance',
-    subtitle: 'Something qa line goes here',
-    description: 'Title goes here',
-    image: '/phone-mockup.png',
-  },
-  {
-    id: 2,
-    title: 'Quality Assurance',
-    subtitle: 'Something qa line goes here',
-    description: 'Title goes here',
-    image: '/phone-mockup.png',
-  },
-];
 
 const FORM_STAGES: FormStage[] = [
   {
@@ -288,7 +193,7 @@ export default function ServicesSection() {
     <Section divClass="relative pt-[10rem]" className="-mt-4">
       <BgImage
         src="section-lines/services-section-lines.png"
-        className="!xl:w-[calc(100%+10rem)] inset-0 left-1/2 !size-full !w-[calc(100%+7rem)] -translate-x-1/2 !bg-contain"
+        className="!xl:w-[calc(100%+10rem)] inset-0 left-1/2 -z-10 !size-full !w-[calc(100%+7rem)] -translate-x-1/2 !bg-contain"
       />
       <div className="text-white">
         {/* Header Section */}
@@ -305,80 +210,45 @@ export default function ServicesSection() {
         </div>
 
         {/* Main Content Wrapped in OutlineBox */}
-        <OutlineBox className="!rounded-3xl !border-[#31292A] !p-4">
-          {/* Video Controls Section */}
-          <div className="mt-20 mb-3 ml-11 flex items-center gap-4">
-            <div className="h-24 w-40">
-              <img
-                src="/services-icon.png"
-                alt="blue hunt"
-                className="h-full w-full rounded-2xl object-cover"
-              />
-            </div>
-          </div>
-
+        <Box className="!pt-8">
           {/* Digital Solution Section */}
           <div className="mb-6">
-            <div className="mb-7 flex items-center justify-between">
-              <div className="ml-11">
-                <h2 className="text-xl font-semibold">Digital solution we do too</h2>
-                <p className="text-base font-medium text-[#665F5F]">
-                  Fintech, Category, New Category
-                </p>
-              </div>
-              <div className="flex gap-2">
-                <button className="h-8 w-8">
-                  <img src="/left-arrow.png" alt="left arrow" className="h-full w-full" />
-                </button>
-                <button className="h-8 w-8">
-                  <img src="/right-arrow.png" alt="right arrow" className="h-full w-full" />
-                </button>
-              </div>
+            <div className="headin-section mb-8 flex flex-col items-center justify-center text-center">
+              <img src="/solutions-icon.png" alt="icon" className="size-8 object-contain" />
+
+              <h2 className="text-xl font-semibold">Coventech Digital Solutions</h2>
+              <p className="text-lg font-medium">Fintech, Category etc. Lorem ipsum dolor sit...</p>
             </div>
 
             {/* Service Cards */}
-            <div
-              className="w-full rounded-3xl border border-[#272525] bg-[#1A1717]/48 bg-center p-6 lg:bg-cover"
-              style={{
-                backgroundImage: "url('/service-back.png')",
-              }}
-            >
-              <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-3">
-                {SERVICE_CARDS.map((card, index) => (
-                  <ServiceCard
-                    key={card.id}
-                    card={card}
-                    isActive={activeCard === index}
-                    onClick={() => setActiveCard(index)}
-                  />
-                ))}
-              </div>
-              {/* Developer Section */}
+            <ServiceCards />
+            {/* Developer Section */}
 
-              <div className="bg-[#1A1717]/ 48 mx-auto max-w-full rounded-lg border border-[#2E2928] p-6 backdrop-blur-[3.125rem]">
+            <Box.Inner className="mx-auto max-w-full !p-3">
+              <div className="text-content-form p-4">
                 <h3 className="mb-2 text-lg font-semibold">Hey! Tell us all the things 👋</h3>
                 <p className="mb-6 w-[40rem] text-sm text-[#665F5F]">
                   John is a front-end developer skilled in HTML, CSS, JavaScript, React, and Vue.js.
                   He creates clean, highly-maintainable, tested UI layouts, and loves open source.
                 </p>
-                <div className="mb-10 flex gap-3">
+                <div className="mb-7 flex gap-3">
                   {SKILLS.map((label, index) => (
                     <SkillButton key={index} label={label} />
                   ))}
                 </div>
-                <ContactForm
-                  formStage={formStage}
-                  formStages={FORM_STAGES}
-                  formData={formData}
-                  isFormCompleted={isFormCompleted}
-                  inputValue={inputValue}
-                  handleInputChange={handleInputChange}
-                  handleFormSubmit={handleFormSubmit}
-                  generateMessageTemplate={generateMessageTemplate}
-                  getCurrentTime={getCurrentTime}
-                />
               </div>
-            </div>
+              <ContactForm
+                formStage={formStage}
+                formStages={FORM_STAGES}
+                formData={formData}
+                isFormCompleted={isFormCompleted}
+                inputValue={inputValue}
+                handleInputChange={handleInputChange}
+                handleFormSubmit={handleFormSubmit}
+                generateMessageTemplate={generateMessageTemplate}
+                getCurrentTime={getCurrentTime}
+              />
+            </Box.Inner>
           </div>
 
           {/* Clutch Reviews Section */}
@@ -386,7 +256,7 @@ export default function ServicesSection() {
             <ImageBox src="/blue-hunt.png" alt="blue hunt" />
             <ImageBox src="/red-hunt.png" alt="red hunt" />
           </div>
-        </OutlineBox>
+        </Box>
       </div>
     </Section>
   );

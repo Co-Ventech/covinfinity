@@ -1,19 +1,19 @@
-"use client"
+'use client';
 
-import React from 'react'
+import React from 'react';
 
 interface CommunicateDotsProps {
-  className?: string
-  width?: number | string
-  height?: number | string
-  backgroundImage?: string
-  animationDuration?: number
-  animationDelay?: number
-  reverse?: boolean
-  position?: 'absolute' | 'relative' | 'fixed' | 'static'
-  top?: number | string
-  left?: number | string
-  zIndex?: number
+  className?: string;
+  width?: number | string;
+  height?: number | string;
+  backgroundImage?: string;
+  animationDuration?: number;
+  animationDelay?: number;
+  reverse?: boolean;
+  position?: 'absolute' | 'relative' | 'fixed' | 'static';
+  top?: number | string;
+  left?: number | string;
+  zIndex?: number;
 }
 
 const CommunicateDots: React.FC<CommunicateDotsProps> = ({
@@ -27,10 +27,10 @@ const CommunicateDots: React.FC<CommunicateDotsProps> = ({
   position = 'relative',
   top = 'auto',
   left = 'auto',
-  zIndex = 1
+  zIndex = 1,
 }) => {
   return (
-    <div 
+    <div
       className={`communicate-dots-wrapper ${className}`}
       style={{
         position: position,
@@ -40,11 +40,11 @@ const CommunicateDots: React.FC<CommunicateDotsProps> = ({
         isolation: 'isolate',
         top: typeof top === 'number' ? `${top}px` : top,
         left: typeof left === 'number' ? `${left}px` : left,
-        zIndex: zIndex
+        zIndex: zIndex,
       }}
     >
       {/* First dots layer */}
-      <div 
+      <div
         className="communicate-dots lazy-background-image lazy-background-image-maskImage"
         style={{
           position: 'relative',
@@ -55,10 +55,10 @@ const CommunicateDots: React.FC<CommunicateDotsProps> = ({
           maskSize: 'cover',
           WebkitMaskSize: 'cover',
           overflow: 'hidden',
-          '--background-image': `url(${backgroundImage})`
+          '--background-image': `url(${backgroundImage})`,
         }}
       >
-        <div 
+        <div
           style={{
             height: '200px',
             animation: `communicate-dots ${animationDuration}s cubic-bezier(0.6, 0.6, 0, 1) infinite`,
@@ -69,7 +69,7 @@ const CommunicateDots: React.FC<CommunicateDotsProps> = ({
       </div>
 
       {/* Second dots layer (reversed) */}
-      <div 
+      <div
         className="communicate-dots lazy-background-image lazy-background-image-maskImage"
         style={{
           position: 'relative',
@@ -82,10 +82,10 @@ const CommunicateDots: React.FC<CommunicateDotsProps> = ({
           overflow: 'hidden',
           marginTop: '24px',
           transform: 'rotate(-180deg)',
-          '--background-image': `url(${backgroundImage})`
+          '--background-image': `url(${backgroundImage})`,
         }}
       >
-        <div 
+        <div
           style={{
             height: '200px',
             animation: `communicate-dots ${animationDuration}s cubic-bezier(0.6, 0.6, 0, 1) infinite`,
@@ -106,7 +106,7 @@ const CommunicateDots: React.FC<CommunicateDotsProps> = ({
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
-export default CommunicateDots 
+export default CommunicateDots;

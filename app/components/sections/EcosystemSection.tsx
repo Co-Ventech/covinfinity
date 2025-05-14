@@ -3,30 +3,27 @@
 import { motion } from 'framer-motion';
 import type React from 'react';
 import { useState } from 'react';
-import Logo from '../ui/Logo';
-
-// Simple Section component to replace the missing import
-const Section: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return <section className="container mx-auto px-4 py-16">{children}</section>;
-};
+import Box from '../ui/Box';
+import Section from '../ui/Section';
 
 type Step = {
   id: number;
   title: string;
+  src: string;
   description?: string;
 };
 
 const steps: Step[] = [
-  { id: 1, title: 'Recruitinn' },
-  { id: 2, title: 'Skillbuilder' },
-  { id: 3, title: 'Coventel' },
+  { id: 1, title: 'Coventech', src: '/logo-coventech.png' },
+  { id: 2, title: 'Recruitinn', src: '/logo-recruitinn.png' },
+  { id: 3, title: 'SkillBuilder', src: '/logo-skillbuilder.png' },
 ];
 
 // Enhanced animation variants with smoother transitions
 const imageVariants = {
   front: {
     scale: 1,
-    y: 0,
+    y: '0vw',
     zIndex: 30,
     opacity: 1,
     filter: 'blur(0px)',
@@ -41,7 +38,7 @@ const imageVariants = {
   },
   middle: {
     scale: 0.97,
-    y: -40,
+    y: '-2.5vw',
     zIndex: 20,
     opacity: 0.9,
     filter: 'blur(0px)',
@@ -56,7 +53,7 @@ const imageVariants = {
   },
   back: {
     scale: 0.94,
-    y: -80,
+    y: '-5vw',
     zIndex: 10,
     opacity: 0.8,
     filter: 'blur(0px)',
@@ -89,17 +86,11 @@ const blurVariants = {
 
 const HeaderSection: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center text-center">
-      <p className="mb-0.5 text-[0.9375rem] font-medium text-[#484952]">
-        Making top talent & top client possible driven by AI
-      </p>
-      <div className="flex items-center justify-center gap-3.5 px-3 py-2">
-        <Logo className="h-[3.75rem] w-[3.6875rem]" />
-        <h2 className="text-5xl font-semibold">Coventech Ecosystem</h2>
-      </div>
-      <p className="max-w-[29rem] text-base text-[#797B8A]">
-        something goes here some kind of text about ecosystem that'll get correct or I have to
-        design you one space
+    <div className="mt-16 flex flex-col items-center justify-center text-center">
+      <h2 className="font-serif text-[3.12rem] font-semibold">Coventech Ecosystem</h2>
+      <p className="max-w-[43rem] bg-gradient-to-br from-[#EBF5FF] to-[#EBF5FF] bg-clip-text font-medium">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius soluta suscipit velit autem
+        vero ratione doloremque quo aperiam.
       </p>
     </div>
   );
@@ -127,7 +118,7 @@ const StepsSection: React.FC = () => {
   // Improved card styling with consistent blur effect
   const getCardStyle = (cardPosition: 'front' | 'middle' | 'back') => {
     const baseStyle =
-      'relative mx-auto rounded-t-2xl rounded-b-4xl p-14 rounded-t-2xl rounded-b-[4rem] border border-[#332B2B] !overflow-hidden';
+      'relative mx-auto rounded-t-2xl !rounded-b-2xl md:rounded-b-3xl lg:rounded-b-4xl p-4 pt-6 lg:pt-none lg:p-14 rounded-t-2xl rounded-b-[4rem] border border-[#332B2B] !overflow-hidden';
 
     if (cardPosition === 'front') {
       return `${baseStyle} bg-[#1A1717]/48`;
@@ -139,28 +130,37 @@ const StepsSection: React.FC = () => {
   };
 
   return (
-    <div>
-      <div className="mb-56 sm:mb-28  md:mb-20 flex flex-wrap justify-center gap-3 md:gap-5">
+    <div className="relative">
+      <div className="mb-13 flex flex-wrap justify-center gap-3 sm:mb-20 md:gap-5 lg:mb-30">
         {steps.map((step) => (
           <button
             key={step.id}
             onClick={() => handleStepChange(step.id)}
             disabled={isAnimating}
-            className={`cursor-pointer rounded-[50px] bg-none px-5 py-2.5 text-lg font-semibold transition-all duration-300 ${
-              activeStep === step.id
-                ? 'bg-[#252122] text-white'
-                : 'bg-none text-white hover:bg-[#252122]'
+            className={`flex cursor-pointer items-center gap-2.5 rounded-[2.375rem] border border-[#16181A] bg-none px-5 py-2.5 font-serif text-lg font-medium transition-all duration-300 hover:bg-[#16181A] ${
+              activeStep === step.id ? 'bg-[#16181A] text-white' : 'bg-none text-white'
             } ${isAnimating ? 'cursor-not-allowed opacity-70' : ''}`}
           >
+            <img src={step.src} alt="Product logo" className="h-5 w-5 object-contain" />
             {step.title}
           </button>
+          // <button
+          //   key={step.id}
+          //   onClick={() => handleStepChange(step.id)}
+          //   disabled={isAnimating}
+          //   className={`cursor-pointer rounded-[2.375rem] border border-[#16181A] bg-none px-5 py-2.5 font-serif text-lg font-medium transition-all duration-300 hover:bg-[#16181A] ${
+          //     activeStep === step.id ? 'bg-[#16181A] text-white' : 'bg-none text-white'
+          //   } ${isAnimating ? 'cursor-not-allowed opacity-70' : ''}`}
+          // >
+          //   {step.title}
+          // </button>
         ))}
       </div>
 
-      <div className="relative h-[75rem]">
-        {/* Backdrop blur effect that follows the active card */}
+      {/* <div className="relative max-sm:h-[53rem]  md:h-[79rem]"> */}
+      <div className="relative h-[45rem] sm:h-[68.5rem] xl:h-[81rem]">
         <motion.div
-          className="absolute inset-0 rounded-t-2xl rounded-b-[4rem] backdrop-blur-md"
+          className="absolute inset-0 rounded-t-2xl rounded-b-[4rem] backdrop-blur-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -169,7 +169,7 @@ const StepsSection: React.FC = () => {
 
         {/* Card 1 */}
         <motion.div
-          className="absolute top-0  right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem]"
+          className="absolute top-0 right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem]"
           variants={imageVariants}
           initial="back"
           animate={getCardPosition(1)}
@@ -196,7 +196,7 @@ const StepsSection: React.FC = () => {
 
         {/* Card 2 */}
         <motion.div
-          className="absolute max-sm:top-16 sm:top-0 right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem]"
+          className="absolute top-0 right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem]"
           variants={imageVariants}
           initial="middle"
           animate={getCardPosition(2)}
@@ -221,7 +221,7 @@ const StepsSection: React.FC = () => {
 
         {/* Card 3 */}
         <motion.div
-          className="absolute max-sm:top-56 sm:top-0 right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem]"
+          className="absolute top-0 right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem]"
           variants={imageVariants}
           initial="front"
           animate={getCardPosition(3)}
@@ -251,10 +251,12 @@ const StepsSection: React.FC = () => {
 const EcosystemSection: React.FC = () => {
   return (
     <Section>
-      <div className="mb-14">
-        <HeaderSection />
-      </div>
-      <StepsSection />
+      <Box>
+        <div className="sm:mb-8">
+          <HeaderSection />
+        </div>
+        <StepsSection />
+      </Box>
     </Section>
   );
 };

@@ -6,5 +6,5 @@ export default [
   route('services', './routes/services.tsx'),
   route('contact', './routes/contact.tsx'),
   route('connect', './routes/connect.tsx'),
-   route("case-studies", "./routes/case-studies.tsx"), 
+  route('case-studies', './routes/case-studies.tsx'),
 ] satisfies RouteConfig;

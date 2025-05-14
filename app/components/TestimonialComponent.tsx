@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import OutlineBox from './ui/OutlineBox';
-import Section from './ui/Section';
+import { useEffect, useState } from 'react';
 import Box from './ui/Box';
+import Section from './ui/Section';
 
 // Client testimonial type
 interface Testimonial {
@@ -40,7 +39,7 @@ const ClientProfile = ({
   onClick: () => void;
 }) => (
   <div
-    className={`flex cursor-pointer items-start space-x-4 rounded-2xl px-4 py-6 transition-colors duration-300 ${isActive ? 'bg-[#252729]' : 'bg-[#0F1011]'}`}
+    className={`flex cursor-pointer items-start space-x-4 rounded-2xl px-4 py-6 transition-colors duration-300 ${isActive ? 'bg-background-body/70' : 'bg-background-body'}`}
     onClick={onClick}
   >
     <img src={client.avatar} alt={client.name} className="h-12 w-12 rounded-full" />
@@ -184,8 +183,8 @@ const TestimonialComponent = () => {
     <Section>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Left Section - Client Testimonials */}
-        <div className="relative rounded-3xl border-[0.75rem] border-border-box  lg:col-span-1">
-          <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-[calc(100%-8rem)] w-full bg-linear-to-b from-[#0B0C0D] via-[#141617] to-[#252729]"></div>
+        <Box className="relative bg-border-box !p-0 lg:col-span-1">
+          <div className="pointer-events-none absolute bottom-0 left-0 h-[calc(100%-8rem)] w-full rounded-[inherit] bg-linear-to-b from-[#151617]/0 via-[#151617]/32 via-60% to-[#151617]"></div>
           {/* Client Profiles */}
           <div className="mb-8 space-y-[0.75rem]">
             {clients.map((client) => (
@@ -204,35 +203,35 @@ const TestimonialComponent = () => {
               <FeatureBox key={index} feature={feature} />
             ))}
           </div>
-        </div>
+        </Box>
 
         {/* Right Section - Cost Savings */}
-        <Box className="relative overflow-hidden border-[#332B2B] !p-2">
+        <Box className="relative overflow-hidden bg-border-box !p-0">
           {/* Gradient Background */}
-          <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-[calc(100%-8rem)] w-full bg-linear-to-b from-[#0B0C0D]/0 via-[1A1A1A]/24 to-[#252729]"></div>
-          <div className="pointer-events-none absolute top-0 left-0 -z-10 h-[calc(100%-8rem)] w-full bg-[#1A1A1A]/32"></div>
-          {/* <div className="absolute inset-0 bg-gradient-to-b from-[#1F1F1F] to-[#211B1B]"></div> */}
+          <div className="pointer-events-none absolute bottom-0 left-0 h-[calc(100%-8rem)] w-full rounded-[inherit] bg-linear-to-b from-[#151617]/0 via-[#151617]/32 via-60% to-[#151617]"></div>
 
           {/* Content */}
-          <div className="relative p-6">
-            <div className="mt-10 mb-5 flex items-center justify-center">
-              <img src="/framer-black.png" alt="Cost" className="mr-2 h-5 w-5" />
-              <h2 className="text-lg text-[#665F5F]">Cost Client Saved</h2>
-              <div className="ml-2 h-2 w-2 animate-pulse rounded-full bg-green-500"></div>
-            </div>
-
-            {/* Counter text */}
-            <div className="relative py-10 text-center text-4xl font-bold">
-              <AnimatedCounter value={activeClient.costSaved} />
-            </div>
-            <div className="relative h-full">
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 -translate-y-1/2 transform text-xl font-bold text-gray-200 blur-2xl">
-                420000
+          <div className="relative flex h-full flex-col rounded-[inherit]">
+            <div className="flex max-h-54 min-h-54 flex-col items-center justify-center gap-3 rounded-[inherit] bg-[#0F1011]">
+              <div className="flex items-center justify-center">
+                <img src="/framer-black.png" alt="Cost" className="mr-2 h-5 w-5" />
+                <h2 className="text-lg text-[#665F5F]">Cost Client Saved</h2>
+                {/* <div className="ml-2 h-2 w-2 animate-pulse rounded-full bg-green-500"></div> */}
               </div>
+
+              {/* Counter text */}
+              <div className="relative text-center text-4xl font-bold">
+                <AnimatedCounter value={activeClient.costSaved} />
+              </div>
+              {/* <div className="relative h-full">
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 -translate-y-1/2 transform text-xl font-bold text-gray-200 blur-2xl">
+                420000
+                </div>
+              </div> */}
             </div>
 
             {/* Features for right box */}
-            <div className="mt-1 pt-6">
+            <div className="mt-auto p-6">
               {featuresRight.map((feature, index) => (
                 <FeatureBox key={index} feature={feature} />
               ))}
