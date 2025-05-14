@@ -4,6 +4,7 @@ import Section from '~/components/ui/Section';
 import { MainLayout } from '~/layouts/MainLayout';
 import type { Route } from './+types/home';
 import Box from '~/components/ui/Box';
+import CustomIcon from '~/components/svgs/CustomIcon';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -60,7 +61,12 @@ export default function OtherRoute() {
             collaboration. Coventech delivers customizable, pre-built features to power them.
           </p>
           <div className="grid grid-cols-3 grid-rows-2 gap-6">
-            <Box className="col-span-2 row-span-2">1</Box>
+            <Box className="col-span-2 row-span-2 p-8">
+              <div className="flex items-center justify-start px-5">
+                <CustomIcon />
+                <h3 className="font-serif text-xl font-semibold">Lorem ipsum dolor sit.</h3>
+              </div>
+            </Box>
             <Box className="col-start-3">2</Box>
             <Box className="col-start-3 row-start-2">3</Box>
           </div>

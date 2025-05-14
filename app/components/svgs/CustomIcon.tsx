@@ -1,0 +1,83 @@
+import React from 'react';
+
+interface CustomIconProps {
+  className?: string;
+}
+
+const CustomIcon: React.FC<CustomIconProps> = ({ className }) => {
+  return (
+    <svg
+      width="40"
+      height="40"
+      viewBox="0 0 40 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M28.3333 11.6667C28.3333 16.2667 24.6 20 20 20C24.6 20 28.3333 23.7333 28.3333 28.3333C32.9333 28.3333 36.6667 24.6 36.6667 20C36.6667 15.4 32.9333 11.6667 28.3333 11.6667Z"
+        fill="url(#paint0_linear_443_5436)"
+      />
+      <path
+        d="M19.9993 20C19.9993 24.6 16.266 28.3333 11.666 28.3333C11.666 32.9333 15.3993 36.6667 19.9993 36.6667C24.5993 36.6667 28.3327 32.9333 28.3327 28.3333C23.7327 28.3333 19.9993 24.6 19.9993 20Z"
+        fill="url(#paint1_linear_443_5436)"
+      />
+      <path
+        d="M19.9993 20C19.9993 15.4 23.7327 11.6667 28.3327 11.6667C28.3327 7.06666 24.5993 3.33333 19.9993 3.33333C15.3993 3.33333 11.666 7.06666 11.666 11.6667C16.266 11.6667 19.9993 15.4 19.9993 20Z"
+        fill="url(#paint2_linear_443_5436)"
+      />
+      <path
+        d="M20.0007 20C15.4007 20 11.6673 16.2667 11.6673 11.6667C7.06732 11.6667 3.33398 15.4 3.33398 20C3.33398 24.6 7.06732 28.3333 11.6673 28.3333C11.6673 23.7333 15.4007 20 20.0007 20Z"
+        fill="url(#paint3_linear_443_5436)"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear_443_5436"
+          x1="7.5"
+          y1="5.41667"
+          x2="33.5554"
+          y2="35.2226"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="#8F8F8F" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_443_5436"
+          x1="5.41601"
+          y1="5"
+          x2="34.817"
+          y2="36.4476"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="#8F8F8F" />
+        </linearGradient>
+        <linearGradient
+          id="paint2_linear_443_5436"
+          x1="7.49935"
+          y1="2.08333"
+          x2="35.2492"
+          y2="35.6266"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="#8F8F8F" />
+        </linearGradient>
+        <linearGradient
+          id="paint3_linear_443_5436"
+          x1="3.33399"
+          y1="5.83334"
+          x2="35.2317"
+          y2="36.8457"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="#8F8F8F" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+};
+
+export default CustomIcon;
