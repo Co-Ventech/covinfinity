@@ -5,6 +5,7 @@ import { MainLayout } from '~/layouts/MainLayout';
 import type { Route } from './+types/home';
 import Box from '~/components/ui/Box';
 import CustomIcon from '~/components/svgs/CustomIcon';
+import type { ReactHTMLElement } from 'react';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -14,6 +15,28 @@ export function meta({}: Route.MetaArgs) {
       content: 'Empowering businesses with cutting-edge technology solutions on Other Routes',
     },
   ];
+}
+
+interface BoxTopContent {
+  icon: () => void;
+  heading: string;
+  text: string;
+}
+
+function BoxTopContent<BoxTopContent>({
+  icon = <CustomIcon />,
+  heading = 'Lorem ipsum dolor sit.',
+  text = 'Frontend Developer specialized in many tech and worked with xyz company graduated from xyc with xyz experience',
+}) {
+  return (
+    <div className="wrap max-w-[42rem] space-y-3 px-5">
+      <div className="flex items-center justify-start">
+        {icon}
+        <h3 className="font-serif text-xl font-semibold">{heading}</h3>
+      </div>
+      <p className="">{text}</p>
+    </div>
+  );
 }
 
 export default function OtherRoute() {
@@ -62,13 +85,12 @@ export default function OtherRoute() {
           </p>
           <div className="grid grid-cols-3 grid-rows-2 gap-6">
             <Box className="col-span-2 row-span-2 p-8">
-              <div className="flex items-center justify-start px-5">
-                <CustomIcon />
-                <h3 className="font-serif text-xl font-semibold">Lorem ipsum dolor sit.</h3>
-              </div>
+              <BoxTopContent />
             </Box>
-            <Box className="col-start-3">2</Box>
-            <Box className="col-start-3 row-start-2">3</Box>
+            <Box className="col-start-3">
+              <BoxTopContent />
+            </Box>
+            <Box className="col-start-3 row-start-2"></Box>
           </div>
         </Section>
       </div>
