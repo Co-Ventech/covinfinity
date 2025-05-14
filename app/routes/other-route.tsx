@@ -84,8 +84,18 @@ export default function OtherRoute() {
             collaboration. Coventech delivers customizable, pre-built features to power them.
           </p>
           <div className="grid grid-cols-3 grid-rows-2 gap-6">
-            <Box className="col-span-2 row-span-2 p-8">
+            <Box className="col-span-2 row-span-2 overflow-hidden p-8">
               <BoxTopContent />
+              <div className="image-wrapper relative max-h-[34rem]">
+                <img
+                  src="dashboard-the-second.png"
+                  alt="Dashboard the second"
+                  className="cursor-poin pointer-events-none object-cover"
+                />
+                <div className="absolute -bottom-50 -left-12 h-[373px] w-[calc(100%+15rem)] bg-background-body blur-3xl">
+                  {' '}
+                </div>
+              </div>
             </Box>
             <Box className="col-start-3">
               <BoxTopContent />
