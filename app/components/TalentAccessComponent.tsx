@@ -20,7 +20,7 @@ const TalentAccessComponent = () => {
   const topTalents = useMemo(() => {
     const sortedDevs = [...allDevelopers].sort((a, b) => (b.rating || 0) - (a.rating || 0));
     if (!activeJobType && !searchQuery) {
-      return sortedDevs.slice(0, 3);
+      return sortedDevs.slice(0, 2);
     }
     return [];
   }, [activeJobType, searchQuery]);
@@ -85,7 +85,7 @@ const TalentAccessComponent = () => {
           <TechnologyFilter activeJobType={activeJobType} onFilterChange={setActiveJobType} />
 
           {/* Inner box containing search and profiles */}
-          <div className="pb-4">
+          <div className="">
             {/* <div className="rounded-lg border border-[#1F1F1F] bg-[rgba(26,23,23,0.48)] p-3"> */}
             <Box.Inner>
               {/* Search section */}
@@ -109,39 +109,16 @@ const TalentAccessComponent = () => {
                   </div>
 
                   <motion.div
-                    className="custom-scrollbar max-h-[30rem] overflow-y-auto pr-1"
+                    className="custom-scrollbar max-h-[22rem] min-h-[22rem] overflow-y-auto pr-1"
                     initial="hidden"
                     animate="visible"
                     variants={scrollbarAnimation}
                   >
-                    <motion.div className="space-y-4">
+                    <div className="space-y-4">
                       {filteredDevelopers.map((dev, index) => {
-                        const isHovered = hoveredIndex === index;
-                        const isOtherHovered = hoveredIndex !== null && hoveredIndex !== index;
-
-                        return (
-                          <motion.div
-                            key={dev.id}
-                            onHoverStart={() => setHoveredIndex(index)}
-                            onHoverEnd={() => setHoveredIndex(null)}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{
-                              opacity: isOtherHovered ? 0.5 : 1,
-                              y: 0,
-                            }}
-                            transition={{
-                              type: 'spring',
-                              stiffness: 300,
-                              damping: 25,
-                            }}
-                            className={`overflow-hidden rounded-lg ${isHovered ? 'shadow-lg shadow-pink-500/20' : ''}`}
-                          >
-                            {/* DeveloperProfile is modified below */}
-                            <DeveloperProfile developer={dev} />
-                          </motion.div>
-                        );
+                        return <DeveloperProfile developer={dev} />;
                       })}
-                    </motion.div>
+                    </div>
                   </motion.div>
                 </>
               )}

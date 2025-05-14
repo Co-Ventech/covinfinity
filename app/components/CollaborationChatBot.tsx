@@ -6,8 +6,6 @@ import BgImage from './BgImage';
 import AnimatedLine from './ui/AnimatedLine';
 import Box from './ui/Box';
 import Heading from './ui/Heading';
-import LinearCard from './ui/LinearCard';
-import OutlineBox from './ui/OutlineBox';
 import Section from './ui/Section';
 
 // Define animations as constants for reuse
@@ -38,14 +36,14 @@ export const ChatMessage = ({
 }) => {
   const messageContent = (
     // <div className="mb-2 flex items-start space-x-2">
-    <div className="mb-4 flex items-start gap-3">
+    <div className="mb-4 flex max-w-[43.75em] items-start gap-3">
       <img src={avatar} alt={sender} className="h-10 w-10 rounded-full" />
       <div className="flex-1">
         <div className="flex items-center space-x-2">
-          <span className="text-xs text-white">{sender}</span>
+          <span className="font-serif text-lg font-semibold text-white">{sender}</span>
           <span className="text-xs text-[#665F5F]">{time}</span>
         </div>
-        <p className="mt-1 text-xs text-[13px] text-[#A3A3A3]">{message}</p>
+        <p className="text-medium mt-1 text-[#A3A3A3]">{message}</p>
       </div>
     </div>
   );
@@ -138,7 +136,7 @@ const CollaborationChatBot = () => {
     initialChats: aeChatData,
     userAvatar: '/john.png',
     aiAvatar: '/sarah.png',
-    userName: 'John',
+    userName: 'Winston',
     aiName: 'Sarah',
   });
 
@@ -236,7 +234,7 @@ const CollaborationChatBot = () => {
             </div>
 
             {/* Chat Input - Fixed at bottom */}
-            <div className="sticky bottom-0 -mx-4 border-t border-[#1F1F1F] px-4 py-3">
+            <div className="sticky bottom-0 -mx-4 px-4 py-3">
               <motion.div
                 className={`flex flex-1 items-center justify-between rounded-lg bg-[#101112] px-3 py-1 ${isLoading ? 'opacity-90' : ''}`}
                 animate={{
