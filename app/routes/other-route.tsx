@@ -32,7 +32,7 @@ export default function OtherRoute() {
               //   clipPath: 'inset(10% 0 15% 0)', // Softens overlap edges
             }}
           ></div>
-          <div className="absolute -top-54 -right-24 h-[calc(100%+10rem)] w-80 origin-right skew-x-22 transform bg-gradient-to-r from-background-body/0 via-background-body/80 to-background-body"></div>
+          <div className="absolute -top-52 -right-24 h-[calc(100%+10rem)] w-80 origin-right skew-x-22 transform bg-gradient-to-r from-background-body/0 via-background-body/80 to-background-body"></div>
         </div>
       </Section>
 
