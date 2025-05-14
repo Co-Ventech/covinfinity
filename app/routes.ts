@@ -7,4 +7,5 @@ export default [
   route('contact', './routes/contact.tsx'),
   route('connect', './routes/connect.tsx'),
   route('case-studies', './routes/case-studies.tsx'),
+  route('other-route', './routes/other-route.tsx'),
 ] satisfies RouteConfig;

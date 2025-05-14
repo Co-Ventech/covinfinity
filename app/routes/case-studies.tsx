@@ -1,17 +1,14 @@
 import CaseStudiesGrid from '~/components/CaseStudiesGrid';
 import CollaborationChatBot from '~/components/CollaborationChatBot';
 import Navbar from '~/components/Navbar';
+import CardGridSection from '~/components/sections/CardGrid';
 import CollaborationSection from '~/components/sections/CollaborationSection';
-import CompanySliderSection from '~/components/sections/CompanySliderSection';
 import TestEcosystemSection from '~/components/sections/EcosystemSection';
 import ServicesSection from '~/components/ServicesSection';
-import { Starfield } from '~/components/StarField';
 import TalentAccessComponent from '~/components/TalentAccessComponent';
 import TestimonialComponent from '~/components/TestimonialComponent';
-import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
-import CardGridSection from '~/components/sections/CardGrid';
 
 export function meta({}: Route.MetaArgs) {
   return [
