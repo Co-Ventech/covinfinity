@@ -2,6 +2,18 @@ import Navbar from '~/components/Navbar';
 import Heading from '~/components/ui/Heading';
 import Section from '~/components/ui/Section';
 import { MainLayout } from '~/layouts/MainLayout';
+import type { Route } from './+types/home';
+import Box from '~/components/ui/Box';
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: 'Covinfinity | Other Route' },
+    {
+      name: 'description',
+      content: 'Empowering businesses with cutting-edge technology solutions on Other Routes',
+    },
+  ];
+}
 
 export default function OtherRoute() {
   return (
@@ -13,7 +25,7 @@ export default function OtherRoute() {
         </Heading>
         <p className="my-6 max-w-[46.875rem] font-serif text-xl font-medium">
           {' '}
-          The best apps in the AI era aren’t solo experiences — they’re built for collaboration. 
+          The best apps in the AI era aren’t solo experiences — they’re built for collaboration.
           Coventech delivers customizable, pre-built features to power them.{' '}
         </p>
         <button className="flex cursor-pointer rounded bg-gradient-to-r from-[#1F2224] to-[#16181A] to-70% px-5 py-2.5 font-medium transition hover:opacity-90">
@@ -44,9 +56,14 @@ export default function OtherRoute() {
             About The Challenge, Location, Tech
           </Heading>{' '}
           <p className="mx-auto my-6 max-w-[46.875rem] text-center font-serif text-xl font-medium">
-            The best apps in the AI era aren’t solo experiences — they’re built for collaboration. 
-            Coventech delivers customizable, pre-built features to power them.
+            The best apps in the AI era aren&apos;t solo experiences — they&apos;re built for
+            collaboration. Coventech delivers customizable, pre-built features to power them.
           </p>
+          <div className="grid grid-cols-3 grid-rows-2 gap-6">
+            <Box className="col-span-2 row-span-2">1</Box>
+            <Box className="col-start-3">2</Box>
+            <Box className="col-start-3 row-start-2">3</Box>
+          </div>
         </Section>
       </div>
     </MainLayout>
