@@ -41,24 +41,52 @@ export default function CaseStudies() {
     <MainLayout>
       <div className="showcase relative h-max w-full space-y-[10rem]">
         {/* Background images behind navbar */}
-        <div className="absolute inset-0 z-0 flex justify-between">
-          <div className="relative h-[20rem] w-1/4">
-            {/* Left background image */}
-            <div className="absolute inset-0 rounded-lg bg-black/20"></div>
-            <img src="/case-studies1.png" alt="Cost" className="" />
-          </div>
-          <div className="relative ml-6 h-[20rem] w-1/2">
-            {/* Center background image */}
-            <div className="absolute inset-0 rounded-lg bg-black/20"></div>
-            <img src="/case-studies2.png" alt="Cost" className="" />
-          </div>
-          <div className="relative ml-6 h-[20rem] w-1/4">
-            {/* Right background image */}
-            <div className="absolute inset-0 rounded-lg bg-black/20"></div>
-            <img src="/case-studies3.png" alt="Cost" className="" />
-          </div>
-        </div>
+      <div className="absolute inset-0 z-0 flex justify-between">
+  {/* Left image with gradient overlay */}
+  <div className="relative h-[20rem] w-1/4 overflow-hidden rounded-lg">
+    <img 
+      src="/case-studies1.png" 
+      alt="Case study 1" 
+      className="h-full w-full object-cover"
+    />
+    <div 
+      className="absolute inset-0"
+      style={{
+        background: 'linear-gradient(to bottom, #0F1011 0%, #0F1011 20%, rgba(15, 16, 17, 0.8) 50%, rgba(15, 16, 17, 0) 100%)'
+      }}
+    ></div>
+  </div>
 
+  {/* Center image with gradient overlay */}
+  <div className="relative ml-6 h-[20rem] w-1/2 overflow-hidden rounded-lg">
+    <img 
+      src="/case-studies2.png" 
+      alt="Case study 2" 
+      className="h-full w-full object-cover"
+    />
+    <div 
+      className="absolute inset-0"
+      style={{
+        background: 'linear-gradient(to bottom, #0F1011 0%, #0F1011 20%, rgba(15, 16, 17, 0.8) 50%, rgba(15, 16, 17, 0) 100%)'
+      }}
+    ></div>
+  </div>
+
+  {/* Right image with gradient overlay */}
+  <div className="relative ml-6 h-[20rem] w-1/4 overflow-hidden rounded-lg">
+    <img 
+      src="/case-studies3.png" 
+      alt="Case study 3" 
+      className="h-full w-full object-cover"
+    />
+    <div 
+      className="absolute inset-0"
+      style={{
+        background: 'linear-gradient(to bottom, #0F1011 0%, #0F1011 20%, rgba(15, 16, 17, 0.8) 50%, rgba(15, 16, 17, 0) 100%)'
+      }}
+    ></div>
+  </div>
+</div>
         <Navbar />
 
         {/* Hero Section */}
@@ -67,10 +95,13 @@ export default function CaseStudies() {
             <div className="relative">
               {/* Text content with overlay images */}
               <div className="relative z-10 mx-auto w-[80%] text-center">
-                <h1 className="mb-6 text-4xl font-bold text-white md:text-6xl">
+              <h1
+              className=" xl:text-[4rem] 2xl:text-[4.5rem] font-semibold mb-6 text-[#CCCCCC]"
+              style={{ fontFamily: 'Poppins', letterSpacing: '-1%', lineHeight: '110%' }}
+            >
                   Red Stories. Bold Shifts. Welcome to the new era of storytelling
                 </h1>
-                <p className="mx-auto mb-8 max-w-3xl text-xl text-gray-300">
+                <p className="mx-auto mb-8 w-[50%]  text-gray-300">
                   The best apps in the AI era aren't solo experiences—they're built for
                   collaboration. Coventech delivers customizable, pre-built features to power them.
                 </p>
@@ -142,6 +173,7 @@ export default function CaseStudies() {
         </div>
       </div>
       <LogoGrid />
+
     </MainLayout>
   );
 }
