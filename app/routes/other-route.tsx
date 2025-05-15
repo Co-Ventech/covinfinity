@@ -100,7 +100,7 @@ export default function OtherRoute() {
             <Box className="col-start-3">
               <BoxTopContent />
             </Box>
-            <Box className="col-start-3 row-start-2"></Box>
+            <Box className="col-start-3 row-start-2">ko</Box>
           </div>
         </Section>
       </div>
