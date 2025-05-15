@@ -94,7 +94,7 @@ const AvatarGroup: React.FC = () => {
           >
             <div
               className="size-10 overflow-hidden rounded-full border-2 border-[#222225] bg-white transition-transform duration-200 hover:border-[#FF8A9D]"
-              title={avatar.name}
+              // title={avatar.name}
             >
               <motion.img
                 src={avatar.image}
