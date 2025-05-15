@@ -2,10 +2,10 @@ import React from 'react';
 import NetworkCircleIcon from '../svgs/NetworkCircleIcon';
 import Polygon1 from '../svgs/Polygon1';
 import Polygon2 from '../svgs/Polygon2';
+import Button from '../ui/Button';
 import GradientText from '../ui/GradientText';
 import Heading from '../ui/Heading';
 import OutlineBox from '../ui/OutlineBox';
-import Button from '../ui/Button';
 
 // Reusable component for polygon-backed sections
 interface PolygonSectionProps {
@@ -73,18 +73,19 @@ interface TestimonialProps {
 
 export const Testimonial: React.FC<TestimonialProps> = ({ quote, author, icon }) => (
   <div className="mx-auto w-[38.125rem] max-w-full px-4">
-    <OutlineBox className="rounded-b-none border-b-0 text-center text-white">
-      <h3 className="mx-auto mt-2 mb-6 max-w-[31rem] text-xl leading-relaxed font-semibold">
+    <OutlineBox className="rounded-b-none border-b-0 !border-border-gradiant-color-2nd text-center text-white">
+      <h3 className="mx-auto mt-2 mb-6 max-w-[31rem] font-serif text-xl leading-relaxed font-semibold">
         " {quote} "
       </h3>
     </OutlineBox>
 
-    <OutlineBox className="-mt-5 flex items-center justify-between">
+    <OutlineBox className="-mt-5 flex items-center justify-between !border-border-gradiant-color-2nd">
       <div className="flex items-center">
         <img src={author.image} alt={author.name} className="mr-4 h-12 w-12 rounded-full" />
         <div className="text-left">
-          <p className="text-base font-semibold text-white">{author.name}</p>
-          <p className="text-sm text-gray-500">{author.title}</p>
+          {/* <h5 className="text-[1.2rem] font-semibold">{author.name}</h5> */}
+          <p className="no-color text-[1.2rem] font-semibold text-white">{author.name}</p>
+          <p className="text-[1.2rem] font-medium">{author.title}</p>
         </div>
       </div>
       {icon && (

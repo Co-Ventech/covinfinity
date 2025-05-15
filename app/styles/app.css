@@ -5,6 +5,7 @@
   /* Colors */
   --color-background-body: #0f1011;
   --color-border-box: #0b0c0d;
+  --color-border-gradiant-color-2nd: #19191c;
 
   /* Buttons */
   --color-button-text: #151517;
@@ -136,6 +137,14 @@
     -webkit-text-fill-color: transparent;
     color: transparent;
     font-family: var(--font-sans);
+  }
+
+  p.no-color {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: unset;
+    color: unset;
   }
 
   h1,
