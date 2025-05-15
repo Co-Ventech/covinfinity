@@ -2,6 +2,7 @@ import React from 'react';
 import PortfolioCard from '../ui/PortfolioCard';
 import GridCard1 from '../GridCard1';
 import GridCard2 from '../GridCard2';
+import GridCard3 from '../GridCard3';
 
 const CardGridSection = () => {
   const portfolioItems = [
@@ -22,8 +23,10 @@ const CardGridSection = () => {
   return (
     <section className="">
       <div className="max-W-[75%] mx-auto px-4 sm:px-6 lg:px-8">
-        <GridCard1 />
-        <GridCard2 />
+      
+      <GridCard1/>
+      <GridCard2/>
+      <GridCard3/>
       </div>
     </section>
   );

@@ -30,7 +30,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
         <img
           src={backgroundImage}
           alt={`Project screenshot`}
-          className="h-[200px] w-full rounded-md object-cover"
+          className="rounded-md object-cover w-full h-[180px]"
         />
       </div>
     </Box>
