@@ -15,6 +15,7 @@ import CardGridSection from '~/components/sections/CardGrid';
 import Box from '~/components/ui/Box';
 import LogoGrid from '~/components/LogoGrid';
 import type { FC } from 'react';
+import DropdownMenu from '~/components/DropdownMenu';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -95,14 +96,14 @@ export default function CaseStudies() {
           <div className="w-full">
             <div className="relative">
               {/* Text content with overlay images */}
-              <div className="relative z-10 mx-auto w-[80%] text-center">
+              <div className="relative z-10 mx-auto xl:max-w-[69rem] 2xl:xl:max-w-[75rem] text-center">
               <h1
               className=" xl:text-[4rem] 2xl:text-[4.5rem] font-semibold mb-6 text-[#CCCCCC]"
               style={{ fontFamily: 'Poppins', letterSpacing: '-1%', lineHeight: '110%' }}
             >
                   Red Stories. Bold Shifts. Welcome to the new era of storytelling
                 </h1>
-                <p className="mx-auto mb-8 w-[50%]  text-gray-300">
+                <p className="mx-auto mb-8 w-[50%]   text-[1rem] text-[#EBF5FF]/56">
                   The best apps in the AI era aren't solo experiences—they're built for
                   collaboration. Coventech delivers customizable, pre-built features to power them.
                 </p>
@@ -130,25 +131,26 @@ export default function CaseStudies() {
         </div>
       </div>
       
-      <div className="mt-14">
+      <DropdownMenu />
+      <div className="mt-8">
         <CardGridSection />
       </div>
       
-      <div className="min-h-screen flex items-center justify-center p-6">
+      <div className="mt-24 flex items-center justify-center mx-auto p-6">
         <div className="mx-auto text-center">
           <div className="flex justify-center mb-8">
             <img src="/u-icon.png" alt="" />
           </div>
   
-          <div className="mb-12">
+          <div className="mb-14  xl:max-w-[89rem]  mx-auto">
             <h1
-              className="text-[50.45px] font-semibold mb-2 text-[#CCCCCC]"
-              style={{ fontFamily: 'Poppins', letterSpacing: '-1%', lineHeight: '110%' }}
+              className="text-[3.125rem] font-semibold mb-2 text-[#CCCCCC]"
+              style={{ letterSpacing: '-1%', lineHeight: '110%' }}
             >
               Award Winning Design – Development
             </h1>
             <h1
-              className="text-[50.45px] font-semibold mb-2 text-[#CCCCCC]"
+              className="text-[3.125rem] font-semibold mb-2 text-[#CCCCCC]"
               style={{ fontFamily: 'Poppins', letterSpacing: '-1%', lineHeight: '110%' }}
             >
               Development by Coventech
@@ -157,7 +159,7 @@ export default function CaseStudies() {
 
           <div className="mx-auto mb-16">
             <p
-              className="text-[24px] text-[#CCCCCC] mb-6"
+              className="text-[1.25rem] text-[#CCCCCC] mb-6"
               style={{ fontFamily: 'Poppins', lineHeight: '110%' }}
             >
               The best apps in the AI era aren't solo experiences — they're built for collaboration.

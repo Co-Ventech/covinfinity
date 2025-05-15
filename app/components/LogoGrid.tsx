@@ -19,9 +19,28 @@ const LogoGrid: React.FC = () => {
   return (
     <div className="py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center text-sm font-bold mb-12 text-[#EBF5FF]/24">
-         Trusted by the world’s most innovative AI-Native comapnies
-        </h2>
+      <div className="relative flex items-center justify-center my-12">
+  {/* Left line */}
+  <div 
+    className="h-px flex-grow"
+    style={{
+      background: 'linear-gradient(to right, transparent, #252729)'
+    }}
+  ></div>
+  
+  {/* Heading text */}
+  <h2 className="mx-4 whitespace-nowrap text-center text-sm font-bold text-[#EBF5FF]/24">
+    Trusted by the world's most innovative AI-Native companies
+  </h2>
+  
+  {/* Right line */}
+  <div 
+    className="h-px flex-grow"
+    style={{
+      background: 'linear-gradient(to left, transparent, #252729)'
+    }}
+  ></div>
+</div>
         
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
           {logos.map((logo, index) => (
