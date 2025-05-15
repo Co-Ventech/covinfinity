@@ -14,6 +14,7 @@ import type { Route } from './+types/home';
 import CardGridSection from '~/components/sections/CardGrid';
 import Box from '~/components/ui/Box';
 import LogoGrid from '~/components/LogoGrid';
+import type { FC } from 'react';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -173,7 +174,6 @@ export default function CaseStudies() {
         </div>
       </div>
       <LogoGrid />
-
     </MainLayout>
   );
 }
