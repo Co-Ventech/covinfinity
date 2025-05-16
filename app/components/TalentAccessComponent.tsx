@@ -56,15 +56,15 @@ const TalentAccessComponent = () => {
   };
 
   return (
-    <Section className="text-white" divClass="relative pt-[17rem] xl:pt-[21.5rem]">
+    <Section className="text-white" divClass="relative pt-[12rem] xl:pt-[17rem]">
       <BgImage
         src="section-lines/talent-section-lines.png"
         // className="-top-22 left-1/2 h-[calc(100%+6rem)] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
-        className="-top-0 left-1/2 -z-10 h-[58rem] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
+        className="-top-12 left-1/2 -z-10 h-[58rem] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
       />
 
       {/* Header Section */}
-      <div className="mb-36 text-center">
+      <div className="mb-14 text-center">
         <Heading className="mb-4 pb-1" blockText="from all around the world">
           Craft the most productive team
         </Heading>

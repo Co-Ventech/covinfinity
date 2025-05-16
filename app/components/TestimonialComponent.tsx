@@ -181,7 +181,7 @@ const TestimonialComponent = () => {
 
   return (
     <Section>
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div className="grid mt-10 grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Left Section - Client Testimonials */}
         <Box className="relative bg-border-box !p-0 lg:col-span-1">
           <div className="pointer-events-none absolute bottom-0 left-0 h-[calc(100%-8rem)] w-full rounded-[inherit] bg-linear-to-b from-[#151617]/0 via-[#151617]/32 via-60% to-[#151617]"></div>

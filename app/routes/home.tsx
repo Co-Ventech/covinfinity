@@ -50,20 +50,7 @@ export default function Home() {
         <ServicesSection />
       </div>
       <CaseStudiesGrid />
-
-      {/* BG GLOW */}
-      {/* {Array.from({ length: 3 }).map((_, i) => (
-        <BgGlow
-          key={i}
-          className={
-            i === 0
-              ? '!top-40 !left-[unset] !translate-x-[unset]'
-              : i === 1
-                ? '!top-1/2 -translate-y-1/2'
-                : '!bottom-0'
-          }
-        />
-      ))} */}
+     
     </MainLayout>
   );
 }

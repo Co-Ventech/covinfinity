@@ -5,6 +5,7 @@ import type React from 'react';
 import { useState } from 'react';
 import Box from '../ui/Box';
 import Section from '../ui/Section';
+import BgImage from '../BgImage';
 
 type Step = {
   id: number;
@@ -86,11 +87,15 @@ const blurVariants = {
 
 const HeaderSection: React.FC = () => {
   return (
-    <div className="mt-16 flex flex-col items-center justify-center text-center">
-      <h2 className="font-serif text-[3.12rem] font-semibold">Coventech Ecosystem</h2>
-      <p className="max-w-[43rem] bg-gradient-to-br from-[#EBF5FF] to-[#EBF5FF] bg-clip-text font-medium">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius soluta suscipit velit autem
-        vero ratione doloremque quo aperiam.
+    <div className="mt-16 flex flex-col items-center justify-center text-center " >
+      {/* <BgImage
+        src="section-lines/talent-section-lines.png"
+        // className="-top-22 left-1/2 h-[calc(100%+6rem)] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
+        className="-top-0 left-1/2 -z-10 h-[58rem] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
+      /> */}
+      <h2 className="font-serif bg-gradient-to-r from-[#FFFFFF] to-[#CCCCCC] bg-clip-text text-[3.2rem] font-semibold text-transparent">Coventech Ecosystem</h2>
+      <p className="max-w-[43rem] bg-gradient-to-br from-[#EBF5FF]/64 to-[#EBF5FF]/54 bg-clip-text font-medium text-[1rem]">
+       how it’s going to work this step’s entire flow or anything you guys want  it’ll be maximum of 2 lines thats all
       </p>
     </div>
   );

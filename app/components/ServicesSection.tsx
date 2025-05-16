@@ -190,29 +190,32 @@ export default function ServicesSection() {
   };
 
   return (
-    <Section divClass="relative pt-[10rem]" className="-mt-4">
-      <BgImage
-        src="section-lines/services-section-lines.png"
-        className="!xl:w-[calc(100%+10rem)] inset-0 left-1/2 -z-10 !size-full !w-[calc(100%+7rem)] -translate-x-1/2 !bg-contain"
+    <Section divClass="relative pt-[17rem]" className="-mt-4">
+     <BgImage
+        src="section-lines/talent-section-lines.png"
+        // className="-top-22 left-1/2 h-[calc(100%+6rem)] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
+        className="-top-12 left-1/2 -z-10 h-[58rem] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
       />
+
       <div className="text-white">
         {/* Header Section */}
         <div className="mx-auto mb-16 max-w-4xl text-center">
-          <p className="mb-4 text-base font-medium tracking-[0.02em] text-[#797B8A]">
-            The most complete experience for businesses & individual clients
-          </p>
+         
           <Heading
             blockText="something goes here"
-            className="!mb-16 !pb-2 !font-sans !font-semibold"
+            className="!mb-4 !pb-2 !font-sans !font-semibold"
           >
             Services digital solution
           </Heading>
+           <p className="mb-4 text-base tracking-[0.02em]  bg-gradient-to-br from-[#EBF5FF]/64 to-[#EBF5FF]/54 bg-clip-text font-medium text-[1rem]">
+            The most complete experience for businesses & individual clients
+          </p>
         </div>
 
         {/* Main Content Wrapped in OutlineBox */}
         <Box className="!pt-8">
           {/* Digital Solution Section */}
-          <div className="mb-6">
+          <div className="">
             <div className="headin-section mb-8 flex flex-col items-center justify-center text-center">
               <img src="/solutions-icon.png" alt="icon" className="size-8 object-contain" />
 
@@ -250,13 +253,12 @@ export default function ServicesSection() {
               />
             </Box.Inner>
           </div>
-
-          {/* Clutch Reviews Section */}
-          <div className="flex w-full items-center justify-between gap-4">
-            <ImageBox src="/blue-hunt.png" alt="blue hunt" />
-            <ImageBox src="/red-hunt.png" alt="red hunt" />
-          </div>
         </Box>
+           {/* Clutch Reviews Section */}
+            <div className=" mt-8 flex w-full items-center justify-between gap-4">
+              <ImageBox src="/blue-hunt.png" alt="blue hunt" />
+              <ImageBox src="/red-hunt.png" alt="red hunt" />
+            </div>
       </div>
     </Section>
   );

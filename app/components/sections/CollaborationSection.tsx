@@ -13,10 +13,10 @@ const collabItems = Array(6).fill({
 
 const CollaborationSection: React.FC = () => {
   return (
-    <Section divClass="relative" className="mb-10">
+    <Section divClass="relative" className="mt-16">
       {/* Section header */}
       {/* <div className="relative z-10 mb-10 text-center sm:mb-20 md:mb-40"> */}
-      <div className="relative z-10 mb-12 text-center">
+      <div className="relative z-10 mb-[3rem] text-center">
         <div className="mb-3 flex justify-center">
           <img src='/box.png' alt='box-icon' className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10" />
         </div>
