@@ -39,7 +39,7 @@ const ClientProfile = ({
   onClick: () => void;
 }) => (
   <div
-    className={`flex cursor-pointer items-start space-x-4 rounded-2xl px-4 py-6 transition-colors duration-300 ${isActive ? 'bg-background-body/70' : 'bg-background-body'}`}
+    className={`flex cursor-pointer items-start space-x-4 rounded-2xl px-4 py-6 transition-colors duration-300 ${isActive ? 'bg-[#151617]' : 'bg-background-body'}`}
     onClick={onClick}
   >
     <img src={client.avatar} alt={client.name} className="h-12 w-12 rounded-full" />

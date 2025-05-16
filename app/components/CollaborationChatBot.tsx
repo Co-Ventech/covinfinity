@@ -148,7 +148,7 @@ const CollaborationChatBot = () => {
   };
 
   return (
-    <Section divClass="relative pt-50 xl:pt-60">
+    <Section className="!overflow-visible" divClass="!overflow-visible relative pt-50 xl:pt-60">
       <div className="mb-16">
         <Heading className="pb-1">Collaboration and shipping software faster</Heading>
         <p className="mt-4 font-medium text-[#665F5F]">
@@ -161,7 +161,7 @@ const CollaborationChatBot = () => {
         {/* Chat Section - Takes up 2 columns */}
         <Box className="lg:col-span-2">
           {/* Chat Header */}
-          <div className="ml-10 p-5">
+          <div className="ml-10 p-5 !pb-0">
             <div className="mt-3 w-[21rem] space-y-3 max-sm:w-[calc(100%-3rem)]">
               <img src="/chart.png" alt="Add" className="mr-2 h-8.5 w-8.5" />
               <div>
@@ -175,7 +175,7 @@ const CollaborationChatBot = () => {
 
           {/* Chat Messages and Input Container */}
           {/* <div className="relative mt-2 mb-4 flex max-h-[27rem] min-h-[27rem] !w-full flex-col overflow-hidden rounded-[0.625rem] bg-[#0B0C0D] p-3"> */}
-          <Box.Inner className="relative mt-2 mb-4 flex max-h-[27rem] min-h-[27rem] !w-full flex-col overflow-hidden rounded-3xl p-3.5">
+          <Box.Inner className="relative mt-14 flex max-h-[31rem] min-h-[31rem] !w-full flex-col overflow-hidden rounded-3xl p-3.5 !pt-0">
             {/* Messages */}
             <div
               ref={chatContainerRef}
@@ -294,7 +294,7 @@ const CollaborationChatBot = () => {
               From deployments to tasks, work with your team every step of the way.
             </p>
           </div>
-          <img src="/orbit.png" alt="Add" className="h-[26.6rem] w-full" />
+          <img src="/orbit-2.png" alt="Add" className="h-[26.6rem] w-full" />
         </Box>
       </div>
 
@@ -313,8 +313,8 @@ const CollaborationChatBot = () => {
 
       {/* BG Lines, Effects */}
       <BgImage
-        src="section-lines/chatbot.png"
-        className="top-10 !left-1/2 mx-auto -ml-1.5 hidden size-full w-[calc(100%+4.8rem)] !-translate-x-1/2 !bg-contain md:block"
+        src="section-lines/chatbot-v2.png"
+        className="top-10 !left-1/2 mx-auto -ml-1.5 hidden h-[calc(100%+15rem)] w-[calc(100%+4.8rem)] !-translate-x-1/2 !bg-contain md:block"
       />
     </Section>
   );
