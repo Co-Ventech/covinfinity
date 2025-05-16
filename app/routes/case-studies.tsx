@@ -96,14 +96,22 @@ export default function CaseStudies() {
           <div className="w-full">
             <div className="relative">
               {/* Text content with overlay images */}
-              <div className="relative z-10 mx-auto xl:max-w-[69rem] 2xl:xl:max-w-[75rem] text-center">
-              <h1
-              className=" xl:text-[4rem] 2xl:text-[4.5rem] font-semibold mb-6 text-[#CCCCCC]"
-              style={{ fontFamily: 'Poppins', letterSpacing: '-1%', lineHeight: '110%' }}
-            >
-                  Red Stories. Bold Shifts. Welcome to the new era of storytelling
+              <div className="relative z-10 mx-auto max-w-[80%] xl:max-w-[75rem] text-center">
+               <h1
+                  className=" text-[2.5rem] sm:text-5xl md:text-[3.5rem] xl:text-[4.2rem] font-semibold mb-6 bg-gradient-to-r from-[#FFFFFF] to-[#CCCCCC] bg-clip-text text-transparent"
+                  style={{ 
+                    fontFamily: 'Poppins', 
+                    letterSpacing: '-1%', 
+                    lineHeight: '110%',
+                    textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
+                  }}
+                >
+                  Real Stories. Bold Shifts. Welcome to the new era of storytelling
                 </h1>
-                <p className="mx-auto mb-8 w-[50%]   text-[1rem] text-[#EBF5FF]/56">
+                <p
+                    className="text-base sm:text-lg md:text-[1.2rem] text-[#EBF5FF]/56 max-w-[70%] mx-auto mb-4 md:mb-6"
+                    style={{ fontFamily: 'Poppins', lineHeight: '110%' }}
+                  >
                   The best apps in the AI era aren't solo experiences—they're built for
                   collaboration. Coventech delivers customizable, pre-built features to power them.
                 </p>
@@ -136,37 +144,36 @@ export default function CaseStudies() {
         <CardGridSection />
       </div>
       
-      <div className="mt-24 flex items-center justify-center mx-auto p-6">
-        <div className="mx-auto text-center">
-          <div className="flex justify-center mb-8">
-            <img src="/u-icon.png" alt="" />
-          </div>
-  
-          <div className="mb-14  xl:max-w-[89rem]  mx-auto">
-            <h1
-              className="text-[3.125rem] font-semibold mb-2 text-[#CCCCCC]"
-              style={{ letterSpacing: '-1%', lineHeight: '110%' }}
-            >
-              Award Winning Design – Development
-            </h1>
-            <h1
-              className="text-[3.125rem] font-semibold mb-2 text-[#CCCCCC]"
-              style={{ fontFamily: 'Poppins', letterSpacing: '-1%', lineHeight: '110%' }}
-            >
-              Development by Coventech
-            </h1>
-          </div>
+  <div className="mt-12 md:mt-24 flex items-center justify-center mx-auto p-4 md:p-6">
+  <div className="mx-auto text-center">
+    <div className="flex justify-center mb-6 md:mb-8">
+      <img src="/u-icon.png" alt="" className="w-16 md:w-auto" />
+    </div>
 
-          <div className="mx-auto mb-16">
-            <p
-              className="text-[1.25rem] text-[#CCCCCC] mb-6"
-              style={{ fontFamily: 'Poppins', lineHeight: '110%' }}
-            >
-              The best apps in the AI era aren't solo experiences — they're built for collaboration.
-              <br />
-              Coventech delivers customizable, pre-built features to power them.
-            </p>
-          </div>
+    <div className="mb-6 md:mb-8 max-w-full xl:max-w-[89rem] mx-auto px-4">
+      <h1
+        className="text-2xl sm:text-3xl md:text-4xl lg:text-[3.125rem] font-semibold  bg-gradient-to-r from-[#FFFFFF] to-[#CCCCCC] bg-clip-text text-transparent"
+        style={{ letterSpacing: '-1%', lineHeight: '110%' }}
+      >
+        Award Winning Design – Development  <br/>
+         Development by Coventech
+      </h1>
+      
+    </div>
+
+    <div className="mx-auto mb-8 md:mb-10 max-w-full md:max-w-2xl lg:max-w-4xl px-4">
+      <p
+        className="text-base sm:text-lg md:text-[1.25rem] text-[#EBF5FF]/56 mb-4 md:mb-6"
+        style={{ fontFamily: 'Poppins', lineHeight: '110%' }}
+      >
+        The best apps in the AI era aren't solo experiences — they're built for collaboration.
+        <br className="hidden sm:block" />
+        Coventech delivers customizable, pre-built features to power them.
+      </p>
+    </div>
+  
+
+
   
           {/* Clutch Reviews Section */}
           <div className="flex w-full items-center justify-between gap-4 px-10">
