@@ -25,9 +25,9 @@ const GridCard2 = () => {
   return (
     <section className="py-10">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-7 gap-4">
+        <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4">
           {/* First large card spanning two columns */}
-          <div className="col-span-2 col-start-1">
+          <div className="hidden md:block md:col-span-2 md:col-start-1">
             <PortfolioCard2
               title={portfolioItems[0].title}
               description={portfolioItems[0].description}
@@ -36,7 +36,7 @@ const GridCard2 = () => {
           </div>
           
           {/* First small card in top right */}
-          <div className="col-span-3 col-start-3">
+          <div className="col-span-3 md:col-start-3">
             <PortfolioCard
               title={portfolioItems[1].title}
               description={portfolioItems[1].description}
@@ -45,7 +45,7 @@ const GridCard2 = () => {
           </div>
           
           {/* Second small card in bottom right */}
-          <div className="col-span-2 col-start-6">
+          <div className="hidden lg:block lg:col-span-2 lg:col-start-6">
             <PortfolioCard2
               title={portfolioItems[2].title}
               description={portfolioItems[2].description}
