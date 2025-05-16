@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import GradientBorderButton from './ui/GradientBorderButton';
+import Button from './ui/Button';
 
 // Define types for the image data
 interface ImageData {
@@ -136,7 +137,9 @@ const CaseStudiesGrid: React.FC = () => {
           </h1>
 
           {/* Minimal Button */}
-          <GradientBorderButton>Launch Covinfinity</GradientBorderButton>
+          {/* <GradientBorderButton>Launch Covinfinity</GradientBorderButton> */}
+         <Button>Launch Covinfinity</Button>
+
         </div>
       </div>
 

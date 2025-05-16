@@ -15,9 +15,9 @@ const PortfolioCard2: React.FC<PortfolioCardProps> = ({
   icon,
 }) => {
   return (
-    <Box className="bg-[#111] rounded-2xl p-4 text-white shadow-md  mx-auto">
+    <Box className="bg-[#111] rounded-2xl !p-0 text-white shadow-md  mx-auto">
       {/* Top image section */}
-      <div className="rounded-xl overflow-hidden mb-8">
+      <div className="rounded-xl overflow-hidden mb-12">
         <img
           src={backgroundImage}
           alt="Project"
@@ -26,7 +26,7 @@ const PortfolioCard2: React.FC<PortfolioCardProps> = ({
       </div>
 
       {/* Icon + Title */}
-      <div className="flex items-center gap-3 mb-2 mx-4">
+      <div className="flex items-center gap-3 mb-2 mx-6">
         <div className="h-10 w-10 flex items-center justify-center">
           {icon ? (
             icon
@@ -38,7 +38,7 @@ const PortfolioCard2: React.FC<PortfolioCardProps> = ({
       </div>
 
       {/* Description */}
-      <p className="text-sm mx-4 text-gray-400 w-[80%]">{description}</p>
+      <p className="text-[1rem] mx-6 font-medium text-[#EBF5FF]/56 w-[80%] mb-6">{description}</p>
     </Box>
   );
 };

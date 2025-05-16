@@ -1,10 +1,11 @@
 import type { FC } from 'react';
+import DropdownMenu from '~/components/DropdownMenu';
 import LogoGrid from '~/components/LogoGrid';
 import Navbar from '~/components/Navbar';
 import CardGridSection from '~/components/sections/CardGrid';
 import Box from '~/components/ui/Box';
-import { MainLayout } from '../layouts/MainLayout';
-import type { Route } from './+types/home';
+import { MainLayout } from '~/layouts/MainLayout';
+import type { Route } from './+types/case-studies';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -83,14 +84,22 @@ export default function CaseStudies() {
           <div className="w-full">
             <div className="relative">
               {/* Text content with overlay images */}
-              <div className="relative z-10 mx-auto w-[80%] text-center">
+              <div className="relative z-10 mx-auto max-w-[80%] text-center xl:max-w-[75rem]">
                 <h1
-                  className="mb-6 font-semibold text-[#CCCCCC] xl:text-[4rem] 2xl:text-[4.5rem]"
-                  style={{ fontFamily: 'Poppins', letterSpacing: '-1%', lineHeight: '110%' }}
+                  className="mb-6 bg-gradient-to-r from-[#FFFFFF] to-[#CCCCCC] bg-clip-text text-[2.5rem] font-semibold text-transparent sm:text-5xl md:text-[3.5rem] xl:text-[4.2rem]"
+                  style={{
+                    fontFamily: 'Poppins',
+                    letterSpacing: '-1%',
+                    lineHeight: '110%',
+                    textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                  }}
                 >
-                  Red Stories. Bold Shifts. Welcome to the new era of storytelling
+                  Real Stories. Bold Shifts. Welcome to the new era of storytelling
                 </h1>
-                <p className="mx-auto mb-8 w-[50%] text-gray-300">
+                <p
+                  className="mx-auto mb-4 max-w-[70%] text-base text-[#EBF5FF]/56 sm:text-lg md:mb-6 md:text-[1.2rem]"
+                  style={{ fontFamily: 'Poppins', lineHeight: '110%' }}
+                >
                   The best apps in the AI era aren't solo experiences—they're built for
                   collaboration. Coventech delivers customizable, pre-built features to power them.
                 </p>
@@ -118,38 +127,34 @@ export default function CaseStudies() {
         </div>
       </div>
 
-      <div className="mt-14">
+      <DropdownMenu />
+      <div className="mt-8">
         <CardGridSection />
       </div>
 
-      <div className="flex min-h-screen items-center justify-center p-6">
+      <div className="mx-auto mt-12 flex items-center justify-center p-4 md:mt-24 md:p-6">
         <div className="mx-auto text-center">
-          <div className="mb-8 flex justify-center">
-            <img src="/u-icon.png" alt="" />
+          <div className="mb-6 flex justify-center md:mb-8">
+            <img src="/u-icon.png" alt="" className="w-16 md:w-auto" />
           </div>
 
-          <div className="mb-12">
+          <div className="mx-auto mb-6 max-w-full px-4 md:mb-8 xl:max-w-[89rem]">
             <h1
-              className="mb-2 text-[50.45px] font-semibold text-[#CCCCCC]"
-              style={{ fontFamily: 'Poppins', letterSpacing: '-1%', lineHeight: '110%' }}
+              className="bg-gradient-to-r from-[#FFFFFF] to-[#CCCCCC] bg-clip-text text-2xl font-semibold text-transparent sm:text-3xl md:text-4xl lg:text-[3.125rem]"
+              style={{ letterSpacing: '-1%', lineHeight: '110%' }}
             >
-              Award Winning Design – Development
-            </h1>
-            <h1
-              className="mb-2 text-[50.45px] font-semibold text-[#CCCCCC]"
-              style={{ fontFamily: 'Poppins', letterSpacing: '-1%', lineHeight: '110%' }}
-            >
+              Award Winning Design – Development <br />
               Development by Coventech
             </h1>
           </div>
 
-          <div className="mx-auto mb-16">
+          <div className="mx-auto mb-8 max-w-full px-4 md:mb-10 md:max-w-2xl lg:max-w-4xl">
             <p
-              className="mb-6 text-[24px] text-[#CCCCCC]"
+              className="mb-4 text-base text-[#EBF5FF]/56 sm:text-lg md:mb-6 md:text-[1.25rem]"
               style={{ fontFamily: 'Poppins', lineHeight: '110%' }}
             >
               The best apps in the AI era aren't solo experiences — they're built for collaboration.
-              <br />
+              <br className="hidden sm:block" />
               Coventech delivers customizable, pre-built features to power them.
             </p>
           </div>
