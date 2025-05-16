@@ -19,7 +19,7 @@ const GridCard1 = () => {
 
   return (
     <section className="">
-      <div className="max-W-[75%] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto">
         <div className="flex flex-col gap-8 md:flex-row">
           {portfolioItems.map((item, index) => (
             <div key={index} className="flex-1">

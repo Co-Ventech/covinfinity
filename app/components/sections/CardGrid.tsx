@@ -22,11 +22,11 @@ const CardGridSection = () => {
 
   return (
     <section className="">
-      <div className="max-W-[75%] mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <GridCard1/>
-      <GridCard2/>
-      <GridCard3/>
+      {/* <div className="mx-auto px-4 sm:px-6 lg:px-8"> */}
+      <div className="">
+        <GridCard1 />
+        <GridCard2 />
+        <GridCard3 />
       </div>
     </section>
   );
