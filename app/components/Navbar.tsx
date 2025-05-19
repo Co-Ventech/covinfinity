@@ -228,14 +228,16 @@ const Navbar = () => {
 
         {/* Desktop Navigation - hidden on mobile */}
         <div className="hidden px-1 py-0.5 lg:flex">
-          <NavItem
-            icon={<ProductIcon className="size-[1.375rem]" />}
-            label="Products"
-            hasDropdown={true}
-            isOpen={isDropdownOpen.products}
-            onClick={() => toggleDropdown('products')}
-            dropdownItems={['Product 1', 'Product 2', 'Product 3']}
-          />
+           
+            <NavItem
+              icon={<ProductIcon className="size-[1.375rem]" />}
+              label="Products"
+              hasDropdown={true}
+              isOpen={isDropdownOpen.products}
+              onClick={() => toggleDropdown("products")}
+              dropdownItems={["Product 1", "Product 2", "Product 3"]}
+            />
+         
 
           <NavItem
             icon={<BuyCryptoIcon className="size-[1.375rem]" />}
@@ -245,7 +247,7 @@ const Navbar = () => {
             onClick={() => toggleDropdown('services')}
             dropdownItems={['Service 1', 'Service 2', 'Service 3']}
           />
-
+          <Link to="/case-studies">
           <NavItem
             icon={<CaseStudyIcon className="size-[1.375rem]" />}
             label="Case Studies"
@@ -254,22 +256,30 @@ const Navbar = () => {
             onClick={() => toggleDropdown('caseStudies')}
             dropdownItems={['Case Study 1', 'Case Study 2', 'Case Study 3']}
           />
+          </Link>
 
           <NavItem icon={<MirrorIcon className="size-[1.375rem]" />} label="About us" />
         </div>
       </div>
 
       {/* Desktop Right Side - hidden on mobile */}
-      <div className="hidden rounded-[0.875em] bg-[#151617] p-2 backdrop-blur-md lg:block">
-        <div className="flex space-x-0.5 rounded-[0.625rem] bg-[#212121] p-1">
-          <NavItem
-            icon={<MirrorIcon className="size-[1.375rem]" />}
-            label="Sign in"
-            hideIcon={true}
-          />
-          <div className="get-started rounded-lg bg-[#0F1011] px-3 py-2.5">Get Started</div>
-        </div>
+     <div className="hidden rounded-[0.875em] bg-[#151617] p-2 backdrop-blur-md lg:block">
+  <div className="flex space-x-0.5 rounded-[0.625rem] bg-[#212121] p-1">
+    <Link to="/sign-in">
+      <NavItem
+        icon={<MirrorIcon className="size-[1.375rem]" />}
+        label="Sign in"
+        hideIcon={true}
+      />
+    </Link>
+    <Link to="/sign-up">
+      <div className="get-started cursor-pointer rounded-lg bg-[#0F1011] px-3 py-2.5 text-white">
+        Get Started
       </div>
+    </Link>
+  </div>
+</div>
+
 
       {/* Mobile Menu Button - visible only on mobile */}
       <button
