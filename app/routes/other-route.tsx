@@ -6,6 +6,7 @@ import type { Route } from './+types/home';
 import Box from '~/components/ui/Box';
 import CustomIcon from '~/components/svgs/CustomIcon';
 import type { ReactHTMLElement } from 'react';
+import { useParams } from 'react-router';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -40,6 +41,9 @@ function BoxTopContent<BoxTopContent>({
 }
 
 export default function OtherRoute() {
+  const { case_study_id } = useParams();
+  //console.log(case_study_id)
+  
   return (
     <MainLayout>
       <Navbar />
