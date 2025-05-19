@@ -91,7 +91,7 @@ export default function CaseStudy() {
               <BoxTopContent />
               <div className="image-wrapper relative max-h-[34rem]">
                 <img
-                  src="dashboard-the-second.png"
+                  src="/dashboard-the-second.png"
                   alt="Dashboard the second"
                   className="cursor-poin pointer-events-none object-cover"
                 />
