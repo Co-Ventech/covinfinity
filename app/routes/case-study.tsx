@@ -68,7 +68,7 @@ export default function CaseStudy() {
     <MainLayout>
       <Navbar />
       <Section className="page-3-section pt-20">
-        <Heading className="pb-3 lg:!text-6xl" blockText="for Improving Skills">
+        <Heading className="pb-3 lg:!text-7xl" blockText="for Improving Skills">
           AR-Powered Golf Training App
         </Heading>
         <p className="my-6 max-w-[46.875rem] font-serif text-xl font-medium">
@@ -188,6 +188,29 @@ export default function CaseStudy() {
             />
           </Box>
         </div>
+      </Section>
+
+      {/* Goals Section */}
+      <Section className="mt-40">
+        <Heading className="mb-6 pb-2 lg:text-7xl" blockText="& Objectives">
+          Product Goals
+        </Heading>
+        <p className="max-w-3xl font-serif text-xl font-medium">
+          The best apps in the AI era aren’t solo experiences — they’re built for collaboration. 
+          Coventech delivers customizable, pre-built features to power them.
+        </p>
+        {/* Not finilize Stop here */}
+        {/* <div className="mt-14 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
+          <Box className="relative overflow-hidden">
+            <img
+              src="/dashboard-normal.png"
+              alt=""
+              className="max-h-[25.5rem] max-w-[34rem] object-cover"
+            />
+          </Box>
+          <Box>S</Box>
+          <Box>S</Box>
+        </div> */}
       </Section>
     </MainLayout>
   );
