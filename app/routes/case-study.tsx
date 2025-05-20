@@ -1,13 +1,14 @@
 import { useParams } from 'react-router';
+import type { Route } from './+types/case-study';
+
 import Navbar from '~/components/Navbar';
 import CustomIcon from '~/components/svgs/CustomIcon';
 import Box from '~/components/ui/Box';
+import { GradientOverlay } from '~/components/ui/GradientOverlay';
 import Heading from '~/components/ui/Heading';
 import Section from '~/components/ui/Section';
 import { Slider } from '~/components/ui/Slider';
 import { MainLayout } from '~/layouts/MainLayout';
-import type { Route } from './+types/home';
-import { GradientOverlay } from '~/components/ui/GradientOverlay';
 
 const techStack = [
   {
@@ -39,12 +40,12 @@ export function meta({}: Route.MetaArgs) {
 }
 
 interface BoxTopContent {
-  icon: () => void;
-  heading: string;
-  text: string;
+  icon?: React.ReactNode;
+  heading?: string;
+  text?: string;
 }
 
-function BoxTopContent<BoxTopContent>({
+function BoxTopContent({
   icon = <CustomIcon />,
   heading = 'Lorem ipsum dolor sit.',
   text = 'Frontend Developer specialized in many tech and worked with xyz company graduated from xyc with xyz experience',
@@ -196,21 +197,9 @@ export default function CaseStudy() {
           Product Goals
         </Heading>
         <p className="max-w-3xl font-serif text-xl font-medium">
-          The best apps in the AI era aren’t solo experiences — they’re built for collaboration. 
+          The best apps in the AI era aren’t solo experiences — they’re built for collaboration.
           Coventech delivers customizable, pre-built features to power them.
         </p>
-        {/* Not finilize Stop here */}
-        {/* <div className="mt-14 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
-          <Box className="relative overflow-hidden">
-            <img
-              src="/dashboard-normal.png"
-              alt=""
-              className="max-h-[25.5rem] max-w-[34rem] object-cover"
-            />
-          </Box>
-          <Box>S</Box>
-          <Box>S</Box>
-        </div> */}
       </Section>
     </MainLayout>
   );
