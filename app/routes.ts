@@ -6,6 +6,7 @@ export default [
   route('services', './routes/services.tsx'),
   route('contact', './routes/contact.tsx'),
   route('connect', './routes/connect.tsx'),
+  route('product', './routes/product.tsx'),
   route('case-studies', './routes/case-studies.tsx'),
   route('sign-in', './routes/SignIn.tsx'),
   route('sign-up', './routes/SignUp.tsx'),
