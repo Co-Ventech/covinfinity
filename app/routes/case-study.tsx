@@ -7,6 +7,7 @@ import Section from '~/components/ui/Section';
 import { Slider } from '~/components/ui/Slider';
 import { MainLayout } from '~/layouts/MainLayout';
 import type { Route } from './+types/home';
+import { GradientOverlay } from '~/components/ui/GradientOverlay';
 
 const techStack = [
   {
@@ -88,8 +89,25 @@ export default function CaseStudy() {
           alt="Overflowing Image"
           className="pointer-events-none absolute -top-[8.5rem] -right-16"
         />
-        <div className="absolute right-0 -bottom-[13.3rem] h-[35.375rem] w-full bg-gradient-to-t from-background-body from-30% via-background-body/80 via-40% to-background-body/0 to-100%"></div>
-        <div className="absolute -top-40 right-[6.875rem] h-[calc(100%+10rem)] w-80 origin-right skew-x-22 transform bg-gradient-to-r from-background-body/0 via-background-body/80 to-background-body"></div>
+        <GradientOverlay
+          direction="t"
+          from="background-body from-30%"
+          via="background-body/80 via-40%"
+          to="background-body/0 to-100%"
+          position="absolute"
+          inset="right-0 -bottom-[13.3rem]"
+          size="h-[35.375rem] w-full"
+        />
+        <GradientOverlay
+          direction="r"
+          from="background-body/0"
+          via="background-body/80"
+          to="background-body"
+          position="absolute"
+          inset="-top-40 right-[6.875rem]"
+          size="h-[calc(100%+10rem)] w-80"
+          className="origin-right skew-x-22 transform"
+        />
       </div>
       {/* Following Section */}
       <Section>
@@ -132,8 +150,15 @@ export default function CaseStudy() {
                 Duration: <span className="text-white">3 months</span>
               </p>
             </div>
-            {/* Right overlay shadow */}
-            <div className="pointer-events-none absolute right-0 bottom-0 h-full w-[7.625rem] bg-gradient-to-l from-background-body to-background-body/0"></div>
+            <GradientOverlay
+              direction="l"
+              from="background-body"
+              to="background-body/0"
+              position="absolute"
+              inset="right-0 bottom-0"
+              size="h-full w-[7.625rem]"
+              className="pointer-events-none"
+            />
           </Box>
 
           <Box className="relative z-10 col-start-3 row-start-2 max-h-[23.4375rem] overflow-hidden">
@@ -152,7 +177,15 @@ export default function CaseStudy() {
               alt="Client location on actual Globe"
               className="absolute -right-[5.1875rem] -bottom-[11.5rem] -z-[2]"
             />
-            <div className="pointer-events-none absolute right-0 bottom-0 h-full w-[7.625rem] bg-gradient-to-l from-background-body to-background-body/0"></div>
+            <GradientOverlay
+              direction="l"
+              from="background-body"
+              to="background-body/0"
+              position="absolute"
+              inset="right-0 bottom-0"
+              size="h-full w-[7.625rem]"
+              className="pointer-events-none"
+            />
           </Box>
         </div>
       </Section>
