@@ -119,8 +119,8 @@ export default function CaseStudy() {
           The best apps in the AI era aren&apos;t solo experiences — they&apos;re built for
           collaboration. Coventech delivers customizable, pre-built features to power them.
         </p>
-        <div className="grid grid-cols-3 grid-rows-2 gap-6">
-          <Box className="relative col-span-2 row-span-2 overflow-hidden p-8">
+        <div className="grid grid-cols-1 grid-rows-[1fr_0.5fr_0.5fr] gap-6 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-[1.5fr_1fr]">
+          <Box className="relative overflow-hidden p-8 md:col-span-1 md:row-span-2">
             <BoxTopContent />
             <div className="image-wrapper relative max-h-[34rem]">
               <img
@@ -136,7 +136,7 @@ export default function CaseStudy() {
               className="!bg-background-body blur-3xl"
             />
           </Box>
-          <Box className="relative col-start-3 overflow-hidden">
+          <Box className="relative max-h-[23.4375rem] overflow-hidden md:col-start-2">
             <BoxTopContent
               heading="Tech Stack"
               text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero at alias repellendus,
@@ -165,21 +165,19 @@ export default function CaseStudy() {
             />
           </Box>
 
-          <Box className="relative z-10 col-start-3 row-start-2 max-h-[23.4375rem] overflow-hidden">
+          <Box className="relative z-10 max-h-[23.4375rem] overflow-hidden md:col-start-2 md:row-start-2">
             <BoxTopContent
               heading="Something About Client"
               text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus modi laudantium, sunt a facilis eos!"
             />
-            <div className="flex h-[calc(100%-7rem)] w-full pl-5">
-              <p className="no-color mt-auto text-sm font-medium text-[#878D93]">
-                Location: <span className="text-white">California, United States</span>
-              </p>
-            </div>
+            <p className="no-color absolute bottom-4 left-8 mt-auto text-sm font-medium text-[#878D93]">
+              Location: <span className="text-white">California, United States</span>
+            </p>
 
             <img
               src="/case-study-globe.png"
               alt="Client location on actual Globe"
-              className="absolute -right-[5.1875rem] -bottom-[11.5rem] -z-[2]"
+              className="absolute -right-[5.1875rem] -bottom-[11.5rem] -z-[2] xl:-bottom-72"
             />
             <GradientOverlay
               direction="l"
