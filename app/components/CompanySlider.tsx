@@ -38,9 +38,15 @@ interface LogoSliderProps {
   children: React.ReactNode;
   direction: 'left' | 'right';
   className?: string;
+  single?: boolean;
 }
 
-function LogoSlider({ children, direction, className = '' }: LogoSliderProps) {
+export function LogoSlider({
+  children,
+  direction,
+  className = '',
+  single = false,
+}: LogoSliderProps) {
   return (
     <div className={`relative whitespace-nowrap ${className}`}>
       <motion.div
@@ -56,7 +62,7 @@ function LogoSlider({ children, direction, className = '' }: LogoSliderProps) {
         }}
       >
         <div className="inline-block">{children}</div>
-        <div className="inline-block">{children}</div>
+        {!single && <div className="inline-block">{children}</div>}
       </motion.div>
     </div>
   );
@@ -67,7 +73,7 @@ interface LogoItemProps {
   icon?: boolean;
 }
 
-function LogoItem({ children, icon = false }: LogoItemProps) {
+export function LogoItem({ children, icon = false }: LogoItemProps) {
   return (
     <div className="relative mx-4 inline-block rounded-[1.25rem] bg-gradient-to-b from-[#1F2224] to-[#16181A] p-[1px]">
       <div className="relative flex items-center rounded-[1.2rem] bg-gradient-to-b from-[#16181A] to-[#0F1011] to-70% px-8 py-4 text-[1.2rem] font-semibold text-[#F0F2FF]">

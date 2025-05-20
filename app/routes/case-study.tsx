@@ -4,8 +4,28 @@ import CustomIcon from '~/components/svgs/CustomIcon';
 import Box from '~/components/ui/Box';
 import Heading from '~/components/ui/Heading';
 import Section from '~/components/ui/Section';
+import { Slider } from '~/components/ui/Slider';
 import { MainLayout } from '~/layouts/MainLayout';
 import type { Route } from './+types/home';
+
+const techStack = [
+  {
+    name: 'Swift',
+    image: '/swift.png',
+  },
+  {
+    name: 'laravel',
+    image: '/laravel.png',
+  },
+  {
+    name: 'tech',
+    image: '/logo-tech.png',
+  },
+  {
+    name: 'tech O',
+    image: '/logo-tech-1.png',
+  },
+];
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -104,19 +124,45 @@ export default function CaseStudy() {
               </div>
             </div>
           </Box>
-          <Box className="col-start-3">
+          <Box className="relative col-start-3 overflow-hidden">
             <BoxTopContent
               heading="Tech Stack"
               text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero at alias repellendus,
               aliquam eligendi cum."
             />
+            <div className="pl-5">
+              <Slider className="mt-8 mb-14 divide-x-8">
+                {techStack.map((tech) => (
+                  <Slider.Item key={tech.name} className="mx-4 flex items-center justify-center">
+                    <img src={tech.image} alt={tech.name} className="size-20" />
+                  </Slider.Item>
+                ))}
+              </Slider>
+              <p className="no-color text-sm font-medium text-[#878D93]">
+                Duration: <span className="text-white">3 months</span>
+              </p>
+            </div>
+            {/* Right overlay shadow */}
+            <div className="pointer-events-none absolute right-0 bottom-0 h-full w-[7.625rem] bg-gradient-to-l from-background-body to-background-body/0"></div>
           </Box>
 
-          <Box className="col-start-3 row-start-2">
+          <Box className="relative z-10 col-start-3 row-start-2 max-h-[23.4375rem] overflow-hidden">
             <BoxTopContent
               heading="Something About Client"
               text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus modi laudantium, sunt a facilis eos!"
             />
+            <div className="flex h-[calc(100%-7rem)] w-full pl-5">
+              <p className="no-color mt-auto text-sm font-medium text-[#878D93]">
+                Location: <span className="text-white">California, United States</span>
+              </p>
+            </div>
+            {/* Right overlay shadow */}
+            <img
+              src="/case-study-globe.png"
+              alt="Client location on actual Globe"
+              className="absolute -right-[5.1875rem] -bottom-[11.5rem] -z-[2]"
+            />
+            <div className="pointer-events-none absolute right-0 bottom-0 h-full w-[7.625rem] bg-gradient-to-l from-background-body to-background-body/0"></div>
           </Box>
         </div>
       </Section>
