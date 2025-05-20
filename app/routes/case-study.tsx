@@ -120,18 +120,21 @@ export default function CaseStudy() {
           collaboration. Coventech delivers customizable, pre-built features to power them.
         </p>
         <div className="grid grid-cols-3 grid-rows-2 gap-6">
-          <Box className="col-span-2 row-span-2 overflow-hidden p-8">
+          <Box className="relative col-span-2 row-span-2 overflow-hidden p-8">
             <BoxTopContent />
             <div className="image-wrapper relative max-h-[34rem]">
               <img
-                src="/dashboard-the-second.png"
+                src="/dashboard-normal.png"
                 alt="Dashboard the second"
-                className="cursor-poin pointer-events-none object-cover"
+                className="cursor-poin max--w-[calc(100%+23rem)] pointer-events-none relative top-8 left-4 min-w-[calc(100%+23rem)] object-cover"
               />
-              <div className="absolute -bottom-50 -left-12 h-[373px] w-[calc(100%+15rem)] bg-background-body blur-3xl">
-                {' '}
-              </div>
             </div>
+            <GradientOverlay
+              position="absolute"
+              inset="-bottom-50 -left-12"
+              size="h-[373px] w-[calc(100%+15rem)]"
+              className="!bg-background-body blur-3xl"
+            />
           </Box>
           <Box className="relative col-start-3 overflow-hidden">
             <BoxTopContent
@@ -172,7 +175,7 @@ export default function CaseStudy() {
                 Location: <span className="text-white">California, United States</span>
               </p>
             </div>
-            {/* Right overlay shadow */}
+
             <img
               src="/case-study-globe.png"
               alt="Client location on actual Globe"
