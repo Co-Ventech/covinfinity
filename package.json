@@ -10,12 +10,14 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,md,json}\""
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@react-router/node": "^7.5.0",
     "@react-router/serve": "^7.5.0",
     "@react-three/drei": "^10.0.6",
     "@react-three/fiber": "^9.1.2",
     "@react-three/postprocessing": "^3.0.4",
     "framer-motion": "^12.6.5",
+    "gsap": "^3.13.0",
     "isbot": "^5.1.17",
     "react": "^19.0.0",
     "react-calendly": "^4.3.1",

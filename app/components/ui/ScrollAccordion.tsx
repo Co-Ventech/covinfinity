@@ -48,31 +48,11 @@ export const ScrollAccordion: React.FC = () => {
 
   // Handle manual navigation
   const handleNavClick = (index: number) => {
+    // Just update the active index without scrolling
     setActiveIndex(index);
 
-    // Get the corresponding scroll position for this index
-    if (container.current && spacerRef.current) {
-      const totalHeight = spacerRef.current.offsetHeight;
-
-      // Create custom distribution - more space for middle items if needed
-      let scrollTarget = 0;
-
-      if (index === 0) {
-        scrollTarget = window.scrollY + container.current.getBoundingClientRect().top;
-      } else if (index === accordionItems.length - 1) {
-        scrollTarget = window.scrollY + container.current.getBoundingClientRect().top + totalHeight;
-      } else {
-        // For middle items, distribute evenly
-        const step = totalHeight / (accordionItems.length - 1);
-        scrollTarget = window.scrollY + container.current.getBoundingClientRect().top + (index * step);
-      }
-
-      // Smooth scroll to position
-      window.scrollTo({
-        top: scrollTarget,
-        behavior: 'smooth'
-      });
-    }
+    // Removed all scrolling functionality to avoid unexpected behavior
+    // Now clicking just changes the active item without affecting scroll position
   };
 
   useGSAP(() => {
@@ -150,7 +130,12 @@ export const ScrollAccordion: React.FC = () => {
                     }}
                     transition={{ duration: 0.3 }}
                   />
-                  <h5 className='text-white font-semibold text-lg font-serif'>{item.title}</h5>
+                  <h5
+                    className='font-semibold text-lg font-serif'
+                    style={{ color: activeIndex === index ? '#FFFFFF' : '#EBF5FF' }}
+                  >
+                    {item.title}
+                  </h5>
                   {activeIndex === index && (
                     <motion.p
                       initial={{ opacity: 0, y: -10 }}

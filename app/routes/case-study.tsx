@@ -6,11 +6,11 @@ import CustomIcon from '~/components/svgs/CustomIcon';
 import Box from '~/components/ui/Box';
 import { GradientOverlay } from '~/components/ui/GradientOverlay';
 import Heading from '~/components/ui/Heading';
+import { ScrollAccordion } from '~/components/ui/ScrollAccordion';
 import Section from '~/components/ui/Section';
 import { Slider } from '~/components/ui/Slider';
 import { MainLayout } from '~/layouts/MainLayout';
-import { Accordion } from '~/components/Accordion';
-import { ScrollAccordion } from '~/components/ui/ScrollAccordion';
+import CollaborationSection from '~/components/sections/CollaborationSection';
 
 const techStack = [
   {
@@ -207,6 +207,8 @@ export default function CaseStudy() {
 
       {/* ScrollAccordian Section */}
       <ScrollAccordion />
+      <CollaborationSection />
+
 
     </MainLayout>
   );
