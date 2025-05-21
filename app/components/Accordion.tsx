@@ -100,12 +100,12 @@ function AccordionHeader({ children }: { children: React.ReactNode }) {
   const eventProps =
     trigger === 'hover'
       ? {
-          onMouseEnter: () => onOpen(index),
-          onMouseLeave: () => onClose(index),
-        }
+        onMouseEnter: () => onOpen(index),
+        onMouseLeave: () => onClose(index),
+      }
       : {
-          onClick: () => (isActive ? onClose(index) : onOpen(index)),
-        };
+        onClick: () => (isActive ? onClose(index) : onOpen(index)),
+      };
 
   return (
     <motion.div className={`AccordionHeader ${isActive ? 'active' : ''}`} {...eventProps}>

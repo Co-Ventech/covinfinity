@@ -9,7 +9,8 @@ import Heading from '~/components/ui/Heading';
 import Section from '~/components/ui/Section';
 import { Slider } from '~/components/ui/Slider';
 import { MainLayout } from '~/layouts/MainLayout';
-import { Accordion } from '~/components/Accordiant';
+import { Accordion } from '~/components/Accordion';
+import { ScrollAccordion } from '~/components/ui/ScrollAccordion';
 
 const techStack = [
   {
@@ -75,7 +76,7 @@ export default function CaseStudy() {
         </Heading>
         <p className="my-6 max-w-[46.875rem] font-serif text-xl font-medium">
           {' '}
-          The best apps in the AI era aren’t solo experiences — they’re built for collaboration.
+          The best apps in the AI era aren't solo experiences — they're built for collaboration.
           Coventech delivers customizable, pre-built features to power them.{' '}
         </p>
         <button className="flex cursor-pointer rounded bg-gradient-to-r from-[#1F2224] to-[#16181A] to-70% px-5 py-2.5 font-medium transition hover:opacity-90">
@@ -203,55 +204,9 @@ export default function CaseStudy() {
           Coventech delivers customizable, pre-built features to power them.
         </p>
       </Section> */}
-      <Section className='mt-20 h-screen' divClass='size-full flex items-center justify-center'>
-        <div className="grid grid-cols-[0.8fr_1fr] !w-full">
-          <div className="left ml-14">
-            <Heading className='pb-1 mb-10 font-semibold text-2xl' blockText='Solution & Objectives'>More Screens Showing</Heading>
 
-            <div className="left-navigation space-y-8">
-              <div className="left-nav-item max-w-lg space-y-1.5 relative pl-4">
-                <div className="h-6 w-[0.3125rem] rounded-4xl bg-accordion-active absolute inset-0"></div>
-                <h5 className='text-white font-semibold text-lg font-serif'>Lorem ipsum dolor sit.</h5>
-                <p className='font-medium'>Thanks, Sarah. I appreciate your responsiveness and support. Looking forward to seeing these changes in action!</p>
-              </div>
-              <div className="left-nav-item max-w-lg space-y-1.5 relative pl-4">
-                <div className="h-6 w-[0.3125rem] rounded-4xl bg-accordion absolute inset-0"></div>
-                <h5 className='text-white font-semibold text-lg font-serif'>Lorem ipsum dolor sit.</h5>
-
-              </div>
-              <div className="left-nav-item max-w-lg space-y-1.5 relative pl-4">
-                <div className="h-6 w-[0.3125rem] rounded-4xl bg-accordion absolute inset-0"></div>
-                <h5 className='text-white font-semibold text-lg font-serif'>Lorem ipsum dolor sit.</h5>
-
-              </div>
-            </div>
-
-          </div>
-          <div className="right min-h-[28rem] max-h-[28rem] relative">
-            <div className="img-wrapper relative -top-12 w-full ">
-              <img src="/dashboard-normal.png" alt="case-studies1" />
-              <GradientOverlay
-                direction="b"
-                from="background-body/0"
-                via='background-body/80 via-40%'
-                to="background-body to-90%"
-                position="absolute"
-                inset="right-0 bottom-0"
-                size='w-full h-[calc(100%-10rem)]'
-              />
-              <GradientOverlay
-                direction="r"
-                from="background-body/0"
-                via='background-body/80 via-40%'
-                to="background-body to-90%"
-                position="absolute"
-                inset="right-0 bottom-0"
-                size='h-full w-[calc(100%-10rem)]'
-              />
-            </div>
-          </div>
-        </div>
-      </Section>
+      {/* ScrollAccordian Section */}
+      <ScrollAccordion />
 
     </MainLayout>
   );
