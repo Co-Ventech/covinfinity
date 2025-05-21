@@ -1,8 +1,15 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useState } from 'react';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect, useRef, useState } from 'react';
 import { GradientOverlay } from '~/components/ui/GradientOverlay';
 import Heading from '~/components/ui/Heading';
 import Section from '~/components/ui/Section';
+
+import { useGSAP } from '@gsap/react';
+
+// Register plugins
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 // Demo content items
 const accordionItems = [
@@ -28,80 +35,215 @@ const accordionItems = [
 
 export const ScrollAccordion: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const container = useRef<HTMLElement>(null);
+  const leftNavRef = useRef<HTMLDivElement>(null);
+  const rightContentRef = useRef<HTMLDivElement>(null);
+  const spacerRef = useRef<HTMLDivElement>(null);
+  const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
+
+  // Initialize section refs
+  useEffect(() => {
+    sectionRefs.current = Array(accordionItems.length).fill(null);
+  }, []);
+
+  // Handle manual navigation
+  const handleNavClick = (index: number) => {
+    setActiveIndex(index);
+
+    // Get the corresponding scroll position for this index
+    if (container.current && spacerRef.current) {
+      const totalHeight = spacerRef.current.offsetHeight;
+
+      // Create custom distribution - more space for middle items if needed
+      let scrollTarget = 0;
+
+      if (index === 0) {
+        scrollTarget = window.scrollY + container.current.getBoundingClientRect().top;
+      } else if (index === accordionItems.length - 1) {
+        scrollTarget = window.scrollY + container.current.getBoundingClientRect().top + totalHeight;
+      } else {
+        // For middle items, distribute evenly
+        const step = totalHeight / (accordionItems.length - 1);
+        scrollTarget = window.scrollY + container.current.getBoundingClientRect().top + (index * step);
+      }
+
+      // Smooth scroll to position
+      window.scrollTo({
+        top: scrollTarget,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  useGSAP(() => {
+    // Clear any existing ScrollTriggers
+    ScrollTrigger.getAll().forEach(st => st.kill());
+
+    if (!container.current || !spacerRef.current) return;
+
+    // Set a fixed height for spacer (much taller than before)
+    // Using a fixed pixel value ensures consistent scroll behavior
+    const spacerHeight = window.innerHeight * 3; // 3x viewport height for more space
+    spacerRef.current.style.height = `${spacerHeight}px`;
+
+    // Create custom breakpoints for smoother transitions
+    // This gives more scroll space to the middle section
+    const breakpoints = [
+      0,                    // Start
+      spacerHeight * 0.33,   // First transition (40%)
+      spacerHeight * 0.8,   // Second transition (60%)
+      spacerHeight          // End (100%)
+    ];
+
+    // Create section triggers with custom breakpoints
+    accordionItems.forEach((_, index) => {
+      // Use custom breakpoints for each section
+      const startOffset = breakpoints[index];
+      const endOffset = breakpoints[index + 1];
+
+      // Create a trigger for this section
+      ScrollTrigger.create({
+        trigger: container.current,
+        start: `top+=${startOffset} top`,
+        end: `top+=${endOffset} top`,
+        onEnter: () => setActiveIndex(index),
+        onEnterBack: () => setActiveIndex(index),
+        markers: index === 0 ? true : false, // Only show markers for first section in development
+        id: `section-${index}`
+      });
+    });
+
+    // Main pin trigger
+    ScrollTrigger.create({
+      trigger: container.current,
+      start: "top top",
+      end: () => `+=${spacerRef.current?.offsetHeight || 1000}`,
+      pin: true,
+      pinSpacing: false,
+      markers: true,
+      id: "main-pin"
+    });
+
+  }, { scope: container, dependencies: [] });
 
   return (
-    <Section className='mt-20 h-screen' divClass='size-full flex items-center justify-center'>
-      <div className="grid grid-cols-[0.8fr_1fr] !w-full">
-        <div className="left ml-14">
-          <Heading className='pb-1 mb-10 font-semibold text-2xl' blockText='Solution & Objectives'>More Screens Showing</Heading>
+    <>
+      <Section ref={container} className='my-Container mt-20 h-[100dvh]' divClass='size-full flex items-center justify-center'>
+        <div className="grid grid-cols-[0.8fr_1fr] !w-full">
+          <div ref={leftNavRef} className="left ml-14">
+            <Heading className='pb-1 mb-10 font-semibold text-2xl' blockText='Solution & Objectives'>More Screens Showing</Heading>
 
-          <div className="left-navigation space-y-8">
-            {accordionItems.map((item, index) => (
-              <div
-                key={item.id}
-                className="left-nav-item max-w-lg space-y-1.5 relative pl-4 cursor-pointer"
-                onClick={() => setActiveIndex(index)}
-              >
-                <motion.div
-                  className="h-6 w-[0.3125rem] rounded-4xl absolute inset-0"
-                  animate={{
-                    backgroundColor: activeIndex === index ? "var(--color-accordion-active, #FFD700)" : "var(--color-accordion, #333)"
+            <div className="left-navigation space-y-8">
+              {accordionItems.map((item, index) => (
+                <div
+                  key={item.id}
+                  className="left-nav-item max-w-lg space-y-1.5 relative pl-4 cursor-pointer"
+                  onClick={() => handleNavClick(index)}
+                  ref={(el) => {
+                    sectionRefs.current[index] = el;
                   }}
-                  transition={{ duration: 0.3 }}
-                />
-                <h5 className='text-white font-semibold text-lg font-serif'>{item.title}</h5>
-                {activeIndex === index && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
+                >
+                  <motion.div
+                    className="h-6 w-[0.3125rem] rounded-4xl absolute inset-0"
+                    animate={{
+                      backgroundColor: activeIndex === index ? "var(--color-accordion-active, #FFD700)" : "var(--color-accordion, #333)"
+                    }}
                     transition={{ duration: 0.3 }}
-                    className='font-medium'
+                  />
+                  <h5 className='text-white font-semibold text-lg font-serif'>{item.title}</h5>
+                  {activeIndex === index && (
+                    <motion.p
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                      className='font-medium'
+                    >
+                      {item.description}
+                    </motion.p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div ref={rightContentRef} className="right min-h-[28rem] max-h-[28rem] relative">
+            <AnimatePresence mode="wait">
+              {accordionItems.map((item, index) => (
+                activeIndex === index && (
+                  <motion.div
+                    key={item.id}
+                    className="img-wrapper relative -top-12 w-full h-[calc(100%+10rem)]"
+                    initial={{
+                      opacity: 0,
+                      x: 60,
+                      scale: 0.9,
+                      rotateY: 10
+                    }}
+                    animate={{
+                      opacity: 1,
+                      x: 0,
+                      scale: 1,
+                      rotateY: 0,
+                      transition: {
+                        type: "spring",
+                        damping: 12,
+                        stiffness: 100,
+                        mass: 1.2,
+                        bounce: 0.4,
+                        duration: 0.8
+                      }
+                    }}
+                    exit={{
+                      opacity: 0,
+                      x: -40,
+                      scale: 0.9,
+                      rotateY: -5,
+                      transition: {
+                        duration: 0.3,
+                        ease: "easeOut"
+                      }
+                    }}
                   >
-                    {item.description}
-                  </motion.p>
-                )}
-              </div>
-            ))}
+                    <motion.img
+                      src={item.image}
+                      alt={`case-studies${index + 1}`}
+                      className='object-cover size-full rounded-2xl'
+                      initial={{ filter: "blur(8px)" }}
+                      animate={{
+                        filter: "blur(0px)",
+                        transition: {
+                          delay: 0.1,
+                          duration: 0.4
+                        }
+                      }}
+                    />
+                    <GradientOverlay
+                      direction="b"
+                      from="background-body/0"
+                      via='background-body/80 via-40%'
+                      to="background-body to-90%"
+                      position="absolute"
+                      inset="right-0 -bottom-2"
+                      size='w-full h-[calc(100%-10rem)]'
+                    />
+                    <GradientOverlay
+                      direction="r"
+                      from="background-body/0"
+                      via='background-body/80 via-40%'
+                      to="background-body to-90%"
+                      position="absolute"
+                      inset="-right-2 bottom-0"
+                      size='h-[calc(100%+2rem)] w-[calc(100%-10rem)]'
+                    />
+                  </motion.div>
+                )
+              ))}
+            </AnimatePresence>
           </div>
         </div>
-        <div className="right min-h-[28rem] max-h-[28rem] relative">
-          <AnimatePresence mode="wait">
-            {accordionItems.map((item, index) => (
-              activeIndex === index && (
-                <motion.div
-                  key={item.id}
-                  className="img-wrapper relative -top-12 w-full h-[calc(100%+10rem)]"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                >
-                  <img src={item.image} alt={`case-studies${index + 1}`} className='object-cover size-full' />
-                  <GradientOverlay
-                    direction="b"
-                    from="background-body/0"
-                    via='background-body/80 via-40%'
-                    to="background-body to-90%"
-                    position="absolute"
-                    inset="right-0 -bottom-2"
-                    size='w-full h-[calc(100%-10rem)]'
-                  />
-                  <GradientOverlay
-                    direction="r"
-                    from="background-body/0"
-                    via='background-body/80 via-40%'
-                    to="background-body to-90%"
-                    position="absolute"
-                    inset="-right-2 bottom-0"
-                    size='h-[calc(100%+2rem)] w-[calc(100%-10rem)]'
-                  />
-                </motion.div>
-              )
-            ))}
-          </AnimatePresence>
-        </div>
-      </div>
-    </Section>
+      </Section>
+      {/* This invisible div creates the scroll height without affecting layout */}
+      <div ref={spacerRef} className="spacer invisible h-0"></div>
+    </>
   );
 };
