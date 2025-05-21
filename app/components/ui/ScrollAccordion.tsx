@@ -88,7 +88,8 @@ export const ScrollAccordion: React.FC = () => {
         end: `top+=${endOffset} top`,
         onEnter: () => setActiveIndex(index),
         onEnterBack: () => setActiveIndex(index),
-        markers: index === 0 ? true : false, // Only show markers for first section in development
+        // markers: index === 0 ? true : false, // Only show markers for first section in development
+        markers: false,
         id: `section-${index}`
       });
     });
@@ -100,7 +101,7 @@ export const ScrollAccordion: React.FC = () => {
       end: () => `+=${spacerRef.current?.offsetHeight || 1000}`,
       pin: true,
       pinSpacing: false,
-      markers: true,
+      markers: false,
       id: "main-pin"
     });
 
@@ -109,15 +110,15 @@ export const ScrollAccordion: React.FC = () => {
   return (
     <>
       <Section ref={container} className='my-Container mt-20 h-[100dvh]' divClass='size-full flex items-center justify-center'>
-        <div className="grid grid-cols-[0.8fr_1fr] !w-full">
-          <div ref={leftNavRef} className="left ml-14">
-            <Heading className='pb-1 mb-10 font-semibold text-2xl' blockText='Solution & Objectives'>More Screens Showing</Heading>
+        <div className="flex flex-col md:grid md:grid-cols-[0.8fr_1fr] !w-full">
+          <div ref={leftNavRef} className="left ml-4 md:ml-14">
+            <Heading className='pb-1 mb-6 md:mb-10 font-semibold text-xl md:text-2xl' blockText='Solution & Objectives'>More Screens Showing</Heading>
 
-            <div className="left-navigation space-y-8">
+            <div className="left-navigation space-y-6 md:space-y-8">
               {accordionItems.map((item, index) => (
                 <div
                   key={item.id}
-                  className="left-nav-item max-w-lg space-y-1.5 relative pl-4 cursor-pointer"
+                  className="left-nav-item max-w-full md:max-w-lg space-y-1.5 relative pl-4 cursor-pointer"
                   onClick={() => handleNavClick(index)}
                   ref={(el) => {
                     sectionRefs.current[index] = el;
@@ -142,7 +143,7 @@ export const ScrollAccordion: React.FC = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.3 }}
-                      className='font-medium'
+                      className='font-medium text-sm md:text-base'
                     >
                       {item.description}
                     </motion.p>
@@ -151,13 +152,13 @@ export const ScrollAccordion: React.FC = () => {
               ))}
             </div>
           </div>
-          <div ref={rightContentRef} className="right min-h-[28rem] max-h-[28rem] relative">
+          <div ref={rightContentRef} className="right min-h-[23rem] max-h-[23rem] lg:min-h-[28rem] lg:max-h-[28rem] relative hidden md:block">
             <AnimatePresence mode="wait">
               {accordionItems.map((item, index) => (
                 activeIndex === index && (
                   <motion.div
                     key={item.id}
-                    className="img-wrapper relative -top-12 w-full h-[calc(100%+10rem)]"
+                    className="img-wrapper relative -top-12 w-full h-full lg:h-[calc(100%+10rem)]"
                     initial={{
                       opacity: 0,
                       x: 60,
