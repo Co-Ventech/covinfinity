@@ -111,23 +111,30 @@ export const ScrollAccordion: React.FC = () => {
     <>
       <Section ref={container} className='my-Container mt-20 h-[100dvh]' divClass='size-full flex items-center justify-center'>
         <div className="flex flex-col md:grid md:grid-cols-[0.8fr_1fr] !w-full">
-          <div ref={leftNavRef} className="left ml-4 md:ml-14">
-            <Heading className='pb-1 mb-6 md:mb-10 font-semibold text-xl md:text-2xl' blockText='Solution & Objectives'>More Screens Showing</Heading>
+          <div ref={leftNavRef} className="left mx-auto md:mx-0 md:ml-14 px-4 md:px-0 w-full max-w-xl text-center md:text-left">
+            <Heading className='pb-1 mb-6 md:mb-10 font-semibold text-xl md:text-2xl text-center md:text-left' blockText='Solution & Objectives'>More Screens Showing</Heading>
 
             <div className="left-navigation space-y-6 md:space-y-8">
               {accordionItems.map((item, index) => (
                 <div
                   key={item.id}
-                  className="left-nav-item max-w-full md:max-w-lg space-y-1.5 relative pl-4 cursor-pointer"
+                  className="left-nav-item max-w-full md:max-w-lg space-y-1.5 relative pl-4 md:pl-4 cursor-pointer flex flex-col items-center md:items-start"
                   onClick={() => handleNavClick(index)}
                   ref={(el) => {
                     sectionRefs.current[index] = el;
                   }}
                 >
                   <motion.div
-                    className="h-6 w-[0.3125rem] rounded-4xl absolute inset-0"
+                    className="h-6 w-[0.3125rem] md:w-[0.3125rem] rounded-4xl absolute inset-0 hidden md:block"
                     animate={{
                       backgroundColor: activeIndex === index ? "var(--color-accordion-active, #FFD700)" : "var(--color-accordion, #333)"
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.div
+                    className="h-1 w-16 rounded-4xl mb-3 md:hidden"
+                    animate={{
+                      backgroundColor: activeIndex === index ? "var(--color-accordion-active, #FFD700)" : "transparent"
                     }}
                     transition={{ duration: 0.3 }}
                   />
@@ -143,7 +150,7 @@ export const ScrollAccordion: React.FC = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.3 }}
-                      className='font-medium text-sm md:text-base'
+                      className='font-medium text-sm md:text-base px-4 md:px-0'
                     >
                       {item.description}
                     </motion.p>
