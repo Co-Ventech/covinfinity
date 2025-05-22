@@ -141,18 +141,28 @@ const NavItem = ({
               variants={dropdownVariants}
             >
               {dropdownItems.map((item, index) => (
-                <motion.a
+                <motion.div
                   key={item}
-                  href="#"
-                  className="block px-4 py-2"
+                  className="block"
                   custom={index}
                   variants={menuItemVariants}
                   initial="hidden"
                   animate="visible"
                   whileHover="hover"
                 >
-                  {item}
-                </motion.a>
+                  {label === "Products" ? (
+                    <Link
+                      to={`/products/${item.toLowerCase()}`}
+                      className="block px-4 py-2"
+                    >
+                      {item}
+                    </Link>
+                  ) : (
+                    <a href="#" className="block px-4 py-2">
+                      {item}
+                    </a>
+                  )}
+                </motion.div>
               ))}
             </motion.div>
           )}
@@ -208,7 +218,7 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-between p-8">
-      <div className="flex space-x-19 rounded-[0.625rem] bg-[#151617] px-3.5 py-2 text-white backdrop-blur-md">
+      <div className="flex space-x-19 rounded-[0.625rem] bg-[#151617] z-50 px-3.5 py-2 text-white backdrop-blur-md">
         {/* <motion.div
           className="logo-navbar flex items-center justify-center"
           whileHover={{ scale: 1.05 }}
@@ -234,7 +244,7 @@ const Navbar = () => {
             hasDropdown={true}
             isOpen={isDropdownOpen.products}
             onClick={() => toggleDropdown('products')}
-            dropdownItems={['Product 1', 'Product 2', 'Product 3']}
+            dropdownItems={['Recruitinn', 'Skillbuilder', 'Covental']}
           />
 
           <NavItem
@@ -332,9 +342,8 @@ const Navbar = () => {
                   >
                     <span className="text-lg font-semibold">Products</span>
                     <svg
-                      className={`h-5 w-5 transform transition-transform ${
-                        mobileDropdownOpen === 'products' ? 'rotate-180' : ''
-                      }`}
+                      className={`h-5 w-5 transform transition-transform ${mobileDropdownOpen === 'products' ? 'rotate-180' : ''
+                        }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -355,14 +364,14 @@ const Navbar = () => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                       >
-                        {['Product 1', 'Product 2', 'Product 3'].map((item) => (
-                          <a
+                        {['Recruitinn', 'Skillbuilder', 'Covental'].map((item) => (
+                          <Link
                             key={item}
-                            href="#"
+                            to={`/products/${item.toLowerCase()}`}
                             className="block rounded-lg py-2 pl-6 hover:bg-[#212121]"
                           >
                             {item}
-                          </a>
+                          </Link>
                         ))}
                       </motion.div>
                     )}
@@ -377,9 +386,8 @@ const Navbar = () => {
                   >
                     <span className="text-lg font-semibold">Services</span>
                     <svg
-                      className={`h-5 w-5 transform transition-transform ${
-                        mobileDropdownOpen === 'services' ? 'rotate-180' : ''
-                      }`}
+                      className={`h-5 w-5 transform transition-transform ${mobileDropdownOpen === 'services' ? 'rotate-180' : ''
+                        }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -422,9 +430,8 @@ const Navbar = () => {
                   >
                     <span className="text-lg font-semibold">Case Studies</span>
                     <svg
-                      className={`h-5 w-5 transform transition-transform ${
-                        mobileDropdownOpen === 'caseStudies' ? 'rotate-180' : ''
-                      }`}
+                      className={`h-5 w-5 transform transition-transform ${mobileDropdownOpen === 'caseStudies' ? 'rotate-180' : ''
+                        }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"

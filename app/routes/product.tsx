@@ -8,8 +8,9 @@ import Heading from '~/components/ui/Heading';
 import Section from '~/components/ui/Section';
 import { MainLayout } from '~/layouts/MainLayout';
 import type { Route } from './+types/case-studies';
+import { useParams } from 'react-router';
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
     { title: 'Covinfinity | Custom Software Development Company in USA' },
     {
@@ -25,7 +26,9 @@ const ImageBox: FC<{ src: string; alt: string }> = ({ src, alt }) => (
   </Box>
 );
 
-export default function CaseStudies() {
+export default function Product() {
+  const { slug } = useParams();
+  // console.log(slug);
   return (
     <MainLayout>
       <div className="case-studies">
