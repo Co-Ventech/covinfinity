@@ -134,7 +134,7 @@ export const ScrollAccordion: React.FC = () => {
                   <motion.div
                     className="h-1 w-16 rounded-4xl mb-3 md:hidden"
                     animate={{
-                      backgroundColor: activeIndex === index ? "var(--color-accordion-active, #FFD700)" : "transparent"
+                      backgroundColor: activeIndex === index ? "var(--color-accordion-active, #FFD700)" : "rgba(0, 0, 0, 0)"
                     }}
                     transition={{ duration: 0.3 }}
                   />
