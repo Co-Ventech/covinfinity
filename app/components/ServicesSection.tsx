@@ -191,7 +191,7 @@ export default function ServicesSection() {
 
   return (
     <Section divClass="relative pt-[17rem]" className="-mt-4">
-     <BgImage
+      <BgImage
         src="section-lines/talent-section-lines.png"
         // className="-top-22 left-1/2 h-[calc(100%+6rem)] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
         className="-top-12 left-1/2 -z-10 h-[58rem] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
@@ -200,14 +200,13 @@ export default function ServicesSection() {
       <div className="text-white">
         {/* Header Section */}
         <div className="mx-auto mb-16 max-w-4xl text-center">
-         
           <Heading
             blockText="something goes here"
             className="!mb-4 !pb-2 !font-sans !font-semibold"
           >
             Services digital solution
           </Heading>
-           <p className="mb-4 text-base tracking-[0.02em]  bg-gradient-to-br from-[#EBF5FF]/64 to-[#EBF5FF]/54 bg-clip-text font-medium text-[1rem]">
+          <p className="mb-4 bg-gradient-to-br from-[#EBF5FF]/64 to-[#EBF5FF]/54 bg-clip-text text-base text-[1rem] font-medium tracking-[0.02em]">
             The most complete experience for businesses & individual clients
           </p>
         </div>
@@ -254,11 +253,11 @@ export default function ServicesSection() {
             </Box.Inner>
           </div>
         </Box>
-           {/* Clutch Reviews Section */}
-            <div className=" mt-8 flex w-full items-center justify-between gap-4">
-              <ImageBox src="/blue-hunt.png" alt="blue hunt" />
-              <ImageBox src="/red-hunt.png" alt="red hunt" />
-            </div>
+        {/* Clutch Reviews Section */}
+        <div className="mt-8 flex w-full items-center justify-between gap-4">
+          <ImageBox src="/blue-hunt.png" alt="blue hunt" />
+          <ImageBox src="/red-hunt.png" alt="red hunt" />
+        </div>
       </div>
     </Section>
   );

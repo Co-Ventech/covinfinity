@@ -55,7 +55,7 @@ const CommunicateDots: React.FC<CommunicateDotsProps> = ({
           maskSize: 'cover',
           WebkitMaskSize: 'cover',
           overflow: 'hidden',
-          '--background-image': `url(${backgroundImage})`,
+          backgroundImage: `url(${backgroundImage})`,
         }}
       >
         <div
@@ -82,7 +82,7 @@ const CommunicateDots: React.FC<CommunicateDotsProps> = ({
           overflow: 'hidden',
           marginTop: '24px',
           transform: 'rotate(-180deg)',
-          '--background-image': `url(${backgroundImage})`,
+          backgroundImage: `url(${backgroundImage})`,
         }}
       >
         <div
@@ -95,7 +95,9 @@ const CommunicateDots: React.FC<CommunicateDotsProps> = ({
       </div>
 
       {/* Add the keyframes animation to the document */}
-      <style jsx global>{`
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @keyframes communicate-dots {
           0% {
             transform: translateY(0);
@@ -104,7 +106,9 @@ const CommunicateDots: React.FC<CommunicateDotsProps> = ({
             transform: translateY(200px);
           }
         }
-      `}</style>
+      `,
+        }}
+      />
     </div>
   );
 };

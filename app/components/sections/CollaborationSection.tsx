@@ -18,7 +18,7 @@ const CollaborationSection: React.FC = () => {
       {/* <div className="relative z-10 mb-10 text-center sm:mb-20 md:mb-40"> */}
       <div className="relative z-10 mb-[3rem] text-center">
         <div className="mb-3 flex justify-center">
-          <img src='/box.png' alt='box-icon' className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10" />
+          <img src="/box.png" alt="box-icon" className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10" />
         </div>
         <h3 className="mb-2 text-lg font-semibold sm:text-xl">Collaborate everything</h3>
         <p className="mx-auto text-sm font-medium text-[#4B4646] sm:text-base md:max-w-2xl">

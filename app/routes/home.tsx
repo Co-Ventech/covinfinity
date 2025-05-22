@@ -50,7 +50,6 @@ export default function Home() {
         <ServicesSection />
       </div>
       <CaseStudiesGrid />
-     
     </MainLayout>
   );
 }

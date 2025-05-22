@@ -15,30 +15,22 @@ const PortfolioCard2: React.FC<PortfolioCardProps> = ({
   icon,
 }) => {
   return (
-    <Box className="bg-[#111] rounded-2xl !p-0 text-white shadow-md  mx-auto">
+    <Box className="mx-auto rounded-2xl bg-[#111] !p-0 text-white shadow-md">
       {/* Top image section */}
-      <div className="rounded-xl overflow-hidden mb-12">
-        <img
-          src={backgroundImage}
-          alt="Project"
-          className="w-full h-[150px] object-cover"
-        />
+      <div className="mb-12 overflow-hidden rounded-xl">
+        <img src={backgroundImage} alt="Project" className="h-[150px] w-full object-cover" />
       </div>
 
       {/* Icon + Title */}
-      <div className="flex items-center gap-3 mb-2 mx-6">
-        <div className="h-10 w-10 flex items-center justify-center">
-          {icon ? (
-            icon
-          ) : (
-            <img src="/cross-icon.png" alt="Icon" className="w-full" />
-          )}
+      <div className="mx-6 mb-2 flex items-center gap-3">
+        <div className="flex h-10 w-10 items-center justify-center">
+          {icon ? icon : <img src="/cross-icon.png" alt="Icon" className="w-full" />}
         </div>
         <h2 className="text-lg font-semibold">{title}</h2>
       </div>
 
       {/* Description */}
-      <p className="text-[1rem] mx-6 font-medium text-[#EBF5FF]/56 w-[80%] mb-6">{description}</p>
+      <p className="mx-6 mb-6 w-[80%] text-[1rem] font-medium text-[#EBF5FF]/56">{description}</p>
     </Box>
   );
 };

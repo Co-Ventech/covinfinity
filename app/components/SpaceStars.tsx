@@ -47,12 +47,14 @@ function Stars({ count = 5000 }) {
           count={count}
           array={positions.positions}
           itemSize={3}
+          args={[positions.positions, 3]}
         />
         <bufferAttribute
           attach="attributes-size"
           count={count}
           array={positions.sizes}
           itemSize={1}
+          args={[positions.sizes, 1]}
         />
       </bufferGeometry>
       <pointsMaterial

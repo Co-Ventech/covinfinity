@@ -1,107 +1,107 @@
-# Project Structure
+# Project Structure - Core Concepts
 
-This document provides an overview of the project's directory structure and explains the purpose of each significant file and folder.
+This document outlines the core concepts and structure of the Covinfinity application.
 
-## Root Directory
+## Application Architecture
 
-```
-co-ventech-2/
-├── .git/                # Git repository files
-├── .react-router/       # React Router build artifacts
-├── app/                 # Main application code
-├── node_modules/        # Node.js dependencies
-├── public/              # Static public assets
-├── .dockerignore        # Files to exclude from Docker builds
-├── .gitignore           # Files to exclude from Git
-├── .prettierignore      # Files to exclude from Prettier formatting
-├── .prettierrc          # Prettier configuration
-├── Dockerfile           # Docker container configuration
-├── package-lock.json    # NPM dependency lock file
-├── package.json         # Project metadata and dependencies
-├── PROJECT_STRUCTURE.md # This file - project structure documentation
-├── README.md            # Project overview and setup instructions
-├── react-router.config.ts  # React Router configuration
-├── tsconfig.json        # TypeScript configuration
-└── vite.config.ts       # Vite bundler configuration
-```
+The application is built with React 19 and uses React Router v7 for routing. It follows a modern file-based routing approach and employs TailwindCSS for styling.
 
-## App Directory Structure
+## Core Technologies
 
-The `app` directory contains the main application code:
+- **React 19**: Modern UI library
+- **React Router 7**: Advanced routing with file-based routing
+- **TailwindCSS 4.0**: Utility-first CSS framework
+- **TypeScript**: For type safety
+- **Three.js/React Three Fiber**: 3D visualization library
+- **GSAP**: Animation library
+- **Framer Motion**: Animation library
 
-```
-app/
-├── assets/     # Static assets like images, fonts, etc.
-├── components/ # Reusable UI components
-├── constants/  # Application constants
-├── contexts/   # React context providers
-├── hooks/      # Custom React hooks
-├── layouts/    # Page layout components
-├── routes/     # Route components (pages)
-├── services/   # API services and data fetching
-├── styles/     # CSS and styling files
-├── types/      # TypeScript type definitions
-├── utils/      # Utility functions
-├── welcome/    # Welcome page components
-├── root.tsx    # Application root component
-└── routes.ts   # Route definitions
+## Routing System
+
+The application uses React Router's declarative routing approach. Routes are defined in `app/routes.ts`:
+
+```typescript
+import { type RouteConfig, index, route } from '@react-router/dev/routes';
+
+export default [
+  index('./routes/home.tsx'), // Home page (index route)
+  route('about', './routes/about.tsx'), // About page
+  route('services', './routes/services.tsx'), // Services page
+  route('contact', './routes/contact.tsx'), // Contact page
+  route('connect', './routes/connect.tsx'), // Connect page
+  route('product', './routes/product.tsx'), // Product page
+  route('case-studies', './routes/case-studies.tsx'), // Case studies listing
+  route('case-studies/:case_study_id', './routes/case-study.tsx'), // Dynamic case study page
+  route('sign-in', './routes/SignIn.tsx'), // Sign in page
+  route('sign-up', './routes/SignUp.tsx'), // Sign up page
+] satisfies RouteConfig;
 ```
 
-## Key Directories and Files Explained
+### Creating a New Route
 
-### Components Directory
+To create a new route:
 
-Contains reusable UI components used throughout the application:
+1. Create a new file in the `app/routes/` directory (e.g., `app/routes/new-page.tsx`)
+2. Add the route to `app/routes.ts` using the `route()` function
+3. Implement your route component with any metadata as needed
 
-```
-components/
-├── Button.tsx      # Button component with variants
-├── Card.tsx        # Card container component
-└── ThemeToggle.tsx # Dark/light theme toggle component
-```
+Example new route component:
 
-### Contexts Directory
+```tsx
+import { MainLayout } from '../layouts/MainLayout';
+import type { Route } from './+types/new-page';
 
-React context providers for state management:
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: 'New Page | Covinfinity' },
+    {
+      name: 'description',
+      content: 'Description of the new page',
+    },
+  ];
+}
 
-```
-contexts/
-└── ThemeContext.tsx # Theme context for dark/light mode
-```
-
-### Layouts Directory
-
-Page layout components that wrap route components:
-
-```
-layouts/
-└── MainLayout.tsx # Main application layout with header, footer, and navigation
-```
-
-### Routes Directory
-
-Each file represents a page in the application:
-
-```
-routes/
-├── about.tsx    # About page
-├── contact.tsx  # Contact page
-├── home.tsx     # Home page
-└── services.tsx # Services page
+export default function NewPage() {
+  return (
+    <MainLayout>
+      <div className="container-wide pt-16">
+        <h1>New Page</h1>
+        {/* Page content here */}
+      </div>
+    </MainLayout>
+  );
+}
 ```
 
-### Styles Directory
+## Layouts
 
-CSS and styling configuration:
+The application uses a layout system to maintain consistent UI across pages. The main layout is defined in `app/layouts/MainLayout.tsx` and wraps all route components.
 
-```
-styles/
-└── app.css # Main CSS file with Tailwind configuration and custom styles
-```
+## Component Structure
 
-## Configuration Files
+Components are organized by their purpose:
 
-- **react-router.config.ts**: Configures server-side rendering options
-- **vite.config.ts**: Configures the Vite bundler and plugins (including Tailwind CSS)
-- **.prettierrc**: Configures Prettier code formatting, including Tailwind CSS class sorting
-- **tsconfig.json**: TypeScript compiler configuration
+- **UI Components**: Reusable UI elements in `app/components/`
+- **Layout Components**: Page layouts in `app/layouts/`
+- **Route Components**: Page-specific components in `app/routes/`
+- **Section Components**: Larger page sections in `app/components/sections/`
+
+## Styling
+
+The application uses TailwindCSS for styling with custom utility classes and components.
+
+## Application Entry
+
+`app/root.tsx` is the application's entry point, which sets up:
+
+- Document structure (HTML, head, body)
+- Theme provider for dark/light mode
+- Global error handling
+- Page transitions
+
+## Development Workflow
+
+- **Development**: Run `npm run dev` to start the development server
+- **Build**: Run `npm run build` to build the application
+- **Typechecking**: Run `npm run typecheck` to check TypeScript types
+- **Formatting**: Run `npm run format` to format code with Prettier

@@ -31,7 +31,7 @@ const techStack = [
   },
 ];
 
-export function meta({ }: Route.MetaArgs) {
+export function meta({}: Route.MetaArgs) {
   return [
     { title: 'Covinfinity | Case Study' },
     {
@@ -90,7 +90,7 @@ export default function CaseStudy() {
         <img
           src="/golf-training-app-dashboard.png"
           alt="Overflowing Image"
-          className="pointer-events-none absolute -top-[3rem] md:-top-20 md:-left-8 lg:-top-[7rem] lg:left-0 xl:-top-36 2xl:-top-[8rem] 2xl:left-[unset] 2xl:-right-8 "
+          className="pointer-events-none absolute -top-[3rem] md:-top-20 md:-left-8 lg:-top-[7rem] lg:left-0 xl:-top-36 2xl:-top-[8rem] 2xl:-right-8 2xl:left-[unset]"
         />
         <GradientOverlay
           direction="t"
@@ -208,8 +208,6 @@ export default function CaseStudy() {
       {/* ScrollAccordian Section */}
       <ScrollAccordion />
       <CollaborationSection />
-
-
     </MainLayout>
   );
 }

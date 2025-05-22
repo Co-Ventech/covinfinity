@@ -1,6 +1,6 @@
 'use client';
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Button } from './ui/LegacyButton';

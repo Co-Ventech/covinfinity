@@ -28,76 +28,68 @@ const ImageBox: FC<{ src: string; alt: string }> = ({ src, alt }) => (
 export default function CaseStudies() {
   return (
     <MainLayout>
-      <div className="case-studies ">
-         <Navbar />
-        <div className="text-center mt-12 z-10">
-          <div  className='w-2xl flex mb-6 items-center justify-center mx-auto'>
+      <div className="case-studies">
+        <Navbar />
+        <div className="z-10 mt-12 text-center">
+          <div className="mx-auto mb-6 flex w-2xl items-center justify-center">
             {/* Left line */}
-             <div 
+            <div
               className="h-px flex-grow"
               style={{
-                background: 'linear-gradient(to left, transparent, #252729)'
+                background: 'linear-gradient(to left, transparent, #252729)',
               }}
             ></div>
-           
-          <img
-            src="/recruitinn-logo.png"
-            alt="Recruitinn Logo"
-            className="mx-auto mb-4  mt-4 pt-0.5 w-[200px] h-[1.7rem]"
-          />
+
+            <img
+              src="/recruitinn-logo.png"
+              alt="Recruitinn Logo"
+              className="mx-auto mt-4 mb-4 h-[1.7rem] w-[200px] pt-0.5"
+            />
             {/* Right line */}
-            <div 
+            <div
               className="h-px flex-grow"
               style={{
-                background: 'linear-gradient(to right, transparent, #252729)'
+                background: 'linear-gradient(to right, transparent, #252729)',
               }}
             ></div>
-            </div>
-            
-            <Heading
-            className="!from-[#FFFFFF] !to-[#CCCCCC] pb-6 font-serif text-[2.5rem] font-semibold text-transparent sm:text-5xl md:text-[3.5rem] xl:text-[4.2rem]"
-          >
+          </div>
+
+          <Heading className="!from-[#FFFFFF] !to-[#CCCCCC] pb-6 font-serif text-[2.5rem] font-semibold text-transparent sm:text-5xl md:text-[3.5rem] xl:text-[4.2rem]">
             Recruitinn Heading Title Can be <br /> Anything XYZ upto You
           </Heading>
-          <p className="mx-auto my-4 max-w-[45rem] font-serif text-base font-medium sm:text-lg md:mb-6 md:text-[1.2rem]"
-            style={{ lineHeight: '110%' }}>
+          <p
+            className="mx-auto my-4 max-w-[45rem] font-serif text-base font-medium sm:text-lg md:mb-6 md:text-[1.2rem]"
+            style={{ lineHeight: '110%' }}
+          >
             Some body text goes here can add whatever you want as body text maybe a description and
             for whom this project is for idk it’s just a placeholder
           </p>
-          <div  className="mb-6 flex justify-center md:mb-8">
-         <button
-          className="px-6 py-3 rounded-xl font-medium text-white transition flex items-center gap-2"
-          style={{
-            background: "linear-gradient(90deg, #16181A 31%, #0F1011 100%)",
-            boxShadow: `
+          <div className="mb-6 flex justify-center md:mb-8">
+            <button
+              className="flex items-center gap-2 rounded-xl px-6 py-3 font-medium text-white transition"
+              style={{
+                background: 'linear-gradient(90deg, #16181A 31%, #0F1011 100%)',
+                boxShadow: `
               0 -10px 48px 0 rgba(234, 117, 255, 0.25),
               0 10px 48px 0 rgba(112, 174, 255, 0.26)
             `,
-            position: "relative",
-            zIndex: 10,
-          }}
-        >
-          <img src="/rocket.png" alt="rocket Icon" className="w-4 h-4 mr-1.5" />
-        <span className='bg-gradient-to-br from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent'>
-          Launch Project
-        </span>
-        </button>
+                position: 'relative',
+                zIndex: 10,
+              }}
+            >
+              <img src="/rocket.png" alt="rocket Icon" className="mr-1.5 h-4 w-4" />
+              <span className="bg-gradient-to-br from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent">
+                Launch Project
+              </span>
+            </button>
+          </div>
         </div>
       </div>
-
-     
-        
-       
-      </div>
-      <ProductShowcaseImages className="pointer-events-none " />
+      <ProductShowcaseImages className="pointer-events-none" />
 
       <Section className="second-section mt-[27rem]">
-        
-      
-      
         <div className="mx-auto mt-12 flex items-center justify-center p-4 !px-0 md:mt-24 md:p-6">
           <div className="mx-auto text-center">
-           
             {/* Clutch Reviews Section */}
             <div className="flex w-full items-center justify-between gap-4">
               <ImageBox src="/blue-hunt.png" alt="blue hunt" />

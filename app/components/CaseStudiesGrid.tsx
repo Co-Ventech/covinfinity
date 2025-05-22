@@ -138,8 +138,7 @@ const CaseStudiesGrid: React.FC = () => {
 
           {/* Minimal Button */}
           {/* <GradientBorderButton>Launch Covinfinity</GradientBorderButton> */}
-         <Button>Launch Covinfinity</Button>
-
+          <Button>Launch Covinfinity</Button>
         </div>
       </div>
 

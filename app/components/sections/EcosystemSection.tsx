@@ -87,15 +87,18 @@ const blurVariants = {
 
 const HeaderSection: React.FC = () => {
   return (
-    <div className="mt-16 flex flex-col items-center justify-center text-center " >
+    <div className="mt-16 flex flex-col items-center justify-center text-center">
       {/* <BgImage
         src="section-lines/talent-section-lines.png"
         // className="-top-22 left-1/2 h-[calc(100%+6rem)] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
         className="-top-0 left-1/2 -z-10 h-[58rem] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
       /> */}
-      <h2 className="font-serif bg-gradient-to-r from-[#FFFFFF] to-[#CCCCCC] bg-clip-text text-[3.2rem] font-semibold text-transparent">Coventech Ecosystem</h2>
-      <p className="max-w-[43rem] bg-gradient-to-br from-[#EBF5FF]/64 to-[#EBF5FF]/54 bg-clip-text font-medium text-[1rem]">
-       how it’s going to work this step’s entire flow or anything you guys want  it’ll be maximum of 2 lines thats all
+      <h2 className="bg-gradient-to-r from-[#FFFFFF] to-[#CCCCCC] bg-clip-text font-serif text-[3.2rem] font-semibold text-transparent">
+        Coventech Ecosystem
+      </h2>
+      <p className="max-w-[43rem] bg-gradient-to-br from-[#EBF5FF]/64 to-[#EBF5FF]/54 bg-clip-text text-[1rem] font-medium">
+        how it’s going to work this step’s entire flow or anything you guys want it’ll be maximum of
+        2 lines thats all
       </p>
     </div>
   );
