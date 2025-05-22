@@ -109,7 +109,7 @@ export const ScrollAccordion: React.FC = () => {
 
   return (
     <>
-      <Section ref={container} className='my-Container mt-20 h-[100dvh]' divClass='size-full flex items-center justify-center'>
+      <Section ref={container} className='my-Container mt-20 h-max sm:h-[100dvh]' divClass='size-full flex items-center justify-center'>
         <div className="flex flex-col md:grid md:grid-cols-[0.8fr_1fr] !w-full">
           <div ref={leftNavRef} className="left mx-auto md:mx-0 md:ml-14 px-4 md:px-0 w-full max-w-xl text-center md:text-left">
             <Heading className='pb-1 mb-6 md:mb-10 font-semibold text-xl md:text-2xl text-center md:text-left' blockText='Solution & Objectives'>More Screens Showing</Heading>
@@ -118,7 +118,7 @@ export const ScrollAccordion: React.FC = () => {
               {accordionItems.map((item, index) => (
                 <div
                   key={item.id}
-                  className="left-nav-item max-w-full md:max-w-lg space-y-1.5 relative pl-4 md:pl-4 cursor-pointer flex flex-col items-center md:items-start"
+                  className="left-nav-item max-w-full md:max-w-lg space-y-1.5 relative md:pl-4 cursor-pointer flex flex-col items-center md:items-start"
                   onClick={() => handleNavClick(index)}
                   ref={(el) => {
                     sectionRefs.current[index] = el;
