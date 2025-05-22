@@ -86,11 +86,11 @@ export default function CaseStudy() {
         </button>
       </Section>
       {/* Showcase IMAGE */}
-      <div className="showcase-image-container !pointer-events-none relative h-[55rem]">
+      <div className="showcase-image-container !pointer-events-none relative h-[30rem] md:h-[35rem] lg:h-[43rem] xl:h-[55rem]">
         <img
           src="/golf-training-app-dashboard.png"
           alt="Overflowing Image"
-          className="pointer-events-none absolute -top-[8.5rem] -right-16"
+          className="pointer-events-none absolute -top-[3rem] md:-top-20 md:-left-8 lg:-top-[7rem] lg:left-0 xl:-top-36 2xl:-top-[8rem] 2xl:left-[unset] 2xl:-right-8 "
         />
         <GradientOverlay
           direction="t"
@@ -107,8 +107,8 @@ export default function CaseStudy() {
           via="background-body/80"
           to="background-body"
           position="absolute"
-          inset="-top-40 right-[6.875rem]"
-          size="h-[calc(100%+10rem)] w-80"
+          inset="-top-40 right-[5rem] md:right-[6.875rem]"
+          size="h-[calc(100%+10rem)] w-96"
           className="origin-right skew-x-22 transform"
         />
       </div>
