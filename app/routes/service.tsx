@@ -7,7 +7,6 @@ import Heading from '~/components/ui/Heading';
 import Section from '~/components/ui/Section';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/service';
-
 export function meta({ }: Route.MetaArgs) {
   return [
     { title: 'Service - Co-Ventech' },
@@ -121,7 +120,6 @@ export default function Servic() {
       <Section>
         <div className="mx-auto mt-12 flex items-center justify-center p-4 !px-0 md:mt-24 md:p-6">
           <div className="mx-auto text-center">
-
             {/* Clutch Reviews Section */}
             <div className="flex w-full items-center justify-between gap-4">
               <ImageBox src="/blue-hunt.png" alt="blue hunt" />

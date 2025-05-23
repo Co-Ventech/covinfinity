@@ -9,7 +9,7 @@ import { PRODUCTS } from '~/data/productData';
 import { MainLayout } from '~/layouts/MainLayout';
 import type { Route } from './+types/case-studies';
 
-export function meta({ }: Route.MetaArgs) {
+export function meta({}: Route.MetaArgs) {
   return [
     { title: 'Covinfinity | Custom Software Development Company in USA' },
     {
@@ -27,11 +27,11 @@ const ImageBox: FC<{ src: string; alt: string }> = ({ src, alt }) => (
 
 export default function Product() {
   const { slug } = useParams();
-  const productData = PRODUCTS.find(product => product.slug.match(slug!));
+  const productData = PRODUCTS.find((product) => product.slug.match(slug!));
 
   const onLaunchProject = useCallback(() => {
-    window.location.href = productData?.link!
-  }, [productData])
+    window.location.href = productData?.link!;
+  }, [productData]);
 
   return (
     <MainLayout>
@@ -61,7 +61,10 @@ export default function Product() {
             ></div>
           </div>
 
-          <Heading className="!from-[#FFFFFF] !to-[#CCCCCC] pb-6 font-serif text-[2.5rem] font-semibold text-transparent sm:text-5xl md:text-[3.5rem] xl:text-[4.2rem]" blockText={productData?.heading?.split('\n')[1]} >
+          <Heading
+            className="!from-[#FFFFFF] !to-[#CCCCCC] pb-6 font-serif text-[2.5rem] font-semibold text-transparent sm:text-5xl md:text-[3.5rem] xl:text-[4.2rem]"
+            blockText={productData?.heading?.split('\n')[1]}
+          >
             {/* Recruitinn Heading Title Can be <br /> Anything XYZ upto You */}
             {productData?.heading?.split('\n')[0]}
           </Heading>
@@ -76,7 +79,7 @@ export default function Product() {
           <div className="mb-6 flex justify-center md:mb-8">
             <button
               onClick={onLaunchProject}
-              className="flex items-center gap-2 rounded-xl px-6 py-3 font-medium text-white transition cursor-pointer"
+              className="flex cursor-pointer items-center gap-2 rounded-xl px-6 py-3 font-medium text-white transition"
               style={{
                 background: 'linear-gradient(90deg, #16181A 31%, #0F1011 100%)',
                 boxShadow: `
