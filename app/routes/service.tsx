@@ -9,7 +9,7 @@ import Heading from '~/components/ui/Heading';
 import Section from '~/components/ui/Section';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/service';
-export function meta({ }: Route.MetaArgs) {
+export function meta({}: Route.MetaArgs) {
   return [
     { title: 'Service - Co-Ventech' },
     {
@@ -24,8 +24,6 @@ const ImageBox: FC<{ src: string; alt: string }> = ({ src, alt }) => (
     <img src={src} alt={alt} className="h-full w-full rounded-2xl object-cover" loading="lazy" />
   </Box>
 );
-
-
 
 export default function Servic() {
   return (
@@ -55,7 +53,6 @@ export default function Servic() {
 
         <div className="mx-auto mt-12 flex items-center justify-center p-4 !px-0 md:mt-24 md:p-6">
           <div className="mx-auto text-center">
-
             {/* Clutch Reviews Section */}
             <div className="flex w-full items-center justify-between gap-4">
               <ImageBox src="/blue-hunt.png" alt="blue hunt" />

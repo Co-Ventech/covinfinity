@@ -154,21 +154,18 @@ const NavItem = ({
                   animate="visible"
                   whileHover="hover"
                 >
-                  {label === "Products" ? (
-                    <NavLink
-                      to={`/products/${item.toLowerCase()}`}
-                      className="block px-4 py-2"
-                    >
+                  {label === 'Products' ? (
+                    <NavLink to={`/products/${item.toLowerCase()}`} className="block px-4 py-2">
                       {item}
                     </NavLink>
-                  ) : label === "Services" ? (
+                  ) : label === 'Services' ? (
                     <NavLink
                       to={`/services/${item.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
                       className="block px-4 py-2"
                     >
                       {item}
                     </NavLink>
-                  ) : label === "Case Studies" ? (
+                  ) : label === 'Case Studies' ? (
                     <NavLink
                       to={`/case-studies/${item.toLowerCase().replace(/ /g, '-')}`}
                       className="block px-4 py-2"
@@ -243,7 +240,7 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-between p-8">
-      <div className="flex space-x-19 rounded-[0.625rem] bg-[#151617] z-50 px-3.5 py-2 text-white backdrop-blur-md">
+      <div className="z-50 flex space-x-19 rounded-[0.625rem] bg-[#151617] px-3.5 py-2 text-white backdrop-blur-md">
         {/* <motion.div
           className="logo-navbar flex items-center justify-center"
           whileHover={{ scale: 1.05 }}
@@ -280,7 +277,13 @@ const Navbar = () => {
             isOpen={isDropdownOpen.services}
             onMouseEnter={() => handleMouseEnter('services')}
             onMouseLeave={handleMouseLeave}
-            dropdownItems={['Software Development', 'QA & Test Automation', 'UI/UX Designing', 'DevOps', 'Cybersecurity']}
+            dropdownItems={[
+              'Software Development',
+              'QA & Test Automation',
+              'UI/UX Designing',
+              'DevOps',
+              'Cybersecurity',
+            ]}
           />
 
           <NavItem
@@ -369,8 +372,9 @@ const Navbar = () => {
                   >
                     <span className="text-lg font-semibold">Products</span>
                     <svg
-                      className={`h-5 w-5 transform transition-transform ${mobileDropdownOpen === 'products' ? 'rotate-180' : ''
-                        }`}
+                      className={`h-5 w-5 transform transition-transform ${
+                        mobileDropdownOpen === 'products' ? 'rotate-180' : ''
+                      }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -413,8 +417,9 @@ const Navbar = () => {
                   >
                     <span className="text-lg font-semibold">Services</span>
                     <svg
-                      className={`h-5 w-5 transform transition-transform ${mobileDropdownOpen === 'services' ? 'rotate-180' : ''
-                        }`}
+                      className={`h-5 w-5 transform transition-transform ${
+                        mobileDropdownOpen === 'services' ? 'rotate-180' : ''
+                      }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -435,7 +440,13 @@ const Navbar = () => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                       >
-                        {['Software Development', 'QA & Test Automation', 'UI/UX Designing', 'DevOps', 'Cybersecurity'].map((item) => (
+                        {[
+                          'Software Development',
+                          'QA & Test Automation',
+                          'UI/UX Designing',
+                          'DevOps',
+                          'Cybersecurity',
+                        ].map((item) => (
                           <NavLink
                             key={item}
                             to={`/services/${item.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
@@ -457,8 +468,9 @@ const Navbar = () => {
                   >
                     <span className="text-lg font-semibold">Case Studies</span>
                     <svg
-                      className={`h-5 w-5 transform transition-transform ${mobileDropdownOpen === 'caseStudies' ? 'rotate-180' : ''
-                        }`}
+                      className={`h-5 w-5 transform transition-transform ${
+                        mobileDropdownOpen === 'caseStudies' ? 'rotate-180' : ''
+                      }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"

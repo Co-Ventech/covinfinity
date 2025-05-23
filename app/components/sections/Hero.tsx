@@ -14,14 +14,32 @@ const Hero: React.FC = () => {
         {/* Video Background */}
         <video
           autoPlay
+          muted
+          playsInline
+          preload="auto"
+          ref={(ref) => {
+            if (ref) {
+              ref.onended = () => {
+                ref.currentTime = 0;
+                ref.play();
+              };
+            }
+          }}
+          className="pointer-events-none absolute top-0 left-0 z-[-1] h-full w-full object-contain opacity-70"
+        >
+          <source src="/hero-globe.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* <video
+          autoPlay
           loop
           muted
           playsInline
           className="h-full w-auto object-contain"
         >
           <source src="/hero-globe.mp4" type="video/mp4" />
-        </video>
-
+        </video> */}
 
         {/* Bottom Text Section - Absolutely positioned */}
         <div className="absolute right-0 bottom-5 left-0 z-10 px-4">
