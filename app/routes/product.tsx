@@ -1,10 +1,11 @@
-import type { FC } from 'react';
+import { useCallback, type FC } from 'react';
 import { useParams } from 'react-router';
 import Navbar from '~/components/Navbar';
 import ProductShowcaseImages from '~/components/ProductShowcaseImages';
 import Box from '~/components/ui/Box';
 import Heading from '~/components/ui/Heading';
 import Section from '~/components/ui/Section';
+import { PRODUCTS } from '~/data/productData';
 import { MainLayout } from '~/layouts/MainLayout';
 import type { Route } from './+types/case-studies';
 
@@ -26,6 +27,11 @@ const ImageBox: FC<{ src: string; alt: string }> = ({ src, alt }) => (
 
 export default function Product() {
   const { slug } = useParams();
+  const productData = PRODUCTS.find(product => product.slug.match(slug!));
+
+  const onLaunchProject = useCallback(() => {
+    window.location.href = productData?.link!
+  }, [productData])
 
   return (
     <MainLayout>
@@ -55,19 +61,22 @@ export default function Product() {
             ></div>
           </div>
 
-          <Heading className="!from-[#FFFFFF] !to-[#CCCCCC] pb-6 font-serif text-[2.5rem] font-semibold text-transparent sm:text-5xl md:text-[3.5rem] xl:text-[4.2rem]">
-            Recruitinn Heading Title Can be <br /> Anything XYZ upto You
+          <Heading className="!from-[#FFFFFF] !to-[#CCCCCC] pb-6 font-serif text-[2.5rem] font-semibold text-transparent sm:text-5xl md:text-[3.5rem] xl:text-[4.2rem]" blockText={productData?.heading?.split('\n')[1]} >
+            {/* Recruitinn Heading Title Can be <br /> Anything XYZ upto You */}
+            {productData?.heading?.split('\n')[0]}
           </Heading>
           <p
             className="mx-auto my-4 max-w-[45rem] font-serif text-base font-medium sm:text-lg md:mb-6 md:text-[1.2rem]"
             style={{ lineHeight: '110%' }}
           >
-            Some body text goes here can add whatever you want as body text maybe a description and
-            for whom this project is for idk it’s just a placeholder
+            {/* Some body text goes here can add whatever you want as body text maybe a description and
+            for whom this project is for idk it’s just a placeholder */}
+            {productData?.subheading}
           </p>
           <div className="mb-6 flex justify-center md:mb-8">
             <button
-              className="flex items-center gap-2 rounded-xl px-6 py-3 font-medium text-white transition"
+              onClick={onLaunchProject}
+              className="flex items-center gap-2 rounded-xl px-6 py-3 font-medium text-white transition cursor-pointer"
               style={{
                 background: 'linear-gradient(90deg, #16181A 31%, #0F1011 100%)',
                 boxShadow: `
