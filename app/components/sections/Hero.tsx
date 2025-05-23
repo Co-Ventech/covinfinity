@@ -11,12 +11,17 @@ const Hero: React.FC = () => {
           <TopHeroSection />
         </div>
 
-        {/* Solar System Image */}
-        <img
-          src="/products.png"
+        {/* Video Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className="h-full w-auto object-contain"
-          alt="Solar System Animation"
-        />
+        >
+          <source src="/hero-globe.mp4" type="video/mp4" />
+        </video>
+
 
         {/* Bottom Text Section - Absolutely positioned */}
         <div className="absolute right-0 bottom-5 left-0 z-10 px-4">
