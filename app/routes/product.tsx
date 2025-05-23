@@ -1,14 +1,12 @@
 import type { FC } from 'react';
-import ProductShowcaseImages from '~/components/ProductShowcaseImages';
-import DropdownMenu from '~/components/DropdownMenu';
+import { useParams } from 'react-router';
 import Navbar from '~/components/Navbar';
-import CardGridSection from '~/components/sections/CardGrid';
+import ProductShowcaseImages from '~/components/ProductShowcaseImages';
 import Box from '~/components/ui/Box';
 import Heading from '~/components/ui/Heading';
 import Section from '~/components/ui/Section';
 import { MainLayout } from '~/layouts/MainLayout';
 import type { Route } from './+types/case-studies';
-import { useParams } from 'react-router';
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -28,7 +26,7 @@ const ImageBox: FC<{ src: string; alt: string }> = ({ src, alt }) => (
 
 export default function Product() {
   const { slug } = useParams();
-  // console.log(slug);
+
   return (
     <MainLayout>
       <div className="case-studies">
