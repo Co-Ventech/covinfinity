@@ -1,4 +1,8 @@
 import React from 'react';
+import { Pagination, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
 
 interface Card {
   id: number;
@@ -25,6 +29,20 @@ const SERVICE_CARDS: Card[] = [
   },
   {
     id: 2,
+    title: 'Quality Assurance',
+    subtitle: 'Something qa line goes here',
+    description: 'Title goes here',
+    image: '/phone-mockup.png',
+  },
+  {
+    id: 3,
+    title: 'Quality Assurance',
+    subtitle: 'Something qa line goes here',
+    description: 'Title goes here',
+    image: '/phone-mockup.png',
+  },
+  {
+    id: 4,
     title: 'Quality Assurance',
     subtitle: 'Something qa line goes here',
     description: 'Title goes here',
@@ -65,10 +83,35 @@ const Card: React.FC<{ card: Card }> = ({ card }) => {
 
 export const ServiceCards = () => {
   return (
-    <div className="mb-3 grid grid-cols-1 gap-6 md:grid-cols-3">
-      {SERVICE_CARDS.map((card) => (
-        <Card key={card.id} card={card} />
-      ))}
+    <div className="mb-3">
+      <Swiper
+        modules={[Pagination, Autoplay]}
+        spaceBetween={30}
+        slidesPerView={1}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        loop={true}
+        pagination={{ clickable: true }}
+        breakpoints={{
+          640: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        }}
+      >
+        {SERVICE_CARDS.map((card) => (
+          <SwiperSlide key={card.id} className="">
+            <Card card={card} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };

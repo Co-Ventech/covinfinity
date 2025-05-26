@@ -137,12 +137,26 @@ const TalentAccessComponent = () => {
           </div>
           <OutlineBox>
             <div className="flex items-center justify-center">
-              <img
-                src="/world.png"
-                alt="Global Talent"
-                className="h-[29.8rem] w-full object-cover"
-              />
+                <video
+                  autoPlay
+                  muted
+                  playsInline
+                  preload="auto"
+                  ref={(ref) => {
+                    if (ref) {
+                      ref.onended = () => {
+                        ref.currentTime = 0;
+                        ref.play();
+                      };
+                    }
+                  }}
+                  className="pointer-events-none h-[29.8rem] w-full object-cover "
+                >
+                  <source src="/Globe.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
             </div>
+
           </OutlineBox>
         </Box>
       </div>

@@ -1,12 +1,14 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import React, { useEffect, useRef, useState } from 'react';
 import { GradientOverlay } from '~/components/ui/GradientOverlay';
 import Heading from '~/components/ui/Heading';
 import Section from '~/components/ui/Section';
 
 import { useGSAP } from '@gsap/react';
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 
 // Register plugins
 gsap.registerPlugin(ScrollTrigger, useGSAP);
