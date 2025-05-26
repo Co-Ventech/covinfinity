@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import GradientBorderButton from './ui/GradientBorderButton';
 import Button from './ui/Button';
 
 // Define types for the image data
@@ -38,47 +37,51 @@ const CaseStudiesGrid: React.FC = () => {
   // Define all images used in the grid
   const images: Record<string, ImageData> = {
     canyon: {
-      src: 'https://images.unsplash.com/photo-1478264635837-66efba4b74ba?q=80&w=2059&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      src: '/case-studies-grid-01.png',
       alt: 'Canyon view',
     },
     slotCanyon: {
-      src: 'https://images.unsplash.com/photo-1558624634-1720391434ca?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      src: '/case-studies-grid-02.png',
       alt: 'Slot canyon',
     },
     plane: {
-      src: 'https://plus.unsplash.com/premium_photo-1664361480604-e7932dfff91c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      src: '/case-studies-grid-06.png',
       alt: 'Abandoned plane',
     },
     grayscale: {
-      src: 'https://images.unsplash.com/photo-1583587446563-7b9d93c74ae5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      src: '/case-studies-grid-04.png',
       alt: 'Grayscale',
     },
     landscape: {
-      src: 'https://images.unsplash.com/photo-1520799829090-f89dd6df5c71?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      src: '/case-studies-grid-03.png',
+      alt: 'Landscape Photography',
+    },
+    landscape2: {
+      src: '/case-studies-grid-08.png',
       alt: 'Landscape Photography',
     },
     brownAndWhiteRockFormation: {
-      src: 'https://images.unsplash.com/photo-1603585514260-3500b8a9a6a9?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      src: '/case-studies-grid-05.png',
       alt: 'Brown and white rock formation',
     },
     greenTreeDuringDaytime: {
-      src: 'https://images.unsplash.com/photo-1566868570094-276146cf3592?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      src: '/case-studies-grid-07.png',
       alt: 'Green Tree During Daytime',
     },
     theLightIsShiningOnTheRockFormations: {
-      src: 'https://images.unsplash.com/photo-1491590197864-41e7697a0c87?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      src: '/case-studies-grid-09.png',
       alt: 'the-light-is-shining-on-the-rock-formations',
     },
     cafe: {
-      src: 'https://images.unsplash.com/photo-1600375544722-e147b216c23c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      src: '/case-studies-grid-10.png',
       alt: 'Cafe',
     },
     greenAndYellowLeavesInCloseUpPhotography: {
-      src: 'https://images.unsplash.com/photo-1628964297457-29555e670359?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      src: '/case-studies-grid-11.png',
       alt: 'Green And Yellow Leaves In Close Up Photography',
     },
     blackSamsung: {
-      src: 'https://images.unsplash.com/photo-1584824308820-99af1d0f9239?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      src: '/case-studies-grid-12.png',
       alt: 'Black Samsung',
     },
   };
@@ -107,7 +110,7 @@ const CaseStudiesGrid: React.FC = () => {
 
         {/* Fourth column */}
         <CaseStudyItem
-          image={images.landscape}
+          image={images.landscape2}
           className="relative col-span-1 row-span-2 -mt-8 h-[calc(100%+2rem)]"
         />
         <CaseStudyItem
@@ -138,7 +141,7 @@ const CaseStudiesGrid: React.FC = () => {
 
           {/* Minimal Button */}
           {/* <GradientBorderButton>Launch Covinfinity</GradientBorderButton> */}
-          <Button>Launch Covinfinity</Button>
+          <Button>Case Studies</Button>
         </div>
       </div>
 
