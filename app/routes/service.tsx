@@ -27,8 +27,8 @@ export default function Servic() {
   return (
     <MainLayout>
       <div className="case-studies relative">
-        <CaseStudyShowcaseImages className="pointer-events-none absolute inset-0" />
         <Navbar />
+        <CaseStudyShowcaseImages className="pointer-events-none absolute inset-0" />
       </div>
       <Section className="second-section mt-[27rem]">
         <div className="text-center">
