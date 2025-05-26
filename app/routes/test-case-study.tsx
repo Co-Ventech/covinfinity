@@ -2,6 +2,7 @@ import { useParams } from 'react-router';
 import type { Route } from './+types/case-study';
 
 import Navbar from '~/components/Navbar';
+import CollaborationSection from '~/components/sections/CollaborationSection';
 import CustomIcon from '~/components/svgs/CustomIcon';
 import Box from '~/components/ui/Box';
 import { GradientOverlay } from '~/components/ui/GradientOverlay';
@@ -10,7 +11,6 @@ import { ScrollAccordion } from '~/components/ui/ScrollAccordion';
 import Section from '~/components/ui/Section';
 import { Slider } from '~/components/ui/Slider';
 import { MainLayout } from '~/layouts/MainLayout';
-import CollaborationSection from '~/components/sections/CollaborationSection';
 
 const techStack = [
   {
@@ -31,7 +31,7 @@ const techStack = [
   },
 ];
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
     { title: 'Covinfinity | Case Study' },
     {
