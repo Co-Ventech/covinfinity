@@ -18,6 +18,7 @@ const steps: Step[] = [
   { id: 1, title: 'Coventech', src: '/logo-coventech.png' },
   { id: 2, title: 'Recruitinn', src: '/logo-recruitinn.png' },
   { id: 3, title: 'SkillBuilder', src: '/logo-skillbuilder.png' },
+  { id: 4, title: 'CovenTal', src: '/covental.png' },
 ];
 
 // Enhanced animation variants with smoother transitions
