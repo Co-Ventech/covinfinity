@@ -30,7 +30,7 @@ export const ServiceSection: FC<ServiceSectionProps> = ({
             className={imagePosition === 'left' ? 'ml-auto mr-[9%]' : ''}
           />
         </div>
-        <div className="content">
+        <div className="content text-base">
           {children}
         </div>
 
