@@ -296,12 +296,12 @@ const Navbar = () => {
             dropdownItems={['Bykea', 'Example One', 'Example Two', 'Example Three']}
           />
 
-          <NavItem icon={<MirrorIcon className="size-[1.375rem]" />} label="About us" />
+          {/* <NavItem icon={<MirrorIcon className="size-[1.375rem]" />} label="About us" /> */}
         </div>
       </div>
 
       {/* Desktop Right Side - hidden on mobile */}
-      <div className="hidden rounded-[0.875em] bg-[#151617] p-2 backdrop-blur-md lg:block">
+      <div className="hidden rounded-[0.875em] bg-[#151617] p-2 backdrop-blur-md lg:block z-50">
         <div className="flex space-x-0.5 rounded-[0.625rem] bg-[#212121] p-1">
           <NavLink to="/sign-in">
             <NavItem
@@ -372,9 +372,8 @@ const Navbar = () => {
                   >
                     <span className="text-lg font-semibold">Products</span>
                     <svg
-                      className={`h-5 w-5 transform transition-transform ${
-                        mobileDropdownOpen === 'products' ? 'rotate-180' : ''
-                      }`}
+                      className={`h-5 w-5 transform transition-transform ${mobileDropdownOpen === 'products' ? 'rotate-180' : ''
+                        }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -417,9 +416,8 @@ const Navbar = () => {
                   >
                     <span className="text-lg font-semibold">Services</span>
                     <svg
-                      className={`h-5 w-5 transform transition-transform ${
-                        mobileDropdownOpen === 'services' ? 'rotate-180' : ''
-                      }`}
+                      className={`h-5 w-5 transform transition-transform ${mobileDropdownOpen === 'services' ? 'rotate-180' : ''
+                        }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -468,9 +466,8 @@ const Navbar = () => {
                   >
                     <span className="text-lg font-semibold">Case Studies</span>
                     <svg
-                      className={`h-5 w-5 transform transition-transform ${
-                        mobileDropdownOpen === 'caseStudies' ? 'rotate-180' : ''
-                      }`}
+                      className={`h-5 w-5 transform transition-transform ${mobileDropdownOpen === 'caseStudies' ? 'rotate-180' : ''
+                        }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
