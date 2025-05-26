@@ -33,14 +33,15 @@ export const TopHeroSection: React.FC = () => (
     polygonComponent={Polygon1}
     polygonClassName="top-3.5 left-1/2 h-[25rem] !w-[calc(100%+5rem)] -translate-x-1/2"
   >
-    <Heading className="mb-3.5 lg:!text-6xl" blockText="AI & human collaboration">
-      Ready‑made features for
+    <Heading className="mb-3.5 lg:!text-6xl" blockText="and Reform Your Business with SaaS Solutions">
+     Co-Ventech_Transform, Perform, 
+
     </Heading>
 
     <p className="!mx-auto mb-6 !max-w-[43rem] font-serif text-xl font-medium">
       <GradientText className="!from-[#EBF5FF]/56 !to-[#EBF5FF]/48 to-20%">
-        The best apps in the AI era aren’t solo experiences—they’re collaborative. Coventech
-        provides customizable pre‑built features
+       Elevate your business with Co-Ventech’s innovative SaaS platforms designed to help you scale operations, streamline recruitment, and close critical skill gaps efficiently.
+
       </GradientText>
     </p>
 
@@ -104,7 +105,8 @@ export const BottomHeroSection: React.FC = () => (
     <img src="/hero-logo.png" alt="Coventech Logo" className="mx-auto mb-14 h-16" />
 
     <Testimonial
-      quote="Coventech an ecosystem where businesses meet top talent & digital solutions and services"
+      quote="Co-Ventech’s ecosystem offers a comprehensive, end-to-end solution that tackles recruitment bottlenecks and bridges skill shortages—empowering businesses to build high-performing teams faster.
+"
       author={{
         name: 'James W Clark',
         title: 'Chief Executive Officer',

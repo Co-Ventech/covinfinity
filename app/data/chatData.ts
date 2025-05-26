@@ -3,7 +3,7 @@ export const aeChatData = [
     role: 'user' as const,
     sender: 'Winston',
     message:
-      'Thanks, Sarah. I appreciate your responsiveness and support. Looking forward to seeing these changes in action!',
+      'What is Co-Ventech and how does it help businesses scale?',
     avatar: '/john.png',
     time: '2:14 PM',
   },
@@ -11,7 +11,7 @@ export const aeChatData = [
     role: 'ai' as const,
     sender: 'Sarah',
     message:
-      "too! Let's touch base at the end of the week to make sure everything is running smoothly. Have a great day!",
+      " Hi, I’m Sarah! We provide tailored SaaS solutions that enable businesses to scale, optimize workflows, and innovate with custom platforms.",
     avatar: '/sarah.png',
     time: '2:14 PM',
   },
@@ -19,7 +19,7 @@ export const aeChatData = [
     role: 'user' as const,
     sender: 'Winston',
     message:
-      "I'll coordinate with them to make sure they're available for your next brainstorming session. Is there anything else on your mind",
+      "How does your ecosystem solve hiring and skill gap challenges?",
     avatar: '/john.png',
     time: '2:14 PM',
   },
@@ -27,7 +27,7 @@ export const aeChatData = [
     role: 'ai' as const,
     sender: 'Sarah',
     message:
-      "too! Let's touch base at the end of the week to make sure everything is running smoothly. Have a great day!",
+      "We combine AI-powered hiring tools with a pre-vetted global talent pool and targeted upskilling programs to efficiently bridge skill gaps and accelerate recruitment.",
     avatar: '/sarah.png',
     time: '2:14 PM',
   },

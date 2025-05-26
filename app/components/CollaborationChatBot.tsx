@@ -152,7 +152,8 @@ const CollaborationChatBot = () => {
       <div className="mb-16">
         <Heading className="pb-1">Collaboration and shipping software faster</Heading>
         <p className="mt-4 font-medium text-[#665F5F]">
-          The most complete experience for businesses & individual clients
+          How Co-Ventech Helps Your Business Scale and Overcome Hiring Challenges
+
         </p>
       </div>
 

@@ -68,8 +68,9 @@ const TalentAccessComponent = () => {
         <Heading className="mb-4 pb-1" blockText="from all around the world">
           Craft the most productive team
         </Heading>
-        <p className="text-[#665F5F]">
-          The most complete experience for businesses & individual clients
+        <p className="text-[#665F5F] max-w-[35rem] mx-auto">
+        Access the top 1% of global talent to elevate your team’s capabilities and drive extraordinary business growth and success.
+
         </p>
       </div>
 

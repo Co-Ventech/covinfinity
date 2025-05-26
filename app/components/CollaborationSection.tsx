@@ -107,20 +107,20 @@ const CollaborationSection = () => {
               <ChatMessage
                 time="2:14 PM"
                 sender="John"
-                message="Thanks, Sarah. I appreciate your responsiveness and support. Looking forward to seeing these changes in action!"
+                message="What is Co-Ventech and how does it help businesses scale?"
                 avatar="/james.png"
               />
               <ChatMessage
                 time="2:15 PM"
                 sender="Sarah"
-                message="too! Let's touch base at the end of the week to make sure everything is running smoothly. Have a great day!"
+                message="Hi, I’m Sarah! We provide tailored SaaS solutions that enable businesses to scale, optimize workflows, and innovate with custom platforms."
                 avatar="/sarah.png"
               />
               <LinearCard />
               <ChatMessage
                 time="2:14 PM"
                 sender="John"
-                message="I'll coordinate with them to make sure they're available for your next brainstorming session. Is there anything else on your mind"
+                message="How does your ecosystem solve hiring and skill gap challenges?"
                 avatar="/james.png"
               />
             </div>

@@ -256,8 +256,12 @@ export default function ServicesSection() {
         </Box>
            {/* Clutch Reviews Section */}
             <div className=" mt-8 flex w-full items-center justify-between gap-4">
+              <a href="https://clutch.co/profile/co-ventech" target="_blank" rel="noopener noreferrer">
               <ImageBox src="/blue-hunt.png" alt="blue hunt" />
+              </a>
+               <a href="" target="_blank" rel="noopener noreferrer">
               <ImageBox src="/red-hunt.png" alt="red hunt" />
+              </a>
             </div>
       </div>
     </Section>
