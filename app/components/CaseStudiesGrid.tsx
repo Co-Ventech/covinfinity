@@ -37,7 +37,7 @@ const CaseStudiesGrid: React.FC = () => {
   // Define all images used in the grid
   const images: Record<string, ImageData> = {
     canyon: {
-      src: '/case-studies-grid-01.png',
+      src: '/rawcaster.png',
       alt: 'Canyon view',
     },
     slotCanyon: {
@@ -45,11 +45,11 @@ const CaseStudiesGrid: React.FC = () => {
       alt: 'Slot canyon',
     },
     plane: {
-      src: '/case-studies-grid-06.png',
+      src: '/humanity-with-ai.png',
       alt: 'Abandoned plane',
     },
     grayscale: {
-      src: '/case-studies-grid-04.png',
+      src: '/imperva.png',
       alt: 'Grayscale',
     },
     landscape: {
@@ -61,11 +61,11 @@ const CaseStudiesGrid: React.FC = () => {
       alt: 'Landscape Photography',
     },
     brownAndWhiteRockFormation: {
-      src: '/case-studies-grid-05.png',
+      src: '/ride.png',
       alt: 'Brown and white rock formation',
     },
     greenTreeDuringDaytime: {
-      src: '/case-studies-grid-07.png',
+      src: '/diwander.png',
       alt: 'Green Tree During Daytime',
     },
     theLightIsShiningOnTheRockFormations: {
@@ -77,7 +77,7 @@ const CaseStudiesGrid: React.FC = () => {
       alt: 'Cafe',
     },
     greenAndYellowLeavesInCloseUpPhotography: {
-      src: '/case-studies-grid-11.png',
+      src: '/blackcard.png',
       alt: 'Green And Yellow Leaves In Close Up Photography',
     },
     blackSamsung: {
