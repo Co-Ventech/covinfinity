@@ -37,7 +37,9 @@ export default function Home() {
         <CompanySliderSection />
       </div>
       <div className="mb-20">
-        <CollaborationChatBot />
+        <OrbitalSystem>
+          <CollaborationChatBot />
+        </OrbitalSystem>
       </div>
       <div className="">
         <CollaborationSection />
