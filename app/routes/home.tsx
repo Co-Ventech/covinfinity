@@ -11,6 +11,8 @@ import TestimonialComponent from '~/components/TestimonialComponent';
 import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
+import Section from '~/components/ui/Section';
+import OrbitalSystem from '~/components/OrbitalSystem';
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -50,6 +52,11 @@ export default function Home() {
         <ServicesSection />
       </div>
       <CaseStudiesGrid />
+      <Section>
+        <OrbitalSystem autoRotate rotationInterval={10000}>
+          <OrbitalSystem.Orbit />
+        </OrbitalSystem>
+      </Section>
     </MainLayout>
   );
 }
