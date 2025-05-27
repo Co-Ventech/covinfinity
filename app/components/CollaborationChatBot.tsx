@@ -1,14 +1,16 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { aeChatData } from '~/data/chatData';
 import useChat from '~/hooks/useChat';
+import type { ChatMessage } from '~/hooks/useChat';
 import { formatTime } from '~/utils/formatters';
 import BgImage from './BgImage';
-import OrbitalSystem from './OrbitalSystem';
+import OrbitalSystem, { useOrbital } from './OrbitalSystem';
 import AnimatedLine from './ui/AnimatedLine';
 import Box from './ui/Box';
 import { GradientOverlay } from './ui/GradientOverlay';
 import Heading from './ui/Heading';
 import Section from './ui/Section';
+import { useEffect } from 'react';
 
 // Define animations as constants for reuse
 const springTransition = {
@@ -126,6 +128,7 @@ const OrbitalAnimation = () => (
 const CollaborationChatBot = () => {
   const {
     chats,
+    setChats,
     userMessage,
     setUserMessage,
     sendMessage,
@@ -135,17 +138,32 @@ const CollaborationChatBot = () => {
     inputRef,
     hasUserSentFirstMessage,
   } = useChat({
-    initialChats: aeChatData,
+    initialChats: aeChatData[0],
     userAvatar: '/john.png',
     aiAvatar: '/sarah.png',
     userName: 'Winston',
     aiName: 'Sarah',
   });
 
+  const { setActiveObject } = useOrbital();
+
+  // When user starts typing or sending message, activate live chat orbit
+  useEffect(() => {
+    if (hasUserSentFirstMessage || userMessage.length > 0) {
+      setActiveObject(5); // Set to live chat orbit
+    }
+  }, [hasUserSentFirstMessage, userMessage, setActiveObject]);
+
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
+    }
+  };
+
+  const handleChatChange = (newChats: ChatMessage[]) => {
+    if (!hasUserSentFirstMessage) { // Only allow changing chats if user hasn't started live chat
+      setChats(newChats);
     }
   };
 
@@ -176,7 +194,6 @@ const CollaborationChatBot = () => {
           </div>
 
           {/* Chat Messages and Input Container */}
-          {/* <div className="relative mt-2 mb-4 flex max-h-[27rem] min-h-[27rem] !w-full flex-col overflow-hidden rounded-[0.625rem] bg-[#0B0C0D] p-3"> */}
           <Box.Inner className="relative mt-14 flex max-h-[31rem] min-h-[31rem] !w-full flex-col overflow-hidden rounded-3xl p-3.5 !pt-0">
             {/* Messages */}
             <div
@@ -212,9 +229,6 @@ const CollaborationChatBot = () => {
                     animate={index === chats.length - 1}
                   />
                 ))}
-                Show LinearCard only during static chat
-                {/* {!hasUserSentFirstMessage && chats.length >= 2 && <LinearCard />} */}
-                {/* Loading indicator */}
                 {isLoading && (
                   <motion.div
                     className="mb-1 flex items-start space-x-2"
@@ -235,7 +249,7 @@ const CollaborationChatBot = () => {
               </AnimatePresence>
             </div>
 
-            {/* Chat Input - Fixed at bottom */}
+            {/* Chat Input */}
             <div className="sticky bottom-0 -mx-4 px-4 py-3">
               <motion.div
                 className={`flex flex-1 items-center justify-between rounded-lg bg-[#101112] px-3 py-1 ${isLoading ? 'opacity-90' : ''}`}
@@ -268,11 +282,6 @@ const CollaborationChatBot = () => {
                   />
                 </div>
                 <div className="flex items-center space-x-3">
-                  {/* <div className="rounded-lg border-[0.1125rem] border-[#1F1F1F] px-1.5 py-[0.05rem]">
-                    <span className="bg-gradient-to-r from-[#FF6981] to-white bg-clip-text text-xs text-transparent">
-                      GIF
-                    </span>{' '}
-                  </div> */}
                   <motion.img
                     src="/send.png"
                     alt="Send"
@@ -296,7 +305,10 @@ const CollaborationChatBot = () => {
               From deployments to tasks, work with your team every step of the way.
             </p>
           </div>
-          <OrbitalSystem.Orbit className='h-[47.5rem] -bottom-36 w-[calc(100%+20rem)] mt-14 absolute left-1/2 -translate-x-1/2' />
+          <OrbitalSystem.Orbit
+            className='h-[47.5rem] -bottom-36 w-[calc(100%+20rem)] mt-14 absolute left-1/2 -translate-x-1/2'
+            onChatChange={handleChatChange}
+          />
 
           {/* Overlays */}
           <GradientOverlay
@@ -317,20 +329,6 @@ const CollaborationChatBot = () => {
             to="background-body"
             className="!h-[7.625rem] !top-[unset] !bottom-0"
           />
-          {/* <GradientOverlay
-              direction="l"
-              from="background-body/0"
-              to="background-body"
-              className="w-48 left-0"
-              position="absolute"
-            />
-            <GradientOverlay
-              direction="r"
-              from="background-body/0"
-              to="background-body"
-              className="w-48 right-0"
-              position="absolute"
-            /> */}
         </Box>
       </div>
 

@@ -1,8 +1,9 @@
 "use client"
 
-import { createContext, useContext, useState, useEffect } from "react"
-import type { ReactNode } from "react"
 import { motion } from "framer-motion"
+import type { ReactNode } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
+import { aeChatData } from "~/data/chatData"
 
 type OrbitalContextType = {
   activeObject: number
@@ -36,17 +37,44 @@ export function OrbitalSystem({
 }: OrbitalSystemProps) {
   const [activeObject, setActiveObject] = useState(initialActive)
   const [isHovering, setIsHovering] = useState(false)
+  const [isUserChatActive, setIsUserChatActive] = useState(false)
+
+  // Function to get next valid object index
+  const getNextValidIndex = (currentIndex: number) => {
+    let nextIndex = (currentIndex + 1) % 7;
+    // Skip index 5 (user chat) during auto rotation
+    return nextIndex === 5 ? (nextIndex + 1) % 7 : nextIndex;
+  };
+
+  // Update active object handler
+  const handleSetActiveObject = (index: number) => {
+    setActiveObject(index);
+    if (index === 5) {
+      setIsUserChatActive(true);
+    }
+  };
 
   useEffect(() => {
-    if (!autoRotate || isHovering) return
+    // Don't auto-rotate if:
+    // 1. autoRotate is false
+    // 2. user is hovering
+    // 3. user chat is active
+    if (!autoRotate || isHovering || isUserChatActive) return;
+
     const interval = setInterval(() => {
-      setActiveObject((prev) => (prev + 1) % 7)
-    }, rotationInterval)
-    return () => clearInterval(interval)
-  }, [autoRotate, rotationInterval, isHovering])
+      setActiveObject(prev => getNextValidIndex(prev));
+    }, rotationInterval);
+
+    return () => clearInterval(interval);
+  }, [autoRotate, rotationInterval, isHovering, isUserChatActive]);
 
   return (
-    <OrbitalContext.Provider value={{ activeObject, setActiveObject, isHovering, setIsHovering }}>
+    <OrbitalContext.Provider value={{
+      activeObject,
+      setActiveObject: handleSetActiveObject,
+      isHovering,
+      setIsHovering
+    }}>
       {children}
     </OrbitalContext.Provider>
   )
@@ -55,10 +83,21 @@ export function OrbitalSystem({
 // The actual orbital visualization component
 interface OrbitProps {
   className?: string
+  onChatChange?: (chats: any[]) => void
 }
 
-function Orbit({ className = "" }: OrbitProps) {
+function Orbit({ className = "", onChatChange }: OrbitProps) {
   const { activeObject, setActiveObject } = useOrbital()
+
+  function handleClick(objectIndex: number) {
+    // Prevent clicking on user chat object (index 5)
+    if (objectIndex === 5) return;
+
+    if (onChatChange) {
+      onChatChange(aeChatData.at(objectIndex) || [])
+    }
+    setActiveObject(objectIndex)
+  }
 
   // Define 8 orbital radii (but only 7 objects, skipping index 6 which is the 7th orbit)
   const orbits = [60, 90, 120, 150, 180, 210, 240, 270]
@@ -130,6 +169,7 @@ function Orbit({ className = "" }: OrbitProps) {
           {objectOrbits.map((orbitIndex, objectIndex) => {
             const radius = orbits[orbitIndex]
             const isActive = objectIndex === activeObject
+            const isUserChat = objectIndex === 5
 
             return (
               <g key={objectIndex}>
@@ -145,20 +185,20 @@ function Orbit({ className = "" }: OrbitProps) {
                     y={280}
                     width="40"
                     height="40"
-                    className="cursor-pointer"
-                    whileHover={{
+                    className={`${isUserChat ? '' : 'cursor-pointer'}`}
+                    whileHover={isUserChat ? {} : {
                       scale: 1.15,
                       transition: { duration: 0.2 }
                     }}
                     animate={{
                       scale: isActive ? [1, 1.1, 1] : 1,
-                      opacity: isActive ? 1 : 0.8,
+                      opacity: isActive ? 1 : isUserChat ? 0.5 : 0.8,
                     }}
                     transition={{
                       scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
                       opacity: { duration: 0.3 }
                     }}
-                    onClick={() => setActiveObject(objectIndex)}
+                    onClick={() => handleClick(objectIndex)}
                   />
                 </g>
               </g>

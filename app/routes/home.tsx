@@ -1,6 +1,7 @@
 import CaseStudiesGrid from '~/components/CaseStudiesGrid';
 import CollaborationChatBot from '~/components/CollaborationChatBot';
 import Navbar from '~/components/Navbar';
+import OrbitalSystem from '~/components/OrbitalSystem';
 import CollaborationSection from '~/components/sections/CollaborationSection';
 import CompanySliderSection from '~/components/sections/CompanySliderSection';
 import EcosystemSection from '~/components/sections/EcosystemSection';
@@ -11,8 +12,6 @@ import TestimonialComponent from '~/components/TestimonialComponent';
 import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
-import Section from '~/components/ui/Section';
-import OrbitalSystem from '~/components/OrbitalSystem';
 
 export function meta({ }: Route.MetaArgs) {
   return [

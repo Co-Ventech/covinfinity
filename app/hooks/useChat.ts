@@ -20,6 +20,7 @@ interface UseChatOptions {
 
 interface UseChatReturn {
   chats: ChatMessage[];
+  setChats: (chats: ChatMessage[]) => void;
   userMessage: string;
   setUserMessage: (message: string) => void;
   sendMessage: () => Promise<void>;
@@ -153,6 +154,7 @@ const useChat = (options: UseChatOptions = {}): UseChatReturn => {
 
   return {
     chats,
+    setChats,
     userMessage,
     setUserMessage,
     sendMessage,
