@@ -26,7 +26,7 @@ const imageVariants = {
   front: {
     scale: 1,
     y: '0vw',
-    zIndex: 30,
+    zIndex: 40,
     opacity: 1,
     filter: 'blur(0px)',
     backdropFilter: 'blur(30px)',
@@ -41,7 +41,7 @@ const imageVariants = {
   middle: {
     scale: 0.97,
     y: '-2.5vw',
-    zIndex: 20,
+    zIndex: 30,
     opacity: 0.9,
     filter: 'blur(0px)',
     backdropFilter: 'blur(30px)',
@@ -56,7 +56,7 @@ const imageVariants = {
   back: {
     scale: 0.94,
     y: '-5vw',
-    zIndex: 10,
+    zIndex: 20,
     opacity: 0.8,
     filter: 'blur(0px)',
     backdropFilter: 'blur(30px)',
@@ -64,6 +64,21 @@ const imageVariants = {
       type: 'spring',
       stiffness: 200,
       damping: 20,
+      mass: 1,
+      duration: 0.7,
+    },
+  },
+  altraback: {
+    scale: 0.91,
+    y: '-7.5vw',
+    zIndex: 10,
+    opacity: 0.7,
+    filter: 'blur(0px)',
+    backdropFilter: 'blur(30px)',
+    transition: {
+      type: 'spring',
+      stiffness: 150,
+      damping: 15,
       mass: 1,
       duration: 0.7,
     },
@@ -118,11 +133,17 @@ const StepsSection: React.FC = () => {
   };
 
   // Function to determine card position based on active step
-  const getCardPosition = (cardId: number): 'front' | 'middle' | 'back' => {
-    if (cardId === activeStep) return 'front';
-    if (cardId % 3 === (activeStep + 1) % 3) return 'middle';
-    return 'back';
-  };
+  // const getCardPosition = (cardId: number): 'front' | 'middle' | 'back' => {
+  //   if (cardId === activeStep) return 'front';
+  //   if (cardId % 3 === (activeStep + 1) % 3) return 'middle';
+  //   return 'back';
+  // };
+  const getCardPosition = (cardId: number): 'front' | 'middle' | 'back' | 'altraback' => {
+  if (cardId === activeStep) return 'front';
+  if (cardId === (activeStep % steps.length) + 1) return 'middle';
+  if (cardId === (activeStep % steps.length) + 2) return 'back';
+  return 'altraback';
+};
 
   // Improved card styling with consistent blur effect
   const getCardStyle = (cardPosition: 'front' | 'middle' | 'back') => {
@@ -247,6 +268,31 @@ const StepsSection: React.FC = () => {
               <img
                 src="/client-scheduling-a-call.png"
                 alt="Development process"
+                className="h-fit"
+              />
+            </div>
+          </div>
+        </motion.div>
+
+          {/* Card 4 */}
+        <motion.div
+          className="absolute top-0 right-0 left-0 w-full rounded-t-2xl rounded-b-[4rem]"
+          variants={imageVariants}
+          initial="altraback"
+          animate={getCardPosition(4)}
+          key="card-4"
+        >
+          <div className={getCardStyle(getCardPosition(2))}>
+            <div className="headings mb-14">
+              <h2 className="mb-3.5 text-5xl font-semibold text-white">Meet Account Executive</h2>
+              <p className="max-w-[56rem] font-medium text-[#C3C3C3]">
+                Connect with your dedicated account manager to discuss your needs.
+              </p>
+            </div>
+            <div className="images w-full overflow-hidden rounded-[3rem]">
+              <img
+                src="/client-scheduling-a-call.png"
+                alt="Meeting with account executive"
                 className="h-fit"
               />
             </div>
