@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import type { Route } from './+types/case-study';
+import type { Route } from './+types/test-case-study';
 
 import Navbar from '~/components/Navbar';
 import CollaborationSection from '~/components/sections/CollaborationSection';
@@ -11,24 +11,91 @@ import { ScrollAccordion } from '~/components/ui/ScrollAccordion';
 import Section from '~/components/ui/Section';
 import { Slider } from '~/components/ui/Slider';
 import { MainLayout } from '~/layouts/MainLayout';
+import { useCallback, type FC } from 'react';
 
-const techStack = [
+// Case Study Data
+const caseStudies = [
   {
-    name: 'Swift',
-    image: '/swift.png',
+    slug: 'bykea',
+    title: 'AR-Powered Golf Training App',
+    description: 'The best apps in the AI era aren\'t solo experiences — they\'re built for collaboration. Coventech delivers customizable, pre-built features to power them.',
+    showcaseImage: '/golf-training-app-dashboard.png',
+    duration: '3 months',
+    location: 'California, United States',
+    techStack: [
+      {
+        name: 'Swift',
+        image: '/swift.png',
+      },
+      {
+        name: 'laravel',
+        image: '/laravel.png',
+      },
+      {
+        name: 'tech',
+        image: '/logo-tech.png',
+      },
+      {
+        name: 'tech O',
+        image: '/logo-tech-1.png',
+      },
+    ],
+    link: 'https://bykea.com'
   },
   {
-    name: 'laravel',
-    image: '/laravel.png',
+    slug: 'bluefin',
+     title: 'AR-Powered Golf Training App',
+    description: 'The best apps in the AI era aren\'t solo experiences — they\'re built for collaboration.',
+    showcaseImage: '/bluefin.png', 
+    duration: '3 months',
+    location: 'California, United States',
+    techStack: [
+      {
+        name: 'Swift',
+        image: '/swift.png',
+      },
+      {
+        name: 'laravel',
+        image: '/laravel.png',
+      },
+      {
+        name: 'tech',
+        image: '/logo-tech.png',
+      },
+      {
+        name: 'tech O',
+        image: '/logo-tech-1.png',
+      },
+    ],
+    link: 'https://bluefin.com'
   },
   {
-    name: 'tech',
-    image: '/logo-tech.png',
-  },
-  {
-    name: 'tech O',
-    image: '/logo-tech-1.png',
-  },
+    slug: 'creditbook',
+    title: 'AR-Powered Golf Training App',
+    description: 'The best apps in the AI era aren\'t solo experiences — they\'re built for collaboration.',
+    showcaseImage: '/creditbook.png',
+    duration: '3 months',
+    location: 'California, United States',
+    techStack: [
+      {
+        name: 'Swift',
+        image: '/swift.png',
+      },
+      {
+        name: 'laravel',
+        image: '/laravel.png',
+      },
+      {
+        name: 'tech',
+        image: '/logo-tech.png',
+      },
+      {
+        name: 'tech O',
+        image: '/logo-tech-1.png',
+      },
+    ],
+    link: 'https://creditbook.com'
+  }
 ];
 
 export function meta({ }: Route.MetaArgs) {
@@ -64,32 +131,43 @@ function BoxTopContent({
 }
 
 export default function CaseStudy() {
-  const { case_study_id } = useParams();
-  //console.log(case_study_id)
+  const { slug } = useParams();
+  const caseStudyData = caseStudies.find((casestudy) => casestudy.slug === slug);
+
+  const onLaunchProject = useCallback(() => {
+    if (caseStudyData?.link) {
+      window.location.href = caseStudyData.link;
+    }
+  }, [caseStudyData]);
+
+  if (!caseStudyData) {
+    return <div>Case study not found</div>;
+  }
 
   return (
     <MainLayout>
       <Navbar />
       <Section className="page-3-section pt-20">
         <Heading className="pb-3 lg:!text-7xl" blockText="for Improving Skills">
-          AR-Powered Golf Training App
+          {caseStudyData.title}
         </Heading>
         <p className="my-6 max-w-[46.875rem] font-serif text-xl font-medium">
-          {' '}
-          The best apps in the AI era aren't solo experiences — they're built for collaboration.
-          Coventech delivers customizable, pre-built features to power them.{' '}
+          {caseStudyData.description}
         </p>
-        <button className="flex cursor-pointer rounded bg-gradient-to-r from-[#1F2224] to-[#16181A] to-70% px-5 py-2.5 font-medium transition hover:opacity-90">
+        <button 
+          onClick={onLaunchProject}
+          className="flex cursor-pointer rounded bg-gradient-to-r from-[#1F2224] to-[#16181A] to-70% px-5 py-2.5 font-medium transition hover:opacity-90"
+        >
           <span className="bg-gradient-to-r from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent">
-            lorem ipsum.
+            Launch Project
           </span>
         </button>
       </Section>
       {/* Showcase IMAGE */}
       <div className="showcase-image-container !pointer-events-none relative h-[30rem] md:h-[35rem] lg:h-[43rem] xl:h-[55rem]">
         <img
-          src="/golf-training-app-dashboard.png"
-          alt="Overflowing Image"
+          src={caseStudyData.showcaseImage}
+          alt={`${caseStudyData.title} Dashboard`}
           className="pointer-events-none absolute -top-[3rem] md:-top-20 md:-left-8 lg:-top-[7rem] lg:left-0 xl:-top-36 2xl:-top-[8rem] 2xl:-right-8 2xl:left-[unset]"
         />
         <GradientOverlay
@@ -146,14 +224,14 @@ export default function CaseStudy() {
             />
             <div className="pl-5">
               <Slider className="mt-8 mb-14 divide-x-8">
-                {techStack.map((tech) => (
+                {caseStudyData.techStack.map((tech) => (
                   <Slider.Item key={tech.name} className="mx-4 flex items-center justify-center">
                     <img src={tech.image} alt={tech.name} className="size-20" />
                   </Slider.Item>
                 ))}
               </Slider>
               <p className="no-color text-sm font-medium text-[#878D93]">
-                Duration: <span className="text-white">3 months</span>
+                Duration: <span className="text-white">{caseStudyData.duration}</span>
               </p>
             </div>
             <GradientOverlay
@@ -173,7 +251,7 @@ export default function CaseStudy() {
               text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus modi laudantium, sunt a facilis eos!"
             />
             <p className="no-color absolute bottom-4 left-8 mt-auto text-sm font-medium text-[#878D93]">
-              Location: <span className="text-white">California, United States</span>
+              Location: <span className="text-white">{caseStudyData.location}</span>
             </p>
 
             <img
