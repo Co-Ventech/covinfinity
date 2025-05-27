@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useEffect } from "react"
 import type { ReactNode } from "react"
+import { motion } from "framer-motion"
 
 type OrbitalContextType = {
   activeObject: number
@@ -52,16 +53,20 @@ export function OrbitalSystem({
 }
 
 // The actual orbital visualization component
-function Orbit() {
-  const { activeObject, setActiveObject, isHovering, setIsHovering } = useOrbital()
+interface OrbitProps {
+  className?: string
+}
+
+function Orbit({ className = "" }: OrbitProps) {
+  const { activeObject, setActiveObject } = useOrbital()
 
   // Define 8 orbital radii (but only 7 objects, skipping index 6 which is the 7th orbit)
   const orbits = [60, 90, 120, 150, 180, 210, 240, 270]
   const objectOrbits = [0, 1, 2, 3, 4, 5, 7] // Skip index 6 (7th orbit)
 
   return (
-    <div className="w-full h-screen flex items-center justify-center">
-      <div className={`relative w-[600px] h-[600px] ${isHovering ? 'pause-all-animations' : ''}`}>
+    <div className={`flex items-center justify-center ${className}`}>
+      <div className="relative w-[600px] h-[600px]">
         <svg viewBox="0 0 600 600" className="w-full h-full">
           {/* Define the gradient */}
           <defs>
@@ -104,7 +109,7 @@ function Orbit() {
 
           {/* Orbital circles */}
           {orbits.map((radius, index) => (
-            <circle
+            <motion.circle
               key={index}
               cx="300"
               cy="300"
@@ -112,8 +117,12 @@ function Orbit() {
               fill="none"
               stroke={objectOrbits.includes(index) && objectOrbits.indexOf(index) === activeObject ? `url(#activeLineGradient-${index})` : "url(#inactiveLineGradient)"}
               strokeWidth="1"
-              opacity={objectOrbits.includes(index) && objectOrbits.indexOf(index) === activeObject ? "1" : "0.8"}
-              className="transition-all duration-300"
+              initial={{ opacity: 0.6 }}
+              animate={{
+                opacity: objectOrbits.includes(index) && objectOrbits.indexOf(index) === activeObject ? 1 : 0.6,
+                scale: objectOrbits.includes(index) && objectOrbits.indexOf(index) === activeObject ? 1.02 : 1
+              }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             />
           ))}
 
@@ -124,24 +133,30 @@ function Orbit() {
 
             return (
               <g key={objectIndex}>
-                {/* Rotating container */}
                 <g
                   style={{
                     transformOrigin: "300px 300px",
                     animation: `rotate-${objectIndex} ${45 + objectIndex * 8}s linear infinite`,
-                    animationPlayState: isHovering ? 'paused' : 'running'
                   }}
                 >
-                  <image
+                  <motion.image
                     href={isActive ? "/orbit-active.png" : "/orbit-not-active.png"}
                     x={280 + radius}
                     y={280}
                     width="40"
                     height="40"
-                    className="cursor-pointer transition-opacity duration-300"
-                    style={{
-                      filter: isActive ? 'brightness(1.2)' : 'none',
-                      opacity: isActive ? '1' : '0.8'
+                    className="cursor-pointer"
+                    whileHover={{
+                      scale: 1.15,
+                      transition: { duration: 0.2 }
+                    }}
+                    animate={{
+                      scale: isActive ? [1, 1.1, 1] : 1,
+                      opacity: isActive ? 1 : 0.8,
+                    }}
+                    transition={{
+                      scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+                      opacity: { duration: 0.3 }
                     }}
                     onClick={() => setActiveObject(objectIndex)}
                   />
