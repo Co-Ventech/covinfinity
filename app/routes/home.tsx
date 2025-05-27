@@ -52,11 +52,6 @@ export default function Home() {
         <ServicesSection />
       </div>
       <CaseStudiesGrid />
-      <Section>
-        <OrbitalSystem autoRotate rotationInterval={10000}>
-          <OrbitalSystem.Orbit />
-        </OrbitalSystem>
-      </Section>
     </MainLayout>
   );
 }
