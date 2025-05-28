@@ -297,7 +297,8 @@ const CollaborationChatBot = () => {
         </Box>
 
         {/* Services Section */}
-        <Box className='max-h-[47rem] relative !overflow-hidden'>
+        {/* <Box className='lg:max-h-[47rem] relative !overflow-hidden'> */}
+        <Box className=' relative !overflow-hidden'>
           <div className="m-8">
             <img src="/story.png" alt="Add" className="mr-2 h-8 w-8" />
             <h2 className="mt-3.5 text-lg font-semibold">Services Orbiting Covinfinity</h2>

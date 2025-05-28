@@ -195,7 +195,7 @@ export default function CaseStudy() {
       </Section>
 
       {/* Goals Section */}
-      {/* <Section className="mt-40">
+      <Section className="mt-40">
         <Heading className="mb-6 pb-2 lg:text-7xl" blockText="& Objectives">
           Product Goals
         </Heading>
@@ -203,7 +203,7 @@ export default function CaseStudy() {
           The best apps in the AI era aren't solo experiences — they're built for collaboration.
           Coventech delivers customizable, pre-built features to power them.
         </p>
-      </Section> */}
+      </Section>
 
       {/* ScrollAccordian Section */}
       <ScrollAccordion />
