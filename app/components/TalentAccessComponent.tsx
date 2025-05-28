@@ -11,6 +11,7 @@ import { TalentSearchHeader } from './ui/TalentSearchHeader';
 import { TalentSearchInput } from './ui/TalentSearchInput';
 import { TechnologyFilter } from './ui/TechnologyFilter';
 import Box from './ui/Box';
+import { GradientOverlay } from './ui/GradientOverlay';
 
 const TalentAccessComponent = () => {
   const [activeJobType, setActiveJobType] = useState<number | null>(null);
@@ -126,7 +127,7 @@ const TalentAccessComponent = () => {
         </Box>
 
         {/* Right Section - Globe Visualization */}
-        <Box>
+        <Box className="relative overflow-hidden">
           <div className="mb-5 flex flex-col items-center p-5 text-center">
             <img src="/cup.png" alt="Talent" className="mb-3 h-10 w-10 animate-pulse" />
             <h2 className="text-lg font-semibold">Top talent access</h2>
@@ -134,29 +135,47 @@ const TalentAccessComponent = () => {
               Here client can see list of top talents he can quickly contact/hire based on his needs
             </p>
           </div>
-          <OutlineBox>
-            <div className="flex items-center justify-center">
-              <video
-                autoPlay
-                muted
-                playsInline
-                preload="auto"
-                ref={(ref) => {
-                  if (ref) {
-                    ref.onended = () => {
-                      ref.currentTime = 0;
-                      ref.play();
-                    };
-                  }
-                }}
-                className="pointer-events-none h-[29.8rem] w-full object-cover "
-              >
-                <source src="/Globe.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+          {/* Globe */}
+          <div className="w-[calc(100%+1.5rem)] absolute -bottom-60 left-1/2 -translate-1/2 flex items-center justify-center">
+            <video
+              autoPlay
+              muted
+              playsInline
+              preload="auto"
+              ref={(ref) => {
+                if (ref) {
+                  ref.onended = () => {
+                    ref.currentTime = 0;
+                    ref.play();
+                  };
+                }
+              }}
+              className="pointer-events-none h-[29.8rem] w-full object-cover "
+            >
+              <source src="/Globe.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
 
-          </OutlineBox>
+          {/* Overlays */}
+          <GradientOverlay
+            direction="r"
+            from="background-body"
+            to="background-body/0"
+            className="!w-[7.625rem] !top-[unset] !bottom-0 !h-[calc(100%-10rem)]"
+          />
+          <GradientOverlay
+            direction="r"
+            from="background-body/0"
+            to="background-body"
+            className="!w-[7.625rem] !top-[unset] !left-[unset] !right-0 !bottom-0 !h-[calc(100%-10rem)]"
+          />
+          <GradientOverlay
+            direction="b"
+            from="background-body/0"
+            to="background-body"
+            className="!h-[7.625rem] !top-[unset] !bottom-0"
+          />
         </Box>
       </div>
 
