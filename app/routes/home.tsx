@@ -49,7 +49,7 @@ export default function Home() {
       <TestimonialComponent />
       <div className="mt-6"></div>
       <EcosystemSection />
-      <div className="mb-32">
+      <div className="mb-32 mt-32">
         <ServicesSection />
       </div>
       <CaseStudiesGrid />

@@ -45,47 +45,47 @@ const ContactForm: FC<{
   generateMessageTemplate,
   getCurrentTime,
 }) => (
-  <div className="relative">
-    {/* Display submitted data as a chat message without wrapper div */}
-    {formData.name && (
-      <ChatMessage
-        sender={formData.name}
-        message={generateMessageTemplate()}
-        time={getCurrentTime()}
-        avatar="/john.png"
-      />
-    )}
+    <div className="relative">
+      {/* Display submitted data as a chat message without wrapper div */}
+      {formData.name && (
+        <ChatMessage
+          sender={formData.name}
+          message={generateMessageTemplate()}
+          time={getCurrentTime()}
+          avatar="/john.png"
+        />
+      )}
 
-    {/* Success message after form completion */}
-    {isFormCompleted ? (
-      <div className="mt-4 rounded-lg bg-[#1A1A1A]/60 p-3 text-left">
-        <p className="text-sm text-[#A3A3A3]">
-          Thanks for reaching out! We've received your information and will be in touch soon.
-        </p>
-      </div>
-    ) : (
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex items-center rounded-lg bg-[#101112] p-4">
-          <div className="flex flex-1 items-center text-sm font-medium text-[#EBF5FF]">
-            <img src="/smile-2.png" alt="Add" className="mr-2 size-6 object-contain" />
-            <input
-              type={formStages[formStage].field === 'email' ? 'email' : 'text'}
-              value={inputValue}
-              onChange={handleInputChange}
-              placeholder={formStages[formStage].placeholder}
-              className="flex-1 bg-transparent text-sm text-white placeholder-[#EBF5FF] focus:outline-none"
-            />
-          </div>
-          <div className="flex items-center space-x-3">
-            <button type="submit">
-              <img src="/send-2.png" alt="Submit" className="size-6 object-contain" />
-            </button>
-          </div>
+      {/* Success message after form completion */}
+      {isFormCompleted ? (
+        <div className="mt-4 rounded-lg bg-[#1A1A1A]/60 p-3 text-left">
+          <p className="text-sm text-[#A3A3A3]">
+            Thanks for reaching out! We've received your information and will be in touch soon.
+          </p>
         </div>
-      </form>
-    )}
-  </div>
-);
+      ) : (
+        <form onSubmit={handleFormSubmit}>
+          <div className="flex items-center rounded-lg bg-[#101112] p-4">
+            <div className="flex flex-1 items-center text-sm font-medium text-[#EBF5FF]">
+              <img src="/smile-2.png" alt="Add" className="mr-2 size-6 object-contain" />
+              <input
+                type={formStages[formStage].field === 'email' ? 'email' : 'text'}
+                value={inputValue}
+                onChange={handleInputChange}
+                placeholder={formStages[formStage].placeholder}
+                className="flex-1 bg-transparent text-sm text-white placeholder-[#EBF5FF] focus:outline-none"
+              />
+            </div>
+            <div className="flex items-center space-x-3">
+              <button type="submit">
+                <img src="/send-2.png" alt="Submit" className="size-6 object-contain" />
+              </button>
+            </div>
+          </div>
+        </form>
+      )}
+    </div>
+  );
 
 // SkillButton component
 const SkillButton: FC<{ label: string }> = ({ label }) => (
@@ -190,11 +190,11 @@ export default function ServicesSection() {
   };
 
   return (
-    <Section divClass="relative pt-[17rem]" className="-mt-4">
+    <Section divClass="relative pt-[8rem] lg:pt-[10.5rem] xl:pt-[11.5rem]" className="-mt-4">
       <BgImage
         src="section-lines/talent-section-lines.png"
         // className="-top-22 left-1/2 h-[calc(100%+6rem)] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
-        className="-top-12 left-1/2 -z-10 h-[58rem] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
+        className="!top-0 left-1/2 -z-10 h-[58rem] !bg-contain w-[calc(100%+4.5rem)] -translate-x-1/2 bg-top"
       />
 
       <div className="text-white">
