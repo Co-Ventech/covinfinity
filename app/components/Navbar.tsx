@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
-import { Link } from 'react-router';
+import { NavLink } from 'react-router';
 import { BuyCryptoIcon, CaseStudyIcon, MirrorIcon, ProductIcon } from './svgs';
 
 type DropdownSections = 'products' | 'services' | 'caseStudies';
@@ -81,7 +81,8 @@ const NavItem = ({
   label,
   hasDropdown = false,
   isOpen = false,
-  onClick,
+  onMouseEnter,
+  onMouseLeave,
   dropdownItems = [],
   hideIcon = false,
 }: {
@@ -89,7 +90,8 @@ const NavItem = ({
   label: string;
   hasDropdown?: boolean;
   isOpen?: boolean;
-  onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
   dropdownItems?: string[];
   hideIcon?: boolean;
 }) => {
@@ -99,11 +101,13 @@ const NavItem = ({
       initial="initial"
       whileHover="hover"
       variants={navItemVariants}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       {icon && !hideIcon && <motion.div variants={iconVariants}>{icon}</motion.div>}
 
       {hasDropdown ? (
-        <button onClick={onClick} className="flex items-center font-serif">
+        <div className="flex items-center font-serif">
           {label}
           <motion.svg
             width="10"
@@ -123,7 +127,7 @@ const NavItem = ({
               strokeLinejoin="round"
             />
           </motion.svg>
-        </button>
+        </div>
       ) : (
         <motion.a href="#" whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
           {label}
@@ -141,18 +145,39 @@ const NavItem = ({
               variants={dropdownVariants}
             >
               {dropdownItems.map((item, index) => (
-                <motion.a
+                <motion.div
                   key={item}
-                  href="#"
-                  className="block px-4 py-2"
+                  className="block"
                   custom={index}
                   variants={menuItemVariants}
                   initial="hidden"
                   animate="visible"
                   whileHover="hover"
                 >
-                  {item}
-                </motion.a>
+                  {label === 'Products' ? (
+                    <NavLink to={`/products/${item.toLowerCase()}`} className="block px-4 py-2">
+                      {item}
+                    </NavLink>
+                  ) : label === 'Services' ? (
+                    <NavLink
+                      to={`/services/${item.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
+                      className="block px-4 py-2"
+                    >
+                      {item}
+                    </NavLink>
+                  ) : label === 'Case Studies' ? (
+                    <NavLink
+                      to={`/case-studies/${item.toLowerCase().replace(/ /g, '-')}`}
+                      className="block px-4 py-2"
+                    >
+                      {item}
+                    </NavLink>
+                  ) : (
+                    <a href="#" className="block px-4 py-2">
+                      {item}
+                    </a>
+                  )}
+                </motion.div>
               ))}
             </motion.div>
           )}
@@ -182,17 +207,24 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
 
-  const toggleDropdown = (section: DropdownSections) => {
+  const handleMouseEnter = (section: DropdownSections) => {
     setIsDropdownOpen((prevState) => ({
       ...Object.keys(prevState).reduce(
         (acc, key) => {
-          acc[key as DropdownSections] =
-            key === section ? !prevState[key as DropdownSections] : false;
+          acc[key as DropdownSections] = key === section;
           return acc;
         },
         {} as Record<DropdownSections, boolean>
       ),
     }));
+  };
+
+  const handleMouseLeave = () => {
+    setIsDropdownOpen({
+      products: false,
+      services: false,
+      caseStudies: false,
+    });
   };
 
   const toggleMobileMenu = () => {
@@ -208,7 +240,7 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-between p-8">
-      <div className="flex space-x-19 rounded-[0.625rem] bg-[#151617] px-3.5 py-2 text-white backdrop-blur-md">
+      <div className="z-50 flex space-x-19 rounded-[0.625rem] bg-[#151617] px-3.5 py-2 text-white backdrop-blur-md">
         {/* <motion.div
           className="logo-navbar flex items-center justify-center"
           whileHover={{ scale: 1.05 }}
@@ -216,7 +248,7 @@ const Navbar = () => {
         >
           <img src="/logo-navbar.png" alt="" className="h-9 w-[11.625rem]" />
           </motion.div> */}
-        <Link to="/" className="flex items-center justify-center">
+        <NavLink to="/" className="flex items-center justify-center">
           {/* <motion.div
             className="logo-navbar flex items-center justify-center"
             whileHover={{ scale: 1.05 }}
@@ -224,7 +256,7 @@ const Navbar = () => {
           >
           </motion.div> */}
           <img src="/logo-navbar.png" alt="" className="h-9 w-[11.625rem]" />
-        </Link>
+        </NavLink>
 
         {/* Desktop Navigation - hidden on mobile */}
         <div className="hidden px-1 py-0.5 lg:flex">
@@ -233,8 +265,9 @@ const Navbar = () => {
             label="Products"
             hasDropdown={true}
             isOpen={isDropdownOpen.products}
-            onClick={() => toggleDropdown('products')}
-            dropdownItems={['Product 1', 'Product 2', 'Product 3']}
+            onMouseEnter={() => handleMouseEnter('products')}
+            onMouseLeave={handleMouseLeave}
+            dropdownItems={['Recruitinn', 'Skillbuilder', 'Covental']}
           />
 
           <NavItem
@@ -242,39 +275,46 @@ const Navbar = () => {
             label="Services"
             hasDropdown={true}
             isOpen={isDropdownOpen.services}
-            onClick={() => toggleDropdown('services')}
-            dropdownItems={['Service 1', 'Service 2', 'Service 3']}
+            onMouseEnter={() => handleMouseEnter('services')}
+            onMouseLeave={handleMouseLeave}
+            dropdownItems={[
+              'Software Development',
+              'QA & Test Automation',
+              'UI/UX Designing',
+              'DevOps',
+              'Cybersecurity',
+            ]}
           />
-          <Link to="/case-studies">
-            <NavItem
-              icon={<CaseStudyIcon className="size-[1.375rem]" />}
-              label="Case Studies"
-              hasDropdown={true}
-              isOpen={isDropdownOpen.caseStudies}
-              onClick={() => toggleDropdown('caseStudies')}
-              dropdownItems={['Case Study 1', 'Case Study 2', 'Case Study 3']}
-            />
-          </Link>
 
-          <NavItem icon={<MirrorIcon className="size-[1.375rem]" />} label="About us" />
+          <NavItem
+            icon={<CaseStudyIcon className="size-[1.375rem]" />}
+            label="Case Studies"
+            hasDropdown={true}
+            isOpen={isDropdownOpen.caseStudies}
+            onMouseEnter={() => handleMouseEnter('caseStudies')}
+            onMouseLeave={handleMouseLeave}
+            dropdownItems={['Bykea', 'Example One', 'Example Two', 'Example Three']}
+          />
+
+          {/* <NavItem icon={<MirrorIcon className="size-[1.375rem]" />} label="About us" /> */}
         </div>
       </div>
 
       {/* Desktop Right Side - hidden on mobile */}
-      <div className="hidden rounded-[0.875em] bg-[#151617] p-2 backdrop-blur-md lg:block">
+      <div className="hidden rounded-[0.875em] bg-[#151617] p-2 backdrop-blur-md lg:block z-50">
         <div className="flex space-x-0.5 rounded-[0.625rem] bg-[#212121] p-1">
-          <Link to="/sign-in">
+          <NavLink to="/sign-in">
             <NavItem
               icon={<MirrorIcon className="size-[1.375rem]" />}
               label="Sign in"
               hideIcon={true}
             />
-          </Link>
-          <Link to="/sign-up">
+          </NavLink>
+          <NavLink to="/sign-up">
             <div className="get-started cursor-pointer rounded-lg bg-[#0F1011] px-3 py-2.5 text-white">
               Get Started
             </div>
-          </Link>
+          </NavLink>
         </div>
       </div>
 
@@ -332,9 +372,8 @@ const Navbar = () => {
                   >
                     <span className="text-lg font-semibold">Products</span>
                     <svg
-                      className={`h-5 w-5 transform transition-transform ${
-                        mobileDropdownOpen === 'products' ? 'rotate-180' : ''
-                      }`}
+                      className={`h-5 w-5 transform transition-transform ${mobileDropdownOpen === 'products' ? 'rotate-180' : ''
+                        }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -355,14 +394,14 @@ const Navbar = () => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                       >
-                        {['Product 1', 'Product 2', 'Product 3'].map((item) => (
-                          <a
+                        {['Recruitinn', 'Skillbuilder', 'Covental'].map((item) => (
+                          <NavLink
                             key={item}
-                            href="#"
+                            to={`/products/${item.toLowerCase()}`}
                             className="block rounded-lg py-2 pl-6 hover:bg-[#212121]"
                           >
                             {item}
-                          </a>
+                          </NavLink>
                         ))}
                       </motion.div>
                     )}
@@ -377,9 +416,8 @@ const Navbar = () => {
                   >
                     <span className="text-lg font-semibold">Services</span>
                     <svg
-                      className={`h-5 w-5 transform transition-transform ${
-                        mobileDropdownOpen === 'services' ? 'rotate-180' : ''
-                      }`}
+                      className={`h-5 w-5 transform transition-transform ${mobileDropdownOpen === 'services' ? 'rotate-180' : ''
+                        }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -400,14 +438,20 @@ const Navbar = () => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                       >
-                        {['Service 1', 'Service 2', 'Service 3'].map((item) => (
-                          <a
+                        {[
+                          'Software Development',
+                          'QA & Test Automation',
+                          'UI/UX Designing',
+                          'DevOps',
+                          'Cybersecurity',
+                        ].map((item) => (
+                          <NavLink
                             key={item}
-                            href="#"
+                            to={`/services/${item.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
                             className="block rounded-lg py-2 pl-6 hover:bg-[#212121]"
                           >
                             {item}
-                          </a>
+                          </NavLink>
                         ))}
                       </motion.div>
                     )}
@@ -422,9 +466,8 @@ const Navbar = () => {
                   >
                     <span className="text-lg font-semibold">Case Studies</span>
                     <svg
-                      className={`h-5 w-5 transform transition-transform ${
-                        mobileDropdownOpen === 'caseStudies' ? 'rotate-180' : ''
-                      }`}
+                      className={`h-5 w-5 transform transition-transform ${mobileDropdownOpen === 'caseStudies' ? 'rotate-180' : ''
+                        }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -445,14 +488,14 @@ const Navbar = () => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                       >
-                        {['Case Study 1', 'Case Study 2', 'Case Study 3'].map((item) => (
-                          <a
+                        {['Bykea', 'Example One', 'Example Two', 'Example Three'].map((item) => (
+                          <NavLink
                             key={item}
-                            href="#"
+                            to={`/case-studies/${item.toLowerCase().replace(/ /g, '-')}`}
                             className="block rounded-lg py-2 pl-6 hover:bg-[#212121]"
                           >
                             {item}
-                          </a>
+                          </NavLink>
                         ))}
                       </motion.div>
                     )}
@@ -464,12 +507,12 @@ const Navbar = () => {
                 </a>
 
                 <div className="border-t border-gray-700 pt-4">
-                  <a href="#" className="block rounded-lg px-2 py-2 hover:bg-[#212121]">
+                  <NavLink to="/sign-in" className="block rounded-lg px-2 py-2 hover:bg-[#212121]">
                     Sign in
-                  </a>
-                  <a href="#" className="block rounded-lg px-2 py-2 hover:bg-[#212121]">
+                  </NavLink>
+                  <NavLink to="/sign-up" className="block rounded-lg px-2 py-2 hover:bg-[#212121]">
                     Get Started
-                  </a>
+                  </NavLink>
                 </div>
               </div>
             </motion.div>

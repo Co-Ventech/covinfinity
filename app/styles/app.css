@@ -8,6 +8,7 @@
   --color-border-gradiant-color-2nd: #19191c;
   --color-accordion: #242629;
   --color-accordion-active: #ffe354;
+  --color-bykea: #1AA638;
 
   /* Buttons */
   --color-button-text: #151517;
@@ -147,6 +148,16 @@
     background-clip: unset;
     -webkit-text-fill-color: unset;
     color: unset;
+  }
+
+  .clip-path-bottom {
+    clip-path: polygon(50% 0%, 100% 38%, 100% 100%, 0 100%, 0% 38%);
+  }
+  .clip-path-right {
+    clip-path: polygon(65% 0, 100% 50%, 65% 100%, 0% 100%, 0 51%, 0% 0%);  
+  }
+  .clip-path-left {
+    clip-path: polygon(100% 0%, 100% 49%, 100% 100%, 35% 100%, 0% 50%, 35% 0);  
   }
 
   h1,

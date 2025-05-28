@@ -6,6 +6,7 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
+    "prod": "react-router build && react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,md,json}\""
   },
@@ -23,6 +24,7 @@
     "react-calendly": "^4.3.1",
     "react-dom": "^19.0.0",
     "react-router": "^7.5.0",
+    "swiper": "^11.2.8",
     "three": "^0.175.0"
   },
   "devDependencies": {

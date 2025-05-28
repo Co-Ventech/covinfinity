@@ -1,6 +1,7 @@
 import CaseStudiesGrid from '~/components/CaseStudiesGrid';
 import CollaborationChatBot from '~/components/CollaborationChatBot';
 import Navbar from '~/components/Navbar';
+import OrbitalSystem from '~/components/OrbitalSystem';
 import CollaborationSection from '~/components/sections/CollaborationSection';
 import CompanySliderSection from '~/components/sections/CompanySliderSection';
 import EcosystemSection from '~/components/sections/EcosystemSection';
@@ -12,7 +13,7 @@ import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
     { title: 'Covinfinity | Custom Software Development Company in USA' },
     {
@@ -27,7 +28,7 @@ export default function Home() {
     <MainLayout>
       <div className="showcase relative h-max w-full">
         {/* <SpaceStars /> */}
-        <Starfield count={250} />
+        <Starfield count={50} />
         <Navbar />
         <Hero />
       </div>
@@ -35,7 +36,9 @@ export default function Home() {
         <CompanySliderSection />
       </div>
       <div className="mb-20">
-        <CollaborationChatBot />
+        <OrbitalSystem>
+          <CollaborationChatBot />
+        </OrbitalSystem>
       </div>
       <div className="">
         <CollaborationSection />
