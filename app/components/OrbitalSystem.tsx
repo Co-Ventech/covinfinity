@@ -1,107 +1,23 @@
 "use client"
 
 import { motion } from "framer-motion"
-import type { ReactNode } from "react"
-import { createContext, useContext, useEffect, useState } from "react"
-import { aeChatData } from "~/data/chatData"
-
-type OrbitalContextType = {
-  activeObject: number
-  setActiveObject: (index: number) => void
-  isHovering: boolean
-  setIsHovering: (state: boolean) => void
-}
-
-const OrbitalContext = createContext<OrbitalContextType | null>(null)
-
-export function useOrbital() {
-  const context = useContext(OrbitalContext)
-  if (!context) {
-    throw new Error("useOrbital must be used within an OrbitalSystem")
-  }
-  return context
-}
 
 interface OrbitalSystemProps {
-  children: ReactNode
-  autoRotate?: boolean
-  rotationInterval?: number
-  initialActive?: number
-}
-
-export function OrbitalSystem({
-  children,
-  autoRotate = true,
-  rotationInterval = 7000,
-  initialActive = 4
-}: OrbitalSystemProps) {
-  const [activeObject, setActiveObject] = useState(initialActive)
-  const [isHovering, setIsHovering] = useState(false)
-  const [isUserChatActive, setIsUserChatActive] = useState(false)
-
-  // Function to get next valid object index
-  const getNextValidIndex = (currentIndex: number) => {
-    let nextIndex = (currentIndex + 1) % 7;
-    // Skip index 5 (user chat) during auto rotation
-    return nextIndex === 5 ? (nextIndex + 1) % 7 : nextIndex;
-  };
-
-  // Update active object handler
-  const handleSetActiveObject = (index: number) => {
-    setActiveObject(index);
-    if (index === 5) {
-      setIsUserChatActive(true);
-    }
-  };
-
-  useEffect(() => {
-    // Don't auto-rotate if:
-    // 1. autoRotate is false
-    // 2. user is hovering
-    // 3. user chat is active
-    if (!autoRotate || isHovering || isUserChatActive) return;
-
-    const interval = setInterval(() => {
-      setActiveObject(prev => getNextValidIndex(prev));
-    }, rotationInterval);
-
-    return () => clearInterval(interval);
-  }, [autoRotate, rotationInterval, isHovering, isUserChatActive]);
-
-  return (
-    <OrbitalContext.Provider value={{
-      activeObject,
-      setActiveObject: handleSetActiveObject,
-      isHovering,
-      setIsHovering
-    }}>
-      {children}
-    </OrbitalContext.Provider>
-  )
-}
-
-// The actual orbital visualization component
-interface OrbitProps {
   className?: string
-  onChatChange?: (chats: any[]) => void
+  activeChat: number
+  setActiveChat: (index: number) => void
+  isLiveChat: boolean
 }
 
-function Orbit({ className = "", onChatChange }: OrbitProps) {
-  const { activeObject, setActiveObject } = useOrbital()
-
-  function handleClick(objectIndex: number) {
-    // Prevent clicking on user chat object (index 5)
-    if (objectIndex === 5) return;
-
-    if (onChatChange) {
-      onChatChange(aeChatData.at(objectIndex) || [])
-    }
-    setActiveObject(objectIndex)
-  }
-
+export default function OrbitalSystem({ className = "", activeChat, setActiveChat, isLiveChat }: OrbitalSystemProps) {
   // Define 8 orbital radii (but only 7 objects, skipping index 6 which is the 7th orbit)
   const orbits = [60, 90, 120, 150, 180, 210, 240, 270]
   const objectOrbits = [0, 1, 2, 3, 4, 5, 7] // Skip index 6 (7th orbit)
+
+  function handleClick(objectIndex: number) {
+    if (objectIndex === 5 || isLiveChat) return;
+    setActiveChat(objectIndex);
+  }
 
   return (
     <div className={`flex items-center justify-center ${className}`}>
@@ -154,12 +70,12 @@ function Orbit({ className = "", onChatChange }: OrbitProps) {
               cy="300"
               r={radius}
               fill="none"
-              stroke={objectOrbits.includes(index) && objectOrbits.indexOf(index) === activeObject ? `url(#activeLineGradient-${index})` : "url(#inactiveLineGradient)"}
+              stroke={objectOrbits.includes(index) && objectOrbits.indexOf(index) === activeChat ? `url(#activeLineGradient-${index})` : "url(#inactiveLineGradient)"}
               strokeWidth="1"
               initial={{ opacity: 0.6 }}
               animate={{
-                opacity: objectOrbits.includes(index) && objectOrbits.indexOf(index) === activeObject ? 1 : 0.6,
-                scale: objectOrbits.includes(index) && objectOrbits.indexOf(index) === activeObject ? 1.02 : 1
+                opacity: objectOrbits.includes(index) && objectOrbits.indexOf(index) === activeChat ? 1 : 0.6,
+                scale: objectOrbits.includes(index) && objectOrbits.indexOf(index) === activeChat ? 1.02 : 1
               }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             />
@@ -168,7 +84,7 @@ function Orbit({ className = "", onChatChange }: OrbitProps) {
           {/* Rotating objects */}
           {objectOrbits.map((orbitIndex, objectIndex) => {
             const radius = orbits[orbitIndex]
-            const isActive = objectIndex === activeObject
+            const isActive = objectIndex === activeChat
             const isUserChat = objectIndex === 5
 
             return (
@@ -244,8 +160,3 @@ function Orbit({ className = "", onChatChange }: OrbitProps) {
     </div>
   )
 }
-
-// Attach Orbit as a subcomponent
-OrbitalSystem.Orbit = Orbit
-
-export default OrbitalSystem

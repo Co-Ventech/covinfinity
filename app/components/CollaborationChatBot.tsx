@@ -1,16 +1,13 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import { aeChatData } from '~/data/chatData';
-import useChat from '~/hooks/useChat';
-import type { ChatMessage } from '~/hooks/useChat';
-import { formatTime } from '~/utils/formatters';
+import { motion } from 'framer-motion';
+import { useChatContext } from '~/contexts/ChatContext';
 import BgImage from './BgImage';
-import OrbitalSystem, { useOrbital } from './OrbitalSystem';
+import ChatPanel from './ChatPanel';
+import OrbitalSystem from './OrbitalSystem';
 import AnimatedLine from './ui/AnimatedLine';
 import Box from './ui/Box';
 import { GradientOverlay } from './ui/GradientOverlay';
 import Heading from './ui/Heading';
 import Section from './ui/Section';
-import { useEffect } from 'react';
 
 // Define animations as constants for reuse
 const springTransition = {
@@ -125,47 +122,26 @@ const OrbitalAnimation = () => (
   </div>
 );
 
-const CollaborationChatBot = () => {
+export default function CollaborationChatBot() {
   const {
-    chats,
-    setChats,
-    userMessage,
-    setUserMessage,
-    sendMessage,
+    activeChat,
+    setActiveChat,
+    dummyConvos,
+    userConvo,
+    sendUserMessage,
+    isLiveChat,
     isLoading,
-    isSending,
-    chatContainerRef,
-    inputRef,
-    hasUserSentFirstMessage,
-  } = useChat({
-    initialChats: aeChatData[0],
-    userAvatar: '/john.png',
-    aiAvatar: '/sarah.png',
-    userName: 'Winston',
-    aiName: 'Sarah',
+    error,
+  } = useChatContext();
+
+  console.log('CollaborationChatBot render:', {
+    activeChat,
+    isLiveChat,
+    userConvo,
+    dummyConvos: dummyConvos?.length,
+    isLoading,
+    error
   });
-
-  const { setActiveObject } = useOrbital();
-
-  // When user starts typing or sending message, activate live chat orbit
-  useEffect(() => {
-    if (hasUserSentFirstMessage || userMessage.length > 0) {
-      setActiveObject(5); // Set to live chat orbit
-    }
-  }, [hasUserSentFirstMessage, userMessage, setActiveObject]);
-
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
-  };
-
-  const handleChatChange = (newChats: ChatMessage[]) => {
-    if (!hasUserSentFirstMessage) { // Only allow changing chats if user hasn't started live chat
-      setChats(newChats);
-    }
-  };
 
   return (
     <Section className="!overflow-visible" divClass="!overflow-visible relative pt-50 xl:pt-60">
@@ -175,130 +151,23 @@ const CollaborationChatBot = () => {
           The most complete experience for businesses & individual clients
         </p>
       </div>
-
       {/* Main Content Grid */}
       <div className="relative grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Chat Section - Takes up 2 columns */}
         <Box className="lg:col-span-2">
-          {/* Chat Header */}
-          <div className="ml-10 p-5 !pb-0">
-            <div className="mt-3 w-[21rem] space-y-3 max-sm:w-[calc(100%-3rem)]">
-              <img src="/chart.png" alt="Add" className="mr-2 h-8.5 w-8.5" />
-              <div>
-                <h2 className="text-lg font-semibold">Collaboration between AE & Client</h2>
-                <p className="mt-1 text-[13px] text-[#665F5F]">
-                  From deployments to tasks, work with your team every step of the way.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Chat Messages and Input Container */}
-          <Box.Inner className="relative mt-14 flex max-h-[31rem] min-h-[31rem] !w-full flex-col overflow-hidden rounded-3xl p-3.5 !pt-0">
-            {/* Messages */}
-            <div
-              ref={chatContainerRef}
-              className="scrollbar-hide !w-full flex-1 space-y-0 overflow-y-auto scroll-smooth px-4 pt-2"
-              style={{
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none',
-                maxHeight: 'calc(32rem - 4rem)', // Subtract input height and padding
-              }}
-            >
-              <style
-                dangerouslySetInnerHTML={{
-                  __html: `
-                  .scrollbar-hide::-webkit-scrollbar {
-                    display: none;
-                  }
-                  .scroll-smooth {
-                    scroll-behavior: smooth;
-                  }
-                `,
-                }}
-              />
-
-              <AnimatePresence mode="popLayout">
-                {chats.map((chat, index) => (
-                  <ChatMessage
-                    key={index}
-                    time={chat.time}
-                    sender={chat.sender}
-                    message={chat.message}
-                    avatar={chat.avatar}
-                    animate={index === chats.length - 1}
-                  />
-                ))}
-                {isLoading && (
-                  <motion.div
-                    className="mb-1 flex items-start space-x-2"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <img src="/sarah.png" alt="Sarah" className="h-5 w-5 rounded-full" />
-                    <div className="flex-1">
-                      <div className="flex items-center space-x-2">
-                        <span className="text-xs text-white">Sarah</span>
-                        <span className="text-xs text-[#665F5F]">{formatTime()}</span>
-                      </div>
-                      <LoadingIndicator />
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Chat Input */}
-            <div className="sticky bottom-0 -mx-4 px-4 py-3">
-              <motion.div
-                className={`flex flex-1 items-center justify-between rounded-lg bg-[#101112] px-3 py-1 ${isLoading ? 'opacity-90' : ''}`}
-                animate={{
-                  scale: isSending ? 0.98 : 1,
-                  opacity: isSending ? 0.9 : isLoading ? 0.9 : 1,
-                  y: isSending ? 10 : 0,
-                  border: isLoading
-                    ? '1px solid rgba(100, 100, 100, 0.2)'
-                    : '1px solid transparent',
-                }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 300,
-                  damping: 20,
-                  duration: 0.2,
-                }}
-              >
-                <div className="flex flex-1 items-center bg-[#101112] py-2.5">
-                  <img src="/smile.png" alt="Add" className="mr-2 h-5 w-5" />
-                  <input
-                    ref={inputRef}
-                    type="text"
-                    placeholder={isLoading ? 'Sarah is thinking...' : 'Message to Sarah'}
-                    className={`flex-1 bg-transparent text-[13px] text-white placeholder-[#EBF5FF]/30 transition-opacity duration-200 focus:outline-none ${isLoading ? 'opacity-60' : ''}`}
-                    value={userMessage}
-                    onChange={(e) => setUserMessage(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    disabled={isLoading}
-                  />
-                </div>
-                <div className="flex items-center space-x-3">
-                  <motion.img
-                    src="/send.png"
-                    alt="Send"
-                    className={`mr-2 h-5 w-5 cursor-pointer ${isLoading ? 'opacity-50' : ''}`}
-                    onClick={isLoading ? undefined : () => sendMessage()}
-                    whileHover={isLoading ? {} : { scale: 1.1 }}
-                    whileTap={isLoading ? {} : { scale: 0.9 }}
-                  />
-                </div>
-              </motion.div>
-            </div>
-          </Box.Inner>
+          <ChatPanel
+            activeChat={activeChat}
+            dummyConvos={dummyConvos}
+            userConvo={userConvo}
+            sendUserMessage={sendUserMessage}
+            isLiveChat={isLiveChat}
+            isLoading={isLoading}
+            error={error}
+            setActiveChat={setActiveChat}
+          />
         </Box>
-
-        {/* Services Section */}
-        {/* <Box className='lg:max-h-[47rem] relative !overflow-hidden'> */}
-        <Box className=' relative !overflow-hidden'>
+        {/* Services Section (Orbit UI) */}
+        <Box className='relative !overflow-hidden'>
           <div className="m-8">
             <img src="/story.png" alt="Add" className="mr-2 h-8 w-8" />
             <h2 className="mt-3.5 text-lg font-semibold">Services Orbiting Covinfinity</h2>
@@ -306,11 +175,12 @@ const CollaborationChatBot = () => {
               From deployments to tasks, work with your team every step of the way.
             </p>
           </div>
-          <OrbitalSystem.Orbit
+          <OrbitalSystem
             className='h-[47.5rem] -bottom-36 w-[calc(100%+20rem)] mt-14 absolute left-1/2 -translate-x-1/2'
-            onChatChange={handleChatChange}
+            activeChat={activeChat}
+            setActiveChat={setActiveChat}
+            isLiveChat={isLiveChat}
           />
-
           {/* Overlays */}
           <GradientOverlay
             direction="r"
@@ -332,7 +202,6 @@ const CollaborationChatBot = () => {
           />
         </Box>
       </div>
-
       {/* Animated Lines */}
       <AnimatedLine
         heightRem="11.35rem"
@@ -345,14 +214,12 @@ const CollaborationChatBot = () => {
         className="!absolute -top-4 -left-54 xl:hidden"
       />
       <AnimatedLine heightRem="7.5rem" widthRem="15.7rem" className="!absolute -top-4 left-44" />
-
       {/* BG Lines, Effects */}
       <BgImage
         src="section-lines/chatbot-v2.png"
         className="top-10 !left-1/2 -z-10 mx-auto -ml-1.5 hidden h-[calc(100%+10rem)] w-[calc(100%+2rem)] !-translate-x-1/2 !bg-contain md:block"
       />
     </Section>
-  );
-};
 
-export default CollaborationChatBot;
+  );
+}
