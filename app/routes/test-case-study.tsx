@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import type { Route } from './+types/case-study';
+import type { Route } from './+types/test-case-study';
 
 import Navbar from '~/components/Navbar';
 import CollaborationSection from '~/components/sections/CollaborationSection';
