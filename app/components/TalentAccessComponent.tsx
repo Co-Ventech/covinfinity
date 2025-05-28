@@ -56,11 +56,10 @@ const TalentAccessComponent = () => {
   };
 
   return (
-    <Section className="text-white" divClass="relative pt-[12rem] xl:pt-52">
+    <Section className="text-white xl:mt-12" divClass="relative pt-32 xl:pt-44">
       <BgImage
         src="section-lines/talent-section-lines-3rd.png"
-        // className="-top-22 left-1/2 h-[calc(100%+6rem)] w-[calc(100%+6rem)] -translate-x-1/2 bg-top"
-        className="xl:top-8 left-1/2 -z-10 h-[58rem] w-[calc(100%+5rem)] -translate-x-1/2 bg-top !bg-contain"
+        className="xl:top-0 left-1/2 -z-10 h-[58rem] w-[calc(100%+3.5rem)] -translate-x-1/2 !bg-contain"
       />
 
       {/* Header Section */}
@@ -137,24 +136,24 @@ const TalentAccessComponent = () => {
           </div>
           <OutlineBox>
             <div className="flex items-center justify-center">
-                <video
-                  autoPlay
-                  muted
-                  playsInline
-                  preload="auto"
-                  ref={(ref) => {
-                    if (ref) {
-                      ref.onended = () => {
-                        ref.currentTime = 0;
-                        ref.play();
-                      };
-                    }
-                  }}
-                  className="pointer-events-none h-[29.8rem] w-full object-cover "
-                >
-                  <source src="/Globe.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+              <video
+                autoPlay
+                muted
+                playsInline
+                preload="auto"
+                ref={(ref) => {
+                  if (ref) {
+                    ref.onended = () => {
+                      ref.currentTime = 0;
+                      ref.play();
+                    };
+                  }
+                }}
+                className="pointer-events-none h-[29.8rem] w-full object-cover "
+              >
+                <source src="/Globe.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
 
           </OutlineBox>
