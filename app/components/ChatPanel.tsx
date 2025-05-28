@@ -50,25 +50,37 @@ export const ChatMessage = ({
 
 const LoadingIndicator = () => (
   <motion.div
-    className="flex items-center space-x-1"
+    className="flex items-center space-x-1.5"
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 0.3 }}
   >
     <motion.div
-      className="h-2 w-2 rounded-full bg-gray-400"
+      className="h-2.5 w-2.5 rounded-full bg-[#A3A3A3]"
       animate={{ scale: [1, 1.2, 1] }}
       transition={{ repeat: Infinity, duration: 1, repeatType: 'loop', times: [0, 0.5, 1] }}
     />
     <motion.div
-      className="h-2 w-2 rounded-full bg-gray-400"
+      className="h-2.5 w-2.5 rounded-full bg-[#A3A3A3]"
       animate={{ scale: [1, 1.2, 1] }}
-      transition={{ repeat: Infinity, duration: 1, repeatType: 'loop', times: [0, 0.5, 1], delay: 0.2 }}
+      transition={{
+        repeat: Infinity,
+        duration: 1,
+        repeatType: 'loop',
+        times: [0, 0.5, 1],
+        delay: 0.2,
+      }}
     />
     <motion.div
-      className="h-2 w-2 rounded-full bg-gray-400"
+      className="h-2.5 w-2.5 rounded-full bg-[#A3A3A3]"
       animate={{ scale: [1, 1.2, 1] }}
-      transition={{ repeat: Infinity, duration: 1, repeatType: 'loop', times: [0, 0.5, 1], delay: 0.4 }}
+      transition={{
+        repeat: Infinity,
+        duration: 1,
+        repeatType: 'loop',
+        times: [0, 0.5, 1],
+        delay: 0.4,
+      }}
     />
   </motion.div>
 );
@@ -173,18 +185,20 @@ export default function ChatPanel({
             })}
             {isLoading && (
               <motion.div
-                className="mb-1 flex items-start space-x-2"
+                className="mb-4 flex max-w-[43.75em] items-start gap-3 animate-pulse"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <img src="/sarah.png" alt="Sarah" className="h-5 w-5 rounded-full" />
+                <img src="/sarah.png" alt="Sarah" className="h-10 w-10 rounded-full" />
                 <div className="flex-1">
                   <div className="flex items-center space-x-2">
-                    <span className="text-xs text-white">Sarah</span>
+                    <span className="font-serif text-lg font-semibold text-white">Sarah</span>
                     <span className="text-xs text-[#665F5F]">{formatTime()}</span>
                   </div>
-                  <LoadingIndicator />
+                  <div className="mt-1">
+                    <LoadingIndicator />
+                  </div>
                 </div>
               </motion.div>
             )}
