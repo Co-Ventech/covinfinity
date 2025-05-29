@@ -39,7 +39,7 @@ export const TopHeroSection: React.FC = () => (
 
     <p className="!mx-auto mb-6 !max-w-[43rem] font-serif text-xl font-medium">
       <GradientText className="!from-[#EBF5FF]/56 !to-[#EBF5FF]/48 to-20%">
-        The best apps in the AI era aren’t solo experiences—they’re collaborative. Coventech
+        The best apps in the AI era aren't solo experiences—they're collaborative. Coventech
         provides customizable pre‑built features
       </GradientText>
     </p>
@@ -48,14 +48,16 @@ export const TopHeroSection: React.FC = () => (
       {/* <button className="cursor-pointer rounded-lg bg-gradient-to-tr from-[#C2C2C2] to-[#FFFFFF] px-5 py-2.5 font-serif text-base font-medium text-button-text transition hover:opacity-90">
         Book a demo
       </button> */}
-      <Button>Book a demo</Button>
+      <Button to="/connect">Book a demo</Button>
 
-      <button className="flex rounded px-5 py-2.5 font-medium transition hover:opacity-90">
-        <span className="bg-gradient-to-r from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent">
-          Start today for free
-        </span>
-        <img src="/right-icon.png" alt="arrow-icon" className="mt-2 ml-2 h-2 w-2" />
-      </button>
+      <a href="/sign-up">
+        <button className="flex rounded px-5 py-2.5 font-medium transition hover:opacity-90 animate-pulse ">
+          <span className="bg-gradient-to-r from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent">
+            Start today for free
+          </span>
+          <img src="/right-icon.png" alt="arrow-icon" className="mt-2 ml-2 h-2 w-2" />
+        </button>
+      </a>
     </div>
   </PolygonSection>
 );

@@ -14,6 +14,7 @@ interface DeveloperProfileProps {
 
 export const DeveloperProfile = ({ developer, isFirst = false }: DeveloperProfileProps) => {
   const navigate = useNavigate();
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleSetInterview = () => {
     // Open the connect page in a new tab
@@ -21,8 +22,17 @@ export const DeveloperProfile = ({ developer, isFirst = false }: DeveloperProfil
   };
   const shouldHighlight = true;
 
+  // Choose gradient based on hover
+  const buttonGradient = isHovered
+    ? 'bg-gradient-to-r from-[#1F2224] to-[#16181A] to-70%' // Active (current)
+    : 'bg-gradient-to-r from-[#16181A] via-[#16181A] via-31% to-[#0B0C0D] to-100%'; // Non-active (from your image)
+
   return (
-    <div className="rounded-xl p-3 hover:bg-background-body">
+    <div
+      className="rounded-xl p-3 hover:bg-background-body"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div className="flex items-start space-x-3 border-b-0 pt-3">
         <img src={developer.avatar} alt={developer.name} className="h-5 w-5 rounded-full" />
         <div className="flex-1">
@@ -46,7 +56,7 @@ export const DeveloperProfile = ({ developer, isFirst = false }: DeveloperProfil
           >
             <button
               onClick={handleSetInterview}
-              className="flex cursor-pointer rounded bg-gradient-to-r from-[#1F2224] to-[#16181A] to-70% px-5 py-2.5 font-medium transition hover:opacity-90"
+              className={`flex cursor-pointer rounded ${buttonGradient} px-5 py-2.5 font-medium transition hover:opacity-90`}
             >
               <span className="bg-gradient-to-r from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent">
                 Set Interview
