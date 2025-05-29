@@ -24,7 +24,7 @@ export const ROUTES = {
   PRODUCT: (name: string) => `/products/${slugify(name)}`,
   DASHBOARD: '/dashboard',
   LOGIN: '/login',
-  REGISTER: '/register',
+  REGISTER: '/signup',
   PROFILE: '/profile',
   SETTINGS: '/settings',
   NOT_FOUND: '*',

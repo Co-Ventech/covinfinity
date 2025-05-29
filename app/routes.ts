@@ -9,7 +9,7 @@ export default [
   route('products/:slug', './routes/product.tsx'),
   route('case-studies', './routes/case-studies.tsx'),
   route('case-studies/:slug', './routes/test-case-study.tsx'),
-  route('sign-in', './routes/SignIn.tsx'),
-  route('sign-up', './routes/SignUp.tsx'),
+  route('login', './routes/SignIn.tsx'),
+  route('signup', './routes/SignUp.tsx'),
   route('*', './routes/404.tsx'),
 ] satisfies RouteConfig;
