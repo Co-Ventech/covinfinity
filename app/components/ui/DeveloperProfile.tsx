@@ -1,9 +1,7 @@
 // components/talent/DeveloperProfile.tsx
-import { AnimatePresence, motion } from 'framer-motion';
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { motion } from 'framer-motion';
+import { ROUTES } from '~/constants/routes';
 import type { Developer } from '../../data/talentData';
-import GradientBorderButton from './GradientBorderButton';
 import { RecommendedBadge } from './RecommendedBadge';
 import { TechBadge } from './TechBadge';
 
@@ -13,11 +11,10 @@ interface DeveloperProfileProps {
 }
 
 export const DeveloperProfile = ({ developer, isFirst = false }: DeveloperProfileProps) => {
-  const navigate = useNavigate();
 
   const handleSetInterview = () => {
     // Open the connect page in a new tab
-    window.open('/connect', '_blank');
+    window.open(ROUTES.BOOK_A_DEMO, '_blank');
   };
   const shouldHighlight = true;
 

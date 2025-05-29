@@ -7,7 +7,7 @@ export const ROUTES = {
   ABOUT: '/about',
   SERVICES: '/services',
   CONTACT: '/contact',
-  CONNECT: '/connect',
+  BOOK_A_DEMO: '/book-a-demo',
   CASE_STUDIES: '/case-study',
   CASE_STUDY: (id: string) => `/case-study/${id}`,
   DASHBOARD: '/dashboard',
