@@ -49,11 +49,11 @@ export default function Footer() {
                 Case Studies
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to={ROUTES.ABOUT} className="inline-block py-2 hover:underline">
                 About
               </NavLink>
-            </li>
+            </li> */}
           </ul>
         </nav>
 
