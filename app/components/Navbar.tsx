@@ -293,7 +293,7 @@ const Navbar = () => {
             isOpen={isDropdownOpen.caseStudies}
             onMouseEnter={() => handleMouseEnter('caseStudies')}
             onMouseLeave={handleMouseLeave}
-            dropdownItems={['Bykea', 'Example One', 'Example Two', 'Example Three']}
+            dropdownItems={['Bykea', 'BlueFin', 'CreditBook']}
           />
 
           {/* <NavItem icon={<MirrorIcon className="size-[1.375rem]" />} label="About us" /> */}
