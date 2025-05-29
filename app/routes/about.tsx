@@ -2,10 +2,13 @@ import React from 'react';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/about';
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
-    { title: 'About - Co-Ventech' },
-    { name: 'description', content: 'Learn about Co-Ventech and our mission' },
+    { title: 'About - Covinfinity | Custom Software Development Company' },
+    {
+      name: 'description',
+      content: 'Learn about Covinfinity, our mission, values, and how we empower businesses with cutting-edge technology solutions.',
+    },
   ];
 }
 

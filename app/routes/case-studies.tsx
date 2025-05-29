@@ -10,12 +10,12 @@ import Section from '~/components/ui/Section';
 import { MainLayout } from '~/layouts/MainLayout';
 import type { Route } from './+types/case-studies';
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
-    { title: 'Covinfinity | Custom Software Development Company in USA' },
+    { title: 'Case Studies - Covinfinity | Custom Software Development Success Stories' },
     {
       name: 'description',
-      content: 'Empowering businesses with cutting-edge technology solutions',
+      content: 'Discover how Covinfinity has helped businesses transform through innovative software solutions. Read our detailed case studies and success stories.',
     },
   ];
 }

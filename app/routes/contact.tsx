@@ -3,12 +3,12 @@ import { MainLayout } from '../layouts/MainLayout';
 import { Button } from '../components/ui/LegacyButton';
 import type { Route } from './+types/contact';
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
-    { title: 'Contact - Co-Ventech' },
+    { title: 'Contact - Covinfinity | Custom Software Development Company' },
     {
       name: 'description',
-      content: 'Get in touch with Co-Ventech for your business needs',
+      content: 'Get in touch with Covinfinity for your custom software development needs. Schedule a consultation to discuss your project requirements.',
     },
   ];
 }

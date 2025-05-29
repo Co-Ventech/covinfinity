@@ -9,10 +9,10 @@ import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/service';
 export function meta({ }: Route.MetaArgs) {
   return [
-    { title: 'Service - Co-Ventech' },
+    { title: 'Services - Covinfinity | Custom Software Development Company' },
     {
       name: 'description',
-      content: 'Explore the service offered by Co-Ventech',
+      content: 'Explore our comprehensive range of software development services including custom development, QA & testing, UI/UX design, DevOps, and cybersecurity solutions.',
     },
   ];
 }
