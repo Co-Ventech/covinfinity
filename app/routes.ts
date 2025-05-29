@@ -11,4 +11,5 @@ export default [
   route('case-studies/:slug', './routes/test-case-study.tsx'),
   route('sign-in', './routes/SignIn.tsx'),
   route('sign-up', './routes/SignUp.tsx'),
+  route('*', './routes/404.tsx'),
 ] satisfies RouteConfig;
