@@ -102,17 +102,8 @@ export default function ChatPanel({
   // Update chat selection logic and add logging
   const chats = isLiveChat ? userConvo : (dummyConvos[activeChat] || []);
 
-  console.log('ChatPanel render:', {
-    isLiveChat,
-    activeChat,
-    userConvo,
-    chats,
-    isLoading
-  });
-
   // Force scroll to bottom when chats update
   useEffect(() => {
-    console.log('Scrolling to bottom, chats length:', chats.length);
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
@@ -127,9 +118,7 @@ export default function ChatPanel({
 
   const handleSendMessage = () => {
     if (!userMessage.trim()) return;
-    console.log('Sending message:', userMessage, 'isLiveChat:', isLiveChat);
     if (!isLiveChat) {
-      console.log('Switching to live chat');
       setActiveChat(-1); // Switch to live chat
     }
     sendUserMessage(userMessage);
@@ -171,7 +160,6 @@ export default function ChatPanel({
           />
           <AnimatePresence mode="popLayout">
             {chats.map((chat: any, index: number) => {
-              console.log('Rendering chat message:', chat);
               return (
                 <ChatMessage
                   key={index}
@@ -259,4 +247,4 @@ export default function ChatPanel({
       </Box.Inner>
     </>
   );
-} 
+}

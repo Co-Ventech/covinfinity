@@ -134,15 +134,6 @@ export default function CollaborationChatBot() {
     error,
   } = useChatContext();
 
-  console.log('CollaborationChatBot render:', {
-    activeChat,
-    isLiveChat,
-    userConvo,
-    dummyConvos: dummyConvos?.length,
-    isLoading,
-    error
-  });
-
   return (
     <Section className="!overflow-visible" divClass="!overflow-visible relative pt-50 xl:pt-60">
       <div className="mb-16">

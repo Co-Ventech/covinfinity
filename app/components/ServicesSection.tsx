@@ -176,7 +176,6 @@ export default function ServicesSection() {
       // Mark form as completed
       setIsFormCompleted(true);
       // Form complete logic would go here (e.g., API submission)
-      console.log('Form submitted:', { ...formData, [currentField]: inputValue });
     }
 
     // Clear input for next field
