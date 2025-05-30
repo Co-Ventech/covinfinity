@@ -13,27 +13,28 @@ import { CASE_STUDIES } from '~/data/caseStudiesPagesData';
 import { MainLayout } from '~/layouts/MainLayout';
 import type { Route } from './+types/test-case-study';
 
-export function meta({ }: Route.MetaArgs) {
+export function meta({ params }: Route.MetaArgs) {
+  const caseStudy = CASE_STUDIES.find((study) => study.slug === params.slug);
   return [
-    { title: 'Covinfinity | Case Study' },
+    { title: `Covinfinity | ${caseStudy?.title || 'Case Study'}` },
     {
       name: 'description',
-      content: 'Empowering businesses with cutting-edge technology solutions on Other Routes',
+      content: caseStudy?.description || 'Empowering businesses with cutting-edge technology solutions',
     },
   ];
 }
 
 interface BoxTopContent {
   icon?: React.ReactNode;
-  heading?: string;
-  text?: string;
+  heading: string;
+  text: string;
 }
 
 function BoxTopContent({
   icon = <CustomIcon />,
-  heading = 'About Bykea',
-  text = 'Founded in 2016, Bykea has grown into Pakistan\'s leading mobility super app with over 5 million customers and 1.7 million monthly active users. The platform leverages ML algorithms and Google Maps Platform to optimize its network of 30,000+ riders.'
-}) {
+  heading,
+  text
+}: BoxTopContent) {
   return (
     <div className="wrap max-w-[42rem] space-y-3 px-5">
       <div className="flex items-center justify-start gap-3.5">
@@ -63,7 +64,7 @@ export default function CaseStudy() {
     <MainLayout>
       <Navbar />
       <Section className="page-3-section pt-20">
-        <Heading className="pb-3 lg:!text-7xl" blockText="for Improving Skills">
+        <Heading className="pb-3 lg:!text-7xl" blockText="Case Study">
           {caseStudyData.title}
         </Heading>
         <p className="my-6 max-w-[46.875rem] font-serif text-xl font-medium">
@@ -109,18 +110,20 @@ export default function CaseStudy() {
       <Section>
         <Heading className="pb-3 !text-center lg:!text-6xl" blockText="Stacks and Duration">
           About The Challenge, Location, Tech
-        </Heading>{' '}
+        </Heading>
         <p className="mx-auto my-6 max-w-[46.875rem] text-center font-serif text-xl font-medium">
-          The best apps in the AI era aren&apos;t solo experiences — they&apos;re built for
-          collaboration. Coventech delivers customizable, pre-built features to power them.
+          {caseStudyData.description}
         </p>
         <div className="grid grid-cols-1 grid-rows-[1fr_0.5fr_0.5fr] gap-6 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-[1.5fr_1fr]">
           <Box className="relative overflow-hidden p-8 md:col-span-1 md:row-span-2">
-            <BoxTopContent />
+            <BoxTopContent
+              heading={`About ${caseStudyData.title.split('-')[0]}`}
+              text={caseStudyData.description}
+            />
             <div className="image-wrapper relative max-h-[34rem]">
               <img
-                src="/dashboard-normal.png"
-                alt="Dashboard the second"
+                src={caseStudyData.showcaseImage}
+                alt={`${caseStudyData.title} Overview`}
                 className="cursor-poin max--w-[calc(100%+23rem)] pointer-events-none relative top-8 left-4 min-w-[calc(100%+23rem)] object-cover"
               />
             </div>
@@ -134,7 +137,7 @@ export default function CaseStudy() {
           <Box className="relative max-h-[23.4375rem] overflow-hidden md:col-start-2">
             <BoxTopContent
               heading="Tech Stack & Achievements"
-              text="Using Google Maps Platform's Distance Matrix API and ML algorithms, Bykea achieved a 20% reduction in 'dead miles', 15% time savings per transaction, and halved the number of drivers needed per city. The platform supports Urdu voice commands through Google Assistant integration."
+              text={`${caseStudyData.title.split('-')[0]} leverages cutting-edge technology to deliver innovative solutions and achieve remarkable results in ${caseStudyData.location}.`}
             />
             <div className="pl-5">
               <Slider className="mt-8 mb-14 divide-x-8">
@@ -162,7 +165,7 @@ export default function CaseStudy() {
           <Box className="relative z-10 max-h-[23.4375rem] overflow-hidden md:col-start-2 md:row-start-2">
             <BoxTopContent
               heading="Market Impact"
-              text="Operating in the world's 5th most populous country, Bykea serves Pakistan's growing middle class with affordable transport and logistics solutions. The platform has expanded beyond ride-hailing to include instant deliveries, e-commerce, and digital payments."
+              text={`${caseStudyData.solutions[0].description}`}
             />
             <p className="no-color absolute bottom-4 left-8 mt-auto text-sm font-medium text-[#878D93]">
               Location: <span className="text-white">{caseStudyData.location}</span>
@@ -170,7 +173,7 @@ export default function CaseStudy() {
 
             <img
               src="/case-study-globe.png"
-              alt="Bykea's presence in Pakistan"
+              alt={`${caseStudyData.title}'s presence in ${caseStudyData.location}`}
               className="absolute -right-[5.1875rem] -bottom-[11.5rem] -z-[2] xl:-bottom-72"
             />
             <GradientOverlay
@@ -185,17 +188,6 @@ export default function CaseStudy() {
           </Box>
         </div>
       </Section>
-
-      {/* Goals Section */}
-      {/* <Section className="mt-40">
-        <Heading className="mb-6 pb-2 lg:text-7xl" blockText="& Objectives">
-          Product Goals
-        </Heading>
-        <p className="max-w-3xl font-serif text-xl font-medium">
-          The best apps in the AI era aren't solo experiences — they're built for collaboration.
-          Coventech delivers customizable, pre-built features to power them.
-        </p>
-      </Section> */}
 
       {/* ScrollAccordion with case study solutions */}
       <ScrollAccordion

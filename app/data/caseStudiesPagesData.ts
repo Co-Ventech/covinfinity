@@ -10,19 +10,19 @@ export const CASE_STUDIES = [
       techStack: [
         {
           name: 'Swift',
-          image: '/swift.png',
+          image: '/logo-tech.png', // TODO: Replace with '/icons/swift.png'
         },
         {
-          name: 'laravel',
-          image: '/laravel.png',
+          name: 'Laravel',
+          image: '/logo-tech-1.png', // TODO: Replace with '/icons/laravel.png'
         },
         {
-          name: 'tech',
-          image: '/logo-tech.png',
+          name: 'React',
+          image: '/logo-tech.png', // TODO: Replace with '/icons/react.png'
         },
         {
-          name: 'tech O',
-          image: '/logo-tech-1.png',
+          name: 'Node.js',
+          image: '/logo-tech-1.png', // TODO: Replace with '/icons/nodejs.png'
         },
       ],
       solutions: [
@@ -49,96 +49,96 @@ export const CASE_STUDIES = [
     },
     {
       slug: 'bluefin',
-      title: 'AR-Powered Golf Training App',
-      description: 'The best apps in the AI era aren\'t solo experiences — they\'re built for collaboration.',
+      title: 'Bluefin - Global Leader in Payment Security',
+      description: 'Revolutionizing payment security through integrated PCI-validated encryption and tokenization solutions that protect sensitive data across 60 countries.',
       showcaseImage: '/bluefin.png',
-      duration: '3 months',
-      location: 'California, United States',
+      duration: '15+ years',
+      location: 'Atlanta, United States',
       techStack: [
         {
-          name: 'Swift',
-          image: '/swift.png',
+          name: 'PCI P2PE',
+          image: '/logo-tech.png', // TODO: Replace with '/icons/pci-p2pe.png'
         },
         {
-          name: 'laravel',
-          image: '/laravel.png',
+          name: 'ShieldConex',
+          image: '/logo-tech-1.png', // TODO: Replace with '/icons/shieldconex.png'
         },
         {
-          name: 'tech',
-          image: '/logo-tech.png',
+          name: 'PayConex',
+          image: '/logo-tech.png', // TODO: Replace with '/icons/payconex.png'
         },
         {
-          name: 'tech O',
-          image: '/logo-tech-1.png',
+          name: 'Tokenization',
+          image: '/logo-tech-1.png', // TODO: Replace with '/icons/tokenization.png'
         },
       ],
       solutions: [
         {
           id: 1,
-          title: 'AR Training Experience',
-          description: 'Implemented advanced AR technology to provide real-time golf swing analysis and feedback, improving player performance by up to 40%.',
-          image: '/bluefin-ar.png'
+          title: 'Advanced Payment Security',
+          description: 'Implemented PCI-validated Point-to-Point Encryption (P2PE) across 35,000+ merchants, protecting over $270B in card transactions with 42 security patents.',
+          image: '/bluefin-security.png'
         },
         {
           id: 2,
-          title: 'AI-Powered Coaching',
-          description: 'Developed AI algorithms that analyze player movements and provide personalized coaching recommendations based on professional golfer data.',
-          image: '/bluefin-ai.png'
+          title: 'Vaultless Tokenization',
+          description: 'Developed ShieldConex® platform for securing PII and PHI data, providing real-time tokenization and detokenization across all acceptance channels.',
+          image: '/bluefin-token.png'
         },
         {
           id: 3,
-          title: 'Social Integration',
-          description: 'Created a community platform where golfers can share achievements, compete in virtual tournaments, and learn from each other\'s progress.',
-          image: '/bluefin-social.png'
+          title: 'Global Integration Network',
+          description: 'Built a network of 300+ global partners serving clients in 60 countries, with support for retail, healthcare, higher education and government sectors.',
+          image: '/bluefin-network.png'
         }
       ],
-      link: 'https://bluefin.com'
+      link: 'https://www.bluefin.com'
     },
     {
       slug: 'creditbook',
-      title: 'AR-Powered Golf Training App',
-      description: 'The best apps in the AI era aren\'t solo experiences — they\'re built for collaboration.',
+      title: 'CreditBook - Digital Financial Services for MSMEs',
+      description: 'Empowering Pakistan\'s micro and small businesses with digital bookkeeping, payments, and embedded financial services to improve their financial outcomes.',
       showcaseImage: '/creditbook.png',
-      duration: '3 months',
-      location: 'California, United States',
+      duration: '4+ years (Est. 2020)',
+      location: 'Karachi, Pakistan',
       techStack: [
         {
-          name: 'Swift',
-          image: '/swift.png',
+          name: 'React Native',
+          image: '/logo-tech.png', // TODO: Replace with '/icons/react-native.png'
         },
         {
-          name: 'laravel',
-          image: '/laravel.png',
+          name: 'Node.js',
+          image: '/logo-tech-1.png', // TODO: Replace with '/icons/nodejs.png'
         },
         {
-          name: 'tech',
-          image: '/logo-tech.png',
+          name: 'MongoDB',
+          image: '/logo-tech.png', // TODO: Replace with '/icons/mongodb.png'
         },
         {
-          name: 'tech O',
-          image: '/logo-tech-1.png',
+          name: 'AWS',
+          image: '/logo-tech-1.png', // TODO: Replace with '/icons/aws.png'
         },
       ],
       solutions: [
         {
           id: 1,
           title: 'Digital Bookkeeping',
-          description: 'Revolutionized traditional bookkeeping with a digital-first approach, helping small businesses track transactions and manage cash flow efficiently.',
+          description: 'Built Pakistan\'s first fully-licensed digital SME financing platform, serving over 1 million MSMEs across 400 localities with a 4.8/5 NPS score.',
           image: '/creditbook-ledger.png'
         },
         {
           id: 2,
-          title: 'Payment Integration',
-          description: 'Seamlessly integrated digital payment solutions, enabling businesses to accept and process payments digitally, reducing cash handling risks.',
-          image: '/creditbook-payments.png'
+          title: 'Embedded Finance',
+          description: 'Developed white-label financial infrastructure enabling businesses to extend financing to customers in hours, with over 5,000 successful funding instances.',
+          image: '/creditbook-finance.png'
         },
         {
           id: 3,
           title: 'Business Analytics',
-          description: 'Provided detailed business insights and analytics, helping merchants make data-driven decisions and grow their businesses sustainably.',
+          description: 'Implemented intelligent credit decisioning system achieving less than 2% overdue rate on 30+ day loans, while increasing customer order values by 25%.',
           image: '/creditbook-analytics.png'
         }
       ],
-      link: 'https://creditbook.com'
+      link: 'https://www.creditbook.pk'
     }
   ];
