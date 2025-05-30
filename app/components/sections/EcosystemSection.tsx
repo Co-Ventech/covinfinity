@@ -366,8 +366,8 @@ const HeaderSection: React.FC = () => {
       <h2 className="bg-gradient-to-r from-[#FFFFFF] to-[#CCCCCC] bg-clip-text font-serif text-[3.2rem] font-semibold text-transparent">
         Coventech Ecosystem
       </h2>
-      <p className="max-w-[43rem] bg-gradient-to-br from-[#EBF5FF]/64 to-[#EBF5FF]/54 bg-clip-text text-[1rem] font-medium">
-        how it's going to work this step's entire flow or anything you guys want it'll be maximum of 2 lines thats all
+      <p className="max-w-[28rem] bg-gradient-to-br from-[#EBF5FF]/64 to-[#EBF5FF]/54 bg-clip-text font-medium text-[1rem]">
+        A Dynamic Trio of Innovations to Bridge Skill Gaps and Streamline Recruitment
       </p>
     </div>
   )
@@ -457,9 +457,8 @@ const StepsSection: React.FC = () => {
             key={step.id}
             onClick={() => handleStepChange(step.id)}
             disabled={isAnimating}
-            className={`flex cursor-pointer items-center gap-2.5 rounded-[2.375rem] border border-[#16181A] bg-none px-5 py-2.5 font-serif text-lg font-medium transition-all duration-300 hover:bg-[#16181A] ${
-              activeStep === step.id ? "bg-[#16181A] text-white" : "bg-none text-white"
-            } ${isAnimating ? "cursor-not-allowed opacity-70" : ""}`}
+            className={`flex cursor-pointer items-center gap-2.5 rounded-[2.375rem] border border-[#16181A] bg-none px-5 py-2.5 font-serif text-lg font-medium transition-all duration-300 hover:bg-[#16181A] ${activeStep === step.id ? "bg-[#16181A] text-white" : "bg-none text-white"
+              } ${isAnimating ? "cursor-not-allowed opacity-70" : ""}`}
           >
             <img src={step.src || "/placeholder.svg"} alt="Product logo" className="h-5 w-5 object-contain" />
             {step.title}
@@ -520,4 +519,4 @@ const EcosystemSection: React.FC = () => {
   );
 };
 
- export default EcosystemSection;
+export default EcosystemSection;

@@ -1,7 +1,5 @@
-import { useParams } from 'react-router';
-import type { Route } from './+types/test-case-study';
-
 import { useCallback } from 'react';
+import { useParams } from 'react-router';
 import Navbar from '~/components/Navbar';
 import CollaborationSection from '~/components/sections/CollaborationSection';
 import CustomIcon from '~/components/svgs/CustomIcon';
@@ -13,6 +11,7 @@ import Section from '~/components/ui/Section';
 import { Slider } from '~/components/ui/Slider';
 import { CASE_STUDIES } from '~/data/caseStudiesPagesData';
 import { MainLayout } from '~/layouts/MainLayout';
+import type { Route } from './+types/test-case-study';
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -32,8 +31,8 @@ interface BoxTopContent {
 
 function BoxTopContent({
   icon = <CustomIcon />,
-  heading = 'Lorem ipsum dolor sit.',
-  text = 'Frontend Developer specialized in many tech and worked with xyz company graduated from xyc with xyz experience',
+  heading = 'About Bykea',
+  text = 'Founded in 2016, Bykea has grown into Pakistan\'s leading mobility super app with over 5 million customers and 1.7 million monthly active users. The platform leverages ML algorithms and Google Maps Platform to optimize its network of 30,000+ riders.'
 }) {
   return (
     <div className="wrap max-w-[42rem] space-y-3 px-5">
@@ -134,9 +133,8 @@ export default function CaseStudy() {
           </Box>
           <Box className="relative max-h-[23.4375rem] overflow-hidden md:col-start-2">
             <BoxTopContent
-              heading="Tech Stack"
-              text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero at alias repellendus,
-              aliquam eligendi cum."
+              heading="Tech Stack & Achievements"
+              text="Using Google Maps Platform's Distance Matrix API and ML algorithms, Bykea achieved a 20% reduction in 'dead miles', 15% time savings per transaction, and halved the number of drivers needed per city. The platform supports Urdu voice commands through Google Assistant integration."
             />
             <div className="pl-5">
               <Slider className="mt-8 mb-14 divide-x-8">
@@ -163,8 +161,8 @@ export default function CaseStudy() {
 
           <Box className="relative z-10 max-h-[23.4375rem] overflow-hidden md:col-start-2 md:row-start-2">
             <BoxTopContent
-              heading="Something About Client"
-              text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus modi laudantium, sunt a facilis eos!"
+              heading="Market Impact"
+              text="Operating in the world's 5th most populous country, Bykea serves Pakistan's growing middle class with affordable transport and logistics solutions. The platform has expanded beyond ride-hailing to include instant deliveries, e-commerce, and digital payments."
             />
             <p className="no-color absolute bottom-4 left-8 mt-auto text-sm font-medium text-[#878D93]">
               Location: <span className="text-white">{caseStudyData.location}</span>
@@ -172,7 +170,7 @@ export default function CaseStudy() {
 
             <img
               src="/case-study-globe.png"
-              alt="Client location on actual Globe"
+              alt="Bykea's presence in Pakistan"
               className="absolute -right-[5.1875rem] -bottom-[11.5rem] -z-[2] xl:-bottom-72"
             />
             <GradientOverlay
@@ -199,8 +197,13 @@ export default function CaseStudy() {
         </p>
       </Section> */}
 
-      {/* ScrollAccordian Section */}
-      <ScrollAccordion />
+      {/* ScrollAccordion with case study solutions */}
+      <ScrollAccordion
+        items={caseStudyData.solutions}
+        title="Solutions & Impact"
+        blockText="Key Achievements"
+      />
+
       <CollaborationSection />
     </MainLayout>
   );
