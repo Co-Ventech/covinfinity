@@ -8,6 +8,7 @@ import ServicesSection from '~/components/ServicesSection';
 import { Starfield } from '~/components/StarField';
 import TalentAccessComponent from '~/components/TalentAccessComponent';
 import TestimonialComponent from '~/components/TestimonialComponent';
+import { ChatProvider } from '~/contexts/ChatContext';
 import Hero from '../components/sections/Hero';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/home';
@@ -34,9 +35,9 @@ export default function Home() {
       <div className="mt-14">
         <CompanySliderSection />
       </div>
-      <div className="mb-20">
+      <ChatProvider>
         <CollaborationChatBot />
-      </div>
+      </ChatProvider>
       <div className="">
         <CollaborationSection />
       </div>
@@ -46,7 +47,7 @@ export default function Home() {
       <TestimonialComponent />
       <div className="mt-6"></div>
       <EcosystemSection />
-      <div className="mb-32">
+      <div className="mb-32 mt-32">
         <ServicesSection />
       </div>
       <CaseStudiesGrid />

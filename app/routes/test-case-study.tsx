@@ -1,6 +1,5 @@
+import { useCallback } from 'react';
 import { useParams } from 'react-router';
-import type { Route } from './+types/test-case-study';
-
 import Navbar from '~/components/Navbar';
 import CollaborationSection from '~/components/sections/CollaborationSection';
 import CustomIcon from '~/components/svgs/CustomIcon';
@@ -10,115 +9,32 @@ import Heading from '~/components/ui/Heading';
 import { ScrollAccordion } from '~/components/ui/ScrollAccordion';
 import Section from '~/components/ui/Section';
 import { Slider } from '~/components/ui/Slider';
+import { CASE_STUDIES } from '~/data/caseStudiesPagesData';
 import { MainLayout } from '~/layouts/MainLayout';
-import { useCallback, type FC } from 'react';
+import type { Route } from './+types/test-case-study';
 
-// Case Study Data
-const caseStudies = [
-  {
-    slug: 'bykea',
-    title: 'AR-Powered Golf Training App',
-    description: 'The best apps in the AI era aren\'t solo experiences — they\'re built for collaboration. Coventech delivers customizable, pre-built features to power them.',
-    showcaseImage: '/golf-training-app-dashboard.png',
-    duration: '3 months',
-    location: 'California, United States',
-    techStack: [
-      {
-        name: 'Swift',
-        image: '/swift.png',
-      },
-      {
-        name: 'laravel',
-        image: '/laravel.png',
-      },
-      {
-        name: 'tech',
-        image: '/logo-tech.png',
-      },
-      {
-        name: 'tech O',
-        image: '/logo-tech-1.png',
-      },
-    ],
-    link: 'https://bykea.com'
-  },
-  {
-    slug: 'bluefin',
-     title: 'AR-Powered Golf Training App',
-    description: 'The best apps in the AI era aren\'t solo experiences — they\'re built for collaboration.',
-    showcaseImage: '/bluefin.png', 
-    duration: '3 months',
-    location: 'California, United States',
-    techStack: [
-      {
-        name: 'Swift',
-        image: '/swift.png',
-      },
-      {
-        name: 'laravel',
-        image: '/laravel.png',
-      },
-      {
-        name: 'tech',
-        image: '/logo-tech.png',
-      },
-      {
-        name: 'tech O',
-        image: '/logo-tech-1.png',
-      },
-    ],
-    link: 'https://bluefin.com'
-  },
-  {
-    slug: 'creditbook',
-    title: 'AR-Powered Golf Training App',
-    description: 'The best apps in the AI era aren\'t solo experiences — they\'re built for collaboration.',
-    showcaseImage: '/creditbook.png',
-    duration: '3 months',
-    location: 'California, United States',
-    techStack: [
-      {
-        name: 'Swift',
-        image: '/swift.png',
-      },
-      {
-        name: 'laravel',
-        image: '/laravel.png',
-      },
-      {
-        name: 'tech',
-        image: '/logo-tech.png',
-      },
-      {
-        name: 'tech O',
-        image: '/logo-tech-1.png',
-      },
-    ],
-    link: 'https://creditbook.com'
-  }
-];
-
-export function meta({ }: Route.MetaArgs) {
+export function meta({ params }: Route.MetaArgs) {
+  const caseStudy = CASE_STUDIES.find((study) => study.slug === params.slug);
   return [
-    { title: 'Covinfinity | Case Study' },
+    { title: `Covinfinity | ${caseStudy?.title || 'Case Study'}` },
     {
       name: 'description',
-      content: 'Empowering businesses with cutting-edge technology solutions on Other Routes',
+      content: caseStudy?.description || 'Empowering businesses with cutting-edge technology solutions',
     },
   ];
 }
 
 interface BoxTopContent {
   icon?: React.ReactNode;
-  heading?: string;
-  text?: string;
+  heading: string;
+  text: string;
 }
 
 function BoxTopContent({
   icon = <CustomIcon />,
-  heading = 'Lorem ipsum dolor sit.',
-  text = 'Frontend Developer specialized in many tech and worked with xyz company graduated from xyc with xyz experience',
-}) {
+  heading,
+  text
+}: BoxTopContent) {
   return (
     <div className="wrap max-w-[42rem] space-y-3 px-5">
       <div className="flex items-center justify-start gap-3.5">
@@ -132,7 +48,7 @@ function BoxTopContent({
 
 export default function CaseStudy() {
   const { slug } = useParams();
-  const caseStudyData = caseStudies.find((casestudy) => casestudy.slug === slug);
+  const caseStudyData = CASE_STUDIES.find((caseStudy) => caseStudy.slug === slug);
 
   const onLaunchProject = useCallback(() => {
     if (caseStudyData?.link) {
@@ -148,13 +64,13 @@ export default function CaseStudy() {
     <MainLayout>
       <Navbar />
       <Section className="page-3-section pt-20">
-        <Heading className="pb-3 lg:!text-7xl" blockText="for Improving Skills">
+        <Heading className="pb-3 lg:!text-7xl" blockText="Case Study">
           {caseStudyData.title}
         </Heading>
         <p className="my-6 max-w-[46.875rem] font-serif text-xl font-medium">
           {caseStudyData.description}
         </p>
-        <button 
+        <button
           onClick={onLaunchProject}
           className="flex cursor-pointer rounded bg-gradient-to-r from-[#1F2224] to-[#16181A] to-70% px-5 py-2.5 font-medium transition hover:opacity-90"
         >
@@ -194,18 +110,20 @@ export default function CaseStudy() {
       <Section>
         <Heading className="pb-3 !text-center lg:!text-6xl" blockText="Stacks and Duration">
           About The Challenge, Location, Tech
-        </Heading>{' '}
+        </Heading>
         <p className="mx-auto my-6 max-w-[46.875rem] text-center font-serif text-xl font-medium">
-          The best apps in the AI era aren&apos;t solo experiences — they&apos;re built for
-          collaboration. Coventech delivers customizable, pre-built features to power them.
+          {caseStudyData.description}
         </p>
         <div className="grid grid-cols-1 grid-rows-[1fr_0.5fr_0.5fr] gap-6 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-[1.5fr_1fr]">
           <Box className="relative overflow-hidden p-8 md:col-span-1 md:row-span-2">
-            <BoxTopContent />
+            <BoxTopContent
+              heading={`About ${caseStudyData.title.split('-')[0]}`}
+              text={caseStudyData.description}
+            />
             <div className="image-wrapper relative max-h-[34rem]">
               <img
-                src="/dashboard-normal.png"
-                alt="Dashboard the second"
+                src={caseStudyData.showcaseImage}
+                alt={`${caseStudyData.title} Overview`}
                 className="cursor-poin max--w-[calc(100%+23rem)] pointer-events-none relative top-8 left-4 min-w-[calc(100%+23rem)] object-cover"
               />
             </div>
@@ -218,9 +136,8 @@ export default function CaseStudy() {
           </Box>
           <Box className="relative max-h-[23.4375rem] overflow-hidden md:col-start-2">
             <BoxTopContent
-              heading="Tech Stack"
-              text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero at alias repellendus,
-              aliquam eligendi cum."
+              heading="Tech Stack & Achievements"
+              text={`${caseStudyData.title.split('-')[0]} leverages cutting-edge technology to deliver innovative solutions and achieve remarkable results in ${caseStudyData.location}.`}
             />
             <div className="pl-5">
               <Slider className="mt-8 mb-14 divide-x-8">
@@ -247,8 +164,8 @@ export default function CaseStudy() {
 
           <Box className="relative z-10 max-h-[23.4375rem] overflow-hidden md:col-start-2 md:row-start-2">
             <BoxTopContent
-              heading="Something About Client"
-              text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus modi laudantium, sunt a facilis eos!"
+              heading="Market Impact"
+              text={`${caseStudyData.solutions[0].description}`}
             />
             <p className="no-color absolute bottom-4 left-8 mt-auto text-sm font-medium text-[#878D93]">
               Location: <span className="text-white">{caseStudyData.location}</span>
@@ -256,7 +173,7 @@ export default function CaseStudy() {
 
             <img
               src="/case-study-globe.png"
-              alt="Client location on actual Globe"
+              alt={`${caseStudyData.title}'s presence in ${caseStudyData.location}`}
               className="absolute -right-[5.1875rem] -bottom-[11.5rem] -z-[2] xl:-bottom-72"
             />
             <GradientOverlay
@@ -272,19 +189,13 @@ export default function CaseStudy() {
         </div>
       </Section>
 
-      {/* Goals Section */}
-      {/* <Section className="mt-40">
-        <Heading className="mb-6 pb-2 lg:text-7xl" blockText="& Objectives">
-          Product Goals
-        </Heading>
-        <p className="max-w-3xl font-serif text-xl font-medium">
-          The best apps in the AI era aren't solo experiences — they're built for collaboration.
-          Coventech delivers customizable, pre-built features to power them.
-        </p>
-      </Section> */}
+      {/* ScrollAccordion with case study solutions */}
+      <ScrollAccordion
+        items={caseStudyData.solutions}
+        title="Solutions & Impact"
+        blockText="Key Achievements"
+      />
 
-      {/* ScrollAccordian Section */}
-      <ScrollAccordion />
       <CollaborationSection />
     </MainLayout>
   );

@@ -27,7 +27,7 @@ const CollaborationSection: React.FC = () => {
       </div>
 
       {/* Cards Grid */}
-      <div className="containe-cards relative pt-19">
+      <div className="containe-cards relative pt-19 pb-24">
         <div className="relative z-10 grid grid-cols-2 justify-items-center gap-y-5 px-10 sm:grid-cols-2 md:grid-cols-3">
           {collabItems.map((item, index) => (
             <CollaborationCard
@@ -42,8 +42,9 @@ const CollaborationSection: React.FC = () => {
         {/* Lines */}
         <BgImage
           // src="/section-lines/collaborate-lines.png"
-          src="section-lines/collaborate-lines.png"
-          className="!top-0 !left-1/2 w-[calc(100%+4.8rem)] !-translate-x-1/2"
+          // src="section-lines/collaborate-lines.png"
+          src="section-lines/collaborate-lines-2nd.png"
+          className="!top-0 !left-1/2 w-[calc(100%+4.8rem)] !-translate-x-1/2 !bg-contain"
         />
       </div>
     </Section>

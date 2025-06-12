@@ -1,4 +1,6 @@
 import { FacebookIcon, LinkedinIcon, TwitterIcon } from './svgs';
+import { ROUTES } from '~/constants/routes';
+import { NavLink } from 'react-router';
 
 export default function Footer() {
   return (
@@ -28,30 +30,30 @@ export default function Footer() {
         <nav className="mx-auto w-full max-w-[38.25rem] min-w-[38.25rem]">
           <ul className="flex flex-wrap justify-between gap-x-4 gap-y-2 sm:gap-x-8">
             <li>
-              <a href="/login" className="inline-block py-2 hover:underline">
+              <NavLink to={ROUTES.LOGIN} className="inline-block py-2 hover:underline">
                 Login
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="/register" className="inline-block py-2 hover:underline">
+              <NavLink to={ROUTES.REGISTER} className="inline-block py-2 hover:underline">
                 Register
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="/products" className="inline-block py-2 hover:underline">
-                Products
-              </a>
-            </li>
-            <li>
-              <a href="/services" className="inline-block py-2 hover:underline">
+              <NavLink to={ROUTES.SERVICES} className="inline-block py-2 hover:underline">
                 Services
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="/case-studies" className="inline-block py-2 hover:underline">
+              <NavLink to={ROUTES.CASE_STUDIES} className="inline-block py-2 hover:underline">
                 Case Studies
-              </a>
+              </NavLink>
             </li>
+            {/* <li>
+              <NavLink to={ROUTES.ABOUT} className="inline-block py-2 hover:underline">
+                About
+              </NavLink>
+            </li> */}
           </ul>
         </nav>
 

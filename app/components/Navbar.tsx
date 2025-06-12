@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import { NavLink } from 'react-router';
+import { ROUTES } from '~/constants/routes';
 import { BuyCryptoIcon, CaseStudyIcon, MirrorIcon, ProductIcon } from './svgs';
 
 type DropdownSections = 'products' | 'services' | 'caseStudies';
@@ -155,19 +156,19 @@ const NavItem = ({
                   whileHover="hover"
                 >
                   {label === 'Products' ? (
-                    <NavLink to={`/products/${item.toLowerCase()}`} className="block px-4 py-2">
+                    <NavLink to={`${ROUTES.PRODUCT(item.toLowerCase())}`} className="block px-4 py-2">
                       {item}
                     </NavLink>
                   ) : label === 'Services' ? (
                     <NavLink
-                      to={`/services/${item.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
+                      to={`${ROUTES.SERVICE(item.toLocaleLowerCase())}`}
                       className="block px-4 py-2"
                     >
                       {item}
                     </NavLink>
                   ) : label === 'Case Studies' ? (
                     <NavLink
-                      to={`/case-studies/${item.toLowerCase().replace(/ /g, '-')}`}
+                      to={`${ROUTES.CASE_STUDY(item.toLowerCase())}`}
                       className="block px-4 py-2"
                     >
                       {item}
@@ -303,14 +304,14 @@ const Navbar = () => {
       {/* Desktop Right Side - hidden on mobile */}
       <div className="hidden rounded-[0.875em] bg-[#151617] p-2 backdrop-blur-md lg:block z-50">
         <div className="flex space-x-0.5 rounded-[0.625rem] bg-[#212121] p-1">
-          <NavLink to="/sign-in">
+          <NavLink to={ROUTES.LOGIN}>
             <NavItem
               icon={<MirrorIcon className="size-[1.375rem]" />}
               label="Sign in"
               hideIcon={true}
             />
           </NavLink>
-          <NavLink to="/sign-up">
+          <NavLink to={ROUTES.REGISTER}>
             <div className="get-started cursor-pointer rounded-lg bg-[#0F1011] px-3 py-2.5 text-white">
               Get Started
             </div>
@@ -397,7 +398,7 @@ const Navbar = () => {
                         {['Recruitinn', 'Skillbuilder', 'Covental'].map((item) => (
                           <NavLink
                             key={item}
-                            to={`/products/${item.toLowerCase()}`}
+                            to={`${ROUTES.PRODUCT(item.toLowerCase())}`}
                             className="block rounded-lg py-2 pl-6 hover:bg-[#212121]"
                           >
                             {item}
@@ -447,7 +448,7 @@ const Navbar = () => {
                         ].map((item) => (
                           <NavLink
                             key={item}
-                            to={`/services/${item.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
+                            to={`${ROUTES.SERVICE(item.toLowerCase())}`}
                             className="block rounded-lg py-2 pl-6 hover:bg-[#212121]"
                           >
                             {item}
@@ -491,7 +492,7 @@ const Navbar = () => {
                         {['Bykea', 'Example One', 'Example Two', 'Example Three'].map((item) => (
                           <NavLink
                             key={item}
-                            to={`/case-studies/${item.toLowerCase().replace(/ /g, '-')}`}
+                            to={`${ROUTES.CASE_STUDY(item.toLowerCase())})}`}
                             className="block rounded-lg py-2 pl-6 hover:bg-[#212121]"
                           >
                             {item}
@@ -507,10 +508,10 @@ const Navbar = () => {
                 </a>
 
                 <div className="border-t border-gray-700 pt-4">
-                  <NavLink to="/sign-in" className="block rounded-lg px-2 py-2 hover:bg-[#212121]">
+                  <NavLink to={ROUTES.LOGIN} className="block rounded-lg px-2 py-2 hover:bg-[#212121]">
                     Sign in
                   </NavLink>
-                  <NavLink to="/sign-up" className="block rounded-lg px-2 py-2 hover:bg-[#212121]">
+                  <NavLink to={ROUTES.REGISTER} className="block rounded-lg px-2 py-2 hover:bg-[#212121]">
                     Get Started
                   </NavLink>
                 </div>

@@ -28,7 +28,7 @@ export default [
   route('about', './routes/about.tsx'), // About page
   route('services', './routes/services.tsx'), // Services page
   route('contact', './routes/contact.tsx'), // Contact page
-  route('connect', './routes/connect.tsx'), // Connect page
+  route('book-a-demo', './routes/book-a-demo.tsx'), // Connect page
   route('product', './routes/product.tsx'), // Product page
   route('case-studies', './routes/case-studies.tsx'), // Case studies listing
   route('case-studies/:case_study_id', './routes/case-study.tsx'), // Dynamic case study page

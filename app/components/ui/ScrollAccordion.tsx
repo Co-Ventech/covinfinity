@@ -13,30 +13,24 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Demo content items
-const accordionItems = [
-  {
-    id: 1,
-    title: 'Inline-Text Something',
-    description:
-      'Thanks, Sarah. I appreciate your responsiveness and support. Looking forward to seeing these changes in action!',
-    image: '/dashboard-normal.png',
-  },
-  {
-    id: 2,
-    title: 'Dummy Heading',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-    image: '/case-studies3.png',
-  },
-  {
-    id: 3,
-    title: 'Dummy Heading',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-    image: '/case-studies2.png',
-  },
-];
+interface AccordionItem {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+}
 
-export const ScrollAccordion: React.FC = () => {
+interface ScrollAccordionProps {
+  items: AccordionItem[];
+  title?: string;
+  blockText?: string;
+}
+
+export const ScrollAccordion: React.FC<ScrollAccordionProps> = ({
+  items = [],
+  title = "More Screens Showing",
+  blockText = "Solution & Objectives"
+}) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const container = useRef<HTMLElement>(null);
   const leftNavRef = useRef<HTMLDivElement>(null);
@@ -46,8 +40,8 @@ export const ScrollAccordion: React.FC = () => {
 
   // Initialize section refs
   useEffect(() => {
-    sectionRefs.current = Array(accordionItems.length).fill(null);
-  }, []);
+    sectionRefs.current = Array(items.length).fill(null);
+  }, [items.length]);
 
   // Handle manual navigation
   const handleNavClick = (index: number) => {
@@ -80,7 +74,7 @@ export const ScrollAccordion: React.FC = () => {
       ];
 
       // Create section triggers with custom breakpoints
-      accordionItems.forEach((_, index) => {
+      items.forEach((_, index) => {
         // Use custom breakpoints for each section
         const startOffset = breakpoints[index];
         const endOffset = breakpoints[index + 1];
@@ -126,13 +120,13 @@ export const ScrollAccordion: React.FC = () => {
           >
             <Heading
               className="mb-6 pb-1 text-center text-xl font-semibold md:mb-10 md:text-left md:text-2xl"
-              blockText="Solution & Objectives"
+              blockText={blockText}
             >
-              More Screens Showing
+              {title}
             </Heading>
 
             <div className="left-navigation space-y-6 md:space-y-8">
-              {accordionItems.map((item, index) => (
+              {items.map((item, index) => (
                 <div
                   key={item.id}
                   className="left-nav-item relative flex max-w-full cursor-pointer flex-col items-center space-y-1.5 md:max-w-lg md:items-start md:pl-4"
@@ -187,7 +181,7 @@ export const ScrollAccordion: React.FC = () => {
             className="right relative hidden max-h-[23rem] min-h-[23rem] md:block lg:max-h-[28rem] lg:min-h-[28rem]"
           >
             <AnimatePresence mode="wait">
-              {accordionItems.map(
+              {items.map(
                 (item, index) =>
                   activeIndex === index && (
                     <motion.div
@@ -225,8 +219,11 @@ export const ScrollAccordion: React.FC = () => {
                       }}
                     >
                       <motion.img
-                        src={item.image}
-                        alt={`case-studies${index + 1}`}
+                        // TODO: Replace with actual case study images once available
+                        // src={item.image}
+                        src={index === 0 ? '/dashboard-normal.png' :
+                          index === 1 ? '/case-studies3.png' : '/case-studies2.png'}
+                        alt={`${item.title} - ${item.description.split('.')[0]}`}
                         className="size-full rounded-2xl object-cover"
                         initial={{ filter: 'blur(8px)' }}
                         animate={{
