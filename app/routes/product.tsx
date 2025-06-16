@@ -139,7 +139,7 @@ export default function Product() {
           className="flex cursor-pointer rounded bg-gradient-to-r from-[#1F2224] to-[#16181A] to-70% px-5 py-2.5 font-medium transition hover:opacity-90"
         >
           <span className="bg-gradient-to-r from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent">
-            Launch Project
+          Category Tag
           </span>
         </button>
       </Section>
