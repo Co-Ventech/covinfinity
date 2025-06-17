@@ -8,11 +8,23 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl space-y-14">
         {/* Social Media Icons */}
         <div className="mx-auto flex w-full max-w-[20.125em] min-w-[20.125em] justify-between space-x-6">
-          <a href="#" className="transition-opacity hover:opacity-80">
+          <a 
+            href="https://www.linkedin.com/company/co-ventech/" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-opacity hover:opacity-80"
+            aria-label="Visit our LinkedIn page"
+          >
             <LinkedinIcon />
             <span className="sr-only">LinkedIn</span>
           </a>
-          <a href="#" className="transition-opacity hover:opacity-80">
+         <a 
+            href="https://x.com/Co_VenTech?t=YmGv2PNJH2uS-YCn1SBzaA&s=09" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-opacity hover:opacity-80"
+            aria-label="Visit our Twitter page"
+          >
             <TwitterIcon />
             <span className="sr-only">Twitter</span>
           </a>
