@@ -36,6 +36,13 @@ type ProductData = {
   showcaseImage: string;
 };
 
+// Add logo mapping
+const PRODUCT_LOGOS: Record<string, string> = {
+  recruitinn: '/logo-recruitinn.png',
+  skillbuilder: '/logo-skillbuilder.png',
+  covental: '/covental.png'
+};
+
 export function meta({}: Route.MetaArgs) {
   return [
     { title: 'Covinfinity | Custom Software Development Company in USA' },
@@ -74,11 +81,16 @@ export default function Product() {
               }}
             ></div>
 
-            <img
-              src="/recruitinn-logo.png"
-              alt="Recruitinn Logo"
-              className="mx-auto mt-4 mb-4 h-[1.7rem] w-[200px] pt-0.5"
-            />
+            <div className="mx-auto mt-4 mb-4 flex items-center justify-center">
+              <img
+                src={PRODUCT_LOGOS[slug!] || '/recruitinn-logo.png'}
+                alt={`${productData?.name} Logo`}
+                className="h-[1.7rem] w-[30px] pt-0.5"
+              />
+              <span className="ml-4 text-2xl font-semibold text-white">
+                {productData?.name}
+              </span>
+            </div>
             {/* Right line */}
             <div
               className="h-px flex-grow"
