@@ -271,6 +271,17 @@ export default function Product() {
         </div>
       </Section>
 
+      <Section>
+        <div className="flex items-center justify-center mt-40">
+      <img src="/CoventechFlower.png" alt="CoventechFlower" className="h-[4.4rem] w-[5.4rem]" />
+      </div>
+      <Heading className="pb-3 !text-center lg:!text-6xl mt-12" blockText="Development by Coventech ">
+        Award Winning Design - Development 
+        </Heading>
+        <p className="mx-auto my-6 max-w-[46.875rem] text-center font-serif text-xl font-medium">
+        Coventech is a team of award-winning designers and developers who are passionate about creating beautiful and functional websites.
+        </p>
+        </Section>
 
       <Section className="second-section mt-[2rem]">
         <div className="mx-auto mt-12 flex items-center justify-center p-4 !px-0 md:mt-24 md:p-6">
