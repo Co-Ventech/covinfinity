@@ -196,7 +196,7 @@ const StepsSection: React.FC = () => {
 
   return (
     <div className="relative">
-      <div className="mb-13 flex flex-wrap justify-center gap-3 sm:mb-20 md:gap-5 lg:mb-30">
+      <div className="mb-13 flex flex-wrap justify-center gap-3 sm:mb-20 md:gap-5 lg:mb-24">
         {steps.map((step) => (
           <button
             key={step.id}
@@ -211,7 +211,7 @@ const StepsSection: React.FC = () => {
         ))}
       </div>
 
-      <div className="relative h-[45rem] sm:h-[68.5rem] xl:h-[54.8rem]">
+      <div className="relative h-[45rem] sm:h-[68.5rem] xl:h-[41.8rem]">
         <motion.div
           className="absolute inset-0 rounded-t-2xl rounded-b-[4rem] backdrop-blur-sm"
           initial={{ opacity: 0 }}
@@ -241,12 +241,12 @@ const StepsSection: React.FC = () => {
                           <img
                             src={cardContent[index].thumbnail}
                             alt={`${cardContent[index].title} thumbnail`}
-                            className="h-fit w-full object-cover"
+                            className="w-full h-[220px] sm:h-[500px] object-cover rounded-lg"
                           />
                         ) : (
                           <video
                             src={cardContent[index].video}
-                            className="h-fit w-full object-cover"
+                            className="w-full h-[220px] sm:h-[500px] object-cover rounded-lg"
                             muted
                             loop
                           />
@@ -268,7 +268,7 @@ const StepsSection: React.FC = () => {
                     ) : (
                       <video
                         src={cardContent[index].video}
-                        className="h-fit w-full object-cover"
+                        className="w-full h-[220px] sm:h-[380px] object-cover rounded-lg"
                         autoPlay
                         controls
                         loop
