@@ -200,13 +200,14 @@ export default function ServicesSection() {
         {/* Header Section */}
         <div className="mx-auto mb-16 max-w-4xl text-center">
           <Heading
-            blockText="something goes here"
+            blockText=" Digital Solutions"
             className="!mb-4 !pb-2 !font-sans !font-semibold"
           >
-            Services digital solution
+            Your Partner in Building Smart 
           </Heading>
           <p className="mb-4 bg-gradient-to-br from-[#EBF5FF]/64 to-[#EBF5FF]/54 bg-clip-text text-base text-[1rem] font-medium tracking-[0.02em]">
-            The most complete experience for businesses & individual clients
+          Equipping businesses and clients to thrive digitally with smart integrations and solutions.
+
           </p>
         </div>
 
@@ -217,8 +218,8 @@ export default function ServicesSection() {
             <div className="headin-section mb-8 flex flex-col items-center justify-center text-center">
               <img src="/solutions-icon.png" alt="icon" className="size-8 object-contain" />
 
-              <h2 className="text-xl font-semibold">Coventech Digital Solutions</h2>
-              <p className="text-lg font-medium">Fintech, Category etc. Lorem ipsum dolor sit...</p>
+              <h2 className="text-xl font-semibold">Co-Ventech Digital Solutions</h2>
+              <p className="text-lg font-medium">Fintech, Healthcare, E-commerce, and More...</p>
             </div>
 
             {/* Service Cards */}

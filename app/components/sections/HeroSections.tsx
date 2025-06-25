@@ -6,6 +6,7 @@ import Button from '../ui/Button';
 import GradientText from '../ui/GradientText';
 import Heading from '../ui/Heading';
 import OutlineBox from '../ui/OutlineBox';
+import { ROUTES } from '~/constants/routes';
 
 // Reusable component for polygon-backed sections
 interface PolygonSectionProps {
@@ -14,6 +15,7 @@ interface PolygonSectionProps {
   className?: string;
   polygonClassName?: string;
 }
+
 
 export const PolygonSection: React.FC<PolygonSectionProps> = ({
   children,
@@ -28,37 +30,42 @@ export const PolygonSection: React.FC<PolygonSectionProps> = ({
 );
 
 // Top hero section with heading and CTA
-export const TopHeroSection: React.FC = () => (
-  <PolygonSection
-    polygonComponent={Polygon1}
-    polygonClassName="top-3.5 left-1/2 h-[25rem] !w-[calc(100%+5rem)] -translate-x-1/2"
-  >
-    <Heading className="mb-3.5 lg:!text-6xl" blockText="AI & human collaboration">
-      Ready‑made features for
-    </Heading>
+export const TopHeroSection: React.FC = () => {
+  const handleBookDemo = () => {
+    window.open(ROUTES.BOOK_A_DEMO, '_blank');
+  };
 
-    <p className="!mx-auto mb-6 !max-w-[43rem] font-serif text-xl font-medium">
-      <GradientText className="!from-[#EBF5FF]/56 !to-[#EBF5FF]/48 to-20%">
-        The best apps in the AI era aren’t solo experiences—they’re collaborative. Coventech
-        provides customizable pre‑built features
-      </GradientText>
-    </p>
+  return (
+    <PolygonSection
+      polygonComponent={Polygon1}
+      polygonClassName="top-3.5 left-1/2 h-[25rem] !w-[calc(100%+5rem)] -translate-x-1/2"
+    >
+      <Heading className="mb-3.5 lg:!text-6xl" blockText="Human Innovation">
+      Where AI Meets Limitless 
+      </Heading>
 
-    <div className="flex justify-center gap-4">
-      {/* <button className="cursor-pointer rounded-lg bg-gradient-to-tr from-[#C2C2C2] to-[#FFFFFF] px-5 py-2.5 font-serif text-base font-medium text-button-text transition hover:opacity-90">
-        Book a demo
-      </button> */}
-      <Button>Book a demo</Button>
+      <p className="!mx-auto mb-6 !max-w-[43rem] font-serif text-xl font-medium">
+        <GradientText className="!from-[#EBF5FF]/56 !to-[#EBF5FF]/48 to-20%">
+        Co-Ventech’s customizable features merge AI with human expertise to drive smarter, more impactful solutions for your business.
+        </GradientText>
+      </p>
 
-      <button className="flex rounded px-5 py-2.5 font-medium transition hover:opacity-90">
-        <span className="bg-gradient-to-r from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent">
-          Start today for free
-        </span>
-        <img src="/right-icon.png" alt="arrow-icon" className="mt-2 ml-2 h-2 w-2" />
-      </button>
-    </div>
-  </PolygonSection>
-);
+      <div className="flex justify-center gap-4">
+        {/* <button className="cursor-pointer rounded-lg bg-gradient-to-tr from-[#C2C2C2] to-[#FFFFFF] px-5 py-2.5 font-serif text-base font-medium text-button-text transition hover:opacity-90">
+          Book a demo
+        </button> */}
+        <Button onClick={handleBookDemo}>Book a demo</Button>
+
+        <button className="flex rounded animate-pulse px-5 py-2.5 font-medium transition hover:opacity-90">
+          <span className="bg-gradient-to-r from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent">
+            Start today for free
+          </span>
+          <img src="/right-icon.png" alt="arrow-icon" className="mt-2 ml-2 h-2 w-2" />
+        </button>
+      </div>
+    </PolygonSection>
+  );
+};
 
 // Reusable testimonial component
 interface TestimonialProps {
@@ -104,7 +111,7 @@ export const BottomHeroSection: React.FC = () => (
     <img src="/hero-logo.png" alt="Coventech Logo" className="mx-auto mb-14 h-16" />
 
     <Testimonial
-      quote="Coventech an ecosystem where businesses meet top talent & digital solutions and services"
+      quote="With Co-Ventech, businesses access top talent and the right digital solutions, creating the perfect environment for success and growth."
       author={{
         name: 'James W Clark',
         title: 'Chief Executive Officer',

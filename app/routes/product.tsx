@@ -10,6 +10,7 @@ import { PRODUCTS } from '~/data/productData';
 import { MainLayout } from '~/layouts/MainLayout';
 import type { Route } from './+types/case-studies';
 import { Slider } from '~/components/ui/Slider';
+import { ScrollAccordion } from '~/components/ui/ScrollAccordion';
 
 // Add BoxTopContent component
 interface BoxTopContentProps {
@@ -101,11 +102,11 @@ export default function Product() {
           </div>
 
           <Heading
-            className="!from-[#FFFFFF] !to-[#CCCCCC] pb-6 font-serif text-[2.5rem] font-semibold text-transparent sm:text-5xl md:text-[3.5rem] xl:text-[4.2rem]"
-            blockText={productData?.heading?.split('\n')[1]}
+            className="!from-[#FFFFFF] !to-[#CCCCCC] pb-6 font-serif text-[2.5rem] font-semibold text-transparent sm:text-5xl md:text-[3.5rem] xl:text-[4.2rem] max-w-[65rem] mx-auto"
           >
-            {/* Recruitinn Heading Title Can be <br /> Anything XYZ upto You */}
             {productData?.heading?.split('\n')[0]}
+            <br />
+            {productData?.heading?.split('\n')[1]}
           </Heading>
           <p
             className="mx-auto my-4 max-w-[45rem] font-serif text-base font-medium sm:text-lg md:mb-6 md:text-[1.2rem]"
@@ -140,11 +141,11 @@ export default function Product() {
       <ProductShowcaseImages className="pointer-events-none" />
 
       <Section className="page-3-section pt-5">
-        <Heading className="pb-3 lg:!text-7xl" blockText="Product">
-          {productData?.heading?.split('\n')[0]}
+        <Heading className="pb-3 lg:!text-7xl" blockText={productData?.text}>
+          {productData?.headingone?.split('\n')[0]}
         </Heading>
-        <p className="my-6 max-w-[46.875rem] font-serif text-xl font-medium">
-          {productData?.subheading}
+        <p className="my-6  font-serif text-xl font-medium">
+          {productData?.subheadingone}
         </p>
         <button
           onClick={onLaunchProject}
@@ -182,11 +183,10 @@ export default function Product() {
           className="origin-right skew-x-22 transform"
         />
       </div>
-    
 
       <Section>
-      <Heading className="pb-3 !text-center lg:!text-6xl" blockText="Create Job, Invite & Vet Talent">
-          Talk About Core 3 Features Here, 
+      <Heading className="pb-3 !text-center lg:!text-6xl" blockText={productData?.text}>
+      {productData?.headingtwo}
         </Heading>
         <p className="mx-auto my-6 max-w-[46.875rem] text-center font-serif text-xl font-medium">
           {productData?.subheading}
@@ -195,7 +195,7 @@ export default function Product() {
           <Box className="relative overflow-hidden p-8 md:col-span-1 md:row-span-2">
             <BoxTopContent
               heading={`About ${productData?.name || 'Product'}`}
-              text={productData?.subheading || ''}
+              text={productData?.productdescription || ''}
             />
             <div className="image-wrapper relative max-h-[34rem]">
               <img
@@ -214,7 +214,7 @@ export default function Product() {
           <Box className="relative max-h-[23.4375rem] overflow-hidden md:col-start-2">
             <BoxTopContent
               heading="Tech Stack & Achievements"
-              text={`${productData?.name} leverages cutting-edge technology to deliver innovative solutions and achieve remarkable results.`}
+              text={productData?.techstack}
             />
             <div className="pl-5">
               <Slider className="mt-8 mb-14 divide-x-8">
@@ -247,7 +247,7 @@ export default function Product() {
           <Box className="relative z-10 max-h-[23.4375rem] overflow-hidden md:col-start-2 md:row-start-2">
             <BoxTopContent
               heading="Market Impact"
-              text="Revolutionizing recruitment with AI-powered talent matching and streamlined hiring processes."
+              text={productData?.marketimpact}
             />
             <p className="no-color absolute bottom-4 left-8 mt-auto text-sm font-medium text-[#878D93]">
               Location: <span className="text-white">Global</span>
@@ -270,6 +270,13 @@ export default function Product() {
           </Box>
         </div>
       </Section>
+
+        {/* ScrollAccordion with case study solutions */}
+    <ScrollAccordion
+        items={productData.solutions}
+        title="Solutions & Impact"
+        blockText="Key Achievements"
+      />
 
       <Section>
         <div className="flex items-center justify-center mt-40">

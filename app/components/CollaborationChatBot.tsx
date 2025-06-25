@@ -137,9 +137,9 @@ export default function CollaborationChatBot() {
   return (
     <Section className="!overflow-visible" divClass="!overflow-visible relative pt-50 xl:pt-60">
       <div className="mb-16">
-        <Heading className="pb-1">Collaboration and shipping software faster</Heading>
+        <Heading className="pb-1">Deliver results faster through effective collaboration</Heading>
         <p className="mt-4 font-medium text-[#665F5F]">
-          The most complete experience for businesses & individual clients
+        Giving businesses and individual clients an unparalleled, complete experience
         </p>
       </div>
       {/* Main Content Grid */}

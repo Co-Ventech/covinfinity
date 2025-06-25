@@ -40,8 +40,8 @@ const imageVariants = {
     },
   },
   middle: {
-    scale: 0.97,
-    y: "-1.2vw",
+    scale: 0.93,
+    y: "-1.8vw",
     zIndex: 30,
     opacity: 0.9,
     filter: "blur(0px)",
@@ -55,8 +55,8 @@ const imageVariants = {
     },
   },
   back: {
-    scale: 0.94,
-    y: "-2.5vw",
+    scale: 0.87,
+    y: "-3.5vw",
     zIndex: 20,
     opacity: 0.8,
     filter: "blur(0px)",
@@ -69,28 +69,13 @@ const imageVariants = {
       duration: 0.7,
     },
   },
-  altraback: {
-    scale: 0.91,
-    y: "-3.7vw",
-    zIndex: 10,
-    opacity: 0.7,
-    filter: "blur(0px)",
-    backdropFilter: "blur(30px)",
-    transition: {
-      type: "spring",
-      stiffness: 150,
-      damping: 15,
-      mass: 1,
-      duration: 0.7,
-    },
-  },
 }
 
 const HeaderSection: React.FC = () => {
   return (
     <div className="mt-16 flex flex-col items-center justify-center text-center">
       <h2 className="bg-gradient-to-r from-[#FFFFFF] to-[#CCCCCC] bg-clip-text font-serif text-[3.2rem] font-semibold text-transparent">
-        Coventech Ecosystem
+       Co-Ventech Ecosystem
       </h2>
       <p className="max-w-[28rem] bg-gradient-to-br from-[#EBF5FF]/64 to-[#EBF5FF]/54 bg-clip-text font-medium text-[1rem]">
         A Dynamic Trio of Innovations to Bridge Skill Gaps and Streamline Recruitment
@@ -122,35 +107,31 @@ const StepsSection: React.FC = () => {
   }
 
   // Fixed function to determine card position based on active step
-  const getCardPosition = (cardId: number): "front" | "middle" | "back" | "altraback" => {
+  const getCardPosition = (cardId: number): "front" | "middle" | "back" => {
     // Calculate the relative position of each card from the active step
-    const totalCards = steps.length
-    const relativePosition = (cardId - activeStep + totalCards) % totalCards
+    const totalCards = steps.length;
+    const relativePosition = (cardId - activeStep + totalCards) % totalCards;
 
     switch (relativePosition) {
       case 0:
-        return "front" // Active card
+        return "front"; // Active card
       case 1:
-        return "middle" // Next card
+        return "middle"; // Next card
       case 2:
-        return "back" // Second next card
-      case 3:
-        return "altraback" // Third next card
+        return "back"; // Second next card
       default:
-        return "altraback"
+        return "back";
     }
-  }
+  };
 
   // Improved card styling with consistent blur effect
-  const getCardStyle = (cardPosition: "front" | "middle" | "back" | "altraback") => {
+  const getCardStyle = (cardPosition: "front" | "middle" | "back") => {
     const baseStyle =
-      "relative mx-auto rounded-t-2xl !rounded-b-2xl md:rounded-b-3xl lg:rounded-b-4xl p-4 pt-6 lg:pt-none lg:p-6 rounded-t-2xl rounded-b-[4rem] !overflow-hidden border border-[#1A1A1A]"
+      "relative mx-auto rounded-t-2xl !rounded-b-2xl md:rounded-b-3xl lg:rounded-b-4xl p-4 pt-6 lg:pt-none lg:p-6 rounded-t-2xl rounded-b-[4rem] !overflow-hidden border-[1.5px] border-[#1A1A1A]"
 
     if (cardPosition === "front") {
       return `${baseStyle}`
     } else if (cardPosition === "middle") {
-      return `${baseStyle}`
-    } else if (cardPosition === "back") {
       return `${baseStyle}`
     } else {
       return `${baseStyle}`
@@ -268,7 +249,7 @@ const StepsSection: React.FC = () => {
                     ) : (
                       <video
                         src={cardContent[index].video}
-                        className="w-full h-[220px] sm:h-[380px] object-cover rounded-lg"
+                        className="w-full h-[220px] sm:h-[500px] object-cover rounded-lg"
                         autoPlay
                         controls
                         loop

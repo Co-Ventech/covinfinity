@@ -7,6 +7,13 @@ import Heading from '~/components/ui/Heading';
 import Section from '~/components/ui/Section';
 import { MainLayout } from '../layouts/MainLayout';
 import type { Route } from './+types/service';
+import { ScrollAccordion } from '~/components/ui/ScrollAccordion';
+import { GradientOverlay } from '~/components/ui/GradientOverlay';
+import { Slider } from '~/components/ui/Slider';
+import { useParams } from 'react-router';
+import { SERVICES } from '~/data/serviceData';
+import CompanySliderSection from '~/components/sections/CompanySliderSection';
+
 export function meta({ }: Route.MetaArgs) {
   return [
     { title: 'Services - Covinfinity | Custom Software Development Company' },
@@ -23,7 +30,23 @@ const ImageBox: FC<{ src: string; alt: string }> = ({ src, alt }) => (
   </Box>
 );
 
+function BoxTopContent({ heading, text }: { heading: string; text: string }) {
+  return (
+    <div className="wrap max-w-[42rem] space-y-3 px-5">
+      <div className="flex items-center justify-start gap-3.5">
+        <span className="font-serif text-xl font-semibold">{heading}</span>
+      </div>
+      <p>{text}</p>
+    </div>
+  );
+}
+
 export default function Servic() {
+  const { slug } = useParams();
+  const serviceData = SERVICES.find((service) => service.slug === slug);
+  if (!serviceData) {
+    return <div>Service not found</div>;
+  }
   return (
     <MainLayout>
       <div className="case-studies relative">
@@ -48,153 +71,113 @@ export default function Servic() {
         </div>
       </Section>
 
-      {/* One */}
-      <ServiceSection
-        imageUrl="/bykea-mobile.png"
-        imagePosition="left"
-        boxClassName='!mr-auto'
-        globeClassName='-right-[4rem] -bottom-[17rem]'
-      >
-        <Heading className='uppercase font-semibold text-6xl mb-12 mt-7' blockText='background'>
-          <span className='text-bykea'>
-            bykea
-          </span>
-        </Heading>
-        <p className='font-medium text-base max-w-[39.125rem] leading-[1.48]'>
-          As one of the top ride-hailing and logistics platforms in Pakistan, Bykea deals with vast amounts of user data and financial transactions every day. With their rapid growth, ensuring the security of their digital infrastructure became a critical priority. The company needed to safeguard their platform to maintain trust, prevent breaches, and comply with stringent data protection regulations.
-        </p>
-      </ServiceSection>
+    
 
-      {/* Two */}
-      <ServiceSection
-        imageUrl="/bykea-rides.png"
-        imagePosition="right"
-        className="mt-20 !ml-auto"
-        boxClassName="!px-4 xl:!px-12 !ml-auto"
-        globeClassName="-bottom-[25rem] left-1/2 -translate-x-1/2"
-      >
-        <Heading className='uppercase font-semibold text-6xl mb-12 mt-7'>
-          The
-          <span className='ml-2.5 text-bykea'>
-            problem
-          </span>
-        </Heading>
-        <p className='no-color font-extrabold text-base mb-8'> <span className='text-bykea'>(</span>Enhancing Cybersecurity<span className='text-bykea'>)</span></p>
-        <p className='font-medium text-base max-w-[39.125rem] leading-[1.48]'>
-          <span className="flex items-start gap-4 mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#B5BDC4] mt-2 flex-shrink-0"></span>
-            Legacy payment processing system faced scalability and security challenges.
-          </span>
-          <span className="flex items-start gap-4 mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#B5BDC4] mt-2 flex-shrink-0"></span>
-            Growing transaction volumes demanded a modern, secure solution.
-          </span>
-          <span className="flex items-start gap-4 mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#B5BDC4] mt-2 flex-shrink-0"></span>
-            Customer experience needed seamless integration with security measures.
-          </span>
-          <span className="flex items-start gap-4 mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#B5BDC4] mt-2 flex-shrink-0"></span>
-            Infrastructure required complete modernization for future scaling.
-          </span>
-          <span className="flex items-start gap-4">
-            <span className="w-2 h-2 rounded-full bg-[#B5BDC4] mt-2 flex-shrink-0"></span>
-            Payment system transformation was critical for business growth.
-          </span>
-        </p>
-      </ServiceSection>
-
-      {/* Three */}
-      <ServiceSection
-        imageUrl="/bykea-services.png"
-        imagePosition="left"
-        className="mt-20"
-        boxClassName="!px-4 xl:!px-20 !mr-auto"
-        globeClassName='bottom-[8rem] left-[6rem] rotate-[70deg]'
-      >
-        <div className="flex flex-col gap-12 rotate 2xl:relative 2xl:-left-8">
-          <div className="flex items-start gap-6">
-            <span className="flex flex-shrink-0 size-12 items-center justify-center rounded-full bg-bykea text-xl font-medium text-white">1</span>
-            <div className="">
-              <Heading as="h3" className='upper'>Initial Consultation with <span className='text-bykea'>Bykea's</span> Team</Heading>
-              <p className="text-[#B5BDC4] text-base font-medium mt-4">We met with Bykea's leadership to discuss their key concerns and security requirements. The focus was on fortifying their digital infrastructure and protecting sensitive data.
-              </p>
-            </div>
+    {/* Stacks and Duration Section (dynamic by slug) */}
+    <Section>
+      <div className="grid grid-cols-1 grid-rows-[1fr_0.5fr_0.5fr] gap-6 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-[1.5fr_1fr]">
+        <Box className="relative overflow-hidden p-8 md:col-span-1 md:row-span-2">
+          <BoxTopContent
+            heading={`About ${serviceData.name}`}
+            text={serviceData.subheading}
+          />
+          <div className="image-wrapper relative max-h-[34rem]">
+            <img
+              src={serviceData.showcaseImage}
+              alt={`${serviceData.name} Overview`}
+              className="cursor-poin max--w-[calc(100%+23rem)] pointer-events-none relative top-8 left-4 min-w-[calc(100%+23rem)] object-cover"
+            />
           </div>
-
-          <div className="flex items-start gap-6">
-            <span className="flex flex-shrink-0 size-12 items-center justify-center rounded-full bg-bykea text-xl font-medium text-white">2</span>
-            <div className="">
-              <Heading as="h3" className='uppercase'>Vulnerability Assessment & <span className='text-bykea'>Penetration Testing</span></Heading>
-              <p className="text-[#B5BDC4] text-base font-medium mt-4">Our team conducted a thorough penetration test and vulnerability assessment, focusing on their core infrastructure and network systems. Using industry-leading tools, we pinpointed potential security gaps.</p>
-            </div>
+          <GradientOverlay
+            position="absolute"
+            inset="-bottom-50 -left-12"
+            size="h-[373px] w-[calc(100%+15rem)]"
+            className="!bg-background-body blur-3xl"
+          />
+        </Box>
+        <Box className="relative max-h-[23.4375rem] overflow-hidden md:col-start-2">
+          <BoxTopContent
+            heading="Tech Stack & Achievements"
+            text={`${serviceData.name} leverages cutting-edge technology to deliver innovative solutions and achieve remarkable results.`}
+          />
+          <div className="pl-5">
+            <Slider className="mt-8 mb-14 divide-x-8">
+              {[
+                { name: 'React', image: '/logo-tech.png' },
+                { name: 'Node.js', image: '/logo-tech-1.png' },
+                { name: 'MongoDB', image: '/logo-tech.png' },
+                { name: 'AWS', image: '/logo-tech-1.png' }
+              ].map((tech) => (
+                <Slider.Item key={tech.name} className="mx-4 flex items-center justify-center">
+                  <img src={tech.image} alt={tech.name} className="size-20" />
+                </Slider.Item>
+              ))}
+            </Slider>
+            <p className="no-color text-sm font-medium text-[#878D93]">
+              Duration: <span className="text-white">2+ years</span>
+            </p>
           </div>
+          <GradientOverlay
+            direction="l"
+            from="background-body"
+            to="background-body/0"
+            position="absolute"
+            inset="right-0 bottom-0"
+            size="h-full w-[7.625rem]"
+            className="pointer-events-none"
+          />
+        </Box>
 
-          <div className="flex items-start gap-6">
-            <span className="flex flex-shrink-0 size-12 items-center justify-center rounded-full bg-bykea text-xl font-medium text-white">3</span>
-            <div className="">
-              <Heading as="h3" className='upper'>Delivered <span className='text-bykea'>Actionable </span> Insights</Heading>
-              <p className="text-[#B5BDC4] text-base font-medium mt-4">Within 48 hours, Co-Ventech provided a comprehensive report, outlining the vulnerabilities found and offering clear recommendations to mitigate each risk. We worked closely with Bykea's technical team to implement these changes quickly and effectively.</p>
-            </div>
-          </div>
-        </div>
-      </ServiceSection>
+        <Box className="relative z-10 max-h-[23.4375rem] overflow-hidden md:col-start-2 md:row-start-2">
+          <BoxTopContent
+            heading="Market Impact"
+            text="Revolutionizing recruitment with AI-powered talent matching and streamlined hiring processes."
+          />
+          <p className="no-color absolute bottom-4 left-8 mt-auto text-sm font-medium text-[#878D93]">
+            Location: <span className="text-white">Global</span>
+          </p>
 
-      {/* Four */}
-      <ServiceSection
-        imageUrl="/bykea-ride-types.png"
-        imagePosition="right"
-        className="mt-20 !ml-auto"
-        boxClassName="!px-4 xl:!px-20 !ml-auto"
-        globeClassName='-bottom[21rem] -left-[7rem] rotate-[70deg]'
-      >
-        <Heading className='uppercase font-semibold text-6xl mb-12 mt-7'>
-          The
-          <span className='ml-2.5 text-bykea'>
-            Journey
-          </span>
-        </Heading>
+          <img
+            src="/case-study-globe.png"
+            alt={`${serviceData.name}'s global presence`}
+            className="absolute -right-[5.1875rem] -bottom-[11.5rem] -z-[2] xl:-bottom-72"
+          />
+          <GradientOverlay
+            direction="l"
+            from="background-body"
+            to="background-body/0"
+            position="absolute"
+            inset="right-0 bottom-0"
+            size="h-full w-[7.625rem]"
+            className="pointer-events-none"
+          />
+        </Box>
+      </div>
+    </Section>
 
-        <p className='font-medium text-base max-w-[39.125rem] leading-[1.48]'>
-          <span className="flex items-start gap-4 mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#B5BDC4] mt-2 flex-shrink-0"></span>
-            Bykea recognized the need for more than basic protection—a proactive and thorough cybersecurity strategy.
-          </span>
-          <span className="flex items-start gap-4 mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#B5BDC4] mt-2 flex-shrink-0"></span>
-            They entrusted Co-Ventech to deliver this advanced security solution.
-          </span>
-          <span className="flex items-start gap-4 mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#B5BDC4] mt-2 flex-shrink-0"></span>
-            The engagement lasted only a few days but yielded significant, lasting results.
-          </span>
-          <span className="flex items-start gap-4 mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#B5BDC4] mt-2 flex-shrink-0"></span>
-            After an initial assessment and detailed reporting, Co-Ventech collaborated closely with Bykea's team to implement robust security measures.
-          </span>
-          <span className="flex items-start gap-4">
-            <span className="w-2 h-2 rounded-full bg-[#B5BDC4] mt-2 flex-shrink-0"></span>
-            Efforts included uncovering hidden security threats and fortifying digital infrastructure.
-          </span>
-          <span className="flex items-start gap-4">
-            <span className="w-2 h-2 rounded-full bg-[#B5BDC4] mt-2 flex-shrink-0"></span>
-            Co-Ventech helped Bykea navigate the evolving cybersecurity landscape and emerge stronger than ever.
-          </span>
-        </p>
-      </ServiceSection>
+    {/* ScrollAccordion with case study solutions */}
+    <ScrollAccordion
+        items={serviceData.solutions}
+        title="Solutions & Impact"
+        blockText="Key Achievements"
+        role="service"
+      />
 
-      <Section>
-        <div className="mx-auto mt-12 flex items-center justify-center p-4 !px-0 md:mt-24 md:p-6">
-          <div className="mx-auto text-center">
-            {/* Clutch Reviews Section */}
-            <div className="flex w-full items-center justify-between gap-4">
-              <ImageBox src="/blue-hunt.png" alt="blue hunt" />
-              <ImageBox src="/red-hunt.png" alt="red hunt" />
-            </div>
+<div className="mt-5">
+        <CompanySliderSection role="service" />
+      </div>
+    <Section>
+      <div className="mx-auto mt-12 flex items-center justify-center p-4 !px-0 md:mt-24 md:p-6">
+        <div className="mx-auto text-center">
+          {/* Clutch Reviews Section */}
+          <div className="flex w-full items-center justify-between gap-4">
+            <ImageBox src="/blue-hunt.png" alt="blue hunt" />
+            <ImageBox src="/red-hunt.png" alt="red hunt" />
           </div>
         </div>
-        {/* <LogoGrid /> */}
-      </Section>
-    </MainLayout >
-  );
+      </div>
+      {/* <LogoGrid /> */}
+    </Section>
+  </MainLayout >
+);
 }
