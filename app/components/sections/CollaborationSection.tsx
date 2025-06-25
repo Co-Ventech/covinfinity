@@ -6,10 +6,32 @@ import Section from '../ui/Section';
 import BgImage from '../BgImage';
 
 // Collaboration items data
-const collabItems = Array(6).fill({
-  title: 'Collaborate everything',
-  description: 'From deployments to tasks, work with your team every step of the way.',
-});
+const collabItems = [
+  {
+    title: 'QA Manual and Automation Testing',
+    description: 'Ensuring Quality at Every Step',
+  },
+  {
+    title: 'Cybersecurity',
+    description: 'Protecting What Matters Most',
+  },
+  {
+    title: 'DevOps and Cloud Solutions',
+    description: 'Streamlining Operations for Maximum Efficiency',
+  },
+  {
+    title: 'Software Development',
+    description: 'Building the Future, One Line at a Time',
+  },
+  {
+    title: 'UI/UX Designing',
+    description: 'Crafting Experiences That Engage',
+  },
+  {
+    title: 'Project Management',
+    description: 'Turning Ideas into Reality',
+  },
+];
 
 const CollaborationSection: React.FC = () => {
   return (
@@ -20,9 +42,9 @@ const CollaborationSection: React.FC = () => {
         <div className="mb-3 flex justify-center">
           <img src="/box.png" alt="box-icon" className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10" />
         </div>
-        <h3 className="mb-2 text-lg font-semibold sm:text-xl">Collaborate everything</h3>
+        <h3 className="mb-2 text-lg font-semibold sm:text-xl">End-to-End Collaboration Made Simple</h3>
         <p className="mx-auto text-sm font-medium text-[#4B4646] sm:text-base md:max-w-2xl">
-          From deployments to tasks, work with your team every step of the way.
+        From deployments to tasks, ensure smooth teamwork throughout every step.
         </p>
       </div>
 

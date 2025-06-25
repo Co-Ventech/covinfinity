@@ -125,7 +125,8 @@ const AvatarGroup: React.FC = () => {
           whileHover={{ scale: 1.05, zIndex: 30 }}
         >
           <span className="whitespace-nowrap">
-            <Counter from={0} to={43} /> talents & business coventech
+            {/* <Counter from={0} to={43} /> talents & business coventech */}
+            Provides access to the vast number of Top 1% Global Talent
           </span>
         </motion.div>
       </div>

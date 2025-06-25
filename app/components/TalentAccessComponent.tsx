@@ -65,11 +65,12 @@ const TalentAccessComponent = () => {
 
       {/* Header Section */}
       <div className="mb-14 text-center">
-        <Heading className="mb-4 pb-1" blockText="from all around the world">
-          Craft the most productive team
+        <Heading className="mb-4 pb-1" blockText=" Anywhere in the World">
+        Build Your Global Dream Team
         </Heading>
         <p className="text-[#665F5F]">
-          The most complete experience for businesses & individual clients
+        The ultimate experience for businesses and individual clients, connecting you with top talent.
+
         </p>
       </div>
 
@@ -78,8 +79,8 @@ const TalentAccessComponent = () => {
         {/* Left Section - Talent Search */}
         <Box className="lg:col-span-2">
           <TalentSearchHeader
-            title="Top talent access"
-            description="Here client can see list of top talents he can quickly contact/hire based on his needs"
+            title="Talent at Your Fingertips"
+            description="Access top professionals worldwide. Quickly hire the right talent for your needs"
           />
 
           <TechnologyFilter activeJobType={activeJobType} onFilterChange={setActiveJobType} />

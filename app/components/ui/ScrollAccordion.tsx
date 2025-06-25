@@ -24,12 +24,14 @@ interface ScrollAccordionProps {
   items: AccordionItem[];
   title?: string;
   blockText?: string;
+  role?: 'product' | 'service';
 }
 
 export const ScrollAccordion: React.FC<ScrollAccordionProps> = ({
   items = [],
   title = "More Screens Showing",
-  blockText = "Solution & Objectives"
+  blockText = "Solution & Objectives",
+  role = 'product',
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const container = useRef<HTMLElement>(null);
@@ -66,12 +68,9 @@ export const ScrollAccordion: React.FC<ScrollAccordionProps> = ({
 
       // Create custom breakpoints for smoother transitions
       // This gives more scroll space to the middle section
-      const breakpoints = [
-        0, // Start
-        spacerHeight * 0.33, // First transition (40%)
-        spacerHeight * 0.8, // Second transition (60%)
-        spacerHeight, // End (100%)
-      ];
+      const breakpoints = Array.from({ length: items.length + 1 }, (_, i) =>
+        (spacerHeight * i) / items.length
+      );
 
       // Create section triggers with custom breakpoints
       items.forEach((_, index) => {
@@ -113,150 +112,298 @@ export const ScrollAccordion: React.FC<ScrollAccordionProps> = ({
         className="my-Container mt-20 h-max sm:h-[100dvh]"
         divClass="size-full flex items-center justify-center"
       >
-        <div className="flex !w-full flex-col md:grid md:grid-cols-[0.8fr_1fr]">
-          <div
-            ref={leftNavRef}
-            className="left mx-auto w-full max-w-xl px-4 text-center md:mx-0 md:ml-14 md:px-0 md:text-left"
-          >
-            <Heading
-              className="mb-6 pb-1 text-center text-xl font-semibold md:mb-10 md:text-left md:text-2xl"
-              blockText={blockText}
-            >
-              {title}
-            </Heading>
-
-            <div className="left-navigation space-y-6 md:space-y-8">
-              {items.map((item, index) => (
-                <div
-                  key={item.id}
-                  className="left-nav-item relative flex max-w-full cursor-pointer flex-col items-center space-y-1.5 md:max-w-lg md:items-start md:pl-4"
-                  onClick={() => handleNavClick(index)}
-                  ref={(el) => {
-                    sectionRefs.current[index] = el;
-                  }}
-                >
-                  <motion.div
-                    className="absolute inset-0 hidden h-6 w-[0.3125rem] rounded-4xl md:block md:w-[0.3125rem]"
-                    animate={{
-                      backgroundColor:
-                        activeIndex === index
-                          ? 'var(--color-accordion-active, #FFD700)'
-                          : 'var(--color-accordion, #333)',
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <motion.div
-                    className="mb-3 h-1 w-16 rounded-4xl md:hidden"
-                    animate={{
-                      backgroundColor:
-                        activeIndex === index
-                          ? 'var(--color-accordion-active, #FFD700)'
-                          : 'rgba(0, 0, 0, 0)',
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <h5
-                    className="font-serif text-lg font-semibold"
-                    style={{ color: activeIndex === index ? '#FFFFFF' : '#EBF5FF' }}
-                  >
-                    {item.title}
-                  </h5>
-                  {activeIndex === index && (
-                    <motion.p
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className="px-4 text-sm font-medium md:px-0 md:text-base"
-                    >
-                      {item.description}
-                    </motion.p>
+        <div className={`flex !w-full flex-col md:grid md:grid-cols-[0.8fr_1fr] ${role === 'service' ? 'md:grid-cols-[1fr_0.8fr]' : ''}`}>
+          {role === 'service' ? (
+            <>
+              <div
+                ref={rightContentRef}
+                className="right relative hidden max-h-[23rem] min-h-[23rem] md:block lg:max-h-[28rem] lg:min-h-[28rem]"
+              >
+                <AnimatePresence mode="wait">
+                  {items.map(
+                    (item, index) =>
+                      activeIndex === index && (
+                        <motion.div
+                          key={item.id}
+                          className="img-wrapper relative -top-12 h-full w-full lg:h-[calc(100%+10rem)]"
+                          initial={{
+                            opacity: 0,
+                            x: 60,
+                            scale: 0.9,
+                            rotateY: 10,
+                          }}
+                          animate={{
+                            opacity: 1,
+                            x: 0,
+                            scale: 1,
+                            rotateY: 0,
+                            transition: {
+                              type: 'spring',
+                              damping: 12,
+                              stiffness: 100,
+                              mass: 1.2,
+                              bounce: 0.4,
+                              duration: 0.8,
+                            },
+                          }}
+                          exit={{
+                            opacity: 0,
+                            x: -40,
+                            scale: 0.9,
+                            rotateY: -5,
+                            transition: {
+                              duration: 0.3,
+                              ease: 'easeOut',
+                            },
+                          }}
+                        >
+                          <motion.img
+                            src={index === 0 ? '/dashboard-normal.png' :
+                              index === 1 ? '/case-studies3.png' : '/case-studies2.png'}
+                            alt={`${item.title} - ${item.description.split('.')[0]}`}
+                            className="size-full rounded-2xl object-cover"
+                            initial={{ filter: 'blur(8px)' }}
+                            animate={{
+                              filter: 'blur(0px)',
+                              transition: {
+                                delay: 0.1,
+                                duration: 0.4,
+                              },
+                            }}
+                          />
+                          <GradientOverlay
+                            direction="b"
+                            from="background-body/0"
+                            via="background-body/80 via-40%"
+                            to="background-body to-90%"
+                            position="absolute"
+                            inset="right-0 -bottom-2"
+                            size="w-full h-[calc(100%-10rem)]"
+                          />
+                          <GradientOverlay
+                            direction="r"
+                            from="background-body/0"
+                            via="background-body/80 via-40%"
+                            to="background-body to-90%"
+                            position="absolute"
+                            inset="-right-2 bottom-0"
+                            size="h-[calc(100%+2rem)] w-[calc(100%-10rem)]"
+                          />
+                        </motion.div>
+                      )
                   )}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div
-            ref={rightContentRef}
-            className="right relative hidden max-h-[23rem] min-h-[23rem] md:block lg:max-h-[28rem] lg:min-h-[28rem]"
-          >
-            <AnimatePresence mode="wait">
-              {items.map(
-                (item, index) =>
-                  activeIndex === index && (
-                    <motion.div
+                </AnimatePresence>
+              </div>
+              <div
+                ref={leftNavRef}
+                className="left mx-auto w-full max-w-xl px-4 text-center md:mx-0 md:ml-14 md:px-0 md:text-left"
+              >
+                <Heading
+                  className="mb-6 pb-1 text-center text-xl font-semibold md:mb-10 md:text-left md:text-2xl"
+                  blockText={blockText}
+                >
+                  {title}
+                </Heading>
+
+                <div className="left-navigation space-y-6 md:space-y-8">
+                  {items.map((item, index) => (
+                    <div
                       key={item.id}
-                      className="img-wrapper relative -top-12 h-full w-full lg:h-[calc(100%+10rem)]"
-                      initial={{
-                        opacity: 0,
-                        x: 60,
-                        scale: 0.9,
-                        rotateY: 10,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        x: 0,
-                        scale: 1,
-                        rotateY: 0,
-                        transition: {
-                          type: 'spring',
-                          damping: 12,
-                          stiffness: 100,
-                          mass: 1.2,
-                          bounce: 0.4,
-                          duration: 0.8,
-                        },
-                      }}
-                      exit={{
-                        opacity: 0,
-                        x: -40,
-                        scale: 0.9,
-                        rotateY: -5,
-                        transition: {
-                          duration: 0.3,
-                          ease: 'easeOut',
-                        },
+                      className="left-nav-item relative flex max-w-full cursor-pointer flex-col items-center space-y-1.5 md:max-w-lg md:items-start md:pl-4"
+                      onClick={() => handleNavClick(index)}
+                      ref={(el) => {
+                        sectionRefs.current[index] = el;
                       }}
                     >
-                      <motion.img
-                        // TODO: Replace with actual case study images once available
-                        // src={item.image}
-                        src={index === 0 ? '/dashboard-normal.png' :
-                          index === 1 ? '/case-studies3.png' : '/case-studies2.png'}
-                        alt={`${item.title} - ${item.description.split('.')[0]}`}
-                        className="size-full rounded-2xl object-cover"
-                        initial={{ filter: 'blur(8px)' }}
+                      <motion.div
+                        className="absolute inset-0 hidden h-6 w-[0.3125rem] rounded-4xl md:block md:w-[0.3125rem]"
                         animate={{
-                          filter: 'blur(0px)',
-                          transition: {
-                            delay: 0.1,
-                            duration: 0.4,
-                          },
+                          backgroundColor:
+                            activeIndex === index
+                              ? 'var(--color-accordion-active, #FFD700)'
+                              : 'var(--color-accordion, #333)',
                         }}
+                        transition={{ duration: 0.3 }}
                       />
-                      <GradientOverlay
-                        direction="b"
-                        from="background-body/0"
-                        via="background-body/80 via-40%"
-                        to="background-body to-90%"
-                        position="absolute"
-                        inset="right-0 -bottom-2"
-                        size="w-full h-[calc(100%-10rem)]"
+                      <motion.div
+                        className="mb-3 h-1 w-16 rounded-4xl md:hidden"
+                        animate={{
+                          backgroundColor:
+                            activeIndex === index
+                              ? 'var(--color-accordion-active, #FFD700)'
+                              : 'rgba(0, 0, 0, 0)',
+                        }}
+                        transition={{ duration: 0.3 }}
                       />
-                      <GradientOverlay
-                        direction="r"
-                        from="background-body/0"
-                        via="background-body/80 via-40%"
-                        to="background-body to-90%"
-                        position="absolute"
-                        inset="-right-2 bottom-0"
-                        size="h-[calc(100%+2rem)] w-[calc(100%-10rem)]"
+                      <h5
+                        className="font-serif text-lg font-semibold"
+                        style={{ color: activeIndex === index ? '#FFFFFF' : '#EBF5FF' }}
+                      >
+                        {item.title}
+                      </h5>
+                      {activeIndex === index && (
+                        <motion.p
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.3 }}
+                          className="px-4 text-sm font-medium md:px-0 md:text-base"
+                        >
+                          {item.description}
+                        </motion.p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div
+                ref={leftNavRef}
+                className="left mx-auto w-full max-w-xl px-4 text-center md:mx-0 md:ml-14 md:px-0 md:text-left"
+              >
+                <Heading
+                  className="mb-6 pb-1 text-center text-xl font-semibold md:mb-10 md:text-left md:text-2xl"
+                  blockText={blockText}
+                >
+                  {title}
+                </Heading>
+
+                <div className="left-navigation space-y-6 md:space-y-8">
+                  {items.map((item, index) => (
+                    <div
+                      key={item.id}
+                      className="left-nav-item relative flex max-w-full cursor-pointer flex-col items-center space-y-1.5 md:max-w-lg md:items-start md:pl-4"
+                      onClick={() => handleNavClick(index)}
+                      ref={(el) => {
+                        sectionRefs.current[index] = el;
+                      }}
+                    >
+                      <motion.div
+                        className="absolute inset-0 hidden h-6 w-[0.3125rem] rounded-4xl md:block md:w-[0.3125rem]"
+                        animate={{
+                          backgroundColor:
+                            activeIndex === index
+                              ? 'var(--color-accordion-active, #FFD700)'
+                              : 'var(--color-accordion, #333)',
+                        }}
+                        transition={{ duration: 0.3 }}
                       />
-                    </motion.div>
-                  )
-              )}
-            </AnimatePresence>
-          </div>
+                      <motion.div
+                        className="mb-3 h-1 w-16 rounded-4xl md:hidden"
+                        animate={{
+                          backgroundColor:
+                            activeIndex === index
+                              ? 'var(--color-accordion-active, #FFD700)'
+                              : 'rgba(0, 0, 0, 0)',
+                        }}
+                        transition={{ duration: 0.3 }}
+                      />
+                      <h5
+                        className="font-serif text-lg font-semibold"
+                        style={{ color: activeIndex === index ? '#FFFFFF' : '#EBF5FF' }}
+                      >
+                        {item.title}
+                      </h5>
+                      {activeIndex === index && (
+                        <motion.p
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.3 }}
+                          className="px-4 text-sm font-medium md:px-0 md:text-base"
+                        >
+                          {item.description}
+                        </motion.p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div
+                ref={rightContentRef}
+                className="right relative hidden max-h-[23rem] min-h-[23rem] md:block lg:max-h-[28rem] lg:min-h-[28rem]"
+              >
+                <AnimatePresence mode="wait">
+                  {items.map(
+                    (item, index) =>
+                      activeIndex === index && (
+                        <motion.div
+                          key={item.id}
+                          className="img-wrapper relative -top-12 h-full w-full lg:h-[calc(100%+10rem)]"
+                          initial={{
+                            opacity: 0,
+                            x: 60,
+                            scale: 0.9,
+                            rotateY: 10,
+                          }}
+                          animate={{
+                            opacity: 1,
+                            x: 0,
+                            scale: 1,
+                            rotateY: 0,
+                            transition: {
+                              type: 'spring',
+                              damping: 12,
+                              stiffness: 100,
+                              mass: 1.2,
+                              bounce: 0.4,
+                              duration: 0.8,
+                            },
+                          }}
+                          exit={{
+                            opacity: 0,
+                            x: -40,
+                            scale: 0.9,
+                            rotateY: -5,
+                            transition: {
+                              duration: 0.3,
+                              ease: 'easeOut',
+                            },
+                          }}
+                        >
+                          <motion.img
+                            // TODO: Replace with actual case study images once available
+                            // src={item.image}
+                            src={index === 0 ? '/dashboard-normal.png' :
+                              index === 1 ? '/case-studies3.png' : '/case-studies2.png'}
+                            alt={`${item.title} - ${item.description.split('.')[0]}`}
+                            className="size-full rounded-2xl object-cover"
+                            initial={{ filter: 'blur(8px)' }}
+                            animate={{
+                              filter: 'blur(0px)',
+                              transition: {
+                                delay: 0.1,
+                                duration: 0.4,
+                              },
+                            }}
+                          />
+                          <GradientOverlay
+                            direction="b"
+                            from="background-body/0"
+                            via="background-body/80 via-40%"
+                            to="background-body to-90%"
+                            position="absolute"
+                            inset="right-0 -bottom-2"
+                            size="w-full h-[calc(100%-10rem)]"
+                          />
+                          <GradientOverlay
+                            direction="r"
+                            from="background-body/0"
+                            via="background-body/80 via-40%"
+                            to="background-body to-90%"
+                            position="absolute"
+                            inset="-right-2 bottom-0"
+                            size="h-[calc(100%+2rem)] w-[calc(100%-10rem)]"
+                          />
+                        </motion.div>
+                      )
+                  )}
+                </AnimatePresence>
+              </div>
+            </>
+          )}
         </div>
       </Section>
       {/* This invisible div creates the scroll height without affecting layout */}
