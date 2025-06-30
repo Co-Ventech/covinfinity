@@ -127,7 +127,7 @@ const StepsSection: React.FC = () => {
   // Improved card styling with consistent blur effect
   const getCardStyle = (cardPosition: "front" | "middle" | "back") => {
     const baseStyle =
-      "relative mx-auto rounded-t-2xl !rounded-b-2xl md:rounded-b-3xl lg:rounded-b-4xl p-4 pt-6 lg:pt-none lg:p-6 rounded-t-2xl rounded-b-[4rem] !overflow-hidden border-[1.5px] border-[#1A1A1A]"
+      "relative mx-auto rounded-t-2xl !rounded-b-2xl md:rounded-b-3xl lg:rounded-b-4xl p-4 pt-6 lg:pt-none lg:p-6 rounded-t-2xl rounded-b-[4rem] !overflow-hidden border-[2px] border-[#1A1A1A]"
 
     if (cardPosition === "front") {
       return `${baseStyle}`
@@ -156,14 +156,15 @@ const StepsSection: React.FC = () => {
       video: "/Recruitinn English Version Dark Mode Video.mp4",
       alt: "Recruitinn platform demo",
       type: "video",
-      thumbnail: "/thumbnail.png"
+      thumbnail: "/recruitin-thumbnail.png"
     },
     {
       title: "SkillBuilder Platform",
       description: "Experience our advanced skill development platform with interactive learning modules.",
       video: "/Skill Builder 1 Dark Mode.mp4",
       alt: "SkillBuilder platform demo",
-      type: "video"
+      type: "video",
+      thumbnail: "/skillbuilder-thumbnail.png"
     },
     {
       title: "CovenTal Platform",

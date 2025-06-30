@@ -7,6 +7,8 @@ import GradientText from '../ui/GradientText';
 import Heading from '../ui/Heading';
 import OutlineBox from '../ui/OutlineBox';
 import { ROUTES } from '~/constants/routes';
+import BookDemoPopup from '../BookDemoPopup';
+import { useState } from 'react';
 
 // Reusable component for polygon-backed sections
 interface PolygonSectionProps {
@@ -29,11 +31,9 @@ export const PolygonSection: React.FC<PolygonSectionProps> = ({
   </div>
 );
 
-// Top hero section with heading and CTA
+// Update your TopHeroSection component
 export const TopHeroSection: React.FC = () => {
-  const handleBookDemo = () => {
-    window.open(ROUTES.BOOK_A_DEMO, '_blank');
-  };
+  const [showPopup, setShowPopup] = useState(false);
 
   return (
     <PolygonSection
@@ -46,15 +46,12 @@ export const TopHeroSection: React.FC = () => {
 
       <p className="!mx-auto mb-6 !max-w-[43rem] font-serif text-xl font-medium">
         <GradientText className="!from-[#EBF5FF]/56 !to-[#EBF5FF]/48 to-20%">
-        Co-Ventech’s customizable features merge AI with human expertise to drive smarter, more impactful solutions for your business.
+        Co-Ventech's customizable features merge AI with human expertise to drive smarter, more impactful solutions for your business.
         </GradientText>
       </p>
 
       <div className="flex justify-center gap-4">
-        {/* <button className="cursor-pointer rounded-lg bg-gradient-to-tr from-[#C2C2C2] to-[#FFFFFF] px-5 py-2.5 font-serif text-base font-medium text-button-text transition hover:opacity-90">
-          Book a demo
-        </button> */}
-        <Button onClick={handleBookDemo}>Book a demo</Button>
+        <Button onClick={() => setShowPopup(true)}>Book a demo</Button>
 
         <button className="flex rounded animate-pulse px-5 py-2.5 font-medium transition hover:opacity-90">
           <span className="bg-gradient-to-r from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent">
@@ -63,6 +60,8 @@ export const TopHeroSection: React.FC = () => {
           <img src="/right-icon.png" alt="arrow-icon" className="mt-2 ml-2 h-2 w-2" />
         </button>
       </div>
+
+      {showPopup && <BookDemoPopup onClose={() => setShowPopup(false)} />}
     </PolygonSection>
   );
 };

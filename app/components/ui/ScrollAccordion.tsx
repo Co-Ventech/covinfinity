@@ -158,8 +158,7 @@ export const ScrollAccordion: React.FC<ScrollAccordionProps> = ({
                           }}
                         >
                           <motion.img
-                            src={index === 0 ? '/dashboard-normal.png' :
-                              index === 1 ? '/case-studies3.png' : '/case-studies2.png'}
+                            src={item.image}
                             alt={`${item.title} - ${item.description.split('.')[0]}`}
                             className="size-full rounded-2xl object-cover"
                             initial={{ filter: 'blur(8px)' }}
@@ -364,10 +363,7 @@ export const ScrollAccordion: React.FC<ScrollAccordionProps> = ({
                           }}
                         >
                           <motion.img
-                            // TODO: Replace with actual case study images once available
-                            // src={item.image}
-                            src={index === 0 ? '/dashboard-normal.png' :
-                              index === 1 ? '/case-studies3.png' : '/case-studies2.png'}
+                            src={item.image}
                             alt={`${item.title} - ${item.description.split('.')[0]}`}
                             className="size-full rounded-2xl object-cover"
                             initial={{ filter: 'blur(8px)' }}

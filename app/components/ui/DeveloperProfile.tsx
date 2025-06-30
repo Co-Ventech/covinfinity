@@ -14,7 +14,7 @@ export const DeveloperProfile = ({ developer, isFirst = false }: DeveloperProfil
 
   const handleSetInterview = () => {
     // Open the connect page in a new tab
-    window.open(ROUTES.BOOK_A_DEMO, '_blank');
+    window.location.href = ROUTES.BOOK_A_DEMO;
   };
   const shouldHighlight = true;
 

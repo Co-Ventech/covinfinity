@@ -8,7 +8,7 @@ interface TalentSearchHeaderProps {
 export const TalentSearchHeader = ({
   title,
   description,
-  icon = '/cup.png',
+  icon = '/diamond-icon.png',
 }: TalentSearchHeaderProps) => (
   <div className="flex flex-col items-center p-5 text-center">
     <img src={icon} alt="Talent" className="mb-3 h-10 w-10 animate-pulse" />

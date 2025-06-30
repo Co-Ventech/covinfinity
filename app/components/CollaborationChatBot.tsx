@@ -159,15 +159,17 @@ export default function CollaborationChatBot() {
         </Box>
         {/* Services Section (Orbit UI) */}
         <Box className='relative !overflow-hidden'>
-          <div className="m-8">
-            <img src="/story.png" alt="Add" className="mr-2 h-8 w-8" />
+          <div className=' max-sm-[60rem] max-lg:min-h-[50rem] space-y-2 sm:space-y-4'>
+          <div className="m-8  sm:mb-24 lg:m-8 lg:mb-0">
+            <img src="/AE-collabration-icon.png" alt="Add" className="mr-2 h-8 w-8 animate-pulse" />
             <h2 className="mt-3.5 text-lg font-semibold">Services Orbiting Covinfinity</h2>
             <p className="mt-1 text-[13px] text-[#665F5F]">
               From deployments to tasks, work with your team every step of the way.
             </p>
           </div>
+          <div>
           <OrbitalSystem
-            className='h-[47.5rem] -bottom-36 w-[calc(100%+20rem)] mt-14 absolute left-1/2 -translate-x-1/2'
+            className='min-h-[31rem]  xl:h-[47.5rem] -bottom-36 w-[calc(100%+20rem)] mt-14 absolute left-1/2 -translate-x-1/2'
             activeChat={activeChat}
             setActiveChat={setActiveChat}
             isLiveChat={isLiveChat}
@@ -191,6 +193,8 @@ export default function CollaborationChatBot() {
             to="background-body"
             className="!h-[7.625rem] !top-[unset] !bottom-0"
           />
+          </div>
+          </div>
         </Box>
       </div>
       {/* Animated Lines */}

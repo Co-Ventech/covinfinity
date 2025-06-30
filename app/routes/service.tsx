@@ -51,9 +51,55 @@ export default function Servic() {
     <MainLayout>
       <div className="case-studies relative">
         <Navbar />
-        <CaseStudyShowcaseImages className="pointer-events-none absolute inset-0" />
+        {/* <CaseStudyShowcaseImages className="pointer-events-none absolute inset-0" /> */}
       </div>
-      <Section className="second-section mt-[27rem]">
+
+      {/* Case Study Section (from test-case-study.tsx) */}
+<Section className="page-3-section pt-20">
+<Heading className="pb-3 lg:!text-7xl" blockText="Case Study">
+{serviceData.name}
+</Heading>
+<p className="my-6 max-w-[46.875rem] font-serif text-xl font-medium">
+{serviceData.description || serviceData.subheading}
+</p>
+<button
+// TODO: Replace with your actual launch handler if needed
+className="flex cursor-pointer rounded bg-gradient-to-r from-[#1F2224] to-[#16181A] to-70% px-5 py-2.5 font-medium transition hover:opacity-90"
+>
+<span className="bg-gradient-to-r from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent">
+Launch Project
+</span>
+</button>
+</Section>
+{/* Showcase IMAGE */}
+<div className="showcase-image-container !pointer-events-none relative h-[30rem] md:h-[35rem] lg:h-[43rem] xl:h-[55rem] mb-32">
+<img
+src={serviceData.showcaseImage ? serviceData.showcaseImage : ''}
+alt={serviceData.name + ' Overview'}
+className="pointer-events-none absolute -top-[3rem] md:-top-20 md:-left-8 lg:-top-[7rem] lg:left-0 xl:-top-36 2xl:-top-[8rem] 2xl:-right-8 2xl:left-[unset]"
+/>
+<GradientOverlay
+direction="t"
+from="background-body from-30%"
+via="background-body/80 via-40%"
+to="background-body/0 to-100%"
+position="absolute"
+inset="right-0 -bottom-[13.3rem]"
+size="h-[35.375rem] w-full"
+/>
+<GradientOverlay
+direction="r"
+from="background-body/0"
+via="background-body/80"
+to="background-body"
+position="absolute"
+inset="-top-40 right-[1rem] md:right-[-2rem]"
+size="h-[calc(100%+10rem)] w-96"
+className="origin-right skew-x-22 transform"
+/>
+</div>
+      
+      <Section className="second-section  mt-[-7rem] mb-6">
         <div className="text-center">
           <Heading
             className="!from-[#FFFFFF] !to-[#CCCCCC] pb-6 font-serif text-[2.5rem] font-semibold text-transparent sm:text-5xl md:text-[3.5rem] xl:text-[4.2rem]"
@@ -71,7 +117,7 @@ export default function Servic() {
         </div>
       </Section>
 
-    
+
 
     {/* Stacks and Duration Section (dynamic by slug) */}
     <Section>

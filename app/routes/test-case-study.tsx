@@ -213,7 +213,8 @@ export default function CaseStudy() {
 
       {/* Dynamic Case Study Details Section */}
       <Section>
-        <Heading className="pb-3 mt-32 !text-center lg:!text-6xl" blockText="Stacks and Duration">
+        <Heading className="pb-3 mt-32
+         !text-center lg:!text-6xl" blockText="Stacks and Duration">
           About The Challenge, Location, Tech
         </Heading>
         <p className="mx-auto my-6 max-w-[46.875rem] text-center font-serif text-xl font-medium">

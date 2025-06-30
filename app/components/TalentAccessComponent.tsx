@@ -130,8 +130,8 @@ const TalentAccessComponent = () => {
         {/* Right Section - Globe Visualization */}
         <Box className="relative overflow-hidden">
           <div className="mb-5 flex flex-col items-center p-5 text-center">
-            <img src="/cup.png" alt="Talent" className="mb-3 h-10 w-10 animate-pulse" />
-            <h2 className="text-lg font-semibold">Top talent access</h2>
+            <img src="/globle-ai-icon.png" alt="Talent" className="mb-3 h-10 w-10 animate-pulse" />
+            <h2 className="text-lg font-semibold">AE & Client Chat Interactive</h2>
             <p className="mt-1 max-w-md text-sm text-[#665F5F]">
               Here client can see list of top talents he can quickly contact/hire based on his needs
             </p>

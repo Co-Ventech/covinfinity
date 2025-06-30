@@ -1,4 +1,4 @@
-import { FacebookIcon, LinkedinIcon, TwitterIcon } from './svgs';
+import { FacebookIcon, LinkedinIcon, TwitterIcon, InstagramIcon } from './svgs';
 import { ROUTES } from '~/constants/routes';
 import { NavLink } from 'react-router';
 
@@ -33,8 +33,8 @@ export default function Footer() {
             <span className="sr-only">Facebook</span>
           </a>
           <a href="#" className="transition-opacity hover:opacity-80">
-            <TwitterIcon />
-            <span className="sr-only">Twitter</span>
+            <InstagramIcon/>
+            <span className="sr-only">Instagram</span>
           </a>
         </div>
 

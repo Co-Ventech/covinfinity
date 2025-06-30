@@ -1,15 +1,18 @@
 import React from 'react';
 import GhostIcon from '../svgs/GhostIcon';
 
+
 interface CollaborationCardProps {
   title: string;
   description: string;
+  icon: string; // image path
   className?: string;
 }
 
 const CollaborationCard: React.FC<CollaborationCardProps> = ({
   title,
   description,
+  icon,
   className = '',
 }) => {
   // Format the description text with line breaks
@@ -35,7 +38,7 @@ const CollaborationCard: React.FC<CollaborationCardProps> = ({
       <div className="flex flex-col">
         {/* Icon and Title in a row */}
         <div className="mb-2 flex items-center">
-          <GhostIcon className="mr-3 h-6 w-6" />
+          <img src={icon} alt={title + ' icon'} className="mr-3 h-6 w-6 object-contain" />
           <h3 className="text-base font-semibold text-white">{title}</h3>
         </div>
 

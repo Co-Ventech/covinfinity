@@ -22,7 +22,7 @@ const BoxTopContent: FC<BoxTopContentProps> = ({ heading, text }) => {
   return (
     <div className="mb-8">
       <h3 className="mb-2 text-xl font-medium">{heading}</h3>
-      <p className="text-sm text-[#878D93]">{text}</p>
+      <p className="text-base text-[#878D93]">{text}</p>
     </div>
   );
 };
