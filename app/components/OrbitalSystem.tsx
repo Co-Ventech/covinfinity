@@ -3,13 +3,14 @@
 import { motion } from "framer-motion"
 
 interface OrbitalSystemProps {
-  className?: string
-  activeChat: number
-  setActiveChat: (index: number) => void
-  isLiveChat: boolean
+  className?: string;
+  activeChat: number;
+  setActiveChat: (index: number) => void;
+  isLiveChat: boolean;
+  avatars: string[];
 }
 
-export default function OrbitalSystem({ className = "", activeChat, setActiveChat, isLiveChat }: OrbitalSystemProps) {
+export default function OrbitalSystem({ className = "", activeChat, setActiveChat, isLiveChat, avatars }: OrbitalSystemProps) {
   // Define 8 orbital radii (but only 7 objects, skipping index 6 which is the 7th orbit)
   const orbits = [60, 90, 120, 150, 180, 210, 240, 270]
   const objectOrbits = [0, 1, 2, 3, 4, 5, 7] // Skip index 6 (7th orbit)
@@ -95,12 +96,18 @@ export default function OrbitalSystem({ className = "", activeChat, setActiveCha
                     animation: `rotate-${objectIndex} ${45 + objectIndex * 8}s linear infinite`,
                   }}
                 >
+                  <defs>
+                    <clipPath id={`circleClip-${objectIndex}`}> 
+                      <circle cx={280 + radius + 20} cy={280 + 20} r={20} />
+                    </clipPath>
+                  </defs>
                   <motion.image
-                    href={isActive ? "/orbit-active.png" : "/orbit-not-active.png"}
+                    href={isActive && avatars[objectIndex] ? avatars[objectIndex] : "/orbit-not-active.png"}
                     x={280 + radius}
                     y={280}
                     width="40"
                     height="40"
+                    clipPath={`url(#circleClip-${objectIndex})`}
                     className={`${isUserChat ? '' : 'cursor-pointer'}`}
                     whileHover={isUserChat ? {} : {
                       scale: 1.15,

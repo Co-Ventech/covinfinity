@@ -130,7 +130,7 @@ export default function ChatPanel({
     <>
       <div className="ml-10 p-5 !pb-0">
         <div className="mt-3 w-[21rem] space-y-3 max-sm:w-[calc(100%-3rem)]">
-          <img src="/AE-collabration-icon.png" alt="Add" className="mr-2 h-8.5 w-8.5 animate-pulse" />
+          <img src="/collaboration.png" alt="Add" className="mr-2 h-7 w-7 animate-pulse" />
           <div>
             <h2 className="text-lg font-semibold">Collaboration between AE & Client</h2>
             <p className="mt-1 text-[13px] text-[#665F5F]">

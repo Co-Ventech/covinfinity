@@ -128,7 +128,8 @@ const TalentAccessComponent = () => {
         </Box>
 
         {/* Right Section - Globe Visualization */}
-        <Box className="relative overflow-hidden">
+        <Box className=" max-lg:min-h-[50rem] relative overflow-hidden">
+
           <div className="mb-5 flex flex-col items-center p-5 text-center">
             <img src="/globle-ai-icon.png" alt="Talent" className="mb-3 h-10 w-10 animate-pulse" />
             <h2 className="text-lg font-semibold">AE & Client Chat Interactive</h2>
@@ -137,7 +138,7 @@ const TalentAccessComponent = () => {
             </p>
           </div>
           {/* Globe */}
-          <div className="w-[calc(100%+1.5rem)] absolute -bottom-60 left-1/2 -translate-1/2 flex items-center justify-center">
+          <div className="max-lg:mt-24  w-[calc(100%+1.5rem)] absolute -bottom-60 left-1/2 -translate-1/2 flex items-center justify-center">
             <video
               autoPlay
               muted
@@ -151,7 +152,7 @@ const TalentAccessComponent = () => {
                   };
                 }
               }}
-              className="pointer-events-none h-[29.8rem] w-full object-cover "
+              className="pointer-events-none h-[35rem] lg:h-[29.8rem] w-full object-cover "
             >
               <source src="/Globe.mp4" type="video/mp4" />
               Your browser does not support the video tag.

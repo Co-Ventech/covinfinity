@@ -53,12 +53,14 @@ export const TopHeroSection: React.FC = () => {
       <div className="flex justify-center gap-4">
         <Button onClick={() => setShowPopup(true)}>Book a demo</Button>
 
-        <button className="flex rounded animate-pulse px-5 py-2.5 font-medium transition hover:opacity-90">
-          <span className="bg-gradient-to-r from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent">
-            Start today for free
-          </span>
-          <img src="/right-icon.png" alt="arrow-icon" className="mt-2 ml-2 h-2 w-2" />
-        </button>
+        <a href="https://app.co-ventech.com/signup" target="_blank" rel="noopener noreferrer">
+          <button className="flex rounded animate-pulse px-5 py-2.5 font-medium transition hover:opacity-90">
+            <span className="bg-gradient-to-r from-[#FFFFFF] to-[#676767] bg-clip-text text-transparent">
+              Start today for free
+            </span>
+            <img src="/right-icon.png" alt="arrow-icon" className="mt-2 ml-2 h-2 w-2" />
+          </button>
+        </a>
       </div>
 
       {showPopup && <BookDemoPopup onClose={() => setShowPopup(false)} />}

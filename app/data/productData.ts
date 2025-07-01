@@ -12,7 +12,7 @@ export const PRODUCTS = [
     productdescription:`Recruitinn is an innovative AI-powered recruitment platform that enables businesses to streamline hiring by providing precise assessments of candidates. From technical evaluations to personality insights, Recruitinn helps you make informed decisions, saving both time and resources. `,
     marketimpact:'Companies using Recruitinn have experienced a 30% reduction in hiring time, a 20% increase in retention rates, a 50% decrease in hiring costs, and an 80% improvement in candidate quality.',
     techstack:'Recruitinn uses advanced technologies like AI, NLP, and cloud infrastructure, integrated with ATS platforms, to streamline hiring. To date, it has assessed over 1 million candidates, onboarded 300+ companies, and achieved a 99% satisfaction rate with an 80% faster hiring process.',
-    showcaseImage: '/golf-training-app-dashboard.png',
+    showcaseImage: '/recruitinn-dashboard.png',
     solutions: [
       { id: 1, title: 'Agile Project Management', description: 'Managing projects with flexibility, adapting to changes and ensuring fast delivery.', image: '/bykea-services.png' },
       { id: 2, title: 'Risk Management', description: 'Identifying, assessing, and managing risks to keep projects on track.', image: '/bykea-services.png' },
@@ -34,7 +34,7 @@ export const PRODUCTS = [
     productdescription:`Skill Builder is more than just a learning platform, it’s your career companion. By combining AI-driven guidance with industry-relevant content, we provide you the skills needed to succeed and grow, all while giving you the flexibility to learn at your own pace.`,
     marketimpact:'Skill Builder has helped individuals and companies alike by boosting employee skill development by 25%, improving job placement rates by 15%, accelerating career growth by 30%, and reducing training costs by 40%.',
     techstack:'Powered by AI, a cloud-based LMS, and real-time tracking, our platform delivers interactive learning at scale. We’ve supported 500,000+ learners, served 250+ corporate clients, achieved 95% satisfaction, and earned the title of Best EdTech Platform 2024.',
-    showcaseImage: '/golf-training-app-dashboard.png',
+    showcaseImage: '/skillbuilder-dashboard.png',
     solutions: [
       { id: 1, title: 'Agile Project Management', description: 'Managing projects with flexibility, adapting to changes and ensuring fast delivery.', image: '/bykea-services.png' },
       { id: 2, title: 'Risk Management', description: 'Identifying, assessing, and managing risks to keep projects on track.', image: '/bykea-services.png' },
@@ -56,7 +56,7 @@ export const PRODUCTS = [
     productdescription:`Co-Vental is a cutting-edge platform that leverages AI and automation to help businesses acquire, manage, and retain top talent. With a pre-vetted global talent pool and intuitive talent management tools, Co-Vental accelerates recruitment and improves workforce efficiency.`,
     marketimpact:'Co-Vental has helped businesses reduce hiring time by 40%, increase workforce productivity by 25%, improve employee retention by 30%, and cut recruitment costs by up to 50%.',
     techstack:'Powered by AI, automation, and HR/ATS integration, our cloud-based platform streamlines hiring. With 200,000+ professionals, 50% faster recruitment, 98% client retention, and 300+ enterprise clients, we deliver results at scale.',
-    showcaseImage: '/golf-training-app-dashboard.png',
+    showcaseImage: '/co-vental-dashboard.png',
     solutions: [
       { id: 1, title: 'Agile Project Management', description: 'Managing projects with flexibility, adapting to changes and ensuring fast delivery.', image: '/bykea-services.png' },
       { id: 2, title: 'Risk Management', description: 'Identifying, assessing, and managing risks to keep projects on track.', image: '/bykea-services.png' },

@@ -19,6 +19,8 @@ interface FeatureInfo {
   icon: string;
   title: string;
   description: string;
+  iconWidth?: number | string;
+  iconHeight?: number | string;
 }
 
 // Social icon component
@@ -72,7 +74,15 @@ const ClientProfile = ({
 const FeatureBox = ({ feature }: { feature: FeatureInfo }) => (
   <div className="mb-4">
     <div className="mb-1 flex items-center space-x-2">
-      <img src={feature.icon} alt={feature.title} className="h-4 w-4" />
+      <img
+        src={feature.icon}
+        alt={feature.title}
+        style={{
+          width: feature.iconWidth ?? 24,
+          height: feature.iconHeight ?? 24,
+        }}
+        className="object-contain"
+      />
       <span className="text-sm text-white">{feature.title}</span>
     </div>
     <p className="ml-6 w-[15rem] text-xs text-[#665F5F]">{feature.description}</p>
@@ -164,7 +174,7 @@ const TestimonialComponent = () => {
   // Feature data for left box
   const featuresLeft = [
     {
-      icon: '/framer.png',
+      icon: '/customer.png',
       title: 'Few well known clients',
       description: 'From deployments to tasks, work with your team every step of the way.',
     },
@@ -173,9 +183,9 @@ const TestimonialComponent = () => {
   // Feature data for right box
   const featuresRight = [
     {
-      icon: '/framer.png',
-      title: 'Collaborate everything',
-      description: 'From deployments to tasks, work with your team every step of the way.',
+      icon: '/project.png',
+      title: 'Projects',
+      description: 'Project A saved 43%, boosting efficiency and cutting costs.',
     },
   ];
 
@@ -214,8 +224,12 @@ const TestimonialComponent = () => {
           <div className="relative flex h-full flex-col rounded-[inherit]">
             <div className="flex max-h-54 min-h-54 flex-col items-center justify-center gap-3 rounded-[inherit] bg-[#0F1011]">
               <div className="flex items-center justify-center">
-                <img src="/framer-black.png" alt="Cost" className="mr-2 h-5 w-5" />
-                <h2 className="text-lg text-[#665F5F]">Cost Client Saved</h2>
+                <img src="/cost.png" alt="Cost" className="mr-2 h-8 w-8" />
+                <h2
+                  className="text-lg bg-gradient-to-r from-[rgba(235,245,255,0.56)] to-[rgba(235,245,255,0.48)] bg-clip-text text-transparent"
+                >
+                  Cost Client Saved
+                </h2>
                 {/* <div className="ml-2 h-2 w-2 animate-pulse rounded-full bg-green-500"></div> */}
               </div>
 

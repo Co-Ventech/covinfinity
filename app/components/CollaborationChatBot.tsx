@@ -122,6 +122,16 @@ const OrbitalAnimation = () => (
   </div>
 );
 
+const collaboratorAvatars = [
+  '/Winston.png', // 0
+  '/Alex.png',    // 1
+  '/emma.png',    // 2
+  '/Michael.png', // 3
+  '',             // 4 (empty or add if you have a 5th)
+  '/sarah1.png',  // 5 (Sarah or user chat)
+  '',             // 6 (skipped in objectOrbits)
+];
+
 export default function CollaborationChatBot() {
   const {
     activeChat,
@@ -173,6 +183,7 @@ export default function CollaborationChatBot() {
             activeChat={activeChat}
             setActiveChat={setActiveChat}
             isLiveChat={isLiveChat}
+            avatars={collaboratorAvatars}
           />
           {/* Overlays */}
           <GradientOverlay

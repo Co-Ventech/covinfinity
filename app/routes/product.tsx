@@ -178,7 +178,7 @@ export default function Product() {
           via="background-body/80"
           to="background-body"
           position="absolute"
-          inset="-top-40 right-[5rem] md:right-[6.875rem]"
+          inset="-top-40 right-[1rem] md:right-[-3rem]"
           size="h-[calc(100%+10rem)] w-96"
           className="origin-right skew-x-22 transform"
         />

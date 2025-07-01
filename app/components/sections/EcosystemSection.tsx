@@ -193,7 +193,7 @@ const StepsSection: React.FC = () => {
         ))}
       </div>
 
-      <div className="relative h-[45rem] sm:h-[68.5rem] xl:h-[41.8rem]">
+      <div className="relative h-[31rem] sm:h-[44.5rem] xl:h-[41.8rem]">
         <motion.div
           className="absolute inset-0 rounded-t-2xl rounded-b-[4rem] backdrop-blur-sm"
           initial={{ opacity: 0 }}
