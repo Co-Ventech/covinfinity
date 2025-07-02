@@ -18,43 +18,43 @@ const SERVICE_CARDS: Card[] = [
     title: 'Quality Assurance',
     subtitle: 'Something qa line goes here',
     description: 'Title goes here',
-    image: '/phone-mockup.png',
+    image: '/software2nd1.png',
   },
   {
     id: 1,
     title: 'Quality Assurance',
     subtitle: 'Something qa line goes here',
     description: 'Title goes here',
-    image: '/phone-mockup.png',
+    image: '/qa2nd2.png',
   },
   {
     id: 2,
     title: 'Quality Assurance',
     subtitle: 'Something qa line goes here',
     description: 'Title goes here',
-    image: '/phone-mockup.png',
+    image: '/ui-ux2nd.png',
   },
   {
     id: 3,
     title: 'Quality Assurance',
     subtitle: 'Something qa line goes here',
     description: 'Title goes here',
-    image: '/phone-mockup.png',
+    image: '/devops2nd.png',
   },
   {
     id: 4,
     title: 'Quality Assurance',
     subtitle: 'Something qa line goes here',
     description: 'Title goes here',
-    image: '/phone-mockup.png',
+    image: '/cyber2nd.png',
   },
 ];
 
 const Card: React.FC<{ card: Card }> = ({ card }) => {
   return (
-    <div className="relative flex h-96 overflow-hidden rounded-lg bg-border-box p-8 lg:h-[30rem] xl:h-[39rem]">
+    <div className="relative flex h-96 overflow-hidden rounded-lg bg-border-box  lg:h-[30rem] xl:h-[39rem]">
       {/* Phone Image - Full Height */}
-      <div className="!pointer-events-none absolute -bottom-20 left-1/3 h-full w-[60%] opacity-20">
+      <div className="!pointer-events-none absolute w-full  h-full  opacity-20">
         <img
           src={card.image}
           alt="phone mockup"

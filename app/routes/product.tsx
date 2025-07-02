@@ -140,11 +140,11 @@ export default function Product() {
       </div>
       <ProductShowcaseImages className="pointer-events-none" />
 
-      <Section className="page-3-section pt-5">
+      <Section className="page-3-section pt-5 ">
         <Heading className="pb-3 lg:!text-7xl" blockText={productData?.text}>
           {productData?.headingone?.split('\n')[0]}
         </Heading>
-        <p className="my-6  font-serif text-xl font-medium">
+        <p className="my-6 max-w-[45rem] font-serif text-xl font-medium">
           {productData?.subheadingone}
         </p>
         <button
@@ -169,7 +169,7 @@ export default function Product() {
           via="background-body/80 via-40%"
           to="background-body/0 to-100%"
           position="absolute"
-          inset="right-0 -bottom-[13.3rem]"
+          inset="right-0 -bottom-[26.3rem]"
           size="h-[35.375rem] w-full"
         />
         <GradientOverlay
@@ -184,14 +184,14 @@ export default function Product() {
         />
       </div>
 
-      <Section>
+      <Section className='mt-16'>
       <Heading className="pb-3 !text-center lg:!text-6xl" blockText={productData?.text}>
       {productData?.headingtwo}
         </Heading>
         <p className="mx-auto my-6 max-w-[46.875rem] text-center font-serif text-xl font-medium">
           {productData?.subheading}
         </p>
-        <div className="grid grid-cols-1 grid-rows-[1fr_0.5fr_0.5fr] gap-6 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-[1.5fr_1fr]">
+        <div className="  mt-16 grid grid-cols-1 grid-rows-[1fr_0.5fr_0.5fr] gap-6 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-[1.5fr_1fr]">
           <Box className="relative overflow-hidden p-8 md:col-span-1 md:row-span-2">
             <BoxTopContent
               heading={`About ${productData?.name || 'Product'}`}

@@ -13,6 +13,7 @@ import { Slider } from '~/components/ui/Slider';
 import { useParams } from 'react-router';
 import { SERVICES } from '~/data/serviceData';
 import CompanySliderSection from '~/components/sections/CompanySliderSection';
+import BoxFeatureSection from '~/components/sections/BoxFeatureSection';
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -116,9 +117,7 @@ className="origin-right skew-x-22 transform"
           </p>
         </div>
       </Section>
-
-
-
+     
     {/* Stacks and Duration Section (dynamic by slug) */}
     <Section>
       <div className="grid grid-cols-1 grid-rows-[1fr_0.5fr_0.5fr] gap-6 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-[1.5fr_1fr]">
@@ -200,6 +199,11 @@ className="origin-right skew-x-22 transform"
         </Box>
       </div>
     </Section>
+
+     {/* Feature Cards Section */}
+     {serviceData.features && (
+        <BoxFeatureSection features={serviceData.features} />
+      )}
 
     {/* ScrollAccordion with case study solutions */}
     <ScrollAccordion

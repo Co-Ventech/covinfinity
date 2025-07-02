@@ -312,7 +312,7 @@ export const CASE_STUDIES = [
       slug: 'creditbook',
       title: 'QA Automation for CreditBook',
       description: 'CreditBook, a digital solution provider for financial record management, wanted to streamline their testing process to improve efficiency and reduce manual work.',
-      showcaseImage: '/golf-training-app-dashboard.png',
+      showcaseImage: '/creditbook.png',
       duration: '',
       location: '',
       techStack: [
