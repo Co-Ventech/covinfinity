@@ -4,7 +4,7 @@ export const CASE_STUDIES = [
       slug: 'bykea',
       title: 'Bykea - Pakistan\'s Leading Mobility Super App',
       description: 'Empowering Pakistan\'s gridlocked cities with affordable mobility solutions through an innovative ML-powered platform that combines ride-hailing, deliveries, and digital payments.',
-      showcaseImage: '/golf-training-app-dashboard.png',
+      showcaseImage: '/bykea-dashboard.png',
       duration: '7+ years (Est. 2016)',
       location: 'Karachi, Pakistan',
       background: "Bykea, a leading mobility platform, needed to modernize its infrastructure to support rapid growth and ensure secure, seamless operations.",
@@ -65,13 +65,30 @@ export const CASE_STUDIES = [
           image: '/bykea-services.png'
         }
       ],
+      outcomes: [
+        {
+          title: 'Improved Security Posture',
+          description: 'Bykea\'s platform is now significantly more secure, with all identified vulnerabilities addressed.',
+          icon: '/security-icon.png',
+        },
+        {
+          title: 'On-Time Delivery',
+          description: ' Co-Ventech completed the project within the agreed timeline, providing Bykea with peace of mind and a reliable partner for future needs.',
+          icon: '/on-time-icon.png',
+        },
+        {
+          title: 'Data Protection Compliance',
+          description: 'Bykea met compliance with national and international data protection regulations, successfully passing security audits.',
+          icon: '/protection-icon.png',
+        },
+      ],
       link: 'https://www.bykea.com'
     },
     {
       slug: 'bluefin',
       title: 'Bluefin - Global Leader in Payment Security',
       description: 'Revolutionizing payment security through integrated PCI-validated encryption and tokenization solutions that protect sensitive data across 60 countries.',
-      showcaseImage: '/bluefin.png',
+      showcaseImage: '/creditbook-dashboard.png',
       duration: '15+ years',
       location: 'Atlanta, United States',
       background: 'Bluefin, a global payment security provider, sought to enhance its platform to support a growing client base and evolving compliance requirements.',
@@ -133,6 +150,23 @@ export const CASE_STUDIES = [
           image: '/bluefin-network.png'
         }
       ],
+      outcomes: [
+        {
+          title: 'Improved Application Quality',
+          description: 'Co-Ventech successfully identified and resolved multiple bug areas both web and mobile applications, significantly enhancing user experience.',
+          icon: '/security-icon.png',
+        },
+        {
+          title: 'Strengthened Infrastructure Security',
+          description: 'The comprehensive IT security audit led to the identification of critical vulnerabilities, which were effectively remediated.',
+          icon: '/protection-icon.png',
+        },
+        {
+          title: 'Ongoing Collaboration and Support',
+          description: 'Regular communication and progress updates fostered a strong partnership, ensuring that Bluefin was informed and involved in all remediation efforts.',
+          icon: '/on-time-icon.png',
+        },
+      ],
       link: 'https://www.bluefin.com'
     },
     // {
@@ -182,75 +216,75 @@ export const CASE_STUDIES = [
     //   ],
     //   link: 'https://www.creditbook.pk'
     // },
-    {
-      slug: 'neusolme',
-      title: 'Application Testing Services for Neusolme',
-      description: 'Neusolme, a rapidly growing software solutions company, needed a reliable testing process to improve platform performance and ensure smooth operations. Their platform faced increasing user demands, and they needed a solution to optimize performance.',
-      showcaseImage: '/golf-training-app-dashboard.png',
-      duration: '',
-      location: '',
-      techStack: [
-        { name: 'Selenium', image: '/logo-tech.png' },
-        { name: 'Appium', image: '/logo-tech-1.png' },
-        { name: 'Custom In-house Automation Frameworks', image: '/logo-tech.png' },
-        { name: 'Trello', image: '/logo-tech-1.png' },
-      ],
-      background: 'Neusolme, a rapidly growing software solutions company, needed a reliable testing process to improve platform performance and ensure smooth operations. Their platform faced increasing user demands, and they needed a solution to optimize performance.',
-      problem: [
-        'Platform faced increasing user demands.',
-        'Needed to optimize performance and reliability.'
-      ],
-      implementation: [
-        { heading: 'Initial Analysis', text: 'We analyzed the client requirements and current systems.' },
-        { heading: 'Solution Design', text: 'Designed a tailored solution to address the identified needs.' },
-        { heading: 'Deployment & Review', text: 'Implemented the solution and reviewed outcomes with the client.' }
-      ],
-      journey: [
-        'Improved platform reliability and performance.',
-        'Enhanced development processes for greater efficiency.'
-      ],
-      impact: [
-        '25% improvement in platform efficiency',
-        'Reduced user experience issues by 40%'
-      ]
-    },
-    {
-      slug: 'olivine',
-      title: 'Cybersecurity Assessment for Olivine',
-      description: 'Olivine, a utility administration company, needed a comprehensive assessment of its network and infrastructure to ensure system reliability and mitigate risks that could disrupt operations.',
-      showcaseImage: '/golf-training-app-dashboard.png',
-      duration: '',
-      location: '',
-      techStack: [
-        { name: 'Metasploit', image: '/logo-tech.png' },
-        { name: 'Nmap', image: '/logo-tech-1.png' },
-        { name: 'Nessus', image: '/logo-tech.png' },
-        { name: 'OpenVAS', image: '/logo-tech-1.png' },
-      ],
-      background: 'Olivine, a utility administration company, needed a comprehensive assessment of its network and infrastructure to ensure system reliability and mitigate risks that could disrupt operations.',
-      problem: [
-        'Needed a comprehensive assessment of network and infrastructure.',
-        'Required to ensure system reliability and mitigate risks.'
-      ],
-      implementation: [
-        { heading: 'Initial Analysis', text: 'We analyzed the client requirements and current systems.' },
-        { heading: 'Solution Design', text: 'Designed a tailored solution to address the identified needs.' },
-        { heading: 'Deployment & Review', text: 'Implemented the solution and reviewed outcomes with the client.' }
-      ],
-      journey: [
-        'Optimized enterprise systems and proactively addressed risks.',
-        'Ensured more reliable operations and future-proofed infrastructure.'
-      ],
-      impact: [
-        '40% increase in system reliability',
-        'Reduced security vulnerabilities by 50%'
-      ]
-    },
+    // {
+    //   slug: 'neusolme',
+    //   title: 'Application Testing Services for Neusolme',
+    //   description: 'Neusolme, a rapidly growing software solutions company, needed a reliable testing process to improve platform performance and ensure smooth operations. Their platform faced increasing user demands, and they needed a solution to optimize performance.',
+    //   showcaseImage: '/golf-training-app-dashboard.png',
+    //   duration: '',
+    //   location: '',
+    //   techStack: [
+    //     { name: 'Selenium', image: '/logo-tech.png' },
+    //     { name: 'Appium', image: '/logo-tech-1.png' },
+    //     { name: 'Custom In-house Automation Frameworks', image: '/logo-tech.png' },
+    //     { name: 'Trello', image: '/logo-tech-1.png' },
+    //   ],
+    //   background: 'Neusolme, a rapidly growing software solutions company, needed a reliable testing process to improve platform performance and ensure smooth operations. Their platform faced increasing user demands, and they needed a solution to optimize performance.',
+    //   problem: [
+    //     'Platform faced increasing user demands.',
+    //     'Needed to optimize performance and reliability.'
+    //   ],
+    //   implementation: [
+    //     { heading: 'Initial Analysis', text: 'We analyzed the client requirements and current systems.' },
+    //     { heading: 'Solution Design', text: 'Designed a tailored solution to address the identified needs.' },
+    //     { heading: 'Deployment & Review', text: 'Implemented the solution and reviewed outcomes with the client.' }
+    //   ],
+    //   journey: [
+    //     'Improved platform reliability and performance.',
+    //     'Enhanced development processes for greater efficiency.'
+    //   ],
+    //   impact: [
+    //     '25% improvement in platform efficiency',
+    //     'Reduced user experience issues by 40%'
+    //   ]
+    // },
+    // {
+    //   slug: 'olivine',
+    //   title: 'Cybersecurity Assessment for Olivine',
+    //   description: 'Olivine, a utility administration company, needed a comprehensive assessment of its network and infrastructure to ensure system reliability and mitigate risks that could disrupt operations.',
+    //   showcaseImage: '/golf-training-app-dashboard.png',
+    //   duration: '',
+    //   location: '',
+    //   techStack: [
+    //     { name: 'Metasploit', image: '/logo-tech.png' },
+    //     { name: 'Nmap', image: '/logo-tech-1.png' },
+    //     { name: 'Nessus', image: '/logo-tech.png' },
+    //     { name: 'OpenVAS', image: '/logo-tech-1.png' },
+    //   ],
+    //   background: 'Olivine, a utility administration company, needed a comprehensive assessment of its network and infrastructure to ensure system reliability and mitigate risks that could disrupt operations.',
+    //   problem: [
+    //     'Needed a comprehensive assessment of network and infrastructure.',
+    //     'Required to ensure system reliability and mitigate risks.'
+    //   ],
+    //   implementation: [
+    //     { heading: 'Initial Analysis', text: 'We analyzed the client requirements and current systems.' },
+    //     { heading: 'Solution Design', text: 'Designed a tailored solution to address the identified needs.' },
+    //     { heading: 'Deployment & Review', text: 'Implemented the solution and reviewed outcomes with the client.' }
+    //   ],
+    //   journey: [
+    //     'Optimized enterprise systems and proactively addressed risks.',
+    //     'Ensured more reliable operations and future-proofed infrastructure.'
+    //   ],
+    //   impact: [
+    //     '40% increase in system reliability',
+    //     'Reduced security vulnerabilities by 50%'
+    //   ]
+    // },
     {
       slug: 'rawcaster',
       title: 'Application Testing for RawCaster',
       description: 'RawCaster, a social media platform, faced performance issues as user traffic grew. They needed an effective way to test their application performance under load to ensure a seamless user experience.',
-      showcaseImage: '/golf-training-app-dashboard.png',
+      showcaseImage: '/rawcaster-dashboard.png',
       duration: '',
       location: '',
       techStack: [
@@ -275,68 +309,86 @@ export const CASE_STUDIES = [
       impact: [
         '30% faster response time under heavy load',
         '25% reduction in server downtime'
-      ]
+      ],
+      outcomes: [
+        {
+          title: 'Identified and Resolved Performance Bottlenecks',
+          description: 'Our testing pinpointed several key issues within the application that were slowing performance, all of which were resolved.',
+          icon: '/security-icon.png',
+        },
+        {
+          title: 'Enhanced Application Efficiency',
+          description: 'RawCaster\'s platform now runs more efficiently, handling heavier loads without affecting user experience.',
+          icon: '/setting-icon.png',
+        },
+        {
+          title: 'Collaborated with Development Team',
+          description: 'Our close collaboration with the client\'s development team ensured quick implementation of solutions, minimizing downtime.',
+          icon: '/on-time-icon.png',
+        },
+      ],
+      link: 'https://www.rawcaster.com'
     },
-    {
-      slug: 'seedlabs',
-      title: 'App Testing & General Assessment for Seedlabs',
-      description: 'Seedlabs, a fast-growing software company, needed a detailed assessment of their web and mobile applications to enhance product quality and optimize operations.',
-      showcaseImage: '/golf-training-app-dashboard.png',
-      duration: '',
-      location: '',
-      techStack: [
-        { name: 'Selenium', image: '/logo-tech.png' },
-        { name: 'Appium', image: '/logo-tech-1.png' },
-        { name: 'JMeter', image: '/logo-tech.png' },
-      ],
-      background: 'Seedlabs, a fast-growing software company, needed a detailed assessment of their web and mobile applications to enhance product quality and optimize operations.',
-      problem: [
-        'Needed a detailed assessment of web and mobile applications.',
-        'Aimed to enhance product quality and optimize operations.'
-      ],
-      implementation: [
-        { heading: 'Initial Analysis', text: 'We analyzed the client requirements and current systems.' },
-        { heading: 'Solution Design', text: 'Designed a tailored solution to address the identified needs.' },
-        { heading: 'Deployment & Review', text: 'Implemented the solution and reviewed outcomes with the client.' }
-      ],
-      journey: [
-        'Identified areas for improvement in performance and functionality.',
-        'Helped Seedlabs enhance product quality and streamline operations.'
-      ],
-      impact: [
-        '35% improvement in mobile app performance',
-        '20% increase in user engagement'
-      ]
-    },
-    {
-      slug: 'creditbook',
-      title: 'QA Automation for CreditBook',
-      description: 'CreditBook, a digital solution provider for financial record management, wanted to streamline their testing process to improve efficiency and reduce manual work.',
-      showcaseImage: '/creditbook.png',
-      duration: '',
-      location: '',
-      techStack: [
-        { name: 'Selenium', image: '/logo-tech.png' },
-        { name: 'Cypress', image: '/logo-tech-1.png' },
-        { name: 'Automated Reporting Tools', image: '/logo-tech.png' },
-      ],
-      background: 'CreditBook, a digital solution provider for financial record management, wanted to streamline their testing process to improve efficiency and reduce manual work.',
-      problem: [
-        'Wanted to streamline testing process to improve efficiency.',
-        'Aimed to reduce manual work.'
-      ],
-      implementation: [
-        { heading: 'Initial Analysis', text: 'We analyzed the client requirements and current systems.' },
-        { heading: 'Solution Design', text: 'Designed a tailored solution to address the identified needs.' },
-        { heading: 'Deployment & Review', text: 'Implemented the solution and reviewed outcomes with the client.' }
-      ],
-      journey: [
-        'Implemented automated testing framework, significantly reducing testing times.',
-        'Improved accuracy and streamlined the development cycle.'
-      ],
-      impact: [
-        '50% reduction in manual testing time',
-        '30% faster software release cycles'
-      ]
-    }
+    // {
+    //   slug: 'seedlabs',
+    //   title: 'App Testing & General Assessment for Seedlabs',
+    //   description: 'Seedlabs, a fast-growing software company, needed a detailed assessment of their web and mobile applications to enhance product quality and optimize operations.',
+    //   showcaseImage: '/golf-training-app-dashboard.png',
+    //   duration: '',
+    //   location: '',
+    //   techStack: [
+    //     { name: 'Selenium', image: '/logo-tech.png' },
+    //     { name: 'Appium', image: '/logo-tech-1.png' },
+    //     { name: 'JMeter', image: '/logo-tech.png' },
+    //   ],
+    //   background: 'Seedlabs, a fast-growing software company, needed a detailed assessment of their web and mobile applications to enhance product quality and optimize operations.',
+    //   problem: [
+    //     'Needed a detailed assessment of web and mobile applications.',
+    //     'Aimed to enhance product quality and optimize operations.'
+    //   ],
+    //   implementation: [
+    //     { heading: 'Initial Analysis', text: 'We analyzed the client requirements and current systems.' },
+    //     { heading: 'Solution Design', text: 'Designed a tailored solution to address the identified needs.' },
+    //     { heading: 'Deployment & Review', text: 'Implemented the solution and reviewed outcomes with the client.' }
+    //   ],
+    //   journey: [
+    //     'Identified areas for improvement in performance and functionality.',
+    //     'Helped Seedlabs enhance product quality and streamline operations.'
+    //   ],
+    //   impact: [
+    //     '35% improvement in mobile app performance',
+    //     '20% increase in user engagement'
+    //   ]
+    // },
+    // {
+    //   slug: 'creditbook',
+    //   title: 'QA Automation for CreditBook',
+    //   description: 'CreditBook, a digital solution provider for financial record management, wanted to streamline their testing process to improve efficiency and reduce manual work.',
+    //   showcaseImage: '/creditbook-dashboard.png',
+    //   duration: '',
+    //   location: '',
+    //   techStack: [
+    //     { name: 'Selenium', image: '/logo-tech.png' },
+    //     { name: 'Cypress', image: '/logo-tech-1.png' },
+    //     { name: 'Automated Reporting Tools', image: '/logo-tech.png' },
+    //   ],
+    //   background: 'CreditBook, a digital solution provider for financial record management, wanted to streamline their testing process to improve efficiency and reduce manual work.',
+    //   problem: [
+    //     'Wanted to streamline testing process to improve efficiency.',
+    //     'Aimed to reduce manual work.'
+    //   ],
+    //   implementation: [
+    //     { heading: 'Initial Analysis', text: 'We analyzed the client requirements and current systems.' },
+    //     { heading: 'Solution Design', text: 'Designed a tailored solution to address the identified needs.' },
+    //     { heading: 'Deployment & Review', text: 'Implemented the solution and reviewed outcomes with the client.' }
+    //   ],
+    //   journey: [
+    //     'Implemented automated testing framework, significantly reducing testing times.',
+    //     'Improved accuracy and streamlined the development cycle.'
+    //   ],
+    //   impact: [
+    //     '50% reduction in manual testing time',
+    //     '30% faster software release cycles'
+    //   ]
+    // }
   ];

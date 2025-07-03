@@ -56,8 +56,8 @@ export default function Servic() {
       </div>
 
       {/* Case Study Section (from test-case-study.tsx) */}
-<Section className="page-3-section pt-20">
-<Heading className="pb-3 lg:!text-7xl" blockText="Case Study">
+<Section className=" mx-12 page-3-section mb-5 pt-20">
+<Heading className="pb-3 lg:!text-7xl" blockText="">
 {serviceData.name}
 </Heading>
 <p className="my-6 max-w-[46.875rem] font-serif text-xl font-medium">

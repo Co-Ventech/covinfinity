@@ -13,6 +13,18 @@ import { CASE_STUDIES } from '~/data/caseStudiesPagesData';
 import { MainLayout } from '~/layouts/MainLayout';
 import type { Route } from './+types/test-case-study';
 import { ServiceSection } from '~/components/ServiceSection';
+import OutcomesSection from '~/components/sections/OutcomesSection';
+
+const CASE_STUDY_IMAGES: Record<string, string[]> = {
+  bykea: ['/bykea-img-1.png', '/bykea-rides.png', '/bykea-im3.png', '/bykea-img4.png'],
+  bluefin: ['/blufin-img1.png', '/bluefin-img2.png', '/blufin-img3.png', '/bluefin-img4.png'],
+  rawcaster: ['/rawcaster-img1.png', '/rawcaster-img2.png', '/rawcaster-img3.png', '/rawcaster-img4.png'],
+};
+const CASE_STUDY_COLORS: Record<string, string> = {
+  bykea: 'bykea', // green
+  bluefin: 'bluefin', // blue (define .text-bluefin in your CSS if not present)
+  rawcaster: 'rawcaster', // pink (define .text-rawcaster in your CSS if not present)
+};
 
 export function meta({ params }: Route.MetaArgs) {
   const caseStudy = CASE_STUDIES.find((study) => study.slug === params.slug);
@@ -61,11 +73,43 @@ export default function CaseStudy() {
     return <div>Case study not found</div>;
   }
 
+  const images = CASE_STUDY_IMAGES[caseStudyData.slug] || [];
+  const colorClass = CASE_STUDY_COLORS[caseStudyData.slug] || 'bykea';
+
+  // Service card data for outcomes (order: Software Development, QA & Test Automation, UI/UX Designing, DevOps, Cybersecurity)
+  const serviceOutcomes = [
+    {
+      title: 'Software Development',
+      description: 'From deployments to task, work with your team every step of the way.',
+      icon: '/software-service2.png',
+    },
+    {
+      title: 'QA & Test Automation',
+      description: 'From deployments to task, work with your team every step of the way.',
+      icon: '/qa2nd.png',
+    },
+    {
+      title: 'UI/UX Designing',
+      description: 'From deployments to task, work with your team every step of the way.',
+      icon: '/ui-ux2nd.png',
+    },
+    {
+      title: 'DevOps',
+      description: 'From deployments to task, work with your team every step of the way.',
+      icon: '/devops2nd.png',
+    },
+    {
+      title: 'Cybersecurity',
+      description: 'From deployments to task, work with your team every step of the way.',
+      icon: '/cyber2nd.png',
+    },
+  ];
+
   return (
     <MainLayout>
       <Navbar />
-      <Section className="page-3-section pt-20">
-        <Heading className="pb-3 lg:!text-7xl" blockText="Case Study">
+      <Section className="page-3-section pt-20 mx-12">
+        <Heading className="pb-3 lg:!text-7xl max-w-[70rem]" blockText="">
           {caseStudyData.title}
         </Heading>
         <p className="my-6 max-w-[46.875rem] font-serif text-xl font-medium">
@@ -81,7 +125,7 @@ export default function CaseStudy() {
         </button>
       </Section>
       {/* Showcase IMAGE */}
-      <div className="showcase-image-container !pointer-events-none relative h-[30rem] md:h-[35rem] lg:h-[43rem] xl:h-[55rem] mb-32">
+      <div className="showcase-image-container mt-20 ml-[5rem]  !pointer-events-none relative h-[30rem] md:h-[35rem] lg:h-[43rem] xl:h-[55rem] ">
         <img
           src={caseStudyData.showcaseImage ? caseStudyData.showcaseImage : ''}
           alt={caseStudyData.title ? caseStudyData.title + ' Overview' : 'Overview'}
@@ -108,14 +152,33 @@ export default function CaseStudy() {
         />
       </div>
        {/* One */}
+       <Section className=" pb-0 w-[300] sm:max-w-[600px] md:max-w-[700px] lg:max-w-[1208px] max-h-[158px] mx-auto mb-16">
+        <Heading className="text-center text-2xl md:text-5xl lg:!text-7xl font-semibold">
+          {(() => {
+            let baseText = '';
+            let coloredWord = '';
+            if (caseStudyData.slug === 'bykea') {
+              baseText = 'Penetration Testing & Vulnerability Assessment for ';
+              coloredWord = 'BYKEA';
+            } else if (caseStudyData.slug === 'bluefin') {
+              baseText = 'Application Testing & Cybersecurity Implementation for ';
+              coloredWord = 'BLUEFIN';
+            } else if (caseStudyData.slug === 'rawcaster') {
+              baseText = 'Penetration Testing & Vulnerability Assessment for ';
+              coloredWord = 'RAWCASTER';
+            }
+            return <><span>{baseText}</span><span className={`text-${colorClass}`}>{coloredWord}</span></>;
+          })()}
+        </Heading>
+      </Section>
        <ServiceSection
-        imageUrl="/bykea-mobile.png"
+        imageUrl={images[0] || ''}
         imagePosition="left"
         boxClassName='!mr-auto'
         globeClassName='-right-[4rem] -bottom-[17rem]'
       >
-        <Heading className='uppercase font-semibold text-6xl mb-12 mt-7' blockText='background'>
-          <span className='text-bykea'>
+        <Heading className={`uppercase font-semibold text-6xl mb-12 mt-7`} blockText='background'>
+          <span className={`text-${colorClass}`}>
             {caseStudyData.slug ? caseStudyData.slug.toUpperCase() : ''}
           </span>
         </Heading>
@@ -126,20 +189,18 @@ export default function CaseStudy() {
 
          {/* Two */}
          <ServiceSection
-        imageUrl="/bykea-rides.png"
+        imageUrl={images[1] || ''}
         imagePosition="right"
         className="mt-20 !ml-auto"
         boxClassName="!px-4 xl:!px-12 !ml-auto"
         globeClassName="-bottom-[25rem] left-1/2 -translate-x-1/2"
       >
-        <Heading className='uppercase font-semibold text-6xl mb-12 mt-7'>
+        <Heading className={`uppercase font-semibold text-6xl mb-12 mt-7`}>
           The
-          <span className='ml-2.5 text-bykea'>
-            problem
-          </span>
+          <span className={`ml-2.5 text-${colorClass}`}>problem</span>
         </Heading>
         <p className='no-color font-extrabold text-base mb-8'>
-          <span className='text-bykea'>
+          <span className={`text-${colorClass}`}>
             ({caseStudyData.title ? caseStudyData.title.split(' for ')[0] : ''})
           </span>
         </p>
@@ -155,7 +216,7 @@ export default function CaseStudy() {
 
       {/* Three */}
       <ServiceSection
-        imageUrl="/bykea-services.png"
+        imageUrl={images[2] || ''}
         imagePosition="left"
         className="mt-20"
         boxClassName="!px-4 xl:!px-20 !mr-auto"
@@ -168,9 +229,9 @@ export default function CaseStudy() {
             const subtext = impl && typeof impl === 'object' && impl.text ? impl.text : (typeof impl === 'string' ? impl : 'No details provided.');
             return (
               <div key={idx} className="flex items-start gap-6">
-                <span className="flex flex-shrink-0 size-12 items-center justify-center rounded-full bg-bykea text-xl font-medium text-white">{idx + 1}</span>
+                <span className={`flex flex-shrink-0 size-12 items-center justify-center rounded-full bg-${colorClass} text-xl font-medium text-white`}>{idx + 1}</span>
                 <div className="">
-                  <Heading as="h3" className='upper'>{heading}</Heading>
+                  <Heading as="h3" className={`upper text-${colorClass}`}>{heading}</Heading>
                   <p className="text-[#B5BDC4] text-base font-medium mt-4">{subtext}</p>
                 </div>
               </div>
@@ -181,17 +242,15 @@ export default function CaseStudy() {
 
         {/* Four */}
         <ServiceSection
-        imageUrl="/bykea-ride-types.png"
+        imageUrl={images[3] || ''}
         imagePosition="right"
         className="mt-20 !ml-auto"
         boxClassName="!px-4 xl:!px-20 !ml-auto"
         globeClassName='-bottom[21rem] -left-[7rem] rotate-[70deg]'
       >
-        <Heading className='uppercase font-semibold text-6xl mb-12 mt-7'>
+        <Heading className={`uppercase font-semibold text-6xl mb-12 mt-7`}>
           The
-          <span className='ml-2.5 text-bykea'>
-            Journey
-          </span>
+          <span className={`ml-2.5 text-${colorClass}`}>Journey</span>
         </Heading>
         <p className='font-medium text-base max-w-[39.125rem] leading-[1.48]'>
           {caseStudyData.journey && caseStudyData.journey.map((item, idx) => (
@@ -304,14 +363,16 @@ export default function CaseStudy() {
         </div>
       </Section>
 
-      {/* ScrollAccordion with case study solutions */}
-      {/* <ScrollAccordion
-        items={caseStudyData.solutions}
-        title="Solutions & Impact"
-        blockText="Key Achievements"
-      /> */}
+      {/* Outcomes Section (after main details, before CollaborationSection) */}
+      <div className='mx-12'>
+      <OutcomesSection
+        heading="Outcomes"
+        subheading="Delivered measurable results and business impact"
+        outcomes={caseStudyData.outcomes || []}
+      />
+      </div>
 
-      <CollaborationSection />
+     
     </MainLayout>
   );
 }

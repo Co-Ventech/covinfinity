@@ -12,6 +12,14 @@ interface DeveloperProfileProps {
 
 export const DeveloperProfile = ({ developer, isFirst = false }: DeveloperProfileProps) => {
 
+  // Use specific avatars for the first two developers
+  let avatarSrc = developer.avatar;
+  if (developer.name === 'John Smith') {
+    avatarSrc = '/Michael.png';
+  } else if (developer.name === 'Sarah Chen') {
+    avatarSrc = '/Alex.png'; // Assuming Alex.png is David, replace with /David.png if you have it
+  }
+
   const handleSetInterview = () => {
     // Open the connect page in a new tab
     window.location.href = ROUTES.BOOK_A_DEMO;
@@ -21,7 +29,7 @@ export const DeveloperProfile = ({ developer, isFirst = false }: DeveloperProfil
   return (
     <div className="rounded-xl p-3 hover:bg-background-body">
       <div className="flex items-start space-x-3 border-b-0 pt-3">
-        <img src={developer.avatar} alt={developer.name} className="h-5 w-5 rounded-full" />
+        <img src={avatarSrc} alt={developer.name} className="h-8 w-8 rounded-full" />
         <div className="flex-1">
           <div className="flex items-center">
             <span className="text-sm text-white">{developer.name}</span>

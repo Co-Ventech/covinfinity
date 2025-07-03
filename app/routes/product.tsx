@@ -140,8 +140,8 @@ export default function Product() {
       </div>
       <ProductShowcaseImages className="pointer-events-none" />
 
-      <Section className="page-3-section pt-5 ">
-        <Heading className="pb-3 lg:!text-7xl" blockText={productData?.text}>
+      <Section className="page-3-section pt-5 mx-12 ">
+        <Heading className="pb-3 lg:!text-7xl " blockText={productData?.text}>
           {productData?.headingone?.split('\n')[0]}
         </Heading>
         <p className="my-6 max-w-[45rem] font-serif text-xl font-medium">

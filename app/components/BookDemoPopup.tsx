@@ -5,10 +5,41 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Box from '~/components/ui/Box';
 import { GradientOverlay } from '~/components/ui/GradientOverlay';
 import Section from '~/components/ui/Section';
+import BgImage from '~/components/BgImage';
 
 interface BookDemoPopupProps {
   onClose: () => void;
 }
+
+const FORM_STEPS = [
+  {
+    name: 'companyName',
+    placeholder: "What's your company's name?",
+    icon: (
+      <span className="mr-2 text-[#FF7C91]">
+        <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M3 17V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 17v-4h2v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+      </span>
+    ),
+  },
+  {
+    name: 'industry',
+    placeholder: 'What industry are you in?',
+    icon: (
+      <span className="mr-2 text-[#BB97F2]">
+        <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M10 3v14M3 10h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+      </span>
+    ),
+  },
+  {
+    name: 'services',
+    placeholder: "What services are you looking for?",
+    icon: (
+      <span className="mr-2 text-[#FF7C91]">
+        <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M4 10h12M10 4v12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+      </span>
+    ),
+  },
+];
 
 const BookDemoPopup: React.FC<BookDemoPopupProps> = ({ onClose }) => {
   const [step, setStep] = useState<'form' | 'calendar'>('form');
@@ -18,6 +49,8 @@ const BookDemoPopup: React.FC<BookDemoPopupProps> = ({ onClose }) => {
     industry: '',
     services: ''
   });
+  const [formStep, setFormStep] = useState(0);
+  const [inputValue, setInputValue] = useState('');
 
   // Disable body scroll when popup is open
   useEffect(() => {
@@ -28,17 +61,20 @@ const BookDemoPopup: React.FC<BookDemoPopupProps> = ({ onClose }) => {
     };
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+  const handleBarInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleBarFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStep('calendar');
+    const stepKey = FORM_STEPS[formStep].name;
+    setFormData(prev => ({ ...prev, [stepKey]: inputValue }));
+    setInputValue('');
+    if (formStep < FORM_STEPS.length - 1) {
+      setFormStep(formStep + 1);
+    } else {
+      setStep('calendar');
+    }
   };
 
   const calendlyUrl = import.meta.env.VITE_CALENDLY_URL;
@@ -60,11 +96,16 @@ const BookDemoPopup: React.FC<BookDemoPopupProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 p-4">
-      <div className="relative w-full z-50 max-w-3xl rounded-2xl bg-gradient-to-br from-[#232526] to-[#414345] p-0 shadow-2xl border border-[#FF7C91]/30 animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
+      <Box className={`relative ${step === 'form' ? 'w-full max-w-3xl' : 'w-screen h-[80vh] max-w-5xl mx-auto sm:mx-8 md:mx-12 flex flex-col justify-start shadow-2xl rounded-2xl overflow-hidden bg-background-body'}`}>
+        {/* Decorative BgImage for style */}
+        <BgImage
+          src="section-lines/collaborate-lines-2nd.png"
+          className="absolute inset-0 w-full h-full !-z-10 !bg-contain opacity-60"
+        />
         <button
           onClick={onClose}
-          className="absolute right-6 top-6 z-50 text-2xl text-gray-300 hover:text-white focus:outline-none"
+          className={`absolute ${step === 'form' ? 'right-6' : 'right-8'} top-6 z-50 text-2xl focus:outline-none text-[#FF7C91] hover:text-[#D7263D] transition-colors`}
         >
           ✕
         </button>
@@ -73,68 +114,36 @@ const BookDemoPopup: React.FC<BookDemoPopupProps> = ({ onClose }) => {
           <div className="flex flex-col items-center px-10 py-12">
             {/* Decorative header */}
             <div className="flex flex-col items-center mb-8">
-              {/* Example logo/icon, replace src as needed */}
-              <div className="w-16 h-16 mb-2 flex items-center justify-center rounded-full bg-gradient-to-tr from-[#FF7C91] to-[#BB97F2] shadow-lg">
-                <svg width="32" height="32" fill="none" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#fff" fillOpacity=".1"/><path d="M10 16h12M16 10v12" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg>
+              <div className="w-12 h-12 ">
+                <img src="/box.png" alt="Box Icon" className="w-full h-full object-contain" />
               </div>
-              <h2 className="text-3xl font-extrabold text-white mb-1 text-center">Tell us about your company</h2>
-              <p className="text-[#FF7C91] font-medium">Step 1 of 2</p>
+              <h2 className="text-3xl font-extrabold text-white m-4 text-center">Tell us about your company</h2>
+              <p className="text-[#FF7C91] font-medium">Step {formStep + 1} of {FORM_STEPS.length}</p>
             </div>
-            <form onSubmit={handleSubmit} className="w-full max-w-2xl space-y-6">
-              <div className="relative">
-                <input
-                  type="text"
-                  name="companyName"
-                  value={formData.companyName}
-                  onChange={handleInputChange}
-                  placeholder="Company's Name"
-                  className="w-full pl-12 pr-4 py-3 rounded-lg bg-[#2A2525] border border-gray-700 text-white focus:border-[#FF7C91] focus:ring-2 focus:ring-[#FF7C91] transition placeholder-gray-400 text-lg shadow-sm"
-                  required
-                />
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#FF7C91]">
-                  <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M3 17V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 17v-4h2v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                </span>
+            <form onSubmit={handleBarFormSubmit} className="w-full max-w-xl">
+              <div className="flex items-center rounded-lg bg-[#101112] p-4">
+                <div className="flex flex-1 items-center text-sm font-medium text-[#EBF5FF]">
+                  {FORM_STEPS[formStep].icon}
+                  <input
+                    type="text"
+                    value={inputValue}
+                    onChange={handleBarInputChange}
+                    placeholder={FORM_STEPS[formStep].placeholder}
+                    className="flex-1 bg-transparent text-sm text-white placeholder-[#EBF5FF] focus:outline-none"
+                    required
+                  />
+                </div>
+                <div className="flex items-center space-x-3">
+                  <button type="submit">
+                    <img src="/send-2.png" alt="Next" className="size-6 object-contain" />
+                  </button>
+                </div>
               </div>
-              <div className="relative">
-                <input
-                  type="text"
-                  name="industry"
-                  value={formData.industry}
-                  onChange={handleInputChange}
-                  placeholder="Industry"
-                  className="w-full pl-12 pr-4 py-3 rounded-lg bg-[#2A2525] border border-gray-700 text-white focus:border-[#FF7C91] focus:ring-2 focus:ring-[#FF7C91] transition placeholder-gray-400 text-lg shadow-sm"
-                  required
-                />
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#BB97F2]">
-                  <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M10 3v14M3 10h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
-                </span>
-              </div>
-              <div className="relative">
-                <input
-                  type="text"
-                  name="services"
-                  value={formData.services}
-                  onChange={handleInputChange}
-                  placeholder="Services you're looking for"
-                  className="w-full pl-12 pr-4 py-3 rounded-lg bg-[#2A2525] border border-gray-700 text-white focus:border-[#FF7C91] focus:ring-2 focus:ring-[#FF7C91] transition placeholder-gray-400 text-lg shadow-sm"
-                  required
-                />
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#FF7C91]">
-                  <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M4 10h12M10 4v12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
-                </span>
-              </div>
-              <button
-                type="submit"
-                className="w-full mt-2 rounded-lg bg-gradient-to-r from-[#FF7C91] to-[#BB97F2] px-5 py-3 text-lg font-semibold text-white shadow-lg hover:scale-105 hover:shadow-2xl transition flex items-center justify-center gap-2"
-              >
-                Continue to Book a Meeting
-                <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M5 10h10M10 5l5 5-5 5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </button>
             </form>
           </div>
         ) : (
-          <Section className="text-white" divClass="relative pt-8 z-50">
-            <Box className="relative overflow-hidden">
+          <div className="flex flex-col h-full w-full">
+            <div className="flex-1 relative overflow-hidden h-full w-full">
               <GradientOverlay
                 direction="r"
                 from="background-body/50"
@@ -148,7 +157,7 @@ const BookDemoPopup: React.FC<BookDemoPopupProps> = ({ onClose }) => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="flex h-[600px] items-center justify-center"
+                    className="flex h-full items-center justify-center"
                   >
                     <div className="flex flex-col items-center">
                       <div className="relative h-16 w-16">
@@ -164,23 +173,16 @@ const BookDemoPopup: React.FC<BookDemoPopupProps> = ({ onClose }) => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
-                    className="relative z-0"
+                    className="relative z-0 h-full w-full"
                   >
-                    <button
-                      onClick={onClose}
-                      className="absolute right-2 top-2 z-50 rounded-full bg-black bg-opacity-60 px-3 py-1 text-lg text-white hover:bg-opacity-90 focus:outline-none"
-                      style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.2)' }}
-                    >
-                      ✕
-                    </button>
-                    <div className="w-full z-40" style={{ position: 'relative' }}>
+                    <div className="w-full h-full z-40" style={{ position: 'relative', height: '100%' }}>
                       <InlineWidget
                         url={calendlyUrl}
                         styles={{
-                          height: 'min(700px, 90vh)',
+                          height: '100%',
                           width: '100%',
                           minHeight: '400px',
-                          maxHeight: '90vh',
+                          maxHeight: '100%',
                         }}
                         pageSettings={pageSettings}
                         iframeTitle="Calendly Scheduling"
@@ -189,10 +191,10 @@ const BookDemoPopup: React.FC<BookDemoPopupProps> = ({ onClose }) => {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </Box>
-          </Section>
+            </div>
+          </div>
         )}
-      </div>
+      </Box>
     </div>
   );
 };

@@ -294,7 +294,7 @@ const Navbar = () => {
             isOpen={isDropdownOpen.caseStudies}
             onMouseEnter={() => handleMouseEnter('caseStudies')}
             onMouseLeave={handleMouseLeave}
-            dropdownItems={['Bykea', 'BlueFin', 'CreditBook','neusolme','olivine','rawcaster']}
+            dropdownItems={['Bykea', 'RawCaster', 'BlueFin' /*, 'CreditBook','neusolme','olivine'*/]}
           />
 
           {/* <NavItem icon={<MirrorIcon className="size-[1.375rem]" />} label="About us" /> */}
@@ -467,8 +467,7 @@ const Navbar = () => {
                   >
                     <span className="text-lg font-semibold">Case Studies</span>
                     <svg
-                      className={`h-5 w-5 transform transition-transform ${mobileDropdownOpen === 'caseStudies' ? 'rotate-180' : ''
-                        }`}
+                      className={`h-5 w-5 transform transition-transform ${mobileDropdownOpen === 'caseStudies' ? 'rotate-180' : ''}`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -489,10 +488,10 @@ const Navbar = () => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                       >
-                        {['Bykea', 'Example One', 'Example Two', 'Example Three'].map((item) => (
+                        {['Bykea', 'RawCaster', 'BlueFin' /*, 'CreditBook','neusolme','olivine'*/].map((item) => (
                           <NavLink
                             key={item}
-                            to={`${ROUTES.CASE_STUDY(item.toLowerCase())})}`}
+                            to={`${ROUTES.CASE_STUDY(item.toLowerCase())}`}
                             className="block rounded-lg py-2 pl-6 hover:bg-[#212121]"
                           >
                             {item}

@@ -216,7 +216,7 @@ export default function ServicesSection() {
           {/* Digital Solution Section */}
           <div className="">
             <div className="headin-section mb-8 flex flex-col items-center justify-center text-center">
-              <img src="/solutions-icon.png" alt="icon" className="size-8 object-contain" />
+              <img src="/service-icon.png" alt="icon" className="size-12 object-contain" />
 
               <h2 className="text-xl font-semibold">Co-Ventech Digital Solutions</h2>
               <p className="text-lg font-medium">Fintech, Healthcare, E-commerce, and More...</p>

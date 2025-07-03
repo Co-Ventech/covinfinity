@@ -126,7 +126,7 @@ const AvatarGroup: React.FC = () => {
         >
           <span className="whitespace-nowrap">
             {/* <Counter from={0} to={43} /> talents & business coventech */}
-            Provides access to the vast number of Top 1% Global Talent
+            Access the Top 1% of Global Talent.
           </span>
         </motion.div>
       </div>

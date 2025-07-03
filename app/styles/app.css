@@ -265,6 +265,25 @@
   .animate-pulse-slow {
     animation: var(--animation-pulse-slow);
   }
+
+  .text-bykea {
+    color: var(--color-bykea) !important;
+  }
+  .text-bluefin {
+    color: #2B5EB2 !important;
+  }
+  .text-rawcaster {
+    color: #563662 !important;
+  }
+  .bg-bykea {
+    background-color: var(--color-bykea) !important;
+  }
+  .bg-bluefin {
+    background-color: #2B5EB2 !important;
+  }
+  .bg-rawcaster {
+    background-color: #563662 !important;
+  }
 }
 
 /* Talent Component Animations - Removed as we now use Framer Motion */
