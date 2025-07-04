@@ -271,7 +271,7 @@ export default function CaseStudy() {
       </ServiceSection>
 
       {/* Dynamic Case Study Details Section */}
-      <Section>
+      {/* <Section>
         <Heading className="pb-3 mt-32
          !text-center lg:!text-6xl" blockText="Stacks and Duration">
           About The Challenge, Location, Tech
@@ -361,7 +361,7 @@ export default function CaseStudy() {
             />
           </Box>
         </div>
-      </Section>
+      </Section> */}
 
       {/* Outcomes Section (after main details, before CollaborationSection) */}
       <div className='mx-12'>

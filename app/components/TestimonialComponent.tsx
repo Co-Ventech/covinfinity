@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Box from './ui/Box';
 import Section from './ui/Section';
+import BgImage from './BgImage';
+import Heading from './ui/Heading';
 
 // Client testimonial type
 interface Testimonial {
@@ -134,7 +136,7 @@ const TestimonialComponent = () => {
       name: 'Mark Witty',
       position: 'Chief Executive Officer',
       company: 'Google',
-      avatar: '/Winston.png',
+      avatar: '/mark.png',
       companyAvatar: '/google.png',
       socialIcons: ['/facebook.png', '/youtube.png', '/zoom.png'],
       costSaved: 482000,
@@ -190,7 +192,20 @@ const TestimonialComponent = () => {
   ];
 
   return (
-    <Section>
+    <Section className="text-white xl:mt-12" divClass="relative pt-32 xl:pt-44">
+      <BgImage
+        src="section-lines/talent-section-lines-3rd.png"
+        className="xl:top-0 left-1/2 -z-10 h-[58rem] w-[calc(100%+3.5rem)] -translate-x-1/2 !bg-contain"
+      />
+      {/* Header Section */}
+      <div className="mb-14 text-center">
+        <Heading className="mb-4 pb-1" blockText="">
+          Smart Solutions Smarter Savings
+        </Heading>
+        <p className="text-[#665F5F]">
+          By optimizing processes and boosting efficiency, our solutions help clients cut costs and maximize value.
+        </p>
+      </div>
       <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Left Section - Client Testimonials */}
         <Box className="relative bg-border-box !p-0 lg:col-span-1">

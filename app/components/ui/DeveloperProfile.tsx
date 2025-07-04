@@ -15,9 +15,9 @@ export const DeveloperProfile = ({ developer, isFirst = false }: DeveloperProfil
   // Use specific avatars for the first two developers
   let avatarSrc = developer.avatar;
   if (developer.name === 'John Smith') {
-    avatarSrc = '/Michael.png';
+    avatarSrc = '/smith.png';
   } else if (developer.name === 'Sarah Chen') {
-    avatarSrc = '/Alex.png'; // Assuming Alex.png is David, replace with /David.png if you have it
+    avatarSrc = '/sarahchen.png'; // Assuming Alex.png is David, replace with /David.png if you have it
   }
 
   const handleSetInterview = () => {
@@ -29,7 +29,11 @@ export const DeveloperProfile = ({ developer, isFirst = false }: DeveloperProfil
   return (
     <div className="rounded-xl p-3 hover:bg-background-body">
       <div className="flex items-start space-x-3 border-b-0 pt-3">
-        <img src={avatarSrc} alt={developer.name} className="h-8 w-8 rounded-full" />
+        <img
+          src={avatarSrc}
+          alt={developer.name}
+          className={`w-8 rounded-full ${developer.name === 'Sarah Chen' ? 'h-9' : 'h-8'}`}
+        />
         <div className="flex-1">
           <div className="flex items-center">
             <span className="text-sm text-white">{developer.name}</span>

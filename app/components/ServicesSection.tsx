@@ -255,7 +255,7 @@ export default function ServicesSection() {
         </Box>
         {/* Clutch Reviews Section */}
         <div className="mt-8 flex w-full items-center justify-between gap-4">
-          <ImageBox src="/blue-hunt.png" alt="blue hunt" />
+          <ImageBox src="/glassdor.png" alt="blue hunt" />
           <ImageBox src="/red-hunt.png" alt="red hunt" />
         </div>
       </div>

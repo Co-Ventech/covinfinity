@@ -140,7 +140,7 @@ export default function Product() {
       </div>
       <ProductShowcaseImages className="pointer-events-none" slug={slug ?? ''} />
 
-      <Section className="page-3-section pt-5 mx-12 ">
+      <Section className={`page-3-section pt-5 md:mb-48 mb-20 mx-12 ${slug === 'recruitinn' ? '-mt-12' : 'mt-12'}`}>
         <Heading className="pb-3 lg:!text-7xl " blockText={productData?.text}>
           {productData?.headingone?.split('\n')[0]}
         </Heading>
@@ -157,11 +157,11 @@ export default function Product() {
         </button>
       </Section>
 
-      <div className="showcase-image-container !pointer-events-none relative h-[30rem] md:h-[35rem] lg:h-[43rem] xl:h-[55rem]">
+      <div className="showcase-image-container !pointer-events-none relative mx-12 h-[30rem] md:h-[35rem] lg:h-[43rem] xl:h-[55rem] md:mb-[-5rem]">
         <img
           src={productData?.showcaseImage}
           alt={`${productData?.heading?.split('\n')[0]} Dashboard`}
-          className="pointer-events-none absolute -top-[3rem] md:-top-20 md:-left-8 lg:-top-[7rem] lg:left-0 xl:-top-36 2xl:-top-[8rem] 2xl:-right-8 2xl:left-[unset]"
+          className={`pointer-events-none absolute -top-[3rem] md:-top-20 md:-left-8 lg:-top-[7rem] lg:left-0 xl:-top-36 2xl:-top-[8rem] 2xl:-right-8 2xl:left-[unset] ${slug === 'covental' ? 'h-[99%] w-[92%] md:w-[95%] ' : ''}`}
         />
         <GradientOverlay
           direction="t"
@@ -178,13 +178,13 @@ export default function Product() {
           via="background-body/80"
           to="background-body"
           position="absolute"
-          inset="-top-40 right-[1rem] md:right-[-3rem]"
+          inset="-top-40 right-[-4rem] md:right-[-12rem]"
           size="h-[calc(100%+10rem)] w-96"
           className="origin-right skew-x-22 transform"
         />
       </div>
 
-      <Section className='mt-16'>
+      <Section className=''>
       <Heading className="pb-3 !text-center lg:!text-6xl" blockText={productData?.text}>
       {productData?.headingtwo}
         </Heading>
@@ -199,7 +199,7 @@ export default function Product() {
             />
             <div className="image-wrapper relative max-h-[34rem]">
               <img
-                src={productData?.showcaseImage}
+                src={productData?.showcaseImage2}
                 alt={`${productData?.name} Overview`}
                 className="cursor-poin max--w-[calc(100%+23rem)] pointer-events-none relative top-8 left-4 min-w-[calc(100%+23rem)] object-cover"
               />
@@ -279,7 +279,7 @@ export default function Product() {
       />
 
       <Section>
-        <div className="flex items-center justify-center mt-40">
+        <div className="flex items-center justify-center mt-12">
       <img src="/CoventechFlower.png" alt="CoventechFlower" className="h-[4.4rem] w-[5.4rem]" />
       </div>
       <Heading className="pb-3 !text-center lg:!text-6xl mt-12" blockText="Development by Coventech ">
@@ -290,12 +290,12 @@ export default function Product() {
         </p>
         </Section>
 
-      <Section className="second-section mt-[2rem]">
-        <div className="mx-auto mt-12 flex items-center justify-center p-4 !px-0 md:mt-24 md:p-6">
+      <Section className="second-section ">
+        <div className="mx-auto mt-6 flex items-center justify-center p-4 !px-0 md:mt-24 md:p-6">
           <div className="mx-auto text-center">
             {/* Clutch Reviews Section */}
             <div className="flex w-full items-center justify-between gap-4">
-              <ImageBox src="/blue-hunt.png" alt="blue hunt" />
+              <ImageBox src="/glassdor.png" alt="blue hunt" />
               <ImageBox src="/red-hunt.png" alt="red hunt" />
             </div>
           </div>

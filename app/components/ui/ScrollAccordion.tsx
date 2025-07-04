@@ -109,7 +109,7 @@ export const ScrollAccordion: React.FC<ScrollAccordionProps> = ({
     <>
       <Section
         ref={container}
-        className="my-Container mt-20 h-max sm:h-[100dvh]"
+        className="my-Container  h-max md:h-[100dvh]"
         divClass="size-full flex items-center justify-center"
       >
         <div className={`flex !w-full flex-col md:grid md:grid-cols-[0.8fr_1fr] ${role === 'service' ? 'md:grid-cols-[1fr_0.8fr]' : ''}`}>

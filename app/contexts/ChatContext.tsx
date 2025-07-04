@@ -68,7 +68,7 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({ children
           role: 'ai' as const,
           sender: 'Sarah',
           message: event.data,
-          avatar: '/sarah.png',
+          avatar: '/sarah1.png',
           time: new Date().toLocaleTimeString(),
         }];
         return newConvo;
@@ -98,7 +98,7 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({ children
       role: 'user' as const,
       sender: 'You',
       message: msg,
-      avatar: '/john.png',
+      avatar: '/you.png',
       time: new Date().toLocaleTimeString(),
     };
 

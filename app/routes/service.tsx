@@ -73,7 +73,7 @@ Launch Project
 </button>
 </Section>
 {/* Showcase IMAGE */}
-<div className="showcase-image-container !pointer-events-none relative h-[30rem] md:h-[35rem] lg:h-[43rem] xl:h-[55rem] mb-32">
+<div className="showcase-image-container flex justify-center items-center !pointer-events-none relative h-[27rem] md:h-[35rem] lg:h-[43rem] xl:h-[55rem] mb-32">
 <img
 src={serviceData.showcaseImage ? serviceData.showcaseImage : ''}
 alt={serviceData.name + ' Overview'}
@@ -119,7 +119,7 @@ className="origin-right skew-x-22 transform"
       </Section>
      
     {/* Stacks and Duration Section (dynamic by slug) */}
-    <Section>
+    {/* <Section>
       <div className="grid grid-cols-1 grid-rows-[1fr_0.5fr_0.5fr] gap-6 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-[1.5fr_1fr]">
         <Box className="relative overflow-hidden p-8 md:col-span-1 md:row-span-2">
           <BoxTopContent
@@ -198,7 +198,7 @@ className="origin-right skew-x-22 transform"
           />
         </Box>
       </div>
-    </Section>
+    </Section> */}
 
      {/* Feature Cards Section */}
      {serviceData.features && (
@@ -221,7 +221,7 @@ className="origin-right skew-x-22 transform"
         <div className="mx-auto text-center">
           {/* Clutch Reviews Section */}
           <div className="flex w-full items-center justify-between gap-4">
-            <ImageBox src="/blue-hunt.png" alt="blue hunt" />
+            <ImageBox src="/glassdor.png" alt="blue hunt" />
             <ImageBox src="/red-hunt.png" alt="red hunt" />
           </div>
         </div>

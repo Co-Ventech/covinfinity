@@ -12,14 +12,41 @@ export const PRODUCTS = [
     productdescription:`Recruitinn is an innovative AI-powered recruitment platform that enables businesses to streamline hiring by providing precise assessments of candidates. From technical evaluations to personality insights, Recruitinn helps you make informed decisions, saving both time and resources. `,
     marketimpact:'Companies using Recruitinn have experienced a 30% reduction in hiring time, a 20% increase in retention rates, a 50% decrease in hiring costs, and an 80% improvement in candidate quality.',
     techstack:'Recruitinn uses advanced technologies like AI, NLP, and cloud infrastructure, integrated with ATS platforms, to streamline hiring. To date, it has assessed over 1 million candidates, onboarded 300+ companies, and achieved a 99% satisfaction rate with an 80% faster hiring process.',
-    showcaseImage: '/recruitinn-dashboard.png',
+     showcaseImage: '/recruitinn.ai.png',
+    showcaseImage2: '/recruitinn-dashboard.png',
     solutions: [
-      { id: 1, title: 'Agile Project Management', description: 'Managing projects with flexibility, adapting to changes and ensuring fast delivery.', image: '/bykea-services.png' },
-      { id: 2, title: 'Risk Management', description: 'Identifying, assessing, and managing risks to keep projects on track.', image: '/bykea-services.png' },
-      { id: 3, title: 'Stakeholder Communication', description: 'Keeping stakeholders informed and aligned with project progress.', image: '/bykea-services.png' },
-      { id: 4, title: 'Timeline & Budget Management', description: 'Ensuring projects are delivered on time and within budget.', image: '/bykea-services.png' },
-      { id: 5, title: 'Quality Assurance', description: 'Maintaining high standards and quality throughout the project lifecycle.', image: '/bykea-services.png' },
+      {
+        id: 1,
+        title: 'AI-Driven Candidate Assessments',
+        description: 'Evaluate candidates through automated, role-specific tests covering technical skills, aptitude, and soft skills.',
+        image: '/ai-test.png',
+      },
+      {
+        id: 2,
+        title: 'Real-Time Assessment Reports',
+        description: 'Generate detailed reports with scoring insights, benchmarks, and candidate comparisons to support smarter hiring decisions.',
+        image: '/reports.png',
+      },
+      {
+        id: 3,
+        title: 'Custom Test Creation',
+        description: 'Design tailored assessments that match your job requirements using a flexible test builder powered by AI.',
+        image: '/coding-test.png',
+      },
+      {
+        id: 4,
+        title: 'Automated Shortlisting',
+        description: 'Automatically rank and shortlist top candidates based on assessment results and predictive performance metrics.',
+        image: '/reports.png',
+      },
+      {
+        id: 5,
+        title: 'Seamless ATS Integration',
+        description: 'Integrate effortlessly with your existing ATS and HR systems for smooth candidate tracking and management.',
+        image: '/ai-test.png',
+      },
     ],
+    
   },
   {
     name: 'Skillbuilder',
@@ -34,14 +61,41 @@ export const PRODUCTS = [
     productdescription:`Skill Builder is more than just a learning platform, it’s your career companion. By combining AI-driven guidance with industry-relevant content, we provide you the skills needed to succeed and grow, all while giving you the flexibility to learn at your own pace.`,
     marketimpact:'Skill Builder has helped individuals and companies alike by boosting employee skill development by 25%, improving job placement rates by 15%, accelerating career growth by 30%, and reducing training costs by 40%.',
     techstack:'Powered by AI, a cloud-based LMS, and real-time tracking, our platform delivers interactive learning at scale. We’ve supported 500,000+ learners, served 250+ corporate clients, achieved 95% satisfaction, and earned the title of Best EdTech Platform 2024.',
-    showcaseImage: '/skillbuilder-dashboard.png',
+     showcaseImage: '/skillbuilder-design2nd.png',
+    showcaseImage2: '/skillbuilder-dashboard.png',
     solutions: [
-      { id: 1, title: 'Agile Project Management', description: 'Managing projects with flexibility, adapting to changes and ensuring fast delivery.', image: '/bykea-services.png' },
-      { id: 2, title: 'Risk Management', description: 'Identifying, assessing, and managing risks to keep projects on track.', image: '/bykea-services.png' },
-      { id: 3, title: 'Stakeholder Communication', description: 'Keeping stakeholders informed and aligned with project progress.', image: '/bykea-services.png' },
-      { id: 4, title: 'Timeline & Budget Management', description: 'Ensuring projects are delivered on time and within budget.', image: '/bykea-services.png' },
-      { id: 5, title: 'Quality Assurance', description: 'Maintaining high standards and quality throughout the project lifecycle.', image: '/bykea-services.png' },
+      {
+        id: 1,
+        title: 'AI-Powered Learning Paths',
+        description: 'Receive personalized course recommendations tailored to your career goals and current skill set.',
+        image: '/reports.png',
+      },
+      {
+        id: 2,
+        title: 'Skill Gap Analysis',
+        description: 'Identify knowledge gaps and target specific competencies to fast-track your growth.',
+        image: '/skill-solution1.png',
+      },
+      {
+        id: 3,
+        title: 'Interactive Course Content',
+        description: 'Engage with real-world projects, quizzes, and simulations designed for practical learning.',
+        image: '/skill-solution2.png',
+      },
+      {
+        id: 4,
+        title: 'Progress Tracking & Insights',
+        description: 'Monitor your learning journey with real-time analytics and performance feedback.',
+        image: '/ai-test.png',
+      },
+      {
+        id: 5,
+        title: 'Certification & Career Support',
+        description: 'Earn industry-recognized certificates and get guidance for career advancement.',
+        image: '/coding-test.png',
+      },
     ],
+    
   },
   {
     name: 'Covental',
@@ -56,14 +110,41 @@ export const PRODUCTS = [
     productdescription:`Co-Vental is a cutting-edge platform that leverages AI and automation to help businesses acquire, manage, and retain top talent. With a pre-vetted global talent pool and intuitive talent management tools, Co-Vental accelerates recruitment and improves workforce efficiency.`,
     marketimpact:'Co-Vental has helped businesses reduce hiring time by 40%, increase workforce productivity by 25%, improve employee retention by 30%, and cut recruitment costs by up to 50%.',
     techstack:'Powered by AI, automation, and HR/ATS integration, our cloud-based platform streamlines hiring. With 200,000+ professionals, 50% faster recruitment, 98% client retention, and 300+ enterprise clients, we deliver results at scale.',
-    showcaseImage: '/co-vental-dashboard.png',
+    showcaseImage: '/covental-design2nd.png',
+    showcaseImage2: '/co-vental-dashboard.png',
     solutions: [
-      { id: 1, title: 'Agile Project Management', description: 'Managing projects with flexibility, adapting to changes and ensuring fast delivery.', image: '/bykea-services.png' },
-      { id: 2, title: 'Risk Management', description: 'Identifying, assessing, and managing risks to keep projects on track.', image: '/bykea-services.png' },
-      { id: 3, title: 'Stakeholder Communication', description: 'Keeping stakeholders informed and aligned with project progress.', image: '/bykea-services.png' },
-      { id: 4, title: 'Timeline & Budget Management', description: 'Ensuring projects are delivered on time and within budget.', image: '/bykea-services.png' },
-      { id: 5, title: 'Quality Assurance', description: 'Maintaining high standards and quality throughout the project lifecycle.', image: '/bykea-services.png' },
+      {
+        id: 1,
+        title: 'Automated Candidate Screening',
+        description: 'Leverage AI to instantly screen resumes and shortlist top candidates based on role fit and skills.',
+        image: '/code-test.png',
+      },
+      {
+        id: 2,
+        title: 'Smart Talent Matching',
+        description: 'Match pre-vetted candidates to job openings using intelligent algorithms for faster hiring.',
+        image: '/Candidate-Payment.png',
+      },
+      {
+        id: 3,
+        title: 'AI-Driven Interview Scheduling',
+        description: 'Automate interview coordination and reduce delays with intelligent scheduling workflows.',
+        image: '/Candidate-Dashboard.png',
+      },
+      {
+        id: 4,
+        title: 'Workforce Analytics',
+        description: 'Gain insights into hiring metrics, performance trends, and retention with real-time analytics.',
+        image: '/coding-test.png',
+      },
+      {
+        id: 5,
+        title: 'Integrated Onboarding Experience',
+        description: 'Streamline onboarding with customizable workflows and pre-hire readiness tools.',
+        image: '/Candidate-Dashboard.png',
+      },
     ],
+    
   },
   
 ];
