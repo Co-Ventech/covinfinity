@@ -146,7 +146,7 @@ const StepsSection: React.FC = () => {
       video: "/Co Infinity Dark Mode Video 3.mp4",
       alt: "Coventech platform demo",
       type: "video",
-      thumbnail: "/co-ventech-thumbnail.png"
+      thumbnail: "/vedio-thumbnail.png"
     },
       
     
@@ -156,7 +156,7 @@ const StepsSection: React.FC = () => {
       video: "/Recruitinn English Version Dark Mode Video.mp4",
       alt: "Recruitinn platform demo",
       type: "video",
-      thumbnail: "/recruitin-thumbnail.png"
+      thumbnail: "/vedio-thumbnail.png"
     },
     {
       title: "SkillBuilder Platform",
@@ -164,7 +164,7 @@ const StepsSection: React.FC = () => {
       video: "/Skill Builder 1 Dark Mode.mp4",
       alt: "SkillBuilder platform demo",
       type: "video",
-      thumbnail: "/skillbuilder-thumbnail.png"
+      thumbnail: "/vedio-thumbnail.png"
     },
     {
       title: "CovenTal Platform",
@@ -172,7 +172,7 @@ const StepsSection: React.FC = () => {
       video: "/Covental Dark Mode Video 2.mp4",
       alt: "CovenTal platform demo",
       type: "video",
-      thumbnail: "/covental-thumbnail.png"
+      thumbnail: "/vedio-thumbnail.png"
     },
   ]
 

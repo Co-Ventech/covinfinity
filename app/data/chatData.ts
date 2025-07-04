@@ -133,7 +133,7 @@ export const aeChatData = [
       role: 'user' as const,
       sender: 'Sophia',
       message: 'Our deployment pipeline needs improvement. Can you help us implement CI/CD?',
-      avatar: '/Alex.png',
+      avatar: '/sophia.png',
       time: '6:45 PM',
     },
     {
@@ -147,7 +147,7 @@ export const aeChatData = [
       role: 'user' as const,
       sender: 'Sophia',
       message: 'Great! How soon can we start implementing this? Our team is eager to improve deployment efficiency.',
-      avatar: '/Alex.png',
+      avatar: '/sophia.png',
       time: '6:47 PM',
     },
     {

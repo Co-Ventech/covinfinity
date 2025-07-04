@@ -44,7 +44,7 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
       return;
     }
-    const ws = new WebSocket('wss://rag-chatbot-backend-production-b8f6.up.railway.app/');
+    const ws = new WebSocket(import.meta.env.VITE_CHATBOT_WS_URL);
     socketRef.current = ws;
 
     // Store message to send after connection if provided

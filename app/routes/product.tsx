@@ -138,7 +138,7 @@ export default function Product() {
           </div>
         </div>
       </div>
-      <ProductShowcaseImages className="pointer-events-none" />
+      <ProductShowcaseImages className="pointer-events-none" slug={slug ?? ''} />
 
       <Section className="page-3-section pt-5 mx-12 ">
         <Heading className="pb-3 lg:!text-7xl " blockText={productData?.text}>
